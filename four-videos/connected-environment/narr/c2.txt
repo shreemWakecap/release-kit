@@ -1,0 +1,13 @@
+Three projects, three screens, one portal. Weather showed Danger. Lightning showed All Clear. Gas showed Check.
+
+Here is the answer: a verdict, Danger, with the recommended steps behind it, listed in order.
+
+A quiet station is named in the headline and marked offline. Readiness reads Not ready.
+
+The Maximum Values Report shows a period's peak heat index and peak wind speed, across every station.
+
+In Lightning, WakeCap treats only the green state as safe to work. Alerts are a backup: the site's cabinet lights and sounder come first.
+
+The gas phone page says Check, then Not confirmed safe: one detector is not reporting.
+
+The Gas dashboard opens on Overview: each card shows the worst current reading among reporting detectors.

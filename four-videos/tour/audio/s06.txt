@@ -1,0 +1,1 @@
+On the right are the stations, each Online or Offline. Click a station to view it. A panel shows its identifier and the time of its last reading.

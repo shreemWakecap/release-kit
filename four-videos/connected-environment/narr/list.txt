@@ -1,0 +1,7 @@
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/c1.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/c2.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/c3.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/connected-environment/narr/c4.wav'

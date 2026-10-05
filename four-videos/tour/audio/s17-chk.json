@@ -1,0 +1,436 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:04,900"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 4900
+			},
+			"text": " Switch a product on, and it joins this project's menu with its own pages.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.828473,
+					"t_dtw": -1
+				},
+				{
+					"text": " Switch",
+					"timestamps": {
+						"from": "00:00:00,260",
+						"to": "00:00:00,550"
+					},
+					"offsets": {
+						"from": 260,
+						"to": 550
+					},
+					"id": 13893,
+					"p": 0.961299,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:00,620",
+						"to": "00:00:00,710"
+					},
+					"offsets": {
+						"from": 620,
+						"to": 710
+					},
+					"id": 257,
+					"p": 0.999552,
+					"t_dtw": -1
+				},
+				{
+					"text": " product",
+					"timestamps": {
+						"from": "00:00:00,710",
+						"to": "00:00:01,420"
+					},
+					"offsets": {
+						"from": 710,
+						"to": 1420
+					},
+					"id": 1674,
+					"p": 0.996761,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:01,420",
+						"to": "00:00:01,640"
+					},
+					"offsets": {
+						"from": 1420,
+						"to": 1640
+					},
+					"id": 322,
+					"p": 0.998824,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:01,640",
+						"to": "00:00:01,710"
+					},
+					"offsets": {
+						"from": 1640,
+						"to": 1710
+					},
+					"id": 11,
+					"p": 0.443912,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:01,850",
+						"to": "00:00:01,970"
+					},
+					"offsets": {
+						"from": 1850,
+						"to": 1970
+					},
+					"id": 293,
+					"p": 0.966029,
+					"t_dtw": -1
+				},
+				{
+					"text": " it",
+					"timestamps": {
+						"from": "00:00:01,970",
+						"to": "00:00:02,090"
+					},
+					"offsets": {
+						"from": 1970,
+						"to": 2090
+					},
+					"id": 309,
+					"p": 0.999531,
+					"t_dtw": -1
+				},
+				{
+					"text": " joins",
+					"timestamps": {
+						"from": "00:00:02,100",
+						"to": "00:00:02,440"
+					},
+					"offsets": {
+						"from": 2100,
+						"to": 2440
+					},
+					"id": 24397,
+					"p": 0.999786,
+					"t_dtw": -1
+				},
+				{
+					"text": " this",
+					"timestamps": {
+						"from": "00:00:02,440",
+						"to": "00:00:02,660"
+					},
+					"offsets": {
+						"from": 2440,
+						"to": 2660
+					},
+					"id": 341,
+					"p": 0.998828,
+					"t_dtw": -1
+				},
+				{
+					"text": " project",
+					"timestamps": {
+						"from": "00:00:02,760",
+						"to": "00:00:03,190"
+					},
+					"offsets": {
+						"from": 2760,
+						"to": 3190
+					},
+					"id": 1716,
+					"p": 0.997965,
+					"t_dtw": -1
+				},
+				{
+					"text": "'s",
+					"timestamps": {
+						"from": "00:00:03,190",
+						"to": "00:00:03,280"
+					},
+					"offsets": {
+						"from": 3190,
+						"to": 3280
+					},
+					"id": 311,
+					"p": 0.999302,
+					"t_dtw": -1
+				},
+				{
+					"text": " menu",
+					"timestamps": {
+						"from": "00:00:03,410",
+						"to": "00:00:03,590"
+					},
+					"offsets": {
+						"from": 3410,
+						"to": 3590
+					},
+					"id": 6510,
+					"p": 0.998993,
+					"t_dtw": -1
+				},
+				{
+					"text": " with",
+					"timestamps": {
+						"from": "00:00:03,590",
+						"to": "00:00:03,860"
+					},
+					"offsets": {
+						"from": 3590,
+						"to": 3860
+					},
+					"id": 365,
+					"p": 0.990091,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:03,860",
+						"to": "00:00:04,020"
+					},
+					"offsets": {
+						"from": 3860,
+						"to": 4020
+					},
+					"id": 1080,
+					"p": 0.999699,
+					"t_dtw": -1
+				},
+				{
+					"text": " own",
+					"timestamps": {
+						"from": "00:00:04,080",
+						"to": "00:00:04,230"
+					},
+					"offsets": {
+						"from": 4080,
+						"to": 4230
+					},
+					"id": 1065,
+					"p": 0.999805,
+					"t_dtw": -1
+				},
+				{
+					"text": " pages",
+					"timestamps": {
+						"from": "00:00:04,310",
+						"to": "00:00:04,510"
+					},
+					"offsets": {
+						"from": 4310,
+						"to": 4510
+					},
+					"id": 7183,
+					"p": 0.999651,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:04,640",
+						"to": "00:00:04,890"
+					},
+					"offsets": {
+						"from": 4640,
+						"to": 4890
+					},
+					"id": 13,
+					"p": 0.996322,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_245]",
+					"timestamps": {
+						"from": "00:00:04,900",
+						"to": "00:00:04,900"
+					},
+					"offsets": {
+						"from": 4900,
+						"to": 4900
+					},
+					"id": 50610,
+					"p": 0.304062,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:05,800",
+				"to": "00:00:07,480"
+			},
+			"offsets": {
+				"from": 5800,
+				"to": 7480
+			},
+			"text": " Nothing is switched in this recording.",
+			"tokens": [
+				{
+					"text": " Nothing",
+					"timestamps": {
+						"from": "00:00:05,800",
+						"to": "00:00:05,800"
+					},
+					"offsets": {
+						"from": 5800,
+						"to": 5800
+					},
+					"id": 6693,
+					"p": 0.999947,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:05,800",
+						"to": "00:00:05,800"
+					},
+					"offsets": {
+						"from": 5800,
+						"to": 5800
+					},
+					"id": 307,
+					"p": 0.999996,
+					"t_dtw": -1
+				},
+				{
+					"text": " switched",
+					"timestamps": {
+						"from": "00:00:06,060",
+						"to": "00:00:06,130"
+					},
+					"offsets": {
+						"from": 6060,
+						"to": 6130
+					},
+					"id": 16858,
+					"p": 0.999922,
+					"t_dtw": -1
+				},
+				{
+					"text": " in",
+					"timestamps": {
+						"from": "00:00:06,130",
+						"to": "00:00:06,270"
+					},
+					"offsets": {
+						"from": 6130,
+						"to": 6270
+					},
+					"id": 294,
+					"p": 0.999992,
+					"t_dtw": -1
+				},
+				{
+					"text": " this",
+					"timestamps": {
+						"from": "00:00:06,270",
+						"to": "00:00:06,550"
+					},
+					"offsets": {
+						"from": 6270,
+						"to": 6550
+					},
+					"id": 341,
+					"p": 0.999992,
+					"t_dtw": -1
+				},
+				{
+					"text": " recording",
+					"timestamps": {
+						"from": "00:00:06,670",
+						"to": "00:00:07,220"
+					},
+					"offsets": {
+						"from": 6670,
+						"to": 7220
+					},
+					"id": 6613,
+					"p": 0.999968,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:07,220",
+						"to": "00:00:07,480"
+					},
+					"offsets": {
+						"from": 7220,
+						"to": 7480
+					},
+					"id": 13,
+					"p": 0.999985,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_374]",
+					"timestamps": {
+						"from": "00:00:07,480",
+						"to": "00:00:07,480"
+					},
+					"offsets": {
+						"from": 7480,
+						"to": 7480
+					},
+					"id": 50739,
+					"p": 0.877639,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,1 @@
+A reading above its limit turns red and says Above safe limit.

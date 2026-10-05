@@ -1,0 +1,1 @@
+A card also has its own small button. Use it on barometric pressure, and the card leaves the list.

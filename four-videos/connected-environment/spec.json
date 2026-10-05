@@ -1,0 +1,844 @@
+{
+  "id": "connected-environment",
+  "title": "Connected Environment",
+  "capture_label": "LIVE CAPTURE · 4 OCT 2026 · READ-ONLY",
+  "chapters": [
+    {
+      "name": "One place to look",
+      "path": "Connected Environment"
+    },
+    {
+      "name": "A detailed eye",
+      "path": "Connected Environment › Weather Station, Reports, Lightning or Gas"
+    },
+    {
+      "name": "Control: weather",
+      "path": "Connected Environment › Settings › Weather Station"
+    },
+    {
+      "name": "Control: gas",
+      "path": "Connected Environment › Gas › Alerts"
+    }
+  ],
+  "diagrams": {
+    "umbrella": {
+      "tagline": "weather, lightning and gas, in one place",
+      "products": [
+        {
+          "t": "Weather Station",
+          "s": "Heat and site conditions",
+          "icon": "sun"
+        },
+        {
+          "t": "Lightning",
+          "s": "State and alarm history",
+          "icon": "bolt"
+        },
+        {
+          "t": "Gas",
+          "s": "Detectors and alerts",
+          "icon": "gas"
+        }
+      ],
+      "platform": {
+        "t": "ONE PLATFORM",
+        "chips": [
+          "One backend",
+          "One menu and header",
+          "Same view permission",
+          "Switched on per project"
+        ]
+      },
+      "devices": [
+        {
+          "t": "Weather stations",
+          "icon": "station"
+        },
+        {
+          "t": "Lightning sensors",
+          "icon": "sensor"
+        },
+        {
+          "t": "Gas detectors",
+          "icon": "detector"
+        }
+      ],
+      "paths": [
+        "Wireless mesh",
+        "Mesh + Modbus input",
+        "Vendor cloud"
+      ],
+      "team": {
+        "t": "Your site team",
+        "verbs": [
+          "Watch",
+          "Decide",
+          "Control"
+        ]
+      },
+      "agent": {
+        "t": "Future AI assistant",
+        "lines": [
+          "Reads what happens on site",
+          "Proposes actions",
+          "People approve"
+        ],
+        "badge": "DIRECTION · NOT LIVE TODAY"
+      }
+    },
+    "paths": {
+      "title": "DIFFERENT ROADS IN, ONE PLATFORM",
+      "lanes": [
+        {
+          "badge": "WIRELESS MESH",
+          "product": "Weather Station",
+          "device": "Weather stations",
+          "icon": "station",
+          "steps": [
+            [
+              "Wireless mesh",
+              "on-site radio network"
+            ],
+            [
+              "Gateway",
+              "passes readings on"
+            ],
+            [
+              "Cloud",
+              "decoded and stored"
+            ],
+            [
+              "Weather Station",
+              "readings and status"
+            ]
+          ]
+        },
+        {
+          "badge": "WIRELESS MESH + MODBUS INPUT",
+          "product": "Lightning",
+          "device": "Lightning sensors",
+          "icon": "sensor",
+          "steps": [
+            [
+              "Input module",
+              "small unit on a node"
+            ],
+            [
+              "Mesh, gateway",
+              "shows up as Modbus"
+            ],
+            [
+              "Cloud queues",
+              "unreadable: set aside"
+            ],
+            [
+              "Lightning",
+              "state and history"
+            ]
+          ]
+        },
+        {
+          "badge": "VENDOR CLOUD",
+          "product": "Gas",
+          "device": "Gas detectors",
+          "icon": "detector",
+          "steps": [
+            [
+              "Detectors send",
+              "on their own schedule"
+            ],
+            [
+              "Vendor cloud",
+              "run by the vendor"
+            ],
+            [
+              "WakeCap asks",
+              "on a regular timer"
+            ],
+            [
+              "Gas",
+              "readings, with their age"
+            ]
+          ]
+        }
+      ],
+      "sink": {
+        "t": "ONE PLATFORM",
+        "s": "readings reach the same portal"
+      }
+    },
+    "agent": {
+      "title": "DIRECTION: A FUTURE AI ASSISTANT",
+      "knows": [
+        "Weather readings and limits: assistant tools exist",
+        "Lightning status: no assistant tools",
+        "Gas readings and alerts: no assistant tools, some history not stored"
+      ],
+      "platform": "ONE PLATFORM",
+      "platform_sub": "building blocks for an assistant exist for Weather Station only. No assistant runs on any site.",
+      "agent": {
+        "t": "AI assistant",
+        "verbs": [
+          "Read",
+          "Propose",
+          "Ask a person"
+        ]
+      },
+      "guard": "People stay in control: an assistant proposes, a person approves",
+      "badge": "DIRECTION · NOT LIVE TODAY"
+    }
+  },
+  "beats": [
+    {
+      "id": "h01",
+      "kind": "card",
+      "card": "lines",
+      "eyebrow": "Connected Environment",
+      "lines": [
+        "Is it safe to work <em>right now?</em>",
+        "Heat says one thing.",
+        "Lightning says another.",
+        "Gas says a third.",
+        "You need one place to <em>look.</em>"
+      ],
+      "narration": "Is it safe to work right now? Heat says one thing. Lightning says another. Gas says a third. You need one place to look.",
+      "evidence": [
+        "Framing question only. No product claim and no statement about what customers use today. No product is promised an answer: the three lines say only that each product shows its own thing (lead decision A)."
+      ]
+    },
+    {
+      "id": "u01",
+      "kind": "diagram",
+      "diagram": "umbrella",
+      "stage": 1,
+      "narration": "That place is Connected Environment. One umbrella over weather, lightning and gas, in the portal.",
+      "evidence": [
+        "integration-and-devices#X01 safe_phrase: one platform serves weather, lightning and gas",
+        "u-products-a/b/c: each project shows only the products it has switched on (A: Weather Station; B: Lightning; C: Weather Station and Gas). The qualifier 'projects switch on what they use' is carried by u03, the next beat, not by this one.",
+        "Scoped to the three named products, not 'everything'.",
+        "Round 2: 'in the portal' is supported by u-rail-tooltip ('Connected Environment' in the portal's left rail, hover only in capture) and integration-and-devices#X07."
+      ]
+    },
+    {
+      "id": "u02",
+      "kind": "diagram",
+      "diagram": "umbrella",
+      "stage": 2,
+      "narration": "Under it sit Weather Station, Lightning and Gas, each with its own screens and devices.",
+      "evidence": [
+        "u-products-c: 'Weather Station Active', 'Gas Active', 'Lightning Inactive' (the three products)",
+        "u-ws-a: 'Heat Index 49.5'; u-lightning-b: 'All Clear', 'Alarm activity'; u-gas-c: 'Detectors', 'Live alarms'",
+        "integration-and-devices#W01, #L01, #G02 (each product has its own device path)"
+      ]
+    },
+    {
+      "id": "u03",
+      "kind": "diagram",
+      "diagram": "umbrella",
+      "stage": 3,
+      "narration": "They share one platform: one backend, one menu and header, the same view permission. Projects switch on what they use.",
+      "evidence": [
+        "integration-and-devices#X01 (one backend), #X02 safe_phrase (the same permission lets a person view weather, lightning and gas; changing settings is a separate, tighter permission), #X05 (only switched-on products appear in the menu)",
+        "u-ws-c: shared header 'Gas CHECK Last reading 20 min ago · 4 of 5 detectors reporting' above the weather page",
+        "Not claimed: one rule set, one audit trail, one permission for everything (agent-and-control must_not_claim; C25, C26)."
+      ]
+    },
+    {
+      "id": "u04",
+      "kind": "diagram",
+      "diagram": "umbrella",
+      "stage": 6,
+      "narration": "Your site team watches and decides. Control is narrower. Weather limits decide when work stops. A Gas alert can be acknowledged or closed, recorded in WakeCap only.",
+      "evidence": [
+        "Watch: u-ws-a 'Danger Unsafe conditions'; u-gas-c 'Overview'",
+        "Decide: u-ws-steps-a 'Recommended actions', 'Listed in the order the safety service prioritised them.'",
+        "Control scoped in the same beat (lead decision B): u-policy-a-top 'This page shows the limits and cycles that decide when work stops on this site.'; u-gas-alerts-c 'Acknowledging or closing an alert is recorded here with who did it and when. It is not sent to Blackline...'. Lightning alert distances are NOT filed under Control (k02 removed); they are reference values. The diagram verb 'Control' is the umbrella's own word; the connector drawn to the Weather Station card is a builder limitation (reported)."
+      ]
+    },
+    {
+      "id": "o01",
+      "kind": "tri",
+      "chapter": 1,
+      "imgs": [
+        "assets/u-products-a.png",
+        "assets/u-products-b.png",
+        "assets/u-products-c.png"
+      ],
+      "labels": [
+        "Project A: Weather",
+        "Project B: Lightning",
+        "Project C: Weather and Gas"
+      ],
+      "crops": [
+        [
+          500,
+          95,
+          260,
+          192
+        ],
+        [
+          500,
+          95,
+          260,
+          192
+        ],
+        [
+          500,
+          95,
+          260,
+          192
+        ]
+      ],
+      "narration": "Connected Products lists what each project has switched on. Weather alone, Lightning alone, Weather with Gas.",
+      "caption": "Recently added: Connected Products. Each project differs.",
+      "evidence": [
+        "u-products-a: rail 'Weather Station', 'Reports'; rows 'Weather Station Active', 'Gas Inactive', 'Lightning Inactive'",
+        "u-products-b: rail 'Lightning'; rows 'Weather Station Inactive', 'Gas Inactive', 'Lightning Active'",
+        "u-products-c: rail 'Weather Station', 'Gas', 'Reports'; rows 'Weather Station Active', 'Gas Active', 'Lightning Inactive'",
+        "integration-and-devices#X05 (only switched-on products appear in the rail); changes#shell-entitlement, #settings-area (live_in_1_0_5 yes). Switches never touched. Crops end at x 740, left of the switches. 'Recently added' in the caption only; the narration makes no date claim and no claim that the menu follows (the Settings sub-menu lists Weather Station and Lightning in every project). Crops tightened to the heading and the three rows (x 500-760, y 95-287) so the Active and Inactive words are bigger and the tile is not half empty.",
+        "Round 2: the added sentence names the three tiles exactly as the labels and frames show: A 'Weather Station Active' only; B 'Lightning Active' only; C 'Weather Station Active' and 'Gas Active'."
+      ]
+    },
+    {
+      "id": "o03",
+      "kind": "tri",
+      "chapter": 1,
+      "imgs": [
+        "assets/u-ws-a.png",
+        "assets/u-lightning-b.png",
+        "assets/u-gas-c.png"
+      ],
+      "labels": [
+        "Weather · Project A",
+        "Lightning · Project B",
+        "Gas · Project C"
+      ],
+      "crops": [
+        [
+          290,
+          165,
+          600,
+          535
+        ],
+        [
+          281,
+          40,
+          600,
+          535
+        ],
+        [
+          80,
+          40,
+          600,
+          535
+        ]
+      ],
+      "narration": "Three projects, three screens, one portal. Weather showed Danger. Lightning showed All Clear. Gas showed Check.",
+      "caption": "Three products, three projects, one portal",
+      "evidence": [
+        "u-ws-a: 'Danger', 'Heat Index 49.5' (project A)",
+        "u-lightning-b: 'All Clear', 'Normal operations.' (project B)",
+        "u-gas-c: 'Gas CHECK' in the header, 'Overview' (project C)",
+        "Labels say Project A, B, C: three different projects, never one site. Crops (600x535, equal ratio): weather stops left of the Stations list; lightning ends at frame y 575 (crop y 40-575), above 'Held for' (y 580); gas includes the header Check line so the gas tile is not read as 'all fine'."
+      ]
+    },
+    {
+      "id": "c01",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/u-ws-steps-a.png",
+      "narration": "Here is the answer: a verdict, Danger, with the recommended steps behind it, listed in order.",
+      "caption": "Weather, Project A: a verdict, then steps in order",
+      "zoom": {
+        "r": [
+          280,
+          60,
+          1624,
+          420
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            290,
+            166,
+            866,
+            54
+          ],
+          "l": "The answer",
+          "pos": "a"
+        },
+        {
+          "r": [
+            1517,
+            108,
+            390,
+            92
+          ],
+          "l": "Steps in order",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "u-ws-steps-a: 'Danger Unsafe conditions One or more readings indicate a danger-level condition. Act on the recommended steps.'",
+        "u-ws-steps-a: 'Recommended actions', 'Listed in the order the safety service prioritised them.', '1. Pause outdoor work and move crews to shade/rest', 'Do first', '2. Notify the site safety officer'",
+        "changes#ws-verdict-cta (live_in_1_0_5 yes). The drawer covers the right column, so no station list and no 'Last reading' line is on screen in this scene.",
+        "Round 2: 'Danger', 'recommended steps' and 'listed in order' are all page text in this frame ('Danger Unsafe conditions', 'Recommended actions', 'Listed in the order the safety service prioritised them.'). It says the page shows Danger, not that the site is unsafe or safe."
+      ]
+    },
+    {
+      "id": "c02",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/u-ws-a.png",
+      "narration": "A quiet station is named in the headline and marked offline. Readiness reads Not ready.",
+      "caption": "Offline station named and listed. Readiness reads Not ready.",
+      "zoom": {
+        "r": [
+          1120,
+          190,
+          800,
+          412
+        ],
+        "s": 2.4
+      },
+      "callouts": [
+        {
+          "r": [
+            1504,
+            240,
+            400,
+            188
+          ],
+          "l": "Not ready",
+          "pos": "b"
+        },
+        {
+          "r": [
+            1514,
+            556,
+            370,
+            26
+          ],
+          "l": "Offline station",
+          "pos": "l"
+        }
+      ],
+      "evidence": [
+        "u-ws-a: '1925073288 is offline' (headline), 'Offline' badge on its row in the Stations list, 'Readiness Not ready', 'What needs attention: 1 station offline; Check station 1925073288'. The narration says the headline names it and it is marked offline (the list row and the Offline callout show it); it does not say offline stations lose their name (the serial shows only because this station has no display name; changes#ws-station-rename).",
+        "Station names are blurred in the frame (lead decision 1) and are not narrated. The settled window (frame y 190-602) ends above the green 'Last reading was N minute(s) ago' line (y 608); it shows only during the entry glide (lead decision 4: keep short). The 'Flagged by number' label sits left of the offline row so it stays inside the window."
+      ]
+    },
+    {
+      "id": "c03",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/u-reports-a.png",
+      "narration": "The Maximum Values Report shows a period's peak heat index and peak wind speed, across every station.",
+      "caption": "Maximum Values Report in Reports, Project A",
+      "zoom": {
+        "r": [
+          280,
+          100,
+          1624,
+          520
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            296,
+            228,
+            330,
+            108
+          ],
+          "l": "Peak heat index",
+          "pos": "r"
+        },
+        {
+          "r": [
+            1116,
+            228,
+            330,
+            108
+          ],
+          "l": "Peak wind speed",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "u-reports-a: 'Maximum Values Report', 'MAXIMUM HEAT INDEX', 'MAXIMUM WIND SPEED', 'Daily breakdown', 'Computed from raw readings, project-wide across every station'",
+        "changes#reports-max-values (live_in_1_0_5 yes). Narration says period peaks (the two cards), not 'each day'; the Daily breakdown table is on screen below and not claimed. No figures narrated. Station names on the two cards are blurred (lead decision 1). Export and period buttons never clicked, not mentioned.",
+        "Round 2: 'across every station' is page text: 'Computed from raw readings, project-wide across every station'."
+      ]
+    },
+    {
+      "id": "l01",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/u-lightning-b.png",
+      "narration": "In Lightning, WakeCap treats only the green state as safe to work. Alerts are a backup: the site's cabinet lights and sounder come first.",
+      "caption": "Lightning, Project B: only green is safe. Alerts are a backup.",
+      "zoom": {
+        "r": [
+          281,
+          100,
+          1000,
+          420
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            309,
+            267,
+            481,
+            94
+          ],
+          "l": "All Clear",
+          "pos": "r"
+        },
+        {
+          "r": [
+            294,
+            117,
+            1596,
+            26
+          ],
+          "l": "Alerts are a backup",
+          "pos": "a"
+        }
+      ],
+      "evidence": [
+        "integration-and-devices#L05 (only Green is safe; live_today yes). A rule of the product, not page text: the narration says 'WakeCap treats only the green state as safe to work' (lead decision H, same wording as the Lightning video).",
+        "u-lightning-b: banner 'WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.' (integration-and-devices#L12)",
+        "u-lightning-b: 'All Clear', 'Normal operations.', 'Safe to work' (the only state seen live). Settled window ends at frame y 570 (x 275-1286), above 'Held for' (y 580); 'Held for' is never narrated or targeted (lead decision 2). Callouts follow the narration order: All Clear first, the backup banner second."
+      ]
+    },
+    {
+      "id": "g01",
+      "kind": "shot",
+      "chapter": 0,
+      "img": "assets/g-mobile-desktopview-c.png",
+      "narration": "The gas phone page says Check, then Not confirmed safe: one detector is not reporting.",
+      "caption": "Gas phone page, desktop width, opened by address: Check",
+      "zoom": {
+        "r": [
+          0,
+          0,
+          1670,
+          500
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            300,
+            148,
+            330,
+            62
+          ],
+          "l": "Check",
+          "pos": "r"
+        },
+        {
+          "r": [
+            296,
+            216,
+            350,
+            26
+          ],
+          "l": "Not confirmed safe",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "g-mobile-desktopview-c: 'CHECK', 'Not confirmed safe: 1 detector not reporting.', 'Resolve the items listed before relying on this reading.', '3589602346 CHECK Offline. Last reading 3 h 29 min ago.'",
+        "changes#gas-wall-phone (the gas phone and wallboard routes lead with the state word; live_in_1_0_5 yes), #gas-live-glance; changes#gas_production_build_shows ('No state while loading or after a failed read (never SAFE)'). The frame is the phone route captured at desktop width, so the narration and caption say 'phone view'; the main Gas Overview (next beats) carries no big state word. Quoted as what the page says; no claim that the site is safe. Frame copied from the gas folder.",
+        "Wallboard and phone views open by address, not from the menu (research: wallboard and phone by address only; lead decision E): said in the caption.",
+        "Round 2: 'shown at desktop width' moved from the narration to the caption to save length; the narration still names the phone page and quotes only page text."
+      ]
+    },
+    {
+      "id": "g02",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/u-gas-c.png",
+      "narration": "The Gas dashboard opens on Overview: each card shows the worst current reading among reporting detectors.",
+      "caption": "Gas Overview, Project C: worst current reading per gas",
+      "zoom": {
+        "r": [
+          339,
+          326,
+          1272,
+          260
+        ],
+        "s": 1.35
+      },
+      "callouts": [
+        {
+          "r": [
+            288,
+            318,
+            1272,
+            213
+          ],
+          "l": "Worst reading per gas",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "u-gas-c: 'Gases, worst current reading', 'H2S 0 ppm Within limits', 'O2 20.4 %VOL Within limits', 'LEL 0 %LEL Within limits', 'Worst of 4 reporting: 3589602342'",
+        "changes#gas-overview, #gas-no-co (live_in_1_0_5 yes; CO and CO2 not shown). Narration says 'worst current reading', not 'each checked against its limit' (lead decision 8: oxygen says 'low-oxygen alarm is not raised yet'). Window x 288-1560 ends before the detector list.",
+        "Lead decision G: the Gas menu item is Dashboard and the page heading is Overview; said once here, then Overview."
+      ]
+    },
+    {
+      "id": "k01",
+      "kind": "shot",
+      "chapter": 3,
+      "img": "assets/u-policy-a-top.png",
+      "narration": "In weather, a thirty day preview shows how often a limit would have stopped work.",
+      "caption": "Weather limits, with a 30 day what-if preview",
+      "zoom": {
+        "r": [
+          644,
+          222,
+          1120,
+          510
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            636,
+            214,
+            740,
+            60
+          ],
+          "l": "For the whole project",
+          "pos": "r"
+        },
+        {
+          "r": [
+            650,
+            692,
+            420,
+            30
+          ],
+          "l": "Would have stopped work",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "u-policy-a-top: 'This page shows the limits and cycles that decide when work stops on this site. Changing anything here changes when work stops, for everyone on the project.'",
+        "u-policy-a-top: 'Temperature and Wind Speed show what the limit would have done over the last 30 days.', 'Would have stopped work on 8 of the last 30 days'. Label 2 says 'Would have stopped work' and the narration says 'what a limit would have done'; no 'Stopped on N' wording (lead decision 7).",
+        "changes#ws-policy-preview, #ws-policy-in-settings (live_in_1_0_5 yes); integration-and-devices#X02 (settings need a separate grant). No band numbers narrated or labelled (lead decision 3). Nothing stepped, saved or published in capture.",
+        "The sentence 'limits decide when work stops' is spoken in u04 (Control scoped immediately); k01 shows the page and its 30 day what-if preview.",
+        "Round 2: 'how often a limit would have stopped work' restates the page line 'Would have stopped work on N of the last 30 days'; no N is narrated."
+      ]
+    },
+    {
+      "id": "k03",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/u-gas-alerts-c.png",
+      "narration": "Closing an alert here is recorded in WakeCap only. The page note says it is not sent to the gas vendor.",
+      "caption": "Recorded in WakeCap only. Not sent to Blackline, the gas vendor.",
+      "zoom": {
+        "r": [
+          288,
+          240,
+          975,
+          220
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            278,
+            134,
+            502,
+            62
+          ],
+          "l": "WakeCap only",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "u-gas-alerts-c: 'Acknowledging or closing an alert is recorded here with who did it and when. It is not sent to Blackline: an alert closed here stays open in Blackline Live.' The narration quotes the second sentence word for word (lead decision K); 'Blackline is the gas vendor' is the gloss. Blackline is named only while quoting the page.",
+        "Spotlight on the note only; the zoom (s 1.9, frame x 270-1281, y 90-610) starts below the header and right of the menu so no half-cut words show. integration-and-devices#G06 (no write-back to the vendor); agent-and-control#C19."
+      ]
+    },
+    {
+      "id": "k03b",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/u-gas-alerts-c.png",
+      "narration": "The newest rows read Closed. With edit access, older Acknowledged rows show a Close button.",
+      "caption": "Where you close an alert. Nothing is closed in this demo.",
+      "zoom": {
+        "r": [
+          720,
+          330,
+          1200,
+          500
+        ],
+        "s": 1.6
+      },
+      "callouts": [
+        {
+          "r": [
+            1793,
+            549,
+            50,
+            28
+          ],
+          "l": "Close here",
+          "pos": "a",
+          "click": true
+        }
+      ],
+      "evidence": [
+        "u-gas-alerts-c: the newest rows read 'Closed' with no Close button; older rows read 'Acknowledged' with a 'Close' button. Narration says 'the newest rows' (no count, lead decision K) and never says who closed them or when (the page does not say).",
+        "changes#gas-ack-close ui_strings: 'Acknowledging or closing one needs edit access' (hence 'With edit access'); integration-and-devices#G06; agent-and-control#C19. The click callout is a demonstration of where the button is: nothing was clicked in capture."
+      ]
+    },
+    {
+      "id": "p01",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 1,
+      "narration": "Weather stations reach WakeCap over the site's wireless mesh, through a gateway, into the cloud.",
+      "caption": "Weather: wireless mesh, gateway, cloud",
+      "evidence": [
+        "integration-and-devices#W01 (Wirepas mesh, gateway, cloud; safe phrase: stations talk over the site's wireless mesh, gateways pass readings to the cloud)",
+        "Lead decision C: the weather lane is labelled 'Wireless mesh' and is not called Modbus style frames. Modbus is explained once, in p02.",
+        "Round 2: 'into the cloud' is the lane's third step ('Cloud: decoded and stored'); integration-and-devices#W01."
+      ]
+    },
+    {
+      "id": "p02",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 2,
+      "narration": "Lightning is read through a small input module, and shows on the mesh as a Modbus device. Modbus is an industrial wiring and data standard many sensors speak.",
+      "caption": "Lightning: wireless mesh plus a Modbus input module",
+      "evidence": [
+        "integration-and-devices#L01 (a radio node on site reads the lightning warning unit through its inputs; a Modbus device on the mesh), #L02 (frames that cannot be read go to a separate queue; live_today yes; the lane step says 'unreadable: set aside')",
+        "Lead decision C: lane label 'Wireless mesh + Modbus input'; Modbus explained once, here, in the lead's wording. Same mesh path as weather is not claimed as one physical network."
+      ]
+    },
+    {
+      "id": "p03",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 3,
+      "narration": "Gas takes another road: the vendor's cloud. No mesh, no Modbus. WakeCap asks that cloud on a regular timer, and each detector reports on its own schedule.",
+      "caption": "Gas: vendor cloud, not the mesh",
+      "evidence": [
+        "integration-and-devices#G02, #G03 (WakeCap calls the vendor cloud on a timer; detectors upload on their own schedule), #G12 (Modbus gas path cancelled; live_today no; gas never on the mesh)",
+        "Lead decision D: no polling or reporting numbers anywhere (not live-verified). The lane's last step says only that each reading shows its age (u-gas-c: 'Detectors', per-detector 'N min ago', 'Last reading 17 min ago')."
+      ]
+    },
+    {
+      "id": "p04",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 4,
+      "narration": "Different roads in. One platform behind them. Weather, Lightning and Gas all reach the same portal.",
+      "caption": "Different roads in. One platform behind them.",
+      "evidence": [
+        "integration-and-devices lanes and diagram_ready: weather and lightning use the same kind of mesh and gateway path, gas arrives by the vendor cloud; #X01 one backend and one portal. Round 2: 'Weather, Lightning and Gas all reach the same portal' restates the sink text 'readings reach the same portal'. Different roads (two transports, three lane labels), so the title no longer counts ways in."
+      ]
+    },
+    {
+      "id": "a01",
+      "kind": "diagram",
+      "diagram": "agent",
+      "stage": 1,
+      "badge": "DIRECTION",
+      "narration": "The platform holds readings and status from all three, a base for a future A I assistant. Some gas history is not stored yet.",
+      "caption": "Direction: a platform an assistant could build on",
+      "evidence": [
+        "agent-and-control#C30 safe_phrase: the platform is being built so that an AI assistant can read what is happening on site and suggest actions, with people always approving. Not live today.",
+        "Column items carry their own status: 'Weather readings and limits: assistant tools exist', 'Lightning status: no assistant tools', 'Gas readings and alerts: no assistant tools, some history not stored' (agent-and-control must_not_claim: an assistant can read Lightning or Gas data; C02). The narration now repeats the gas caveat in the same beat: u-gas-c 'Needs stored readings for the day, which the backend does not keep yet'; u-gas-compliance-c 'Needs alert history and stored readings. Both are missing today'; brief point (c). No 'everything lands'. 'A I' is spelled out for the voice; the screen has no 'AI' in the narration column."
+      ]
+    },
+    {
+      "id": "a02",
+      "kind": "diagram",
+      "diagram": "agent",
+      "stage": 2,
+      "badge": "DIRECTION",
+      "narration": "Today, building blocks exist for Weather Station only, not Lightning or Gas. No assistant runs on any site.",
+      "caption": "Direction: building blocks for Weather Station only",
+      "evidence": [
+        "agent-and-control#C01 (secured interface on the same service), #C02 (all tools Weather Station scoped; no Lightning or Gas tool; live_today unknown, so 'building blocks exist')",
+        "agent-and-control must_not_claim: an AI agent is running on any site; an assistant can read Lightning or Gas data. No tool count. No promise of an extension."
+      ]
+    },
+    {
+      "id": "a03",
+      "kind": "diagram",
+      "diagram": "agent",
+      "stage": 3,
+      "badge": "DIRECTION",
+      "narration": "An assistant could read weather readings and propose changes. It never approves. A person does.",
+      "caption": "Direction: an assistant proposes, a person approves",
+      "evidence": [
+        "agent-and-control#C04 (an agent may propose, never approve; enforced and tested; live_today yes), #C30; direction_only: no running agent exists",
+        "Agent screens (agent dashboard, observation drawer) are switched off by default and are neither shown nor claimed.",
+        "Scoped to weather in the sentence itself: agent-and-control#C02, C12, must_not_claim 'An AI agent can read Lightning or Gas data'. Proposals are changes and findings for a person to approve, not site actions."
+      ]
+    },
+    {
+      "id": "a04",
+      "kind": "diagram",
+      "diagram": "agent",
+      "stage": 4,
+      "badge": "DIRECTION",
+      "narration": "People stay in control. The weather safety answer comes from fixed rules; an assistant would only reword it.",
+      "caption": "Direction: people stay in control. Weather answers use fixed rules.",
+      "evidence": [
+        "agent-and-control#C06 (safety verdict from fixed rules; AI may only reword; live_today unknown, so 'would only reword'), #C07, #C04",
+        "Scoped to the weather answer: C06 was researched for the Weather Station verdict only; Lightning and Gas states are not covered by the wording-layer research."
+      ]
+    },
+    {
+      "id": "z01",
+      "kind": "shot",
+      "img": "assets/u-rail-tooltip.png",
+      "narration": "Your next step: open Connected Environment in the portal's left rail, if your project has it. Your team stays in charge.",
+      "caption": "Open Connected Environment in the portal's left rail",
+      "zoom": {
+        "r": [
+          10,
+          150,
+          300,
+          150
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            10,
+            194,
+            36,
+            32
+          ],
+          "l": "    Open it here",
+          "pos": "b",
+          "click": true
+        }
+      ],
+      "evidence": [
+        "u-rail-tooltip: tooltip 'Connected Environment' over the sun-and-cloud rail icon (hover only in capture)",
+        "integration-and-devices#X07 (portal shell entry; unknown whether every project has it, hence 'if your project has it')",
+        "The click callout is a demonstration only. The window (frame x 0-1010) excludes the Stations list; the first second of the glide shows the full frame (accepted, lead decision 4). The closing line restates the people-decide line of the direction section, no new claim."
+      ]
+    }
+  ]
+}

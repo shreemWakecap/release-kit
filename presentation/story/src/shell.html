@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 278.78 176.15'%3E%3Cpath fill='%23FF8300' d='M65.58,4.66l21.91,30.92,20.8-31.16,62.09-.03,21.5,31.2s21.05-31.2,21.21-31.2h62.08v62.09s-52.28,105.07-52.28,105.07l-62.09-.05-21.48-30.97-21.05,31.02h-62.09S3.49,66.77,3.49,66.77V4.67h62.09Z'/%3E%3C/svg%3E">
+<title>Connected Environment: from Weather Station to one data bank</title>
+<style>/*__ENGINE_CSS__*/</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="fx-glow" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="fx-glow-soft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="12" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="fx-glow-u" filterUnits="userSpaceOnUse" x="-3000" y="-3000" width="9000" height="9000"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="g-orange" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E9590C"/><stop offset="1" stop-color="#FFB366"/></linearGradient>
+  <linearGradient id="g-orange-v" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#E9590C"/><stop offset="1" stop-color="#FFC48A"/></linearGradient>
+  <radialGradient id="g-core" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE2C2"/><stop offset=".35" stop-color="#FF8300"/><stop offset="1" stop-color="rgba(233,89,12,0)"/></radialGradient>
+</defs></svg>
+<canvas id="bg"></canvas>
+<div id="stage"><div id="sweep"></div></div>
+<canvas id="fxtop"></canvas>
+<div id="hud">
+  <div id="progress"><i></i></div>
+  <div id="live"><i class="lv-dot"></i><b style="font-weight:800">Live build</b><span id="lv-count" style="color:#fff"></span><span id="lv-bar"><i></i></span></div><div id="lv-panel"></div><div id="brand"><svg viewBox="0 0 278.78 176.15" width="30" height="19" aria-hidden="true"><path fill="currentColor" d="M65.58,4.66l21.91,30.92,20.8-31.16,62.09-.03,21.5,31.2s21.05-31.2,21.21-31.2h62.08v62.09s-52.28,105.07-52.28,105.07l-62.09-.05-21.48-30.97-21.05,31.02h-62.09S3.49,66.77,3.49,66.77V4.67h62.09Z"/></svg>WAKECAP</div>
+  <div id="sections"></div>
+  <div id="timer" style="display:none">00:00</div>
+  <div id="legend"></div>
+  <div id="bar"><button id="b-prev"></button><div id="dots"></div><div id="count"></div><button id="b-next"></button><button id="b-over"></button><button id="b-notes"></button><button id="b-short"></button><button id="b-laser"></button><button id="b-auto"></button><button id="b-full"></button><button id="b-help"></button></div>
+  <div id="title-tip">← → · space · O overview · ? help</div>
+</div>
+<div id="autoplay-bar"></div>
+<div id="toasts"></div>
+<div id="overview" class="overlay"><h4>Overview</h4><div id="ovgrid"></div></div>
+<div id="notes" class="overlay"></div>
+<div id="help" class="overlay"><div class="box"><h4>Presentation controls</h4><div class="g">
+  <div><kbd>→</kbd><kbd>Space</kbd> next: plays the whole slide</div><div><kbd>←</kbd><kbd>Backspace</kbd> back</div>
+  <div><kbd>Shift</kbd>+<kbd>→</kbd> or <kbd>]</kbd> next slide</div><div><kbd>Shift</kbd>+<kbd>←</kbd> or <kbd>[</kbd> previous slide</div>
+  <div><kbd>Home</kbd><kbd>End</kbd> first, last slide</div><div><kbd>12</kbd><kbd>Enter</kbd> jump to slide 12</div>
+  <div><kbd>O</kbd> overview grid</div><div><kbd>N</kbd> speaker notes</div>
+  <div><kbd>P</kbd> presenter window</div><div><kbd>T</kbd> timer</div>
+  <div><kbd>F</kbd> fullscreen</div><div><kbd>L</kbd> laser pointer</div>
+  <div><kbd>A</kbd> autoplay</div><div><kbd>B</kbd> black screen</div>
+  <div><kbd>S</kbd> short talk (only the main slides)</div><div><kbd>U</kbd> live build: follow or pause updates</div><div><kbd>M</kbd> calm mode (less motion)</div><div><kbd>J</kbd> one press per slide, or step by step</div><div><kbd>R</kbd> hide or show the reality legend</div>
+  <div>Click right side: next. Click left edge: previous.</div><div>Swipe on touch screens. <kbd>?</kbd> this help. <kbd>Esc</kbd> close.</div>
+</div></div></div>
+<div id="black" class="overlay"></div>
+<div id="laser"></div><div id="jump"></div>
+<script>window.__BUILD=/*__BUILD_INFO__*/null;</script>
+<script>/*__ENGINE_JS__*/</script>
+/*__SLIDE_SCRIPTS__*/
+<script>Deck.start();</script>
+</body>
+</html>

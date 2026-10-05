@@ -1,0 +1,9 @@
+A gas screen, no alarm showing. Calm? Or a detector gone quiet? A good screen says which.
+
+Start with the top line. Check, the newest reading's age, and four of five detectors reporting.
+
+The Gas dashboard opens on Overview. Five detectors, four online. Live alarms counts alerts nobody has acknowledged. Acknowledged counts open alerts that are being handled.
+
+Three gases, limits on each card. H two S alarms above ten parts per million. Combustible gas alarms above twenty percent L E L.
+
+Oxygen has a low limit, nineteen point five. The page says its alarm is not raised yet. Cards show the worst of four reporting.

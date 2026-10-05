@@ -1,0 +1,353 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:05,920"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 5920
+			},
+			"text": " GAS has no settings page. Its limits are shown, read only, on the compliance page.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.926769,
+					"t_dtw": -1
+				},
+				{
+					"text": " G",
+					"timestamps": {
+						"from": "00:00:00,010",
+						"to": "00:00:00,080"
+					},
+					"offsets": {
+						"from": 10,
+						"to": 80
+					},
+					"id": 460,
+					"p": 0.682692,
+					"t_dtw": -1
+				},
+				{
+					"text": "AS",
+					"timestamps": {
+						"from": "00:00:00,270",
+						"to": "00:00:00,280"
+					},
+					"offsets": {
+						"from": 270,
+						"to": 280
+					},
+					"id": 3160,
+					"p": 0.919054,
+					"t_dtw": -1
+				},
+				{
+					"text": " has",
+					"timestamps": {
+						"from": "00:00:00,280",
+						"to": "00:00:00,560"
+					},
+					"offsets": {
+						"from": 280,
+						"to": 560
+					},
+					"id": 575,
+					"p": 0.997632,
+					"t_dtw": -1
+				},
+				{
+					"text": " no",
+					"timestamps": {
+						"from": "00:00:00,560",
+						"to": "00:00:00,640"
+					},
+					"offsets": {
+						"from": 560,
+						"to": 640
+					},
+					"id": 572,
+					"p": 0.995397,
+					"t_dtw": -1
+				},
+				{
+					"text": " settings",
+					"timestamps": {
+						"from": "00:00:00,840",
+						"to": "00:00:01,430"
+					},
+					"offsets": {
+						"from": 840,
+						"to": 1430
+					},
+					"id": 6257,
+					"p": 0.840274,
+					"t_dtw": -1
+				},
+				{
+					"text": " page",
+					"timestamps": {
+						"from": "00:00:01,560",
+						"to": "00:00:01,850"
+					},
+					"offsets": {
+						"from": 1560,
+						"to": 1850
+					},
+					"id": 3028,
+					"p": 0.999153,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:01,910",
+						"to": "00:00:02,220"
+					},
+					"offsets": {
+						"from": 1910,
+						"to": 2220
+					},
+					"id": 13,
+					"p": 0.953516,
+					"t_dtw": -1
+				},
+				{
+					"text": " Its",
+					"timestamps": {
+						"from": "00:00:02,220",
+						"to": "00:00:02,260"
+					},
+					"offsets": {
+						"from": 2220,
+						"to": 2260
+					},
+					"id": 6953,
+					"p": 0.767906,
+					"t_dtw": -1
+				},
+				{
+					"text": " limits",
+					"timestamps": {
+						"from": "00:00:02,610",
+						"to": "00:00:03,000"
+					},
+					"offsets": {
+						"from": 2610,
+						"to": 3000
+					},
+					"id": 10406,
+					"p": 0.997078,
+					"t_dtw": -1
+				},
+				{
+					"text": " are",
+					"timestamps": {
+						"from": "00:00:03,000",
+						"to": "00:00:03,250"
+					},
+					"offsets": {
+						"from": 3000,
+						"to": 3250
+					},
+					"id": 366,
+					"p": 0.999037,
+					"t_dtw": -1
+				},
+				{
+					"text": " shown",
+					"timestamps": {
+						"from": "00:00:03,260",
+						"to": "00:00:03,700"
+					},
+					"offsets": {
+						"from": 3260,
+						"to": 3700
+					},
+					"id": 4898,
+					"p": 0.99919,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,700",
+						"to": "00:00:03,780"
+					},
+					"offsets": {
+						"from": 3700,
+						"to": 3780
+					},
+					"id": 11,
+					"p": 0.583233,
+					"t_dtw": -1
+				},
+				{
+					"text": " read",
+					"timestamps": {
+						"from": "00:00:03,920",
+						"to": "00:00:04,090"
+					},
+					"offsets": {
+						"from": 3920,
+						"to": 4090
+					},
+					"id": 1401,
+					"p": 0.926311,
+					"t_dtw": -1
+				},
+				{
+					"text": " only",
+					"timestamps": {
+						"from": "00:00:04,090",
+						"to": "00:00:04,350"
+					},
+					"offsets": {
+						"from": 4090,
+						"to": 4350
+					},
+					"id": 787,
+					"p": 0.830192,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,350",
+						"to": "00:00:04,480"
+					},
+					"offsets": {
+						"from": 4350,
+						"to": 4480
+					},
+					"id": 11,
+					"p": 0.998032,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:04,480",
+						"to": "00:00:04,590"
+					},
+					"offsets": {
+						"from": 4480,
+						"to": 4590
+					},
+					"id": 322,
+					"p": 0.9991,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:04,800",
+						"to": "00:00:04,800"
+					},
+					"offsets": {
+						"from": 4800,
+						"to": 4800
+					},
+					"id": 264,
+					"p": 0.999866,
+					"t_dtw": -1
+				},
+				{
+					"text": " compliance",
+					"timestamps": {
+						"from": "00:00:04,820",
+						"to": "00:00:05,450"
+					},
+					"offsets": {
+						"from": 4820,
+						"to": 5450
+					},
+					"id": 15882,
+					"p": 0.925362,
+					"t_dtw": -1
+				},
+				{
+					"text": " page",
+					"timestamps": {
+						"from": "00:00:05,450",
+						"to": "00:00:05,710"
+					},
+					"offsets": {
+						"from": 5450,
+						"to": 5710
+					},
+					"id": 3028,
+					"p": 0.999926,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:05,710",
+						"to": "00:00:05,920"
+					},
+					"offsets": {
+						"from": 5710,
+						"to": 5920
+					},
+					"id": 13,
+					"p": 0.998885,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_296]",
+					"timestamps": {
+						"from": "00:00:05,920",
+						"to": "00:00:05,920"
+					},
+					"offsets": {
+						"from": 5920,
+						"to": 5920
+					},
+					"id": 50661,
+					"p": 0.726318,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

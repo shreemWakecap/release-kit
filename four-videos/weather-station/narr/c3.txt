@@ -1,0 +1,11 @@
+Five bands, green to deep red, each with its own settings for work, rest and water. The heat index method is N O A A.
+
+Change history has its own tab here. None were recorded in the history it read.
+
+Each project switches on only the products it uses. Here, Weather Station is Active, Gas and Lightning Inactive.
+
+Four new places. Choose what is featured. Look back at the heat. Check what stops work. See which products are on.
+
+Readings travel over the site's wireless mesh to a gateway, then on to the cloud. The cloud decodes and stores them.
+
+WakeCap serves them here. Next time the heat number climbs, open Weather Station, if your project has it. Read the strip first.

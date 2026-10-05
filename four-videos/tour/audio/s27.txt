@@ -1,0 +1,1 @@
+Gas has no settings page. Its limits are shown, read only, on the Compliance page.

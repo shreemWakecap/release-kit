@@ -1,0 +1,421 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:01,840"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 1840
+			},
+			"text": " Each product has a switch.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.600562,
+					"t_dtw": -1
+				},
+				{
+					"text": " Each",
+					"timestamps": {
+						"from": "00:00:00,300",
+						"to": "00:00:00,300"
+					},
+					"offsets": {
+						"from": 300,
+						"to": 300
+					},
+					"id": 6947,
+					"p": 0.96457,
+					"t_dtw": -1
+				},
+				{
+					"text": " product",
+					"timestamps": {
+						"from": "00:00:00,300",
+						"to": "00:00:00,830"
+					},
+					"offsets": {
+						"from": 300,
+						"to": 830
+					},
+					"id": 1674,
+					"p": 0.998498,
+					"t_dtw": -1
+				},
+				{
+					"text": " has",
+					"timestamps": {
+						"from": "00:00:00,830",
+						"to": "00:00:00,990"
+					},
+					"offsets": {
+						"from": 830,
+						"to": 990
+					},
+					"id": 575,
+					"p": 0.997942,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:01,070",
+						"to": "00:00:01,130"
+					},
+					"offsets": {
+						"from": 1070,
+						"to": 1130
+					},
+					"id": 257,
+					"p": 0.999312,
+					"t_dtw": -1
+				},
+				{
+					"text": " switch",
+					"timestamps": {
+						"from": "00:00:01,130",
+						"to": "00:00:01,580"
+					},
+					"offsets": {
+						"from": 1130,
+						"to": 1580
+					},
+					"id": 3679,
+					"p": 0.999247,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:01,580",
+						"to": "00:00:01,840"
+					},
+					"offsets": {
+						"from": 1580,
+						"to": 1840
+					},
+					"id": 13,
+					"p": 0.970882,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_92]",
+					"timestamps": {
+						"from": "00:00:01,840",
+						"to": "00:00:01,840"
+					},
+					"offsets": {
+						"from": 1840,
+						"to": 1840
+					},
+					"id": 50457,
+					"p": 0.269889,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:02,300",
+				"to": "00:00:04,780"
+			},
+			"offsets": {
+				"from": 2300,
+				"to": 4780
+			},
+			"text": " In this project, weather station is on.",
+			"tokens": [
+				{
+					"text": " In",
+					"timestamps": {
+						"from": "00:00:02,300",
+						"to": "00:00:02,300"
+					},
+					"offsets": {
+						"from": 2300,
+						"to": 2300
+					},
+					"id": 682,
+					"p": 0.999992,
+					"t_dtw": -1
+				},
+				{
+					"text": " this",
+					"timestamps": {
+						"from": "00:00:02,310",
+						"to": "00:00:02,340"
+					},
+					"offsets": {
+						"from": 2310,
+						"to": 2340
+					},
+					"id": 341,
+					"p": 0.999985,
+					"t_dtw": -1
+				},
+				{
+					"text": " project",
+					"timestamps": {
+						"from": "00:00:02,600",
+						"to": "00:00:02,860"
+					},
+					"offsets": {
+						"from": 2600,
+						"to": 2860
+					},
+					"id": 1716,
+					"p": 0.997837,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,000",
+						"to": "00:00:03,120"
+					},
+					"offsets": {
+						"from": 3000,
+						"to": 3120
+					},
+					"id": 11,
+					"p": 0.998123,
+					"t_dtw": -1
+				},
+				{
+					"text": " weather",
+					"timestamps": {
+						"from": "00:00:03,120",
+						"to": "00:00:03,620"
+					},
+					"offsets": {
+						"from": 3120,
+						"to": 3620
+					},
+					"id": 5503,
+					"p": 0.82125,
+					"t_dtw": -1
+				},
+				{
+					"text": " station",
+					"timestamps": {
+						"from": "00:00:03,620",
+						"to": "00:00:04,120"
+					},
+					"offsets": {
+						"from": 3620,
+						"to": 4120
+					},
+					"id": 5214,
+					"p": 0.998757,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:04,120",
+						"to": "00:00:04,230"
+					},
+					"offsets": {
+						"from": 4120,
+						"to": 4230
+					},
+					"id": 307,
+					"p": 0.989693,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:04,480",
+						"to": "00:00:04,480"
+					},
+					"offsets": {
+						"from": 4480,
+						"to": 4480
+					},
+					"id": 322,
+					"p": 0.998576,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:04,590",
+						"to": "00:00:04,780"
+					},
+					"offsets": {
+						"from": 4590,
+						"to": 4780
+					},
+					"id": 13,
+					"p": 0.990932,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_239]",
+					"timestamps": {
+						"from": "00:00:04,780",
+						"to": "00:00:04,780"
+					},
+					"offsets": {
+						"from": 4780,
+						"to": 4780
+					},
+					"id": 50604,
+					"p": 0.574482,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:05,300",
+				"to": "00:00:06,960"
+			},
+			"offsets": {
+				"from": 5300,
+				"to": 6960
+			},
+			"text": " Gas and lightning are off.",
+			"tokens": [
+				{
+					"text": " Gas",
+					"timestamps": {
+						"from": "00:00:05,300",
+						"to": "00:00:05,300"
+					},
+					"offsets": {
+						"from": 5300,
+						"to": 5300
+					},
+					"id": 24025,
+					"p": 0.999971,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:05,310",
+						"to": "00:00:05,320"
+					},
+					"offsets": {
+						"from": 5310,
+						"to": 5320
+					},
+					"id": 293,
+					"p": 0.999992,
+					"t_dtw": -1
+				},
+				{
+					"text": " lightning",
+					"timestamps": {
+						"from": "00:00:05,600",
+						"to": "00:00:06,130"
+					},
+					"offsets": {
+						"from": 5600,
+						"to": 6130
+					},
+					"id": 16589,
+					"p": 0.982382,
+					"t_dtw": -1
+				},
+				{
+					"text": " are",
+					"timestamps": {
+						"from": "00:00:06,130",
+						"to": "00:00:06,380"
+					},
+					"offsets": {
+						"from": 6130,
+						"to": 6380
+					},
+					"id": 366,
+					"p": 0.999805,
+					"t_dtw": -1
+				},
+				{
+					"text": " off",
+					"timestamps": {
+						"from": "00:00:06,390",
+						"to": "00:00:06,660"
+					},
+					"offsets": {
+						"from": 6390,
+						"to": 6660
+					},
+					"id": 766,
+					"p": 0.999964,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:06,670",
+						"to": "00:00:06,950"
+					},
+					"offsets": {
+						"from": 6670,
+						"to": 6950
+					},
+					"id": 13,
+					"p": 0.999989,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_348]",
+					"timestamps": {
+						"from": "00:00:06,960",
+						"to": "00:00:06,960"
+					},
+					"offsets": {
+						"from": 6960,
+						"to": 6960
+					},
+					"id": 50713,
+					"p": 0.650472,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

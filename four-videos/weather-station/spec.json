@@ -1,0 +1,660 @@
+{
+  "id": "weather-station",
+  "title": "Connected Environment",
+  "capture_label": "LIVE CAPTURE · 4 OCT 2026 · READ-ONLY",
+  "chapters": [
+    {
+      "name": "The answer",
+      "path": "Connected Environment › Weather Station"
+    },
+    {
+      "name": "Dashboard",
+      "path": "Connected Environment › Weather Station › Select parameters"
+    },
+    {
+      "name": "Reports",
+      "path": "Connected Environment › Reports"
+    },
+    {
+      "name": "Safety Policy",
+      "path": "Connected Environment › Settings › Weather Station"
+    },
+    {
+      "name": "Products",
+      "path": "Connected Environment › Settings › Connected Products"
+    }
+  ],
+  "diagrams": {
+    "paths": {
+      "title": "HOW THE READINGS ARRIVE",
+      "lanes": [
+        {
+          "badge": "WIRELESS MESH",
+          "product": "Weather Station",
+          "device": "Weather stations",
+          "icon": "station",
+          "steps": [
+            [
+              "Wireless mesh",
+              "stations on site"
+            ],
+            [
+              "Gateway",
+              "passes readings on"
+            ],
+            [
+              "Cloud",
+              "decode and store"
+            ],
+            [
+              "WakeCap",
+              "reads and serves"
+            ]
+          ]
+        }
+      ],
+      "sink": {
+        "t": "WEATHER STATION",
+        "s": "where you read the answer"
+      }
+    }
+  },
+  "beats": [
+    {
+      "id": "w01",
+      "kind": "card",
+      "card": "title",
+      "chapter": 0,
+      "eyebrow": "WEATHER STATION",
+      "h1": "A heat number is not <em>an answer</em>.",
+      "sub": "Weather Station gives an answer a site team can act on, and shows the data behind it.",
+      "narration": "On site, a supervisor reads a heat number and asks: so what now? A number cannot say. An answer can.",
+      "evidence": [
+        "w-top-a: 'Danger' strip and 'Heat Index 49.5' (the screen the hook sets up). The scene is illustrative, no time of day claimed. The sub line names only data the page prints: Data confidence mark, 'Last updated', 'Readiness'."
+      ]
+    },
+    {
+      "id": "w02",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-top-a.png",
+      "narration": "Weather Station answers in one strip. Danger, in words, and an instruction: act on the recommended steps.",
+      "caption": "One strip: Danger, in words, with an instruction",
+      "zoom": {
+        "r": [
+          297,
+          162,
+          880,
+          62
+        ],
+        "s": 1.5
+      },
+      "callouts": [
+        {
+          "r": [
+            280,
+            162,
+            880,
+            62
+          ],
+          "l": "The answer",
+          "pos": "a"
+        }
+      ],
+      "evidence": [
+        "w-top-a: 'Danger' 'Unsafe conditions' 'One or more readings indicate a danger-level condition. Act on the recommended steps.'",
+        "changes#ws-verdict-cta (live_in_1_0_5 yes)"
+      ]
+    },
+    {
+      "id": "w03",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-top-a.png",
+      "narration": "Need the actions? You can click View Recommended Steps, right in the strip, to open them.",
+      "caption": "You can click View Recommended Steps to open the actions",
+      "zoom": {
+        "r": [
+          1400,
+          162,
+          504,
+          62
+        ],
+        "s": 2.1
+      },
+      "callouts": [
+        {
+          "r": [
+            1602,
+            175,
+            216,
+            36
+          ],
+          "l": "Recommended Steps",
+          "pos": "b",
+          "click": true
+        }
+      ],
+      "evidence": [
+        "w-top-a: 'View Recommended Steps' button in the Danger strip",
+        "changes#ws-verdict-cta. In capture the drawer was opened and closed with Escape (w-steps-a); the click here is a demonstration, nothing was saved, copied or exported."
+      ]
+    },
+    {
+      "id": "w04",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-steps-a.png",
+      "narration": "Two actions, in priority order. First, pause outdoor work and move crews to shade or rest.",
+      "caption": "Actions listed in priority order, Do first marked",
+      "zoom": {
+        "r": [
+          1504,
+          0,
+          416,
+          260
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            1513,
+            104,
+            398,
+            102
+          ],
+          "l": "In priority order",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "w-steps-a: 'Recommended actions' 'Listed in the order the safety service prioritised them.'",
+        "w-steps-a: '1. Pause outdoor work and move crews to shade/rest' 'Do first' '2. Notify the site safety officer'"
+      ]
+    },
+    {
+      "id": "w05",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-details-a.png",
+      "narration": "Then Details. It shows the verdict, a data confidence mark, and the last update, in Saudi time.",
+      "caption": "Details: verdict, data confidence mark, last update",
+      "zoom": {
+        "r": [
+          1504,
+          0,
+          416,
+          320
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            1513,
+            94,
+            398,
+            213
+          ],
+          "l": "Verdict, update",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "w-details-a: 'VERDICT' 'DATA CONFIDENCE' (three-bar icon, no scale printed; nothing claimed about what the bars mean) 'DATA FRESHNESS' 'Last updated 04 Oct, 2026 03:22 PM' 'The full safety verdict as the safety service reported it.'",
+        "Saudi time: front-end commits f3e49a1 and 8dfbae9 (Asia/Riyadh); live test with a Los Angeles browser clock still showing Saudi clock times; integration-and-devices#N04 (live_today yes). The page prints no zone label."
+      ]
+    },
+    {
+      "id": "w06",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-top-a.png",
+      "narration": "The heat card also carries the cycle in force. Thirty minutes of work, ten of rest, water every fifteen.",
+      "caption": "Danger card carries the work, rest and water cycle",
+      "zoom": {
+        "r": [
+          298,
+          363,
+          577,
+          437
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            319,
+            507,
+            535,
+            273
+          ],
+          "l": "Work, rest, water",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "w-top-a: 'Heat Index 49.5 °C' 'Danger' on an orange card; 'Work Time — Rest Time 30 min Work Time 10 min Rest Time'; 'Drinking Water 1 Cup (250ml) every 15 min'",
+        "w-policy-a-top: 'In force on site: 30 minutes of work, then 10 minutes of rest, with 250 ml of water every 15 minutes.' (same cycle, so 'the cycle in force')"
+      ]
+    },
+    {
+      "id": "w07",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-top-a.png",
+      "narration": "Next, station health. One station is offline, and the page names it. Readiness reads Not ready.",
+      "caption": "Offline station named. Readiness: Not ready.",
+      "zoom": {
+        "r": [
+          1504,
+          241,
+          400,
+          187
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            1506,
+            243,
+            396,
+            186
+          ],
+          "l": "Offline, Not ready",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "w-top-a: '1925073288 is offline' 'Readiness Not ready' 'What needs attention' '1 station offline' 'Check station 1925073288'",
+        "changes#ws-verdict-cta ('Station health' inline in the right rail)",
+        "No claim about why the station is offline, or that it causes the verdict. The green last-reading line is outside this zoom (lead decision 4); a sliver can show for under a second while the camera glides in from the heat card."
+      ]
+    },
+    {
+      "id": "w08",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/w-reasons-c.png",
+      "narration": "Another project, same page. Three readings are in Danger: heat index, temperature and pressure. The page names each.",
+      "caption": "Another project: Danger lists the readings behind it",
+      "zoom": {
+        "r": [
+          1504,
+          780,
+          400,
+          200
+        ],
+        "s": 2.2
+      },
+      "callouts": [
+        {
+          "r": [
+            1496,
+            563,
+            416,
+            192
+          ],
+          "l": "Three readings",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "w-reasons-c: 'Heat Index 41.5 °C Band: Danger' 'Temperature 39.4 °C Threshold: Danger' 'Barometric Pressure 1001.9 hPa Threshold: Danger' with a one-line reason under each (three readings behind the verdict)",
+        "w-top-c rail has a Gas row and w-top-a does not: different products switched on per project (integration-and-devices#X05); the beat says only 'another project'",
+        "The zoom starts below the green last-reading line and the readiness block, so neither shows; Ready is no longer narrated (brief Avoid list). The line shows only in the half-second entry glide from the full frame."
+      ]
+    },
+    {
+      "id": "w09",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/w-gear-a.png",
+      "narration": "Back in the first project, a new gear opens Select parameters. Switches choose which readings are featured.",
+      "caption": "New: Select parameters gear",
+      "zoom": {
+        "r": [
+          810,
+          199,
+          300,
+          267
+        ],
+        "s": 2.4
+      },
+      "callouts": [
+        {
+          "r": [
+            810,
+            199,
+            300,
+            267
+          ],
+          "l": "Select parameters",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "w-gear-a: 'Select parameters' 'Choose which parameters appear in the featured area.' one switch per reading, all off",
+        "changes#ws-gear-popup (live_in_1_0_5 yes)",
+        "Gear opened and closed with Escape in capture; no switch touched. Spotlight and zoom cover only the title, the one-line description and the first four rows (Temperature, Wind Speed, Air Humidity, Rainfall), so the gas parameters lower in the dialog stay out of the spotlight (lead decision J). The gear itself is not called out; the narration names it."
+      ]
+    },
+    {
+      "id": "w10",
+      "kind": "shot",
+      "chapter": 3,
+      "img": "assets/w-reports-7d-a.png",
+      "narration": "Reports is new. Pick a period to see the highest heat index and wind speed. You can export an Excel file.",
+      "caption": "New: Maximum Values Report, by period, with export",
+      "zoom": {
+        "r": [
+          280,
+          102,
+          1624,
+          700
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            280,
+            154,
+            744,
+            36
+          ],
+          "l": "Pick a period",
+          "pos": "r"
+        },
+        {
+          "r": [
+            280,
+            207,
+            1624,
+            142
+          ],
+          "l": "Highest values",
+          "pos": "inr"
+        },
+        {
+          "r": [
+            1781,
+            102,
+            123,
+            36
+          ],
+          "l": "Export .xlsx",
+          "pos": "l"
+        }
+      ],
+      "evidence": [
+        "w-reports-7d-a: 'Maximum Values Report' period pills 'Today' 'Yesterday' 'This Week' 'Last 7 Days' 'This Month' 'Last 30 Days' 'Custom...'; 'MAXIMUM HEAT INDEX' 'MAXIMUM WIND SPEED' 'Daily breakdown' 'Export .xlsx'",
+        "changes#reports-max-values (live_in_1_0_5 yes)",
+        "Export was never clicked in capture and the download was not exercised; the Export callout is a plain pointer (no cursor animation) and the narration says only 'you can export'."
+      ]
+    },
+    {
+      "id": "w11",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/w-policy-a-top.png",
+      "narration": "The safety limits live in Settings. The page warns that changing anything here changes when work stops, for everyone on the project.",
+      "caption": "New home: Site Safety Policy, in Settings",
+      "zoom": {
+        "r": [
+          636,
+          215,
+          1120,
+          170
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            628,
+            215,
+            736,
+            56
+          ],
+          "l": "Affects the whole project",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "w-policy-a-top: 'This page shows the limits and cycles that decide when work stops on this site. Changing anything here changes when work stops, for everyone on the project.'",
+        "changes#ws-policy-redesign, ws-policy-in-settings (live_in_1_0_5 yes: the redesigned page and its home in Settings are new; the policy itself existed before, so the caption says 'new home')",
+        "Control = Weather Station safety policy limits (refresh note, lead decision 6). Nothing was edited, staged or published; no claim about how a change is applied. The 'Right now' banner (heat index 50.1) may show in the zoom; it differs from the dashboard 49.5 between captures and is not narrated."
+      ]
+    },
+    {
+      "id": "w12",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/w-policy-a-limits.png",
+      "narration": "Two limits preview the last thirty days. Temperature would have stopped work on eight of those days. Wind would have stopped it on just one.",
+      "caption": "Temperature and wind: what the limits would have done",
+      "zoom": {
+        "r": [
+          644,
+          116,
+          1120,
+          470
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            649,
+            313,
+            1100,
+            28
+          ],
+          "l": "Would have: 8 days",
+          "pos": "inr"
+        },
+        {
+          "r": [
+            649,
+            548,
+            1100,
+            28
+          ],
+          "l": "Would have: 1 day",
+          "pos": "inr"
+        }
+      ],
+      "evidence": [
+        "w-policy-a-limits: 'Work stops when a sensor reading reaches its limit. Temperature and Wind Speed show what the limit would have done over the last 30 days.'",
+        "w-policy-a-limits: 'Would have stopped work on 8 of the last 30 days' (Temperature) and 'Would have stopped work on 1 of the last 30 days' (Wind Speed); both figures are on screen and are the point of the beat",
+        "changes#ws-policy-preview (live_in_1_0_5 yes). Never 'stopped on N days'."
+      ]
+    },
+    {
+      "id": "w13",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/w-policy-a-cards.png",
+      "narration": "Five bands, green to deep red, each with its own settings for work, rest and water. The heat index method is N O A A.",
+      "caption": "Five bands, each with its own settings. Method: NOAA",
+      "zoom": {
+        "r": [
+          644,
+          20,
+          1120,
+          900
+        ],
+        "s": 1.1
+      },
+      "callouts": [
+        {
+          "r": [
+            1498,
+            118,
+            257,
+            168
+          ],
+          "l": "Work, rest, water",
+          "pos": "b"
+        },
+        {
+          "r": [
+            654,
+            833,
+            702,
+            45
+          ],
+          "l": "Heat index method: NOAA",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "w-policy-a-cards: five band cards (Normal, Caution, Extreme Caution, Danger, Extreme Danger) each with 'Work (min)' 'Rest (min)' 'Water every (min)' 'Water amount (ml)'; 'Band colours are set by severity — coolest green through hottest deep red'",
+        "w-policy-a-cards: 'Heat index calculation method' 'NOAA'",
+        "Band number edges ('<25 °C' etc.) are visible in the card headers, because the colour dots sit beside them. They are never narrated, captioned, labelled or spotlighted (lead decision 3). Normal has 'No work restriction' on and Caution has Rest 0, so the narration says only that each band has its own settings for work, rest and water (no claim that every band has a work-rest cycle)."
+      ]
+    },
+    {
+      "id": "w14",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/w-policy-a-history.png",
+      "narration": "Change history has its own tab here. None were recorded in the history it read.",
+      "caption": "Change history: none recorded in the history it read",
+      "zoom": {
+        "r": [
+          644,
+          430,
+          1120,
+          170
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            1256,
+            462,
+            126,
+            38
+          ],
+          "l": "Its own tab",
+          "pos": "r"
+        },
+        {
+          "r": [
+            636,
+            556,
+            905,
+            32
+          ],
+          "l": "None in history read",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "w-policy-a-history: 'Change history' 'No changes were recorded in the history we read for this project. Older changes may sit further back than this page reaches.'",
+        "changes#ws-policy-in-settings ('Change history' tab)"
+      ]
+    },
+    {
+      "id": "w15",
+      "kind": "shot",
+      "chapter": 5,
+      "img": "assets/w-settings-products-a.png",
+      "narration": "Each project switches on only the products it uses. Here, Weather Station is Active, Gas and Lightning Inactive.",
+      "caption": "Each project turns on its own products",
+      "zoom": {
+        "r": [
+          502,
+          104,
+          1394,
+          180
+        ],
+        "s": 1.3
+      },
+      "callouts": [
+        {
+          "r": [
+            502,
+            150,
+            1394,
+            36
+          ],
+          "l": "Active",
+          "pos": "inr"
+        },
+        {
+          "r": [
+            502,
+            196,
+            1394,
+            81
+          ],
+          "l": "Inactive",
+          "pos": "inr"
+        }
+      ],
+      "evidence": [
+        "w-settings-products-a: 'Connected Products' 'Weather Station Active' 'Gas Inactive' 'Lightning Inactive'",
+        "integration-and-devices#X05 (only the products a project has turned on appear in its menu; live_today yes); integration-and-devices#X03 (switching needs weatherstation:settingsProducts or project_builder:manage; live_today yes)",
+        "Nothing was switched in capture."
+      ]
+    },
+    {
+      "id": "w16",
+      "kind": "card",
+      "card": "list",
+      "chapter": 0,
+      "eyebrow": "WHAT IS NEW",
+      "h1": "Four new places, four questions",
+      "items": [
+        {
+          "t": "Select parameters",
+          "s": "What is featured?"
+        },
+        {
+          "t": "Maximum Values Report",
+          "s": "How hot did it get?"
+        },
+        {
+          "t": "Site Safety Policy",
+          "s": "What stops work?"
+        },
+        {
+          "t": "Connected Products",
+          "s": "Which products are on?"
+        }
+      ],
+      "narration": "Four new places. Choose what is featured. Look back at the heat. Check what stops work. See which products are on.",
+      "evidence": [
+        "changes#ws-gear-popup, reports-max-values, ws-policy-redesign, settings-area (all live_in_1_0_5 yes); frames w-gear-a, w-reports-7d-a, w-policy-a-top, w-settings-products-a",
+        "'New' is measured against the August answer-first dashboard baseline (changes.json baseline)."
+      ]
+    },
+    {
+      "id": "w17",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 1,
+      "chapter": 0,
+      "narration": "Readings travel over the site's wireless mesh to a gateway, then on to the cloud. The cloud decodes and stores them.",
+      "evidence": [
+        "integration-and-devices#W01 (live_today yes): stations talk over the site's wireless mesh; gateways pass readings to the cloud, where the cloud decodes and stores them",
+        "integration-and-devices#W03 (live_today yes): readings stored as a time series",
+        "Lane label 'Wireless mesh' (lead decision C). Modbus is not mentioned in this video; the weather lane is never called 'Modbus style frames'. No gas or Lightning path is implied."
+      ]
+    },
+    {
+      "id": "w18",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 2,
+      "chapter": 0,
+      "narration": "WakeCap serves them here. Next time the heat number climbs, open Weather Station, if your project has it. Read the strip first.",
+      "evidence": [
+        "integration-and-devices#W03, W04 (live_today yes): readings stored as a time series; the WakeCap backend only reads them",
+        "w-top-a / w-details-a: the strip and Details as shown earlier",
+        "integration-and-devices#W05 (about once a minute) is deliberately not narrated.",
+        "Entitlement qualifier 'if your project has it' (lead decision I): w15 shows each project switches on only the products it uses; integration-and-devices#X05 (live_today yes)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2972 @@
+{
+  "topic": "devices and integration paths (how data gets into Connected Environment)",
+  "summary": "Connected Environment is one WakeCap backend (a .NET service with Shared/ and Products/ folders) and one micro-app in the portal, serving three products. Data reaches it by three different paths: (1) Weather Station and (2) Lightning arrive over the Wirepas mesh through gateways and AWS IoT, as Modbus-style frames on one shared transport that is told apart by a device tag; weather goes to the sensors-service (TimescaleDB, read cross-DB by the backend) and lightning goes through SQS queues straight into the backend; (3) Gas is a vendor-cloud black box: WakeCap signs in to Blackline Connect and polls GET /device on a timer, and also exposes a push receiver that only acknowledges receipt. Gas acknowledgements are NOT written back to Blackline today (code and UI both say so), a Modbus gas path was cancelled and does not exist, TWA/STEL compliance analytics are not computed, and the MCP/AI-agent layer covers weather only, so the umbrella AI-agent story is DIRECTION, not live. Access is one permission category (weatherstation:view/edit, plus three narrower Settings grants) for all three products; the per-project ProjectProduct entitlement is stored by the backend and enforced in the front end (menu rows and route gates), not by the backend product routes. Production serves front-end 1.0.5 [live], which is git tag v1.0.5-ConnectedEnvironmentApp-production = commit 95e1650; master is one commit ahead (Esri map swap, not live).",
+  "lanes": [
+    {
+      "product": "Weather Station",
+      "device": "Weather station sensor node on the Wirepas mesh (wind speed, wind direction, rain, temperature, air pressure, humidity, PM2.5, PM10, TSP, CO2, H2S, SO2, CO; a channel reads 'not connected' when its sensor is absent). Vendor and model: UNKNOWN, not named in code or docs.",
+      "path_steps": [
+        "The weather station measures wind, rain, temperature, pressure, humidity and, where fitted, dust and gas sensors.",
+        "It sends its readings over the site's wireless mesh to a gateway.",
+        "The gateway passes each reading to the cloud, where it is decoded into plain measurements and matched to the right project.",
+        "Readings are stored as a time series, with a latest-reading record kept for every station.",
+        "The WakeCap backend reads that data, works out the heat index and whether each station is online, and serves it to the portal.",
+        "The portal screen refreshes about once a minute."
+      ],
+      "protocol": "Wirepas mesh -> gateway -> AWS IoT Core/MQTT (optionally buffered through SQS) -> sensors-service decodes a protobuf PacketReceivedEvent whose payload is a TLV block (tag 0x01, length 32 = 16 two-byte big-endian values with per-field scale factors; 0x7FFF = sensor not connected) on the shared Modbus transport endpoint 61 -> TimescaleDB hypertable weather_station_sensor -> WS backend reads it read-only across databases and also calls the sensors-service status API -> REST to the portal (polled).",
+      "direction": "inbound+outbound",
+      "live_today": "yes",
+      "evidence": [
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 14,
+          "quote": "on-site weather stations (Wirepas mesh) publish telemetry through AWS IoT Core/MQTT (optionally SQS-buffered) into **sensors-service**"
+        },
+        {
+          "file": "sensors-service/src/index.ts",
+          "line": 170,
+          "quote": ".command('*', 'start run pipeline service', startPipeline)"
+        },
+        {
+          "file": "sensors-service/src/index.ts",
+          "line": 172,
+          "quote": ".command('sqs', 'start run sqs sensors service', startSQSHandler)"
+        },
+        {
+          "file": "sensors-service/src/utilities/enums.ts",
+          "line": 49,
+          "quote": "MODBUS = 61"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 64,
+          "quote": "[ModbusDeviceTag.WEATHER_STATION, new WeatherStationSensorService()]"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 57,
+          "quote": "const packet = get(protoObject, 'wirepas.packetReceivedEvent');"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 184,
+          "quote": "if (tag === 0x01 && length === 32) {"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 193,
+          "quote": "if (value === 0x7FFF) {"
+        },
+        {
+          "file": "sensors-service/src/migrations/1745697311995-create_weather_station_sensor_table.ts",
+          "line": 174,
+          "quote": "SELECT create_hypertable("
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 111,
+          "quote": "// save the summary if the weather station is not buffered"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Database/SensorsDbContext.cs",
+          "line": 20,
+          "quote": "throw new InvalidOperationException(\"This context is read-only.\");"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/RestServices/ExternalRestPaths.cs",
+          "line": 37,
+          "quote": "public const string GetWeatherStations = \"/api/projects/{projectId}/weather-station/status\";"
+        },
+        {
+          "file": "sensors-service/src/configs/constants.ts",
+          "line": 37,
+          "quote": "WEATHER_STATION_OFFLINE_THRESHOLD: 10,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 111,
+          "quote": "services.AddHostedService<ObservationDispatchBackgroundService>();"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/components/WeatherMetrics.tsx",
+          "line": 119,
+          "quote": "refetchInterval: 60000,"
+        },
+        {
+          "file": "https://services.wakecap.com/vertex/api/hosts/WakecapPortal/microapps/runtime-config",
+          "line": 0,
+          "quote": "https://cdn.wakecap.com/1.0.5-ConnectedEnvironmentApp/wakecap-fe-connected-environment-app.js"
+        }
+      ]
+    },
+    {
+      "product": "Lightning",
+      "device": "Site lightning warning unit read by a mesh node. The node is provisioned device-side as an 'asset' (the first deployment's node is H7038); the unit's state reaches the node through an ADAM input module (link age is carried as adam_age_seconds). Detector vendor: only the program doc names one (Boltek, in a vendor-guidance gate); no code reads a vendor name. Model UNKNOWN.",
+      "path_steps": [
+        "The site's lightning warning unit signals its state - all clear, caution, warning or fault - through its contact outputs.",
+        "A radio node on site reads that state and sends a small status message across the mesh to a gateway.",
+        "The gateway forwards it to the cloud, which decodes it and drops it into a dedicated queue; messages that cannot be read go to a separate queue so they are never silently lost.",
+        "The WakeCap backend takes each message from the queue, finds which project the device belongs to, and updates the device's current state and its history.",
+        "A background check marks a device as not current when its regular check-in stops arriving.",
+        "The portal lightning screen refreshes about every 30 seconds."
+      ],
+      "protocol": "Wirepas mesh -> gateway -> gateway-esp-backend-transport (decodes EP 61 TAG 0x06, a frozen 10-byte frame: format, state, health, contact bits, raw digital inputs, data age) -> AWS IoT topic {env}/gw-event/received_lightning_data/{gwId} -> IoT rule -> SQS lightning queue (+DLQ); frames the transport could not parse arrive on {env}/gw-event/received_modbus_data/{gwId} with error:true -> modbus-unparsed queue (+DLQ) -> WS backend background consumer (SQS long poll) -> lightning_sensor_state_current / _interval / _event tables -> REST under api/project/{id}/lightning-sensor/* (polled by the portal) and, outbound, state-entry observations to the Observation Manager.",
+      "direction": "inbound+outbound",
+      "live_today": "yes",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 38,
+          "quote": "H7038 is registered device-side as an `asset`"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceProvisioningService.cs",
+          "line": 35,
+          "quote": "is a distinct logical device keyed to that asset's <c>source_address</c>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDecoding.cs",
+          "line": 31,
+          "quote": "The frozen 10-byte frame, offset by offset:"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 6,
+          "quote": "The JSON envelope <c>gateway-esp-backend-transport</c> republishes on"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 7,
+          "quote": "{env}/gw-event/received_lightning_data/{gwId}"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 152,
+          "quote": "{env}/gw-event/received_modbus_data/{gwId}"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 76,
+          "quote": "`production_lightning_data_queue` receives one message."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 106,
+          "quote": "`production_lightning_data_dlq` depth. Expect 0."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 108,
+          "quote": "`production_modbus_unparsed_queue` and its DLQ. Lightning frames the transport could not read"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs",
+          "line": 148,
+          "quote": "var topic = isLightning ? \"received_lightning_data\" : \"received_modbus_data\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs",
+          "line": 62,
+          "quote": "var device = registry.FindBySourceAddress(envelope.SourceAddress);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 26,
+          "quote": "public const int MissedHeartbeatsBeforeStale = 4;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 34,
+          "quote": "public int SweepIntervalSeconds { get; set; } = 5;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs",
+          "line": 35,
+          "quote": "state is LightningState.Red or LightningState.Fault or LightningState.Offline;"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 16,
+          "quote": "The Terraform for those rules and queues lives in `wakecap/infrastructure`, and landed there in"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 64,
+          "quote": "The transport went to production on 2026-08-25"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 90,
+          "quote": "The transport has published to production since 25 Aug with nothing listening"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/pageFreshness.ts",
+          "line": 36,
+          "quote": "export const LIGHTNING_REFETCH_INTERVAL_MS = 30 * 1000;"
+        }
+      ]
+    },
+    {
+      "product": "Gas",
+      "device": "Blackline portable gas detectors (hardware model string stored per device, e.g. G7c in the code comment; the program doc says G7 EXO). The fleet seen so far carries H2S, O2 and combustible (LEL) sensors only. WakeCap never talks to the device; it talks to Blackline's cloud (Blackline Connect), a black box to us.",
+      "path_steps": [
+        "Workers carry gas detectors that report to the manufacturer's own cloud.",
+        "WakeCap signs in to that cloud and asks for the latest readings and open alerts for the whole account, on a timer.",
+        "New readings are stored in a vendor-neutral format; a reading seen twice is stored once.",
+        "WakeCap raises its own alert when a reading goes over its alarm point, and mirrors the alerts the manufacturer already has open.",
+        "The portal shows the detectors, alerts and an overall site state, refreshing about once a minute.",
+        "Acknowledging or closing an alert is recorded in WakeCap with who did it and when; it is not sent back to the manufacturer today."
+      ],
+      "protocol": "HTTPS to Blackline Connect (EU host by default): GET /authorize?response_type=code&client_id -> {code}; GET /token?grant_type=authorization_code&code&client_id&client_secret -> {access_token} (cached, no published TTL, token sent as a query parameter); then GET /device on a timer (default 45 s). A refusal is an HTTP 200 with an error body. Separately WakeCap exposes POST /integrations/blackline/push (anonymous) that returns the MD5 of the raw body and stores an audit row; it does not parse or act on the content.",
+      "direction": "inbound",
+      "live_today": "unknown",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineOptions.cs",
+          "line": 24,
+          "quote": "public const string EuBaseUrl = \"https://eu.connect-live.blacklinesafety.com/1/\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 107,
+          "quote": "The two-step Connect handshake: <c>GET /authorize</c> for an auth code, then"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 146,
+          "quote": "$\"response_type=code&client_id={Uri.EscapeDataString(options.ClientId)}\");"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 163,
+          "quote": "\"grant_type=authorization_code\" +"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 24,
+          "quote": "CallAsync(ct => transport.GetAsync(\"device\", ct), BlacklineResponseParser.ParseDevices, cancellationToken);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 79,
+          "quote": "var vendorDevices = await blacklineClient.GetDevicesAsync(cancellationToken);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 67,
+          "quote": "public int IntervalSeconds { get; set; } = 45;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 40,
+          "quote": "[Route(\"integrations/blackline/push\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 76,
+          "quote": "var digest = Convert.ToHexStringLower(MD5.HashData(raw));"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 35,
+          "quote": "Receive, acknowledge, audit. No queue, no alert normalisation, no ack sync-back"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasAlertHandlingService.cs",
+          "line": 19,
+          "quote": "<b>Nothing is sent to Blackline</b>"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 394,
+          "quote": "It is not sent to Blackline: an alert closed here stays open in Blackline Live."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasDevice.cs",
+          "line": 26,
+          "quote": "/// <summary>Vendor hardware model, e.g. <c>G7c</c>.</summary>"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 110,
+          "quote": "real G7 EXO payloads archived as fixtures"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasNames.ts",
+          "line": 7,
+          "quote": "a sensor for (H2S, O2, LEL, and Blackline's LEL-MPS)."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasQueries.ts",
+          "line": 48,
+          "quote": "export const GAS_REFETCH_MS = 60_000;"
+        }
+      ]
+    },
+    {
+      "product": "Gas (Modbus / mesh path)",
+      "device": "None. A mesh gas-detector device was planned (a Modbus gas tag) and the ticket was cancelled: 'no hardware gas device for now'.",
+      "path_steps": [
+        "NOT LIVE and not planned today: there is no mesh or wired gas detector connected to WakeCap.",
+        "The shared mesh transport only knows weather stations; a solar charge controller tag exists but is skipped.",
+        "Any unknown device frame is acknowledged and dropped, not stored.",
+        "Gas therefore reaches WakeCap only through the manufacturer's cloud."
+      ],
+      "protocol": "Would have been another TLV tag on the shared Modbus transport (endpoint 61). Not implemented: the router registers only the weather-station tag; every other tag is skipped with a throttled warning.",
+      "direction": "inbound",
+      "live_today": "no",
+      "evidence": [
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 78,
+          "quote": "does **not** gate the Blackline GAS project"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 78,
+          "quote": "no hardware gas device for now"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 179,
+          "quote": "TAN-2465 canceled: no hardware gas device for now; Blackline route unaffected"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 64,
+          "quote": "[ModbusDeviceTag.WEATHER_STATION, new WeatherStationSensorService()]"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 65,
+          "quote": "// MPPT (0x02) lands here once it has a table to write to."
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 82,
+          "quote": "return SKIP_MESSAGE;"
+        },
+        {
+          "file": "sensors-service/src/utilities/enums.ts",
+          "line": 38,
+          "quote": "weather station, MPPT solar charge"
+        }
+      ]
+    }
+  ],
+  "platform": {
+    "one_backend": "One .NET service (wakecap-weather-station) holds all three products. Every layer separates Shared/ (change/audit, dashboard layout, project-product entitlement, outbox) from Products/<WeatherStation|LightningSensor|GasDetector>/, pinned by architecture tests. Each product has its own route area under api/project/{projectId}/: Weather Station keeps the original un-prefixed paths (api/project/{id}/[controller]) for compatibility, Lightning is .../lightning-sensor/*, Gas is .../gas-detector/*; shared controllers (ProjectProduct, change audit, dashboard layout) sit at the un-prefixed level. Background workers for lightning (queue consumer, staleness sweep, device sync, observation dispatch), gas (Blackline poller) and weather (observation evaluate/dispatch) all run inside the same host. Ingestion for weather is NOT in this service: it is the separate sensors-service, which the backend reads (read-only DB context + status API).",
+    "one_permission_scope": "One permission CATEGORY for all three products: weatherstation (category 23): weatherstation:view for every read and weatherstation:edit (or project_builder:manage) for ordinary writes, on Weather Station, Lightning and Gas alike. There is no lightningsensor:* or gasdetector:* permission in the backend (stale comments in the repo still claim otherwise). Three narrower grants in the same weatherstation: family gate the Settings area (the two manage-* grants arrived 2026-09-21): weatherstation:settingsProducts (Connected Products), weatherstation:manage-weather-settings, weatherstation:manage-lightning-settings (the lightning radii/binding write no longer accepts weatherstation:edit). So 'single scope' is accurate for viewing and ordinary editing, not for every settings write.",
+    "entitlement": "Table project_product: one row per project with three booleans (WeatherStationActive, GasDetectorActive, LightningSensorActive); a project with no row reads all false. GET /api/project/{id}/ProjectProduct needs weatherstation:settingsProducts OR project_builder:manage OR weatherstation:view; PUT (full replace) needs weatherstation:settingsProducts OR project_builder:manage. The Connected Products settings page (Settings > Connected Products) is guarded by the same pair in the front end. The front end reads the flags: a product row is drawn in the rail only when its flag is true, each product route answers Not Found when not entitled, and the base URL lands on the first entitled product (Weather Station, Gas, Lightning) else Settings. The backend product routes do NOT consult project_product (no reference outside the ProjectProduct service/controller), so entitlement is a front-end product switch today, not a server-side access check.",
+    "evidence": [
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/Architecture/ProductFolderStructureTests.cs",
+        "line": 10,
+        "quote": "Pins the product-folder layout"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Filters/ApiProjectScopRouteAttribute.cs",
+        "line": 99,
+        "quote": "Weather Station is becoming one product among three served by this API."
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/DashboardController.cs",
+        "line": 13,
+        "quote": "[ApiProjectScopRoute]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+        "line": 25,
+        "quote": "[ApiProjectScopProductRoute(\"lightning-sensor\")]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+        "line": 19,
+        "quote": "[ApiProjectScopProductRoute(\"gas-detector\")]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+        "line": 25,
+        "quote": "[ApiProjectScopRoute]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+        "line": 174,
+        "quote": "services.AddHostedService<LightningQueueConsumerBackgroundService>();"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+        "line": 134,
+        "quote": "services.AddHostedService<GasReadingsPollingBackgroundService>();"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+        "line": 111,
+        "quote": "services.AddHostedService<ObservationDispatchBackgroundService>();"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Database/SensorsDbContext.cs",
+        "line": 20,
+        "quote": "throw new InvalidOperationException(\"This context is read-only.\");"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 9,
+        "quote": "public const int CategoryId = 23;"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 12,
+        "quote": "public const string View = $\"{Prefix}:view\";"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 13,
+        "quote": "public const string Edit = $\"{Prefix}:edit\";"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 14,
+        "quote": "public const string SettingsProducts = $\"{Prefix}:settingsProducts\";"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 31,
+        "quote": "public const string ManageWeatherSettings = $\"{Prefix}:manage-weather-settings\";"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+        "line": 42,
+        "quote": "public const string ManageLightningSettings = $\"{Prefix}:manage-lightning-settings\";"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+        "line": 216,
+        "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageLightningSettings)]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+        "line": 49,
+        "quote": "[OneOfPermissionAuthorize(Permissions.ProjectBuilder.Manage, Permissions.WeatherStation.Edit)]"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/Architecture/ProductPermissionCategoryTests.cs",
+        "line": 46,
+        "quote": "the <c>weatherstation</c> grant every product authorizes on is a"
+      },
+      {
+        "file": "CLAUDE.md",
+        "line": 69,
+        "quote": "The backend has one permission scope for the whole Weather Station module, Lightning Sensor included."
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+        "line": 6,
+        "quote": "Which of the three products a project has switched on."
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+        "line": 10,
+        "quote": "A project with no row is unconfigured, not broken"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+        "line": 29,
+        "quote": "Permissions.WeatherStation.SettingsProducts, Permissions.ProjectBuilder.Manage,"
+      },
+      {
+        "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+        "line": 48,
+        "quote": "Permissions.WeatherStation.SettingsProducts, Permissions.ProjectBuilder.Manage)]"
+      },
+      {
+        "file": "frontend-2.0-weather-station/src/app/features/Settings/hooks/useProductEntitlement.ts",
+        "line": 33,
+        "quote": "queryKey: [apiUrls.getProductEntitlement(projectId)],"
+      },
+      {
+        "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+        "line": 614,
+        "quote": "(item) => entitlement.data?.[item.entitlementFlag] === true"
+      },
+      {
+        "file": "frontend-2.0-weather-station/src/app/routes.tsx",
+        "line": 55,
+        "quote": "if (data?.weatherStationActive === true) {"
+      },
+      {
+        "file": "frontend-2.0-weather-station/src/app/features/Settings/constants/permissions.ts",
+        "line": 32,
+        "quote": "export const SETTINGS_PRODUCTS_ACCESS = [WS_SETTINGS_PRODUCTS, PB_MANAGE];"
+      },
+      {
+        "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+        "line": 128,
+        "quote": "the entitlement model that lets a client buy Gas or Lightning alone"
+      }
+    ]
+  },
+  "claims": [
+    {
+      "id": "X01",
+      "claim": "One backend serves Weather Station, Lightning and Gas, structured as Shared/ and Products/ folders with a route area per product.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/Architecture/ProductFolderStructureTests.cs",
+          "line": 10,
+          "quote": "Pins the product-folder layout"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Filters/ApiProjectScopRouteAttribute.cs",
+          "line": 99,
+          "quote": "Weather Station is becoming one product among three served by this API."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 25,
+          "quote": "[ApiProjectScopProductRoute(\"lightning-sensor\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 19,
+          "quote": "[ApiProjectScopProductRoute(\"gas-detector\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/DashboardController.cs",
+          "line": 13,
+          "quote": "[ApiProjectScopRoute]"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 128,
+          "quote": "Shared/ + Products/ structure guarded by architecture tests"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "One platform serves weather, lightning and gas: one backend and one portal for everything environmental on a site.",
+      "caveats": "Weather Station keeps its original route shape; only Lightning and Gas have a product segment. Whether a given project has gas or lightning switched on is per project (X04)."
+    },
+    {
+      "id": "X02",
+      "claim": "Access: one permission category (weatherstation) covers viewing and ordinary editing for all three products; three narrower Settings grants exist in the same family; no lightningsensor:* or gasdetector:* permission exists.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 9,
+          "quote": "public const int CategoryId = 23;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 12,
+          "quote": "public const string View = $\"{Prefix}:view\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 13,
+          "quote": "public const string Edit = $\"{Prefix}:edit\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 14,
+          "quote": "public const string SettingsProducts = $\"{Prefix}:settingsProducts\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 31,
+          "quote": "public const string ManageWeatherSettings = $\"{Prefix}:manage-weather-settings\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 42,
+          "quote": "public const string ManageLightningSettings = $\"{Prefix}:manage-lightning-settings\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 32,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 216,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageLightningSettings)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/SummaryController.cs",
+          "line": 22,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 49,
+          "quote": "[OneOfPermissionAuthorize(Permissions.ProjectBuilder.Manage, Permissions.WeatherStation.Edit)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/Architecture/ProductPermissionCategoryTests.cs",
+          "line": 46,
+          "quote": "the <c>weatherstation</c> grant every product authorizes on is a"
+        },
+        {
+          "file": "CLAUDE.md",
+          "line": 69,
+          "quote": "The backend has one permission scope for the whole Weather Station module, Lightning Sensor included."
+        },
+        {
+          "file": "CLAUDE.md",
+          "line": 67,
+          "quote": "is not a permission this system has, and is not one it will get"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "People who can view the environment can view weather, lightning and gas with the same permission. Changing site settings is a separate, tighter permission.",
+      "caveats": "Stale statements to NOT repeat: GAPS2.md/runbook say lightning writes need lightningsensor:edit; FE Gas/permissions.ts and BE Gas DevicesController doc comments say gasdetector:view/edit exist or are seeded. Code shows only weatherstation:* (CategoryId 23). Gas alert acknowledge/close and the gas zone write need weatherstation:edit or project_builder:manage."
+    },
+    {
+      "id": "X03",
+      "claim": "The Connected Products page and the entitlement PUT are guarded by weatherstation:settingsProducts or project_builder:manage (same pair in FE and BE); the entitlement GET additionally accepts weatherstation:view.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+          "line": 29,
+          "quote": "Permissions.WeatherStation.SettingsProducts, Permissions.ProjectBuilder.Manage,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+          "line": 48,
+          "quote": "Permissions.WeatherStation.SettingsProducts, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+          "line": 17,
+          "quote": "the frontend reads a refusal here as \"this project is not entitled\""
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/constants/permissions.ts",
+          "line": 32,
+          "quote": "export const SETTINGS_PRODUCTS_ACCESS = [WS_SETTINGS_PRODUCTS, PB_MANAGE];"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/constants/permissions.ts",
+          "line": 31,
+          "quote": "export const WS_SETTINGS_PRODUCTS = `${WS_MODULE}:settingsProducts` as const;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/ConnectedProductsSettingsScreen.tsx",
+          "line": 90,
+          "quote": "const mayWrite = Ability.useAccess(SETTINGS_PRODUCTS_ACCESS) === \"granted\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/translations/en.ts",
+          "line": 46,
+          "quote": "title: \"Connected Products\","
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Turning products on or off for a project is limited to people with the product-settings permission.",
+      "caveats": "Permission string 'settingsProducts' is internal; the page title is 'Connected Products'. Introduced as its own grant (the older gate was weatherstation:edit)."
+    },
+    {
+      "id": "X04",
+      "claim": "Each project has one project_product record with three on/off flags; a project with no record reads all three as off.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+          "line": 6,
+          "quote": "Which of the three products a project has switched on."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+          "line": 10,
+          "quote": "A project with no row is unconfigured, not broken"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+          "line": 18,
+          "quote": "public bool WeatherStationActive { get; set; }"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+          "line": 20,
+          "quote": "public bool GasDetectorActive { get; set; }"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ProjectProduct.cs",
+          "line": 22,
+          "quote": "public bool LightningSensorActive { get; set; }"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/api/productEntitlementApi.ts",
+          "line": 46,
+          "quote": "requestMethod: \"put\","
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Each project has its own switch for which of the three products are turned on.",
+      "caveats": "Which projects have which products switched on in production was not checked. Nothing backfills existing projects (code comment), so a project with no record shows no product rows."
+    },
+    {
+      "id": "X05",
+      "claim": "Entitlement is enforced in the front end (rail rows hidden, product routes answer Not Found, base URL redirects to the first entitled product); the backend product routes do not check project_product.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 614,
+          "quote": "(item) => entitlement.data?.[item.entitlementFlag] === true"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 713,
+          "quote": "Settings is the one row entitlement never touches"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/routes.tsx",
+          "line": 55,
+          "quote": "if (data?.weatherStationActive === true) {"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/routes.tsx",
+          "line": 67,
+          "quote": "return SETTINGS_ROUTE_SEGMENT;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/hooks/useProductEntitlement.ts",
+          "line": 20,
+          "quote": "undefined therefore means exactly one thing"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ProjectProductController.cs",
+          "line": 17,
+          "quote": "the frontend reads a refusal here as \"this project is not entitled\""
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 32,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/SummaryController.cs",
+          "line": 22,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Only the products a project has turned on appear in its menu.",
+      "caveats": "Do NOT say the server blocks a non-entitled product: backend reads are protected by weatherstation:view only (grep: IProjectProductService is used only by its own controller). Settings is never entitlement-gated so an operator can see why rows are missing. A failed entitlement read is treated as 'answer not in', not as 'all off'."
+    },
+    {
+      "id": "X06",
+      "claim": "The micro-app presents the products in one vertical rail: Weather Station, Gas, Lightning, Reports (gated on the weather flag), a disabled 'Trends' slot, then Settings; Gas shows sub-pages (Dashboard, Detectors, Alerts, Compliance); the rail collapses to icons.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 165,
+          "quote": "entitlementFlag: \"weatherStationActive\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 172,
+          "quote": "entitlementFlag: \"gasDetectorActive\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 179,
+          "quote": "entitlementFlag: \"lightningSensorActive\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 187,
+          "quote": "id: \"reports\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 133,
+          "quote": "id: \"trends\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 163,
+          "quote": "icon: \"fa-light fa-cloud-sun\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 84,
+          "quote": "labelKey: \"gas.pages.compliance\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 29,
+          "quote": "weatherStation: \"Weather Station\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 30,
+          "quote": "gas: \"Gas\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 31,
+          "quote": "lightning: \"Lightning\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 106,
+          "quote": "pageHeading: \"Connected Environment\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 52,
+          "quote": "the portal shell has its own sidebar"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/App.tsx",
+          "line": 61,
+          "quote": "<LightningRedBanner />"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Weather, gas and lightning live side by side in one Connected Environment menu, with reports and settings alongside.",
+      "caveats": "Production serves front-end build 1.0.5 [live] = tag commit 95e1650. The Gas row is also behind a kill-switch flag (absent = on) and the read permission. 'Trends' is a visible but disabled planned slot. A lightning RED banner sits above every screen of this app (only when a device exists, permission is held and the site is red)."
+    },
+    {
+      "id": "X07",
+      "claim": "The portal's own left-rail entry (sun-and-cloud icon, tooltip 'Connected Environment') is provided by the portal shell, which is outside the three repos.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 52,
+          "quote": "the portal shell has its own sidebar"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/translations/en.ts",
+          "line": 106,
+          "quote": "pageHeading: \"Connected Environment\","
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Connected Environment is one entry in the portal's left rail.",
+      "caveats": "Not verified: the shell code is not local and the portal needs a login. The brief states the icon/tooltip; this repo only shows it has its own inner rail and a hidden page heading 'Connected Environment'. The micro-app note says the portal shell has its own sidebar that this app does not touch."
+    },
+    {
+      "id": "X08",
+      "claim": "The backend hosts an MCP server (/mcp, stateless HTTP) with weather-station read tools, change-proposal tools, observer tools and agent-observation tools; there are no gas or lightning tools. The Weather Station answer-first dashboard flag defaults on in the UI; the agent composition features are behind flags that default off; the August release deck says Claude narration was dark in production.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 48,
+          "quote": ".WithTools<StationTools>()"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 39,
+          "quote": ".WithHttpTransport(transport => transport.Stateless = true)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Program.cs",
+          "line": 71,
+          "quote": "app.MapWeatherStationMcp();"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolNames.cs",
+          "line": 14,
+          "quote": "public const string GetIndicators = \"get_indicators\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolNames.cs",
+          "line": 46,
+          "quote": "There is deliberately no"
+        },
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 18,
+          "quote": "wrapped by **read-only MCP tools** consumed by an **agent layer**"
+        },
+        {
+          "file": "release-deck/ws-release-2026-08.html",
+          "line": 336,
+          "quote": "2026-08-10: MCP tool layer delivered"
+        },
+        {
+          "file": "release-deck/ws-release-2026-08.html",
+          "line": 337,
+          "quote": "Claude narration dark in prod"
+        },
+        {
+          "file": "release-deck/ws-release-2026-08.html",
+          "line": 345,
+          "quote": "Direction — not built yet"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/components/LiveDashboard.tsx",
+          "line": 52,
+          "quote": "flags[\"weather-station-answer-first-dashboard\"] !== false;"
+        }
+      ],
+      "live_today": "no",
+      "safe_phrase": "The platform is being built so that, later, an AI assistant can be given everything about the site environment. That is a direction, not something live today.",
+      "caveats": "Mark DIRECTION. 'Fed everything' is aspirational: today the tool surface covers weather only (grep of Web.API/Mcp for 'gas' and 'lightning' returns nothing). Whether /mcp is exposed in production, and the flag states, were not checked. Do not show an agent answering about gas or lightning."
+    },
+    {
+      "id": "X09",
+      "claim": "Outbound alerting: lightning RED/FAULT/OFFLINE state entries become observations dispatched to the Observation Manager (the platform's alarming service) by a background dispatcher; the weather service has its own observation evaluate/dispatch workers; gas has no outbound notification path in code.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs",
+          "line": 35,
+          "quote": "state is LightningState.Red or LightningState.Fault or LightningState.Offline;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationDispatch.cs",
+          "line": 45,
+          "quote": "public int IntervalSeconds { get; set; } = 5;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationDispatch.cs",
+          "line": 47,
+          "quote": "public int MaxAttempts { get; set; } = 8;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 171,
+          "quote": "services.AddHostedService<LightningObservationDispatchBackgroundService>();"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 111,
+          "quote": "services.AddHostedService<ObservationDispatchBackgroundService>();"
+        },
+        {
+          "file": "wakecap-weather-station @ 367bf43",
+          "line": 0,
+          "quote": "TAN-1901: remove lightning notifications (Observation Manager owns alerting) (#363)"
+        },
+        {
+          "file": "wakecap-weather-station @ 63b7886",
+          "line": 0,
+          "quote": "TAN-2707: store lightning observations, dispatch them to OM, list them for the portal (#369)"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "When lightning turns red, or a device faults or goes offline, the platform raises an alert through the site's alarming system.",
+      "caveats": "The old direct email/SMS notifications for lightning were removed (alerting is owned by the Observation Manager). Whether dispatch is configured and delivering in production was not verified. Gas raises alerts inside WakeCap only; the program doc's 'gas alerts through WakeCap notifications' is not in code."
+    },
+    {
+      "id": "W01",
+      "claim": "Weather data path: Wirepas mesh stations publish through AWS IoT Core/MQTT (optionally SQS-buffered) into the sensors-service, which runs in three modes from one codebase: pipeline (MQTT/AWS IoT, default), sqs/buffer (queue consumer) and api (REST on port 3009).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 14,
+          "quote": "on-site weather stations (Wirepas mesh) publish telemetry through AWS IoT Core/MQTT (optionally SQS-buffered) into **sensors-service**"
+        },
+        {
+          "file": "sensors-service/src/index.ts",
+          "line": 170,
+          "quote": ".command('*', 'start run pipeline service', startPipeline)"
+        },
+        {
+          "file": "sensors-service/src/index.ts",
+          "line": 172,
+          "quote": ".command('sqs', 'start run sqs sensors service', startSQSHandler)"
+        },
+        {
+          "file": "sensors-service/src/index.ts",
+          "line": 173,
+          "quote": ".command('api', 'start run sensors service API', startAPI)"
+        },
+        {
+          "file": "sensors-service/CLAUDE.md",
+          "line": 42,
+          "quote": "TsED/Express REST server on port 3009"
+        },
+        {
+          "file": "sensors-service/src/configs/pipeline.ts",
+          "line": 8,
+          "quote": "'development/gw-event/wakecap_buffered_diagnostics/+'"
+        },
+        {
+          "file": "sensors-service/src/configs/sqs-config.ts",
+          "line": 3,
+          "quote": "diagnosticSQSQueue: process.env.SQS_QUEUE_URL"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Weather stations talk over the site's wireless mesh; gateways pass the readings to the cloud, where WakeCap decodes and stores them.",
+      "caveats": "Which mode each production pod runs, and the real queue/topic names for weather, are environment settings that were not read. The architecture report's 'srcEndpoint 242' is out of date: since 2026-08-17 the transport is endpoint 61 and the device is told apart by its first TLV tag."
+    },
+    {
+      "id": "W02",
+      "claim": "Decoding: the sensors-service decodes the Wirepas protobuf packet, then walks the payload TLV; tag 0x01 with length 32 is the weather station (16 two-byte values, scaled: wind speed/rain/temperature/cumulative rain/pressure/humidity x0.1, PM and TSP and CO2 and wind direction x1, H2S/SO2/CO x0.001); 0x7FFF means the sensor is not connected and is stored as empty.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 57,
+          "quote": "const packet = get(protoObject, 'wirepas.packetReceivedEvent');"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 184,
+          "quote": "if (tag === 0x01 && length === 32) {"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 160,
+          "quote": "0.1, // Wind Speed (m/s)"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 193,
+          "quote": "if (value === 0x7FFF) {"
+        },
+        {
+          "file": "sensors-service/src/proto/node-diagnostic.proto",
+          "line": 22,
+          "quote": "message PacketReceivedEvent {"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/IndicatorsResultProcessor.cs",
+          "line": 31,
+          "quote": "raw 0x7FFF (32767) means"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Each station reading is decoded into plain measurements - wind, rain, temperature, pressure, humidity, dust and gases - and a missing sensor is shown as missing, never as zero.",
+      "caveats": "The backend ALSO treats 32766 as a second 'not connected' sentinel seen from some firmware (display path rolls back to the previous genuine reading)."
+    },
+    {
+      "id": "W03",
+      "claim": "Normalising and storing: each packet is matched to a node (node-service registry via foreign data wrapper) to get the project; unmatched packets are dropped with an error; readings are inserted-or-ignored into a TimescaleDB hypertable (1-week chunks); a per-station latest-reading summary row is updated only for live (non-buffered) packets; the reading time is receive time minus travel time.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 79,
+          "quote": "const nodeMetaData = await this._getMetaData(weatherStationData);"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 84,
+          "quote": "throw new Error(errorMessage);"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 108,
+          "quote": "'WeatherStationSensorModel', modelData"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 111,
+          "quote": "// save the summary if the weather station is not buffered"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 94,
+          "quote": "generated_at: new Date(weatherStationData.rxTimeMsEpoch - weatherStationData.travelTimeMs),"
+        },
+        {
+          "file": "sensors-service/src/migrations/1745697311995-create_weather_station_sensor_table.ts",
+          "line": 174,
+          "quote": "SELECT create_hypertable("
+        },
+        {
+          "file": "sensors-service/src/migrations/1745697311995-create_weather_station_sensor_table.ts",
+          "line": 175,
+          "quote": "chunk_time_interval => INTERVAL '1 week'"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 555,
+          "quote": ".from(VNodeWithMetaModel, 'n')"
+        },
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 14,
+          "quote": "TimescaleDB hypertable"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Readings are stored as a time series, so the portal can show both the latest values and history.",
+      "caveats": "Buffered (replayed) packets are stored as history but do not move the 'latest reading' record."
+    },
+    {
+      "id": "W04",
+      "claim": "How the backend sees it: the weather-station backend has a separate read-only database context onto the sensors database (SaveChanges throws) and also calls the sensors-service status API (client-token Refit client) and node-service; its own thresholds/settings/bands live in its own database.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Database/SensorsDbContext.cs",
+          "line": 20,
+          "quote": "throw new InvalidOperationException(\"This context is read-only.\");"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/InfrastructureServiceRegistry.cs",
+          "line": 91,
+          "quote": "options.UseNpgsql(configuration.GetConnectionString(\"SensorsDb\"), o =>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/RestServices/ExternalRestPaths.cs",
+          "line": 37,
+          "quote": "public const string GetWeatherStations = \"/api/projects/{projectId}/weather-station/status\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/RestServices/ExternalRestPaths.cs",
+          "line": 54,
+          "quote": "public const string GetNodes = \"/nodes\";"
+        },
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 88,
+          "quote": "via **read-only** `SensorsDbContext`/FDW"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/contracts/apiUrls.ts",
+          "line": 311,
+          "quote": "\"{{SENSORS_API_URL}}/projects/{{projectId}}/weather-station/status\","
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The WakeCap backend only ever reads the stored sensor data; it never changes it.",
+      "caveats": "The front end also calls the sensors-service station-status route directly (not through the backend)."
+    },
+    {
+      "id": "W05",
+      "claim": "Polling: the weather dashboard polls indicators and graphs every 60 seconds; the station list is read once (no interval, 5-minute cache).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/components/WeatherMetrics.tsx",
+          "line": 119,
+          "quote": "refetchInterval: 60000,"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/components/WeatherMetrics.tsx",
+          "line": 69,
+          "quote": "queryKey: queryKeys.stationStatus(projId),"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/providers/QueryProvider.tsx",
+          "line": 24,
+          "quote": "staleTime: 1000 * 60 * 5,"
+        },
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 68,
+          "quote": "GET (60s poll)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The weather screen refreshes about once a minute.",
+      "caveats": "Front-end constant; the header has a 30-second display tick for time text, not a data poll."
+    },
+    {
+      "id": "W06",
+      "claim": "Offline decision: a station/indicator is online when its newest reading is younger than the project's offline threshold; the default is 10 minutes (a positive project override wins; 0/negative falls back to 10); the backend computes it per indicator and the sensors-service computes isOnline for the station list; the front end does not decide. The column was first created with a default of 30 and changed to 10.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/IndicatorsResultProcessor.cs",
+          "line": 25,
+          "quote": "private const int DefaultOfflineThresholdMinutes = 10;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/IndicatorsResultProcessor.cs",
+          "line": 93,
+          "quote": "return ageMinutes >= -AllowedFutureSkewMinutes && ageMinutes < thresholdMinutes;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/IndicatorsResultProcessor.cs",
+          "line": 238,
+          "quote": "indicator.Online = ComputeOnline("
+        },
+        {
+          "file": "sensors-service/src/configs/constants.ts",
+          "line": 37,
+          "quote": "WEATHER_STATION_OFFLINE_THRESHOLD: 10,"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 532,
+          "quote": "let threshold = Constants.WEATHER_STATION_OFFLINE_THRESHOLD;"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 535,
+          "quote": "threshold = projectConfiguration.weather_station_offline_threshold;"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 553,
+          "quote": "CASE WHEN ws.generated_at BETWEEN :startDate AND :endDate THEN true ELSE false END"
+        },
+        {
+          "file": "sensors-service/src/migrations/1755983012007-add_weather_station_threshold_to_project_configuration_table.ts",
+          "line": 13,
+          "quote": "default: 30"
+        },
+        {
+          "file": "sensors-service/src/migrations/1756895794289-change_weather_station_online_threshold.ts",
+          "line": 13,
+          "quote": "default: 10"
+        },
+        {
+          "file": "Weather Station Architecture/weather-station-architecture-report.md",
+          "line": 90,
+          "quote": "offline default 10 min"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "A weather station is marked offline when it has not reported for ten minutes by default; each project can change that.",
+      "caveats": "Say 'by default'. A long-silent registered station (24 h) is only logged as a warning in the sensors-service, not a state."
+    },
+    {
+      "id": "W07",
+      "claim": "Agent-layer freshness classes, computed by the backend: live (newest reading within 15 minutes), stale (15-60), dark (no reading or older than 60), suspect (fresh but flagged anomalous); the 6-value station contract is online/stale/suspect/dark/offline/unregistered with an upstream offline short-circuiting.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StationHealthService.cs",
+          "line": 27,
+          "quote": "public const int StaleAfterMinutes = 15;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StationHealthService.cs",
+          "line": 28,
+          "quote": "public const int DarkAfterMinutes = 60;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/WeatherStations/WeatherStationStatusMapper.cs",
+          "line": 28,
+          "quote": "// 5 StationHealthStatus values -> the 6-value frontend contract. An upstream IsOnline==false is"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Beyond offline, the platform also tells apart readings that are getting old, stations that have gone dark, and readings that look suspicious.",
+      "caveats": "Which screens expose these classes in production depends on the answer-first/agent flags (not checked). With the default 10-minute offline rule the 15-minute 'stale' class is rarely reachable for a registered station."
+    },
+    {
+      "id": "W08",
+      "claim": "Stuck/frozen sensor detection: an indicator is stuck only if its newest 6 readings are identical and non-null, the run spans at least 30 minutes, some OTHER indicator changed inside the run (the station is alive), and the value is not a legitimate resting zero (gases, dust, rain, wind at 0 are normal). Separate checks flag sentinel and physically impossible values.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StuckSensorAnalyzer.cs",
+          "line": 33,
+          "quote": "public const int DefaultMinIdenticalReadings = 6;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StuckSensorAnalyzer.cs",
+          "line": 36,
+          "quote": "public const int DefaultMinSpanMinutes = 30;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StuckSensorAnalyzer.cs",
+          "line": 22,
+          "quote": "some OTHER indicator changed inside that same run"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/StuckSensorAnalyzer.cs",
+          "line": 39,
+          "quote": "Indicators whose zero reading is a normal resting state rather than evidence of a fault:"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "The platform notices a sensor that is frozen on one value while the rest of the station is still reporting, without flagging sensors that are legitimately reading zero.",
+      "caveats": "Thresholds are constants in code (6 readings / 30 minutes). Where it surfaces in the UI was not verified. Do not name the customer case in the code comments."
+    },
+    {
+      "id": "W09",
+      "claim": "Station registration: a job calls the sensors-service node-sync endpoint (comment: a scheduler job every 10 minutes) which registers weather stations seen in the last day as nodes under their gateway; clashes with another node type are reported by name; the call fails (500) if it attempted stations and registered none.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "sensors-service/src/controllers/weather-station-controller.ts",
+          "line": 17,
+          "quote": "@Post('/weather-station/node-sync')"
+        },
+        {
+          "file": "sensors-service/src/controllers/weather-station-controller.ts",
+          "line": 24,
+          "quote": "The wakecap-jobs Quartz job calls this every 10 minutes"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 257,
+          "quote": "async syncWeatherStationJob(): Promise<NodeSyncResult> {"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 506,
+          "quote": "node_type: NodeType.WEATHER_STATION,"
+        },
+        {
+          "file": "sensors-service/src/services/weather-station-sensor-service.ts",
+          "line": 482,
+          "quote": "if (result.registered.length === 0) {"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "New weather stations register themselves with the project once their gateway is known.",
+      "caveats": "Cadence comes from a code comment about an external scheduler; the schedule itself was not seen."
+    },
+    {
+      "id": "W10",
+      "claim": "The shared mesh transport also carries other Modbus devices (a solar charge controller tag exists); any tag without a registered handler is acknowledged and dropped, not stored.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "sensors-service/src/utilities/enums.ts",
+          "line": 36,
+          "quote": "The Modbus transport, NOT a device type."
+        },
+        {
+          "file": "sensors-service/src/utilities/enums.ts",
+          "line": 62,
+          "quote": "MPPT = 0x02"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 64,
+          "quote": "[ModbusDeviceTag.WEATHER_STATION, new WeatherStationSensorService()]"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 82,
+          "quote": "return SKIP_MESSAGE;"
+        },
+        {
+          "file": "sensors-service @ 3dde479",
+          "line": 0,
+          "quote": "fix(NEM-662): route endpoint-61 frames by modbus device tag (#209)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "",
+      "caveats": "Internal detail; not for narration. Relevant only to the claim that gas has no mesh path today (G09)."
+    },
+    {
+      "id": "L01",
+      "claim": "Device: a lightning node is a Modbus 'asset' on the mesh; the registry keeps the lightning device as a logical device keyed to that asset's source address. State arrives as a frozen 10-byte frame (format, state, health, contact bits, raw digital inputs, data age) produced by the gateway transport.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceProvisioningService.cs",
+          "line": 35,
+          "quote": "is a distinct logical device keyed to that asset's <c>source_address</c>"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 38,
+          "quote": "H7038 is registered device-side as an `asset`"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDecoding.cs",
+          "line": 31,
+          "quote": "The frozen 10-byte frame, offset by offset:"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 131,
+          "quote": "Already polarity-masked: bit_0 Red, bit_1 Orange, bit_2 Yellow, bit_3 Green, bit_4 Fault."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 126,
+          "quote": "Stop the feed for the device: power the ADAM down, or stop publishing for it."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "A radio node on site reads the lightning warning unit and reports its state across the mesh.",
+      "caveats": "Detector vendor/model are not named anywhere in code; the program doc lists a Boltek guidance item. Do not name a detector brand in the video without product confirmation. The ADAM input module is named in code and the runbook."
+    },
+    {
+      "id": "L02",
+      "claim": "Transport and queues: the gateway transport republishes a JSON envelope on {env}/gw-event/received_lightning_data/{gwId}; an IoT rule (adds topic() AS topic) feeds an SQS lightning queue with a DLQ; frames the transport could not parse arrive on {env}/gw-event/received_modbus_data/{gwId} with error:true and an error_type, feeding a modbus-unparsed queue with a DLQ; a separate older raw queue carries raw EP 61 frames for all Modbus products.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 6,
+          "quote": "The JSON envelope <c>gateway-esp-backend-transport</c> republishes on"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 7,
+          "quote": "{env}/gw-event/received_lightning_data/{gwId}"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 152,
+          "quote": "{env}/gw-event/received_modbus_data/{gwId}"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 63,
+          "quote": "The MQTT topic, added by the IoT rule as <c>topic() AS topic</c>"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 76,
+          "quote": "`production_lightning_data_queue` receives one message."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 106,
+          "quote": "`production_lightning_data_dlq` depth. Expect 0."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 108,
+          "quote": "`production_modbus_unparsed_queue` and its DLQ. Lightning frames the transport could not read"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 109,
+          "quote": "land here with `error: true` and an `error_type` of `lightning_length_mismatch`,"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 112,
+          "quote": "`production_wakecap_two_sensors_queue` — the NEM-626 queue — carries raw EP 61 frames from all"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 16,
+          "quote": "The Terraform for those rules and queues lives in `wakecap/infrastructure`, and landed there in"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 18,
+          "quote": "public string LightningQueueUrl { get; set; } = string.Empty;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 21,
+          "quote": "public string ModbusErrorQueueUrl { get; set; } = string.Empty;"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Lightning messages go to their own queue, and anything that cannot be read goes to a separate queue, so a message is never silently lost.",
+      "caveats": "The Terraform lives in a repository not on this machine (infra PR 6447, per the runbook). Code comments saying the rules 'do not exist yet' are stale; the transport has published since 2026-08-25 (runbook). Queue/rule existence and the DLQ depth alarms were NOT verified live. Queue names are production names from the runbook."
+    },
+    {
+      "id": "L03",
+      "claim": "Consumer: a backend background service long-polls both queues (up to 10 messages, 20 s wait), deletes handled messages in a batch and leaves unhandled ones to the queue's redrive policy so they reach the DLQ; it idles with a single log line when no queue URL is configured.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs",
+          "line": 148,
+          "quote": "var topic = isLightning ? \"received_lightning_data\" : \"received_modbus_data\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 40,
+          "quote": "public int MaxMessagesPerReceive { get; set; } = 10;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 43,
+          "quote": "public int ReceiveWaitTimeSeconds { get; set; } = 20;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs",
+          "line": 127,
+          "quote": "await sqs.DeleteMessageBatchAsync("
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs",
+          "line": 118,
+          "quote": "was not handled; leaving it for the dead-letter queue"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs",
+          "line": 41,
+          "quote": "Lightning queue consumer idle"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 174,
+          "quote": "services.AddHostedService<LightningQueueConsumerBackgroundService>();"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The backend reads lightning messages from the queue continuously and keeps anything it could not process for investigation.",
+      "caveats": ""
+    },
+    {
+      "id": "L04",
+      "claim": "Ingest: the backend maps the transport's effective_state_code (never the raw state code or label), maps the label locally, dedupes on (source address, receive time, event id), treats buffered packets as history only, advances current state only for a strictly newer live packet, and clears an open stale flag on the first valid packet.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/ILightningTransportEnvelopeMapper.cs",
+          "line": 25,
+          "quote": "var effectiveState = LightningStateRules.FromCode(parsed.EffectiveStateCode);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 93,
+          "quote": "The state to act on."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 44,
+          "quote": "mapped locally from the numeric code."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStateAdvancement.cs",
+          "line": 50,
+          "quote": "<b>1. Dedupe.</b> The <c>(source_address, rx_time_ms_epoch, event_id)</c> tuple decides whether"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStateAdvancement.cs",
+          "line": 89,
+          "quote": "var historyOnly = ingest.IsBuffered || !isStrictlyNewer;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningTransportModels.cs",
+          "line": 56,
+          "quote": "History-only. Never advances current state."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 42,
+          "quote": "it clears automatically on the device's next valid packet."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 73,
+          "quote": "_ => LightningState.Unknown,"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Repeated or replayed messages never change the live status; only a new live message does.",
+      "caveats": ""
+    },
+    {
+      "id": "L05",
+      "claim": "State model: seven states (Unknown 0, Green 1, Yellow 2, Orange 3, Red 4, Fault 5, Offline 6). ONLY Green is safe; Unknown, Fault, Offline, an out-of-range code and any stale device are not safe. The site rollup uses an explicit priority map Offline > Fault > Red > Orange > Yellow > Green > Unknown, never the numeric order. The front end shows three colours: Orange reads as Yellow; Unknown, Offline, stale and 'page not refreshing' all read as 'Unknown'; labels are 'All Clear', 'Caution - Yellow', 'Warning', 'Fault', 'Unknown'; the safe badge reads 'Safe to work'.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningState.cs",
+          "line": 16,
+          "quote": "Unknown = 0,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningState.cs",
+          "line": 20,
+          "quote": "Red = 4,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningState.cs",
+          "line": 22,
+          "quote": "Offline = 6,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 12,
+          "quote": "public static bool IsSafe(LightningState state) => state == LightningState.Green;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 20,
+          "quote": "=> IsSafe(state) && !isStale;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 23,
+          "quote": "The explicit worst-state priority map: OFFLINE &gt; FAULT &gt; RED &gt; ORANGE &gt; YELLOW"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 73,
+          "quote": "_ => LightningState.Unknown,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceQueryService.cs",
+          "line": 233,
+          "quote": "IsSafe = LightningStateRules.IsSafeConsideringStaleness(state, isStale),"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/lightningStateRules.ts",
+          "line": 24,
+          "quote": "return code === LIGHTNING_STATE_CODE.GREEN;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/lightningVisuals.ts",
+          "line": 8,
+          "quote": "// TAN-2787 (2026-09-28 review, item 6) cut the palette from 4 colours to"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 47,
+          "quote": "label: \"All Clear\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 51,
+          "quote": "label: \"Caution — Yellow\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 56,
+          "quote": "label: \"Warning\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 37,
+          "quote": "safeBadge: \"Safe to work\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 60,
+          "quote": "label: \"Unknown\","
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 63,
+          "quote": "only GREEN is safe, UNKNOWN/FAULT/OFFLINE/stale never render safe"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Only green means safe. Anything unknown, faulty, offline or out of date is treated as not safe.",
+      "caveats": "Do not talk about 'orange' or show an orange state: the UI no longer distinguishes it from yellow. Backend still stores/returns seven states and the state itself comes from the device; WakeCap only decides stale and what to show."
+    },
+    {
+      "id": "L06",
+      "claim": "Staleness (backend decides): a sweep every 5 seconds marks a device stale when no packet has arrived for MORE than 4 times its own configured heartbeat (default heartbeat 60 s, clamped 6-3599 s); it opens a 'data unavailable' history interval, never reports safe while stale, never marks a device that has never reported as stale, and clears on the next valid packet. The multiplier was 3x until 2026-09-22.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 26,
+          "quote": "public const int MissedHeartbeatsBeforeStale = 4;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 30,
+          "quote": "> MissedHeartbeatsBeforeStale * (double)settings.ClampedHeartbeatSeconds"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 12,
+          "quote": "Was 3x until 2026-09-22."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Configuration/LightningSensorOptions.cs",
+          "line": 34,
+          "quote": "public int SweepIntervalSeconds { get; set; } = 5;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 24,
+          "quote": "public const int DefaultHeartbeatSeconds = 60;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 18,
+          "quote": "public const int MinHeartbeatSeconds = 6;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 21,
+          "quote": "public const int MaxHeartbeatSeconds = 3599;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 58,
+          "quote": "A device that has never sent a packet is not stale either."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStaleness.cs",
+          "line": 42,
+          "quote": "it clears automatically on the device's next valid packet."
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 55,
+          "quote": "The staleness window is three times this"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/lightningStaleness.ts",
+          "line": 19,
+          "quote": "export const MISSED_HEARTBEATS_BEFORE_STALE = 3;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/pageFreshness.ts",
+          "line": 3,
+          "quote": "// DEVICE staleness is the server's answer and arrives as `isStale`. It is never"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "If a lightning device stops checking in for several of its normal check-in intervals, the screen stops showing it as safe and marks the data as unavailable.",
+      "caveats": "DO NOT quote a multiplier or an exact number of minutes. The code says 4x since 2026-09-22 but the runbook, a front-end helper (not shown in the UI) and a code comment still say 3x. Whether the 4x build is deployed to production was not verified."
+    },
+    {
+      "id": "L07",
+      "claim": "Page staleness (front end decides, separately): the lightning screens poll devices and the site summary every 30 seconds; if a refresh fails or the last successful refresh is older than 5 minutes (or the page was restored from the browser's back cache) the tile stops claiming a state ('not refreshing'). Wallboard also re-reads on wake/network-return/page-restore.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/pageFreshness.ts",
+          "line": 36,
+          "quote": "export const LIGHTNING_REFETCH_INTERVAL_MS = 30 * 1000;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/hooks/useLightningDevices.ts",
+          "line": 36,
+          "quote": "refetchInterval: LIGHTNING_REFETCH_INTERVAL_MS,"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/hooks/useLightningSummary.ts",
+          "line": 37,
+          "quote": "refetchInterval: LIGHTNING_REFETCH_INTERVAL_MS,"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/pageFreshness.ts",
+          "line": 39,
+          "quote": "export const PAGE_FRESHNESS_LIMIT_MS = 5 * 60 * 1000;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/lightningStateRules.ts",
+          "line": 87,
+          "quote": "if (isPageStale) return \"unrefreshed\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/hooks/useLightningWallboardRecovery.ts",
+          "line": 7,
+          "quote": "The 30-second poll is not enough on its own:"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/routes.ts",
+          "line": 22,
+          "quote": "export const LIGHTNING_WALLBOARD_ROUTE_SEGMENT = \"wallboard\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/routes.ts",
+          "line": 29,
+          "quote": "export const LIGHTNING_MOBILE_ROUTE_SEGMENT = \"mobile\";"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The lightning screen refreshes about every 30 seconds, and if it ever stops refreshing it says so instead of showing an old all-clear.",
+      "caveats": "The backend advertises its own poll intervals (tab 10 s, banner 30 s, wallboard 5 s, floor 2 s) at a Polling endpoint, but the front end never calls it and uses a constant 30 s for every surface. Say '30 seconds', not '5 seconds', for the wallboard."
+    },
+    {
+      "id": "L08",
+      "claim": "Unregistered-device fallback: a packet from a source address with no registry row is stored as an audit event only; no state advances and a warning is logged, because inventing a project binding could put a device on the wrong site.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs",
+          "line": 62,
+          "quote": "var device = registry.FindBySourceAddress(envelope.SourceAddress);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs",
+          "line": 78,
+          "quote": "recorded as an event only, no state advanced"
+        },
+        {
+          "file": "wakecap-weather-station/docs/lightning/tan-2324-prod-runbook.md",
+          "line": 29,
+          "quote": "A packet from an unregistered source address is recorded as an audit row and advances no state, on"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "If a lightning device is not yet assigned to a project, WakeCap keeps its messages on record but does not show a status for it.",
+      "caveats": ""
+    },
+    {
+      "id": "L09",
+      "claim": "Provisioning and auto-register: one PUT route (needs weatherstation:manage-lightning-settings) creates/updates a device's display name, heartbeat, radii and location; an hourly background job reads node-service for nodes of type lightning_sensor (first run looks back 365 days) and registers any that have no registry row (additive only; name 'Lightning <local id>', heartbeat 60 s).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 216,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageLightningSettings)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningDeviceSyncBackgroundService.cs",
+          "line": 24,
+          "quote": "private static readonly TimeSpan Interval = TimeSpan.FromHours(1);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningDeviceSyncBackgroundService.cs",
+          "line": 50,
+          "quote": ".GetNodes("
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Contracts/Products/LightningSensor/DTO/LightningNodeDto.cs",
+          "line": 53,
+          "quote": "public const string LightningSensor = \"lightning_sensor\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningSyncWindow.cs",
+          "line": 36,
+          "quote": "public const int FirstRunLookbackDays = 365;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceSyncService.cs",
+          "line": 16,
+          "quote": "<b>Additive only.</b> A node that already has a registry row is left exactly as it is."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceSyncService.cs",
+          "line": 40,
+          "quote": "public static string DisplayNameFor(string localId) => $\"Lightning {localId}\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 24,
+          "quote": "public const int DefaultHeartbeatSeconds = 60;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 175,
+          "quote": "services.AddHostedService<LightningDeviceSyncBackgroundService>();"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Lightning devices that are already known to the platform are picked up automatically, and a site can rename them and tune them in Settings.",
+      "caveats": "Binding a device to a site now also needs the lightning settings permission (same route). First-ever deployment seeded its device through a manual call, per the runbook."
+    },
+    {
+      "id": "L10",
+      "claim": "Alert radii live in the backend registry row per device (lightning_sensor_settings): red 5 km, yellow 10 km, 30-minute all-clear by default, editable in Settings > Lightning (limits: red > 0, yellow > red and <= 100 km, all-clear 1-1440 min). The backend treats them as DISPLAY-ONLY: no parsing, alerting or state rule reads a distance; the site summary uses the first device's values. The tile ring is labelled a static zone reference, not a live strike position.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 6,
+          "quote": "Table <c>lightning_sensor_settings</c>. One row per device, holding the NFC-configurable"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 33,
+          "quote": "public const decimal DefaultRedRadiusKm = 5m;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 36,
+          "quote": "public const decimal DefaultYellowRadiusKm = 10m;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 39,
+          "quote": "public const int DefaultAllClearDelayMinutes = 30;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 27,
+          "quote": "/// The radii the UI prints beside a state. Display-only: no parsing, alerting or state rule"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceQueryService.cs",
+          "line": 186,
+          "quote": "radii are a site-wide convention, so the first registered device's text is the site's;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningDeviceProvisioningService.cs",
+          "line": 224,
+          "quote": "the sensor's own detection range"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 93,
+          "quote": "not a live strike position"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 193,
+          "quote": "Reference only. These are the radii the service is configured with; this screen displays them and does nothing with them."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 104,
+          "quote": "These are the radii the alerting service uses for this device."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The alert radii shown on screen are the site's configured reference distances.",
+      "caveats": "CONFLICT to resolve before narrating: the Edit-radii dialog and the Settings page say these are 'the radii the alerting service uses', while the backend and the tile say they are reference only and the device itself decides the state. Do not claim that editing radii in the portal reconfigures the physical detector. The program doc mentions widening the bands at commissioning."
+    },
+    {
+      "id": "L11",
+      "claim": "Location and map: an admin can set the sensor's latitude/longitude in Settings > Lightning (explicitly TEMPORARY until Management Maps supports lightning sensors); the radii map is drawn around it. In production build 1.0.5 the map uses Leaflet with OpenStreetMap tiles; the swap to Esri ArcGIS is one commit ahead on master and is not live.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Entity/LightningSensorSettings.cs",
+          "line": 65,
+          "quote": "TEMPORARY: set by hand in Settings"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 165,
+          "quote": "Set manually until Management Maps supports lightning sensor locations."
+        },
+        {
+          "file": "wakecap-weather-station @ 352195f",
+          "line": 0,
+          "quote": "TAN-2921: store and return an admin-set lightning sensor location (temporary) (#402)"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/components/LightningMapCanvas.tsx @ v1.0.5-ConnectedEnvironmentApp-production",
+          "line": 28,
+          "quote": "const TILE_URL = \"https://tile.openstreetmap.org/{z}/{x}/{y}.png\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ master",
+          "line": 0,
+          "quote": "TAN-2922: lightning map on Esri ArcGIS (replacing Leaflet/OSM), map beside the tile, note only in Settings (#210)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ v1.0.5-ConnectedEnvironmentApp-production",
+          "line": 0,
+          "quote": "TAN-2926: hide the Zones tab and everything zone-related from the Gas UI (#209)"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "A site can place its lightning sensor on a map and see the alarm rings around it.",
+      "caveats": "Backend location write was merged the same day as the front-end build (2026-10-04); BE deploy state unknown, so the Set-location control may not work in production yet. The prod map needs the viewer's browser to reach OpenStreetMap tile servers."
+    },
+    {
+      "id": "L12",
+      "claim": "Disclaimer wording (approved): 'WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.' The primary alerting system is the site's cabinet lights and sounder; the empty state says no signal is not an all-clear.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 199,
+          "quote": "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 149,
+          "quote": "stopWork: \"Stop work now — move all personnel to shelter\","
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 104,
+          "quote": "Stage-A physical commissioning (cabinet lamps + sounder work with zero software)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.",
+      "caveats": "Use this wording verbatim; it is the approved line."
+    },
+    {
+      "id": "G01",
+      "claim": "Gas devices and gases: devices are Blackline portable detectors; the vendor model string is stored per device (code example G7c; program doc says G7 EXO). The fleet observed carries only H2S, O2 and combustible (LEL / LEL-MPS) sensors; CO and CO2 were deliberately removed from the Gas UI although the backend still knows them and seeds alarm points for five gases.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasDevice.cs",
+          "line": 26,
+          "quote": "/// <summary>Vendor hardware model, e.g. <c>G7c</c>.</summary>"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 110,
+          "quote": "real G7 EXO payloads archived as fixtures"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasNames.ts",
+          "line": 7,
+          "quote": "a sensor for (H2S, O2, LEL, and Blackline's LEL-MPS)."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasNames.ts",
+          "line": 37,
+          "quote": "lel: \"Combustible gas\","
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Constants/GasTypes.cs",
+          "line": 4,
+          "quote": "The five gases the product carries a threshold profile for."
+        },
+        {
+          "file": "frontend-2.0-weather-station @ 7f5eef0",
+          "line": 0,
+          "quote": "TAN-2914, TAN-2915, TAN-2916, TAN-2917: Gas dashboard — Overview figures, no SAFE hero, no CO/CO2, acknowledge and close alerts (#207)"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Workers carry portable gas detectors that measure hydrogen sulphide, oxygen and combustible gas.",
+      "caveats": "Name only those three gases in the video. 'Hydrogen sulphide / Oxygen / Combustible gas' are the UI's own names. Which detector model a given site has is not in code."
+    },
+    {
+      "id": "G02",
+      "claim": "Vendor cloud auth: GET /authorize (code) then GET /token (access token) against Blackline Connect, EU host by default (a North America host exists and a wrong region looks exactly like wrong credentials: HTTP 200 with an error body). The token is cached with no published TTL and re-issued only when a call fails; it travels as a query parameter (so URLs are scrubbed from logs/traces); transport errors are retried 3 times with backoff.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineOptions.cs",
+          "line": 24,
+          "quote": "public const string EuBaseUrl = \"https://eu.connect-live.blacklinesafety.com/1/\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineOptions.cs",
+          "line": 33,
+          "quote": "public const string NorthAmericaBaseUrl = \"https://production-connect.blacklinesafety.com/1/\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 107,
+          "quote": "The two-step Connect handshake: <c>GET /authorize</c> for an auth code, then"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 146,
+          "quote": "$\"response_type=code&client_id={Uri.EscapeDataString(options.ClientId)}\");"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 163,
+          "quote": "\"grant_type=authorization_code\" +"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 16,
+          "quote": "Blackline publishes no TTL, so guessing one"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 20,
+          "quote": "<b>The token rides in the query string</b>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineOptions.cs",
+          "line": 48,
+          "quote": "public int MaxTransportRetries { get; set; } = 3;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineResponseParser.cs",
+          "line": 9,
+          "quote": "Blackline answers a failure with <c>200 OK</c> and an error document, so"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 48,
+          "quote": "retrying once. Reported: {ReportedMessage}. Body: {RawBody}"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 110,
+          "quote": "HTTP-200 error bodies included"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "WakeCap signs in to the detector manufacturer's cloud securely and keeps the connection alive, retrying if it fails.",
+      "caveats": "Do not show URLs or credentials. The vendor cloud is effectively a black box: we only see what its API returns."
+    },
+    {
+      "id": "G03",
+      "claim": "Polling: a background service calls GET /device on a timer: default every 45 seconds (floor 10 s). Each sweep upserts devices, appends only new sensor readings (a reading seen again is skipped; a unique index is the guarantee), raises/closes platform alerts, mirrors the vendor's open alerts, marks silent devices offline and records sync state. Detectors upload only about every 30 minutes on the observed account, so a 'current' reading can be up to ~30 minutes old.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Hosting/GasReadingsPollingBackgroundService.cs",
+          "line": 14,
+          "quote": "A timer and not a subscription: Blackline Connect pushes nothing, so the only way to learn that"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 67,
+          "quote": "public int IntervalSeconds { get; set; } = 45;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 24,
+          "quote": "public const int MinimumIntervalSeconds = 10;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 60,
+          "quote": "changed about once every 30 MINUTES across 60 consecutive polls"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 79,
+          "quote": "var vendorDevices = await blacklineClient.GetDevicesAsync(cancellationToken);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 134,
+          "quote": "Refreshes one <c>gas_device</c> row per vendor device, matched on"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 24,
+          "quote": "CallAsync(ct => transport.GetAsync(\"device\", ct), BlacklineResponseParser.ParseDevices, cancellationToken);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 81,
+          "quote": "public Task<string> GetAsync(string path, CancellationToken cancellationToken) =>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Hosting/GasReadingsPollingBackgroundService.cs",
+          "line": 42,
+          "quote": "if (!options.IsConfigured || !blacklineOptions.IsConfigured)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 134,
+          "quote": "services.AddHostedService<GasReadingsPollingBackgroundService>();"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "WakeCap checks the manufacturer's cloud every minute or so for new readings and alerts. The detectors themselves report about every half hour, so the screen shows how old each reading is.",
+      "caveats": "'45 seconds' is the code default; the production value is an environment setting not read. The poll only starts when Blackline credentials are configured. Say 'about every half hour' only as the observed behaviour of the detectors, not as a guarantee."
+    },
+    {
+      "id": "G04",
+      "claim": "Push receiver: POST /integrations/blackline/push is deliberately anonymous; it reads the raw body, returns the MD5 hex digest of exactly those bytes (Blackline's receipt contract), stores the raw body in an audit table (a re-send is absorbed by a unique index) and records a parse error if the body is not JSON. It does NOT parse fields, raise alerts, queue anything, or write acknowledgements back.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 40,
+          "quote": "[Route(\"integrations/blackline/push\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 28,
+          "quote": "[AllowAnonymous]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 15,
+          "quote": "Blackline accepts one thing as an acknowledgement: a 2XX whose body is the"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 76,
+          "quote": "var digest = Convert.ToHexStringLower(MD5.HashData(raw));"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 97,
+          "quote": "return Content(digest, \"text/plain\");"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasPushAuditRecord.cs",
+          "line": 25,
+          "quote": "public byte[] RawBody { get; set; } = [];"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 35,
+          "quote": "Receive, acknowledge, audit. No queue, no alert normalisation, no ack sync-back"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/GasPushController.cs",
+          "line": 27,
+          "quote": "Deliberately open, as of 2026-09-29 (TAN-2799)"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 114,
+          "quote": "Push receiver honouring the md5 receipt contract"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "WakeCap can receive the manufacturer's push messages and confirms receipt of each one.",
+      "caveats": "Receipt only. Do not say push drives alerts: alerts come from the poll. A code comment says every push since 2026-09-24 was refused before the endpoint was opened (2026-09-29); whether Blackline is currently registered to push to production was not verified."
+    },
+    {
+      "id": "G05",
+      "claim": "'Reconciler': there is no separate reconciler component. The poll sweep's vendor-alert sync is the safety net: it mirrors alerts the vendor holds open (one row per vendor alert id), only moves a status forward, closes an alert only when the vendor actually listed that device's alerts and no longer lists it (never in a person's name), lets a person's closure stand, and reopens a machine-closed alert if the vendor lists it again.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 758,
+          "quote": "Mirrors the alerts Blackline holds open into <c>gas_alert</c> as <c>vendor</c> alerts (TAN-2849),"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 760,
+          "quote": "Blackline's Push channel is delivering"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 767,
+          "quote": "A vendor-driven update only moves an open alert FORWARD (active, acknowledged,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 774,
+          "quote": "A resolution a PERSON made here stands."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 224,
+          "quote": "\"Not listed\" is only evidence when the vendor actually listed."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 18,
+          "quote": "<b>The sweep is the only writer <c>gas_alert</c> has.</b>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineAlertMapping.cs",
+          "line": 34,
+          "quote": "[\"emergency_alert\"] = GasAlert.SosAlertType,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineAlertMapping.cs",
+          "line": 68,
+          "quote": "\"unacknowledged\" => (GasAlert.StatusActive, true),"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 114,
+          "quote": "a reconciler that turns push loss into latency instead of data loss"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Even if a push message is missed, the next check of the manufacturer's cloud picks up the alert, so a missed message becomes a short delay rather than a lost alert.",
+      "caveats": "Narrate the behaviour, not a component called 'reconciler'. Vendor alert types translated: emergency, fall, high gas; others kept in the vendor's own words (tipped over, low battery, no motion...)."
+    },
+    {
+      "id": "G06",
+      "claim": "Acknowledgement write-back to Blackline is NOT built: acknowledgements are NOT written back to Blackline. Acknowledging or closing an alert in the portal records who and when in WakeCap only; the API docs and the UI both say an alert closed here stays open in Blackline Live. Writing back (PUT alert/:id) is named as future work. The vendor client has only one method (GET devices) and the transport has no write method.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasAlertHandlingService.cs",
+          "line": 19,
+          "quote": "<b>Nothing is sent to Blackline</b>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 56,
+          "quote": "for a closed alert. Nothing is sent to Blackline: an alert acknowledged here stays open in"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 777,
+          "quote": "What is NOT here: pushing our acknowledgements back to Blackline (<c>PUT alert/:id</c> changes"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 394,
+          "quote": "It is not sent to Blackline: an alert closed here stays open in Blackline Live."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 17,
+          "quote": "Task<IReadOnlyList<BlacklineDevice>> GetDevicesAsync(CancellationToken cancellationToken = default);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/Products/GasDetector/Blackline/BlacklineTransport.cs",
+          "line": 81,
+          "quote": "public Task<string> GetAsync(string path, CancellationToken cancellationToken) =>"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 114,
+          "quote": "portal acks written back into Blackline Live"
+        }
+      ],
+      "live_today": "no",
+      "safe_phrase": "Acknowledging or closing a gas alert is recorded in WakeCap with who did it and when.",
+      "caveats": "The Zero-Open program doc promises 'portal acks written back into Blackline Live' (G3); that is NOT built. Do NOT say acknowledgements flow back to the vendor. Narration may add 'it is not sent to the manufacturer's system' to match the screen's own disclosure."
+    },
+    {
+      "id": "G07",
+      "claim": "Vendor-neutral model: WakeCap stores gas_device (with the vendor's device id), gas_reading (dedupe on device, gas, instant), gas_alert (source 'vendor' or 'platform', with the vendor alert id), alarm-point profiles (project override else org default), zones and sync state, behind an IBlacklineClient interface described as 'vendor #1 of a product meant to take a second'. Only the Blackline adapter exists.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasDevice.cs",
+          "line": 19,
+          "quote": "public string VendorDeviceId { get; set; } = string.Empty;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasAlert.cs",
+          "line": 58,
+          "quote": "public const string VendorSource = \"vendor\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/GasDetector/Entity/GasAlert.cs",
+          "line": 29,
+          "quote": "public string? VendorAlertId { get; set; }"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 8,
+          "quote": "The typed view of Blackline Connect. Behind an interface because Blackline is vendor #1 of a"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/BlacklineClient.cs",
+          "line": 17,
+          "quote": "Task<IReadOnlyList<BlacklineDevice>> GetDevicesAsync(CancellationToken cancellationToken = default);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/InfrastructureServiceRegistry.cs",
+          "line": 599,
+          "quote": "LowThreshold = 5m, HighThreshold = 10m,"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 112,
+          "quote": "into a vendor-neutral model"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Gas data is stored in WakeCap's own neutral format, so another detector manufacturer could be added without changing the screens.",
+      "caveats": "'Could be added' is the design intent in a code comment; a second vendor is not built. The stored data model is neutral; the Blackline-specific parts are the client and the mapping tables."
+    },
+    {
+      "id": "G08",
+      "claim": "Live vs sample: the backend has no sample provider. The front end reads real data by default (HTTP adapter); the canned sample dataset is used only when a specific flag is explicitly true (demo/fallback). A separate kill-switch flag (absent = on) hides the whole Gas domain. In live mode screens without real data (compliance exposure figures) say 'Not available yet' instead of showing sample values.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasReads.ts",
+          "line": 15,
+          "quote": "The default is REAL data."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasReads.ts",
+          "line": 21,
+          "quote": "export const GAS_SAMPLE_DATA_FLAG = \"connected-env-gas-sample-data\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasReads.ts",
+          "line": 41,
+          "quote": "const isSampleData = flags[GAS_SAMPLE_DATA_FLAG] === true;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasReads.ts",
+          "line": 43,
+          "quote": "() => (isSampleData ? createGasFixtureAdapter() : createGasHttpAdapter()),"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/gasTabFlag.ts",
+          "line": 15,
+          "quote": "export const GAS_TAB_FLAG = \"connected-env-gas\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 564,
+          "quote": "flags[GAS_TAB_FLAG] !== false &&"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 452,
+          "quote": "There is no compliance percentage here: that needs exposure time measured against a limit over a shift, and neither is recorded yet."
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "",
+      "caveats": "Flag names are internal; not for narration. If recording demo footage, confirm which mode the recording environment used (sample data would show invented stories)."
+    },
+    {
+      "id": "G09",
+      "claim": "Backend endpoints (all under api/project/{id}/gas-detector/): GET Devices, GET Devices/{id}, GET Devices/{id}/readings (bucketed history), PUT Devices/{id}/zone, GET Summary, GET Alerts (filters), POST Alerts/{id}/acknowledge, POST Alerts/{id}/resolve (the UI calls it 'Close'), GET Thresholds, GET Zones. Reads need weatherstation:view or project_builder:manage; the three writes need weatherstation:edit or project_builder:manage.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/DevicesController.cs",
+          "line": 38,
+          "quote": "[EndpointSummary(\"GasDevices-List\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/DevicesController.cs",
+          "line": 78,
+          "quote": "[EndpointSummary(\"GasDevices-Readings\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/DevicesController.cs",
+          "line": 108,
+          "quote": "[EndpointSummary(\"GasDevices-AssignZone\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/SummaryController.cs",
+          "line": 24,
+          "quote": "[EndpointSummary(\"GasSummary-Get\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 26,
+          "quote": "[EndpointSummary(\"GasAlerts-List\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 50,
+          "quote": "[HttpPost(\"{id:guid}/acknowledge\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 70,
+          "quote": "[HttpPost(\"{id:guid}/resolve\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/ThresholdsController.cs",
+          "line": 19,
+          "quote": "[EndpointSummary(\"GasThresholds-List\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/ZonesController.cs",
+          "line": 16,
+          "quote": "[EndpointSummary(\"GasZones-List\")]"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/contracts/apiUrls.ts",
+          "line": 63,
+          "quote": "gas-detector/Alerts/{{alertId}}/acknowledge"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/contracts/apiUrls.ts",
+          "line": 71,
+          "quote": "gas-detector/Alerts/{{alertId}}/resolve"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 420,
+          "quote": "resolve: \"Close\","
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/SummaryController.cs",
+          "line": 22,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 49,
+          "quote": "[OneOfPermissionAuthorize(Permissions.ProjectBuilder.Manage, Permissions.WeatherStation.Edit)]"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "",
+      "caveats": "Internal. The dashboard is assembled by the front end from Devices, Summary, Alerts and Thresholds. Acknowledge/close backend landed 2026-10-04 (same day as the front end that calls it); deploy state unverified."
+    },
+    {
+      "id": "G10",
+      "claim": "Freshness: a device is flagged stale when it has no reading at all or its newest reading (across all its gases) is older than 3600 s; each gas reading also carries its own age and stale flag; age is measured from when the DEVICE took the reading, not when WakeCap polled. Separately a safety net marks a device offline when the vendor still says online but nothing has been heard for 5400 s (90 min); it can only turn a device off.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasQueryService.cs",
+          "line": 486,
+          "quote": "|| deviceAge > _options.StaleReadingAfterSeconds,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasQueryService.cs",
+          "line": 487,
+          "quote": "ReadingAgeSeconds = DeviceAgeSeconds(latest[device.Id], nowUtc),"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasQueryService.cs",
+          "line": 511,
+          "quote": "Measured from when the DEVICE took"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasQueryService.cs",
+          "line": 504,
+          "quote": "the caller reports as stale."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 93,
+          "quote": "public int StaleReadingAfterSeconds { get; set; } = 3600;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 84,
+          "quote": "public int OfflineAfterSeconds { get; set; } = 5400;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 1014,
+          "quote": "var cutoff = nowUtc.AddSeconds(-options.OfflineAfterSeconds);"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/api/gasDeviceMapper.ts",
+          "line": 10,
+          "quote": "No value is defaulted: an absent `readingAgeSeconds` / `isStale` stays"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Every gas reading shows how old it is, and a reading that has gone more than an hour without an update is marked out of date.",
+      "caveats": "Say 'more than an hour'. Defaults only; a stale reading is a state of the reading, distinct from the device being offline."
+    },
+    {
+      "id": "G11",
+      "claim": "Who computes gas state: the BACKEND opens a platform alert when a newly stored reading is strictly over its gas's High alarm point and closes it when a later reading is at or under it (one alert per exposure); the FRONT END derives SAFE / CHECK / ALERT per detector, zone and site: only SAFE is green, missing/stale/offline data is CHECK, a fresh reading strictly over the alarm point is ALERT (matching the backend, not 'at or over'), oxygen below its low limit is CHECK; it re-evaluates every 30 s and refetches every 60 s.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 626,
+          "quote": "if (reading.Reading > high)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasPollSweepRunner.cs",
+          "line": 18,
+          "quote": "<b>The sweep is the only writer <c>gas_alert</c> has.</b>"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasState.ts",
+          "line": 8,
+          "quote": "//  1. Only SAFE is green. Missing data or doubt is CHECK, never SAFE."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasState.ts",
+          "line": 13,
+          "quote": "//  3. A fresh reading over its warning point is CHECK. A fresh reading STRICTLY"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasState.ts",
+          "line": 53,
+          "quote": "export const GAS_STALE_AFTER_SECONDS = 60 * 60;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasState.ts",
+          "line": 10,
+          "quote": "Age is the"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasSiteState.ts",
+          "line": 19,
+          "quote": "export const GAS_STATE_TICK_MS = 30_000;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasQueries.ts",
+          "line": 48,
+          "quote": "export const GAS_REFETCH_MS = 60_000;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasQueries.ts",
+          "line": 65,
+          "quote": "refetchInterval: GAS_REFETCH_MS,"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "On the gas screen, only 'safe' is green. If readings are missing, out of date or a detector is offline, it says 'check' rather than 'safe'.",
+      "caveats": "Default alarm points seeded: five gases with org-wide defaults (H2S high 10 ppm in code); do not quote limits on screen unless they come from the project's own thresholds."
+    },
+    {
+      "id": "G12",
+      "claim": "TAN-2465 (a Modbus gas tag) was cancelled on 2026-08-27: 'no hardware gas device for now'. Implication: gas reaches WakeCap only through the vendor cloud; the sensors-service Modbus router registers only the weather-station tag, so a gas frame on the mesh would be acknowledged and dropped. The Blackline route is unaffected.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 78,
+          "quote": "does **not** gate the Blackline GAS project"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 78,
+          "quote": "no hardware gas device for now"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 179,
+          "quote": "TAN-2465 canceled: no hardware gas device for now; Blackline route unaffected"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 64,
+          "quote": "[ModbusDeviceTag.WEATHER_STATION, new WeatherStationSensorService()]"
+        },
+        {
+          "file": "sensors-service/src/services/modbus-sensor-service.ts",
+          "line": 82,
+          "quote": "return SKIP_MESSAGE;"
+        },
+        {
+          "file": "sensors-service/src/utilities/enums.ts",
+          "line": 38,
+          "quote": "weather station, MPPT solar charge"
+        }
+      ],
+      "live_today": "no",
+      "safe_phrase": "Today, gas data comes through the detector manufacturer's cloud. Direct connection of gas devices over the site mesh is not available.",
+      "caveats": "The enum comment 'the gas sensors being added next' is aspirational and now stale. Do not promise a mesh gas path."
+    },
+    {
+      "id": "G13",
+      "claim": "Compliance analytics (TWA, STEL, exposure, compliance percentage) are NOT computed: the Compliance page shows exceedances per gas and how they were handled, and states that a compliance percentage needs exposure time against a limit over a shift and neither is recorded yet. The program doc lists 'safety analytics computed by WakeCap' as a target.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 452,
+          "quote": "There is no compliance percentage here: that needs exposure time measured against a limit over a shift, and neither is recorded yet."
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 116,
+          "quote": "G4 · Safety analytics, computed by WakeCap"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 116,
+          "quote": "Blackline serves snapshots; the history and the math are ours."
+        }
+      ],
+      "live_today": "no",
+      "safe_phrase": "The compliance page shows how many alarms each gas raised and how they were handled.",
+      "caveats": "Do NOT claim exposure, TWA/STEL or a compliance percentage. DIRECTION only."
+    },
+    {
+      "id": "G14",
+      "claim": "Zones were hidden from the Gas UI in build 1.0.5: nothing assigns detectors to zones so every detector was 'Unassigned'; the Zones URL redirects to the dashboard. The backend zone read/assign endpoints still exist.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 55,
+          "quote": "TAN-2926 — there is no Zones page."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 128,
+          "quote": "path: \"zones\","
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/ZonesController.cs",
+          "line": 16,
+          "quote": "[EndpointSummary(\"GasZones-List\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/DevicesController.cs",
+          "line": 108,
+          "quote": "[EndpointSummary(\"GasDevices-AssignZone\")]"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ v1.0.5-ConnectedEnvironmentApp-production",
+          "line": 0,
+          "quote": "TAN-2926: hide the Zones tab and everything zone-related from the Gas UI (#209)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "",
+      "caveats": "Do not show or mention a Zones tab. Older recordings of Gas will show five tabs; production now shows four pages (Dashboard, Detectors, Alerts, Compliance)."
+    },
+    {
+      "id": "G15",
+      "claim": "One Blackline account maps to ONE WakeCap project: the poll writes every device on the account to a single configured project (default: the testing project baked into code); a second site on the same account needs a mapping table that does not exist.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 33,
+          "quote": "ponytail: one account, one project."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 38,
+          "quote": "public static readonly Guid DefaultProjectId"
+        },
+        {
+          "file": "wakecap-weather-station @ 1f7bbe2",
+          "line": 0,
+          "quote": "TAN-2449: default GasDetector:Polling:ProjectId to the testing project (#394)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Configuration/GasPollingOptions.cs",
+          "line": 16,
+          "quote": "public const string SectionName = \"GasDetector:Polling\";"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "",
+      "caveats": "Internal. Confirms why Gas looks like 'one account, one site' today; the production project binding is an environment setting that was not read."
+    },
+    {
+      "id": "G16",
+      "claim": "Gas wallboard and phone views exist as chrome-free routes under the Gas segment (wallboard, mobile) and re-poll on the same 60-second cadence.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 33,
+          "quote": "export const GAS_WALLBOARD_ROUTE_SEGMENT = \"wallboard\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 39,
+          "quote": "export const GAS_MOBILE_ROUTE_SEGMENT = \"mobile\";"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/hooks/useGasQueries.ts",
+          "line": 48,
+          "quote": "export const GAS_REFETCH_MS = 60_000;"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Gas has a control-room wallboard view and a phone view as well as the full screen.",
+      "caveats": ""
+    },
+    {
+      "id": "N01",
+      "claim": "NEW in the Gas screens (build 1.0.5, 2026-10-04): acknowledge and close are real and recorded with who/when (not sent to the vendor); Overview figures for live/acknowledged alert counts; no SAFE hero; CO and CO2 removed from the dashboard; Zones tab hidden.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station @ 7f5eef0",
+          "line": 0,
+          "quote": "TAN-2914, TAN-2915, TAN-2916, TAN-2917: Gas dashboard — Overview figures, no SAFE hero, no CO/CO2, acknowledge and close alerts (#207)"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 394,
+          "quote": "It is not sent to Blackline: an alert closed here stays open in Blackline Live."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/routes.ts",
+          "line": 55,
+          "quote": "TAN-2926 — there is no Zones page."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/utils/gasNames.ts",
+          "line": 7,
+          "quote": "a sensor for (H2S, O2, LEL, and Blackline's LEL-MPS)."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasQueryService.cs",
+          "line": 395,
+          "quote": "OpenAlerts = await alerts.CountAsync(cancellationToken),"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Gas/translations/en.ts",
+          "line": 420,
+          "quote": "resolve: \"Close\","
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "",
+      "caveats": "The backend half (acknowledge/close, live and acknowledged counts) merged 2026-10-04 and may not be deployed; check on a real session before recording the click-through."
+    },
+    {
+      "id": "N02",
+      "claim": "NEW in Lightning (since late September): three-colour palette (green / yellow / red) with labels All Clear, Caution - Yellow, Warning; 'Safe to work' badge; dedicated Alarm history table and Alarm activity chart with CSV export; the full state history moved to Settings > Lightning; the alert-routing and 'sent to the alarming service' panels were removed; a pulsing red frame during RED; radii map and admin-set location (temporary).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/utils/lightningVisuals.ts",
+          "line": 8,
+          "quote": "// TAN-2787 (2026-09-28 review, item 6) cut the palette from 4 colours to"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 47,
+          "quote": "label: \"All Clear\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 51,
+          "quote": "label: \"Caution — Yellow\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 56,
+          "quote": "label: \"Warning\","
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 37,
+          "quote": "safeBadge: \"Safe to work\","
+        },
+        {
+          "file": "frontend-2.0-weather-station @ c13092f",
+          "line": 0,
+          "quote": "Lightning: dedicated alarm history table + alarm activity chart (#181)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ d8392d1",
+          "line": 0,
+          "quote": "TAN-2786: add CSV export to the alarm history table (#189)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ dc7414f",
+          "line": 0,
+          "quote": "TAN-2785: move the full state-history table into Settings › Lightning (#188)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ 51b74dd",
+          "line": 0,
+          "quote": "TAN-2784: remove the \"Alerts sent to the alarming service\" panel (#187)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ 2b815c4",
+          "line": 0,
+          "quote": "TAN-1901: remove Lightning alert routing panel (#174)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ 9794639",
+          "line": 0,
+          "quote": "feat(lightning): pulse a red frame around the screen during RED (#176)"
+        },
+        {
+          "file": "frontend-2.0-weather-station @ v1.0.5-ConnectedEnvironmentApp-production",
+          "line": 0,
+          "quote": "TAN-2926: hide the Zones tab and everything zone-related from the Gas UI (#209)"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/LightningSensor/translations/en.ts",
+          "line": 165,
+          "quote": "Set manually until Management Maps supports lightning sensor locations."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "",
+      "caveats": "Older footage showing four colours, an Orange state or the alerts-sent panel is out of date. Map tiles in production come from OpenStreetMap (Esri swap not yet live)."
+    },
+    {
+      "id": "N03",
+      "claim": "NEW cross-cutting (2026-09-21 onward): Settings is split into Connected Products, Weather Station (safety policy) and Lightning, each behind its own weatherstation: grant; the old 'edit' permission no longer opens the policy screen or the lightning write.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station @ 600f1f7",
+          "line": 0,
+          "quote": "feat(weather-station): gate Settings policy management on two new permissions (#359)"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/constants/permissions.ts",
+          "line": 32,
+          "quote": "export const SETTINGS_PRODUCTS_ACCESS = [WS_SETTINGS_PRODUCTS, PB_MANAGE];"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/constants/permissions.ts",
+          "line": 50,
+          "quote": "export const WEATHER_SETTINGS_ACCESS = [WS_MANAGE_WEATHER_SETTINGS];"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/Settings/constants/permissions.ts",
+          "line": 60,
+          "quote": "export const LIGHTNING_SETTINGS_ACCESS = [WS_MANAGE_LIGHTNING_SETTINGS];"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 216,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageLightningSettings)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 31,
+          "quote": "public const string ManageWeatherSettings = $\"{Prefix}:manage-weather-settings\";"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "",
+      "caveats": "A user who could previously edit may now see no Settings entries until granted the new permissions."
+    },
+    {
+      "id": "N04",
+      "claim": "NEW in Weather Station / Reports (late September): a Reports entry with a Maximum Values Report; every time value on the weather screens now shows in Saudi time (Asia/Riyadh).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station @ 4db3aeb",
+          "line": 0,
+          "quote": "TAN-2810: Weather Station Maximum Values Report — Reports nav item, route, and screen (#195)"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/components/VerticalSideNav.tsx",
+          "line": 187,
+          "quote": "id: \"reports\","
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "",
+      "caveats": "Reports is gated on the weather product flag. Time-zone fix commits: f3e49a1 and 8dfbae9 in the front-end repo (not quoted here)."
+    },
+    {
+      "id": "D01",
+      "claim": "Intended story (program doc): 26 features across lightning warning, gas detection and the weather platform; 'one backend, three products' lets a client buy Gas or Lightning alone; lightning: only GREEN is safe, UNKNOWN/FAULT/OFFLINE/stale never render safe; gas: Blackline connection, continuous readings, alerts in seconds with acks flowing back, safety analytics computed by WakeCap, a gas app, and a go-live switch. Several of these are not in code as written (acks back to vendor, analytics, notifications).",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 128,
+          "quote": "the entitlement model that lets a client buy Gas or Lightning alone"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 128,
+          "quote": "Shared/ + Products/ structure guarded by architecture tests"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 63,
+          "quote": "only GREEN is safe, UNKNOWN/FAULT/OFFLINE/stale never render safe"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 114,
+          "quote": "portal acks written back into Blackline Live"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 116,
+          "quote": "G4 · Safety analytics, computed by WakeCap"
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 116,
+          "quote": "Blackline serves snapshots; the history and the math are ours."
+        },
+        {
+          "file": "ConnectedEnvironment—Zero-OpenProgram.md",
+          "line": 32,
+          "quote": "The single biggest unknown is unchanged from the initiative doc"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "",
+      "caveats": "The program doc is a plan dated 2026-08-27; use code facts above for anything shown on screen. The site go-live date is unknown and must not be stated."
+    }
+  ],
+  "diagram_ready": {
+    "umbrella_layers": [
+      "Devices and vendor clouds: weather station, lightning warning unit, portable gas detectors (via the manufacturer's cloud)",
+      "Connection paths: mesh gateways to the cloud (weather and lightning), Modbus-style frames on one shared mesh transport, vendor-cloud API (gas)",
+      "Cloud intake: AWS IoT, queues and dead-letter queues (lightning), sensors-service and time-series store (weather), scheduled poll of the vendor cloud (gas)",
+      "One WakeCap backend: Weather Station, Lightning Sensor and Gas Detector products in one service, one permission family, per-project product switches",
+      "One portal area: Connected Environment menu with Weather Station, Gas, Lightning, Reports and Settings; wallboard and phone views",
+      "Action layer: stop-work and safety states, alarm history, alerts sent to the site's alarming system (lightning; weather)",
+      "DIRECTION, not live today: an AI agent that can read everything about the site environment (today: read tools for weather only)"
+    ],
+    "integration_lanes": [
+      "Weather station -> wireless mesh -> gateway -> cloud intake (AWS IoT / queue) -> decode and store (time series) -> WakeCap backend (reads only) -> portal, polled about once a minute",
+      "Lightning warning unit -> mesh node -> gateway -> cloud decode -> dedicated queue (+ unreadable-message queue) -> WakeCap backend consumer -> state, history, stale check -> portal, polled about every 30 seconds; RED/fault/offline also raise an alert in the alarming system",
+      "Gas detector -> manufacturer's cloud (black box) <- WakeCap signs in and polls on a timer; optional push messages are only acknowledged -> neutral gas store -> alerts and site state -> portal, polled about once a minute; acknowledgements stay in WakeCap",
+      "NOT LIVE / not planned: gas detector on the site mesh (cancelled)"
+    ]
+  },
+  "open_questions": [
+    "Is the backend build with the 2026-10-04 merges (gas acknowledge/close and live/acknowledged counts; lightning admin-set location) deployed to production? The production front end (1.0.5) already calls them. If not, the Acknowledge/Close buttons and Set-location will fail on camera.",
+    "Is the lightning staleness multiplier in production 4x (code, since 2026-09-22) or still 3x? The runbook and a front-end helper still say 3x. Avoid quoting a multiplier either way.",
+    "Lightning radii: does editing them in Settings change anything the device or an alerting service acts on, or are they reference-only as the backend says? The dialog copy says 'the radii the alerting service uses'. Product owner must pick one story before the lightning video.",
+    "Gas in production: is the Blackline poll running against the live account and which project is it bound to (code default is the testing project)? Is Blackline's push registered to the production endpoint? Are the Gas rows visible in the production menu for the demo project?",
+    "Which projects have which products switched on (project_product)? Needed to know which login shows all three rows in the Connected Environment menu.",
+    "Does the portal shell's sun-and-cloud entry with the tooltip 'Connected Environment' exist as described? It is outside the repos; verify with a logged-in recording.",
+    "Detector vendor and model for lightning (only a vendor-guidance item in the program doc) and for the weather station: not in code or docs. Confirm before naming any brand.",
+    "Queue/rule existence and DLQ alarms for lightning (infrastructure repo not local): confirm in production before saying messages 'are never lost' on camera beyond the queue-plus-DLQ design.",
+    "Weather production deployment: which sensors-service modes (pipeline vs sqs vs both) and which queue/topic the weather station frames use in production (environment settings were deliberately not read).",
+    "Is the MCP endpoint exposed in production, and are the agent-composition flags on anywhere? (Direction story only; today's tools are weather-only.)",
+    "Committed secrets, paths only (contents not read): wakecap-weather-station/Wakecap.WeatherStation.Web.API/.env, appsettings.Development.json, appsettings.json, appsettings.local.json, http-client.private.env.json (all tracked in git; the architecture report flags appsettings.Development.json as holding real-looking credentials); sensors-service/ci-cd-scripts/env-files-example/.env_* (example files). Rotation/purge is already a planned item (secrets purge), not done here.",
+    "Fadhili lightning go-live date: UNKNOWN. Not stated anywhere in this research."
+  ]
+}

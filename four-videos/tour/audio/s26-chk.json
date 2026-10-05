@@ -1,0 +1,380 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:04,040"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 4040
+			},
+			"text": " Set Location lets you click the map or type coordinates.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.816942,
+					"t_dtw": -1
+				},
+				{
+					"text": " Set",
+					"timestamps": {
+						"from": "00:00:00,260",
+						"to": "00:00:00,260"
+					},
+					"offsets": {
+						"from": 260,
+						"to": 260
+					},
+					"id": 8928,
+					"p": 0.950971,
+					"t_dtw": -1
+				},
+				{
+					"text": " Loc",
+					"timestamps": {
+						"from": "00:00:00,310",
+						"to": "00:00:00,520"
+					},
+					"offsets": {
+						"from": 310,
+						"to": 520
+					},
+					"id": 12859,
+					"p": 0.506647,
+					"t_dtw": -1
+				},
+				{
+					"text": "ation",
+					"timestamps": {
+						"from": "00:00:00,520",
+						"to": "00:00:00,950"
+					},
+					"offsets": {
+						"from": 520,
+						"to": 950
+					},
+					"id": 399,
+					"p": 0.999746,
+					"t_dtw": -1
+				},
+				{
+					"text": " lets",
+					"timestamps": {
+						"from": "00:00:00,950",
+						"to": "00:00:01,300"
+					},
+					"offsets": {
+						"from": 950,
+						"to": 1300
+					},
+					"id": 6653,
+					"p": 0.983612,
+					"t_dtw": -1
+				},
+				{
+					"text": " you",
+					"timestamps": {
+						"from": "00:00:01,300",
+						"to": "00:00:01,530"
+					},
+					"offsets": {
+						"from": 1300,
+						"to": 1530
+					},
+					"id": 291,
+					"p": 0.999506,
+					"t_dtw": -1
+				},
+				{
+					"text": " click",
+					"timestamps": {
+						"from": "00:00:01,580",
+						"to": "00:00:01,990"
+					},
+					"offsets": {
+						"from": 1580,
+						"to": 1990
+					},
+					"id": 2052,
+					"p": 0.983787,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:01,990",
+						"to": "00:00:02,250"
+					},
+					"offsets": {
+						"from": 1990,
+						"to": 2250
+					},
+					"id": 264,
+					"p": 0.992549,
+					"t_dtw": -1
+				},
+				{
+					"text": " map",
+					"timestamps": {
+						"from": "00:00:02,250",
+						"to": "00:00:02,460"
+					},
+					"offsets": {
+						"from": 2250,
+						"to": 2460
+					},
+					"id": 4471,
+					"p": 0.986782,
+					"t_dtw": -1
+				},
+				{
+					"text": " or",
+					"timestamps": {
+						"from": "00:00:02,580",
+						"to": "00:00:02,710"
+					},
+					"offsets": {
+						"from": 2580,
+						"to": 2710
+					},
+					"id": 420,
+					"p": 0.962294,
+					"t_dtw": -1
+				},
+				{
+					"text": " type",
+					"timestamps": {
+						"from": "00:00:02,710",
+						"to": "00:00:03,050"
+					},
+					"offsets": {
+						"from": 2710,
+						"to": 3050
+					},
+					"id": 2010,
+					"p": 0.996499,
+					"t_dtw": -1
+				},
+				{
+					"text": " coordinates",
+					"timestamps": {
+						"from": "00:00:03,050",
+						"to": "00:00:03,780"
+					},
+					"offsets": {
+						"from": 3050,
+						"to": 3780
+					},
+					"id": 21056,
+					"p": 0.994431,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:03,820",
+						"to": "00:00:04,030"
+					},
+					"offsets": {
+						"from": 3820,
+						"to": 4030
+					},
+					"id": 13,
+					"p": 0.951219,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_202]",
+					"timestamps": {
+						"from": "00:00:04,040",
+						"to": "00:00:04,040"
+					},
+					"offsets": {
+						"from": 4040,
+						"to": 4040
+					},
+					"id": 50567,
+					"p": 0.031522,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,040",
+				"to": "00:00:06,680"
+			},
+			"offsets": {
+				"from": 4040,
+				"to": 6680
+			},
+			"text": " The location is marked Temporary.",
+			"tokens": [
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:04,320",
+						"to": "00:00:04,320"
+					},
+					"offsets": {
+						"from": 4320,
+						"to": 4320
+					},
+					"id": 440,
+					"p": 0.995704,
+					"t_dtw": -1
+				},
+				{
+					"text": " location",
+					"timestamps": {
+						"from": "00:00:04,380",
+						"to": "00:00:05,070"
+					},
+					"offsets": {
+						"from": 4380,
+						"to": 5070
+					},
+					"id": 4914,
+					"p": 0.956298,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:05,070",
+						"to": "00:00:05,250"
+					},
+					"offsets": {
+						"from": 5070,
+						"to": 5250
+					},
+					"id": 307,
+					"p": 0.99899,
+					"t_dtw": -1
+				},
+				{
+					"text": " marked",
+					"timestamps": {
+						"from": "00:00:05,250",
+						"to": "00:00:05,770"
+					},
+					"offsets": {
+						"from": 5250,
+						"to": 5770
+					},
+					"id": 12658,
+					"p": 0.9996,
+					"t_dtw": -1
+				},
+				{
+					"text": " Tem",
+					"timestamps": {
+						"from": "00:00:05,970",
+						"to": "00:00:06,030"
+					},
+					"offsets": {
+						"from": 5970,
+						"to": 6030
+					},
+					"id": 8095,
+					"p": 0.418998,
+					"t_dtw": -1
+				},
+				{
+					"text": "por",
+					"timestamps": {
+						"from": "00:00:06,170",
+						"to": "00:00:06,370"
+					},
+					"offsets": {
+						"from": 6170,
+						"to": 6370
+					},
+					"id": 2816,
+					"p": 0.99988,
+					"t_dtw": -1
+				},
+				{
+					"text": "ary",
+					"timestamps": {
+						"from": "00:00:06,370",
+						"to": "00:00:06,620"
+					},
+					"offsets": {
+						"from": 6370,
+						"to": 6620
+					},
+					"id": 822,
+					"p": 0.999613,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:06,680",
+						"to": "00:00:06,680"
+					},
+					"offsets": {
+						"from": 6680,
+						"to": 6680
+					},
+					"id": 13,
+					"p": 0.962521,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_334]",
+					"timestamps": {
+						"from": "00:00:06,680",
+						"to": "00:00:06,680"
+					},
+					"offsets": {
+						"from": 6680,
+						"to": 6680
+					},
+					"id": 50699,
+					"p": 0.577113,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

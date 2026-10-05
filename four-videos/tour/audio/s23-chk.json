@@ -1,0 +1,269 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:05,360"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 5360
+			},
+			"text": " Two more tabs, the heat index calculation method and the change history.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.87957,
+					"t_dtw": -1
+				},
+				{
+					"text": " Two",
+					"timestamps": {
+						"from": "00:00:00,280",
+						"to": "00:00:00,400"
+					},
+					"offsets": {
+						"from": 280,
+						"to": 400
+					},
+					"id": 4453,
+					"p": 0.656328,
+					"t_dtw": -1
+				},
+				{
+					"text": " more",
+					"timestamps": {
+						"from": "00:00:00,400",
+						"to": "00:00:00,940"
+					},
+					"offsets": {
+						"from": 400,
+						"to": 940
+					},
+					"id": 544,
+					"p": 0.990197,
+					"t_dtw": -1
+				},
+				{
+					"text": " tabs",
+					"timestamps": {
+						"from": "00:00:00,940",
+						"to": "00:00:01,330"
+					},
+					"offsets": {
+						"from": 940,
+						"to": 1330
+					},
+					"id": 20743,
+					"p": 0.996552,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:01,500",
+						"to": "00:00:01,540"
+					},
+					"offsets": {
+						"from": 1500,
+						"to": 1540
+					},
+					"id": 11,
+					"p": 0.622833,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:01,730",
+						"to": "00:00:01,770"
+					},
+					"offsets": {
+						"from": 1730,
+						"to": 1770
+					},
+					"id": 264,
+					"p": 0.904784,
+					"t_dtw": -1
+				},
+				{
+					"text": " heat",
+					"timestamps": {
+						"from": "00:00:01,770",
+						"to": "00:00:02,070"
+					},
+					"offsets": {
+						"from": 1770,
+						"to": 2070
+					},
+					"id": 3738,
+					"p": 0.47791,
+					"t_dtw": -1
+				},
+				{
+					"text": " index",
+					"timestamps": {
+						"from": "00:00:02,070",
+						"to": "00:00:02,450"
+					},
+					"offsets": {
+						"from": 2070,
+						"to": 2450
+					},
+					"id": 8186,
+					"p": 0.99507,
+					"t_dtw": -1
+				},
+				{
+					"text": " calculation",
+					"timestamps": {
+						"from": "00:00:02,450",
+						"to": "00:00:03,290"
+					},
+					"offsets": {
+						"from": 2450,
+						"to": 3290
+					},
+					"id": 17108,
+					"p": 0.995361,
+					"t_dtw": -1
+				},
+				{
+					"text": " method",
+					"timestamps": {
+						"from": "00:00:03,290",
+						"to": "00:00:03,610"
+					},
+					"offsets": {
+						"from": 3290,
+						"to": 3610
+					},
+					"id": 3170,
+					"p": 0.991792,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:03,920",
+						"to": "00:00:03,970"
+					},
+					"offsets": {
+						"from": 3920,
+						"to": 3970
+					},
+					"id": 293,
+					"p": 0.711877,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:03,970",
+						"to": "00:00:04,160"
+					},
+					"offsets": {
+						"from": 3970,
+						"to": 4160
+					},
+					"id": 264,
+					"p": 0.991355,
+					"t_dtw": -1
+				},
+				{
+					"text": " change",
+					"timestamps": {
+						"from": "00:00:04,190",
+						"to": "00:00:04,590"
+					},
+					"offsets": {
+						"from": 4190,
+						"to": 4590
+					},
+					"id": 1319,
+					"p": 0.986452,
+					"t_dtw": -1
+				},
+				{
+					"text": " history",
+					"timestamps": {
+						"from": "00:00:04,590",
+						"to": "00:00:05,070"
+					},
+					"offsets": {
+						"from": 4590,
+						"to": 5070
+					},
+					"id": 2503,
+					"p": 0.996371,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:05,360",
+						"to": "00:00:05,360"
+					},
+					"offsets": {
+						"from": 5360,
+						"to": 5360
+					},
+					"id": 13,
+					"p": 0.956214,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_268]",
+					"timestamps": {
+						"from": "00:00:05,360",
+						"to": "00:00:05,360"
+					},
+					"offsets": {
+						"from": 5360,
+						"to": 5360
+					},
+					"id": 50633,
+					"p": 0.0967168,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

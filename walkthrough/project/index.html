@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1920px; height:1080px; overflow:hidden; background:#000; color:#fff;
+  font-family:"Inter", -apple-system, system-ui, sans-serif; }
+.clip { position:absolute; inset:0; opacity:0; }
+.grid { background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px); background-size:40px 40px; }
+.card { display:flex; flex-direction:column; justify-content:center; padding:0 140px; background-color:#000; }
+.eyebrow { align-self:flex-start; font-size:22px; letter-spacing:.24em; text-transform:uppercase; color:#FF8300; border:2px solid #FF8300; padding:8px 18px; margin-bottom:34px; font-weight:600; }
+.card h1 { font-size:104px; line-height:1.04; font-weight:800; letter-spacing:-.02em; max-width:1500px; }
+.card .sub { margin-top:34px; font-size:38px; line-height:1.4; color:rgba(255,255,255,.74); max-width:1300px; }
+.top { position:absolute; left:0; right:0; top:0; height:56px; background:#000; border-bottom:2px solid #FF8300; display:flex; align-items:center; justify-content:space-between; padding:0 96px; }
+.top .ch { font-size:24px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+.top .ch b { color:#FF8300; margin-right:14px; }
+.top .path { font-size:22px; color:rgba(255,255,255,.78); letter-spacing:.02em; }
+.top .path i { font-style:normal; color:#FF8300; margin-right:10px; letter-spacing:.14em; font-size:18px; font-weight:700; }
+.shot { position:absolute; left:96px; top:56px; width:1728px; height:889px; border:1px solid #2b2b2b; }
+.cap { position:absolute; left:96px; right:96px; top:965px; height:70px; display:flex; align-items:center; padding-left:22px; border-left:6px solid #FF8300; font-size:38px; font-weight:600; opacity:0; }
+.pips { position:absolute; left:96px; right:96px; top:1054px; height:8px; display:flex; gap:10px; }
+.pip { flex:1; background:#2b2b2b; } .pip.done { background:rgba(255,131,0,.45); } .pip.on { background:#FF8300; }
+.co { position:absolute; border:5px solid #FF8300; opacity:0; box-shadow:0 0 0 2px rgba(0,0,0,.35); }
+.lab { position:absolute; opacity:0; display:flex; align-items:center; gap:12px; background:#000; color:#fff; font-size:26px; font-weight:700; padding:6px 16px 6px 6px; border-left:6px solid #FF8300; white-space:nowrap; }
+.lab .n { background:#FF8300; color:#000; min-width:34px; height:34px; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:800; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="196.64" data-width="1920" data-height="1080">
+<audio id="narration" class="clip" src="narration.m4a" data-start="0" data-duration="196.64" data-track-index="0"></audio>
+<div id="intro" class="clip card grid" data-start="0.0" data-duration="13.7" data-track-index="1">
+  <span class="eyebrow">WakeCap · Connected Environment</span>
+  <h1>How to explore Connected Environment</h1>
+  <p class="sub">Six live pages. Where to click, what you see, how to read it. Captured read-only.</p>
+</div>
+<div id="g0" class="clip" data-start="13.7" data-duration="37.5" data-track-index="1">
+  <div class="top"><div class="ch"><b>01</b>Weather Station</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Weather Station</div></div>
+  <img class="shot" src="assets/ws.png" alt="Weather Station">
+  <div class="cap" id="g0_b0_cap">Where to click: the left rail, then Weather Station</div>
+  <div class="co" id="g0_b0_c0" style="left:105.0px;top:230.6px;width:32.4px;height:28.8px"></div>
+  <div class="lab" id="g0_b0_c0_l" style="left:147.4px;top:224.0px"><span class="n">1</span>Connected Environment</div>
+  <div class="co" id="g0_b0_c1" style="left:153.6px;top:182.9px;width:171.9px;height:39.6px"></div>
+  <div class="lab" id="g0_b0_c1_l" style="left:153.6px;top:136.9px"><span class="n">2</span>Weather Station</div>
+  <div class="cap" id="g0_b1_cap">Read the colour first. Red means Danger.</div>
+  <div class="co" id="g0_b1_c0" style="left:348.0px;top:201.8px;width:1461.6px;height:55.8px"></div>
+  <div class="lab" id="g0_b1_c0_l" style="left:348.0px;top:155.8px"><span class="n">1</span>Verdict strip</div>
+  <div class="cap" id="g0_b2_cap">Check the update time. Old data can look fine.</div>
+  <div class="co" id="g0_b2_c0" style="left:1208.4px;top:222.5px;width:319.5px;height:23.4px"></div>
+  <div class="lab" id="g0_b2_c0_l" style="left:1208.4px;top:176.5px"><span class="n">1</span>Confidence and last update</div>
+  <div class="cap" id="g0_b3_cap">Band colour, work time, rest time, water</div>
+  <div class="co" id="g0_b3_c0" style="left:364.2px;top:382.7px;width:519.3px;height:393.3px"></div>
+  <div class="lab" id="g0_b3_c0_l" style="left:364.2px;top:336.7px"><span class="n">1</span>Heat Index card</div>
+  <div class="co" id="g0_b3_c1" style="left:1131.0px;top:288.2px;width:180.0px;height:23.4px"></div>
+  <div class="lab" id="g0_b3_c1_l" style="left:1131.0px;top:242.2px"><span class="n">2</span>Data as of</div>
+  <div class="cap" id="g0_b4_cap">Online or offline. Readiness: Not ready.</div>
+  <div class="co" id="g0_b4_c0" style="left:1449.6px;top:272.9px;width:360.0px;height:312.3px"></div>
+  <div class="lab" id="g0_b4_c0_l" style="left:1449.6px;top:226.9px"><span class="n">1</span>Station health</div>
+  <div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g1" class="clip" data-start="51.2" data-duration="4.19" data-track-index="1">
+  <div class="top"><div class="ch"><b>01</b>Weather Station</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Weather Station</div></div>
+  <img class="shot" src="assets/ws_steps.png" alt="Weather Station">
+  <div class="cap" id="g1_b0_cap">View Recommended Steps</div>
+  <div class="co" id="g1_b0_c0" style="left:1455.0px;top:142.4px;width:356.4px;height:100.8px"></div>
+  <div class="lab" id="g1_b0_c0_l" style="left:1386px;top:96.4px"><span class="n">1</span>Steps, in priority order</div>
+  <div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g2" class="clip" data-start="55.39" data-duration="22.32" data-track-index="1">
+  <div class="top"><div class="ch"><b>02</b>Reports</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Reports</div></div>
+  <img class="shot" src="assets/rp.png" alt="Reports">
+  <div class="cap" id="g2_b0_cap">Choose Reports, then pick a period</div>
+  <div class="co" id="g2_b0_c0" style="left:153.6px;top:226.1px;width:171.9px;height:39.6px"></div>
+  <div class="lab" id="g2_b0_c0_l" style="left:153.6px;top:180.1px"><span class="n">1</span>Reports</div>
+  <div class="co" id="g2_b0_c1" style="left:348.0px;top:194.6px;width:1461.6px;height:32.4px"></div>
+  <div class="lab" id="g2_b0_c1_l" style="left:1571.6px;top:189.8px"><span class="n">2</span>Period</div>
+  <div class="cap" id="g2_b1_cap">Maximums for the period</div>
+  <div class="co" id="g2_b1_c0" style="left:348.0px;top:242.3px;width:723.6px;height:127.8px"></div>
+  <div class="lab" id="g2_b1_c0_l" style="left:348.0px;top:196.3px"><span class="n">1</span>Max heat index</div>
+  <div class="co" id="g2_b1_c1" style="left:1086.0px;top:242.3px;width:723.6px;height:127.8px"></div>
+  <div class="lab" id="g2_b1_c1_l" style="left:1086.0px;top:196.3px"><span class="n">2</span>Max wind speed</div>
+  <div class="cap" id="g2_b2_cap">Daily breakdown, band dot, Excel export</div>
+  <div class="co" id="g2_b2_c0" style="left:861.0px;top:486.2px;width:99.0px;height:450.0px"></div>
+  <div class="lab" id="g2_b2_c0_l" style="left:861.0px;top:440.2px"><span class="n">1</span>Band dot</div>
+  <div class="co" id="g2_b2_c1" style="left:1698.9px;top:147.8px;width:110.7px;height:32.4px"></div>
+  <div class="lab" id="g2_b2_c1_l" style="left:1521px;top:101.8px"><span class="n">2</span>Export to Excel</div>
+  <div class="pips"><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g3" class="clip" data-start="77.71" data-duration="14.53" data-track-index="1">
+  <div class="top"><div class="ch"><b>03</b>Connected Products</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Settings › Connected Products</div></div>
+  <img class="shot" src="assets/cp.png" alt="Connected Products">
+  <div class="cap" id="g3_b0_cap">Settings, then Connected Products</div>
+  <div class="co" id="g3_b0_c0" style="left:153.6px;top:324.2px;width:171.9px;height:39.6px"></div>
+  <div class="lab" id="g3_b0_c0_l" style="left:153.6px;top:371.8px"><span class="n">1</span>Settings</div>
+  <div class="co" id="g3_b0_c1" style="left:344.4px;top:180.2px;width:179.1px;height:36.0px"></div>
+  <div class="lab" id="g3_b0_c1_l" style="left:344.4px;top:134.2px"><span class="n">2</span>Connected Products</div>
+  <div class="cap" id="g3_b1_cap">Active or Inactive. Never touched in this tour.</div>
+  <div class="co" id="g3_b1_c0" style="left:556.8px;top:182.0px;width:1245.6px;height:41.4px"></div>
+  <div class="lab" id="g3_b1_c0_l" style="left:1309.4px;top:181.7px"><span class="n">1</span>Active: on, in the menu</div>
+  <div class="co" id="g3_b1_c1" style="left:556.8px;top:224.3px;width:1245.6px;height:40.5px"></div>
+  <div class="lab" id="g3_b1_c1_l" style="left:1204.4px;top:223.6px"><span class="n">2</span>Inactive: off, not in the menu</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g4" class="clip" data-start="92.24" data-duration="25.91" data-track-index="1">
+  <div class="top"><div class="ch"><b>04</b>Site Safety Policy</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Settings › Weather Station</div></div>
+  <img class="shot" src="assets/st1.png" alt="Site Safety Policy">
+  <div class="cap" id="g4_b0_cap">The Site Safety Policy</div>
+  <div class="co" id="g4_b0_c0" style="left:344.4px;top:219.8px;width:179.1px;height:36.0px"></div>
+  <div class="lab" id="g4_b0_c0_l" style="left:344.4px;top:173.8px"><span class="n">1</span>Weather Station</div>
+  <div class="co" id="g4_b0_c1" style="left:675.6px;top:254.9px;width:633.6px;height:40.5px"></div>
+  <div class="lab" id="g4_b0_c1_l" style="left:675.6px;top:208.9px"><span class="n">2</span>Changes affect everyone</div>
+  <div class="cap" id="g4_b1_cap">The current band and the cycle in force</div>
+  <div class="co" id="g4_b1_c0" style="left:675.6px;top:317.0px;width:1008.0px;height:90.9px"></div>
+  <div class="lab" id="g4_b1_c0_l" style="left:675.6px;top:271.0px"><span class="n">1</span>Right now</div>
+  <div class="cap" id="g4_b2_cap">Red bars: days the limit would have stopped work</div>
+  <div class="co" id="g4_b2_c0" style="left:676.5px;top:502.4px;width:1006.2px;height:212.4px"></div>
+  <div class="lab" id="g4_b2_c0_l" style="left:676.5px;top:456.4px"><span class="n">1</span>Limit and last 30 days</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g5" class="clip" data-start="118.15" data-duration="6.88" data-track-index="1">
+  <div class="top"><div class="ch"><b>04</b>Site Safety Policy</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Settings › Weather Station</div></div>
+  <img class="shot" src="assets/st2a.png" alt="Site Safety Policy">
+  <div class="cap" id="g5_b0_cap">Normal to Extreme Danger. The line is now.</div>
+  <div class="co" id="g5_b0_c0" style="left:675.6px;top:236.0px;width:1008.0px;height:157.5px"></div>
+  <div class="lab" id="g5_b0_c0_l" style="left:675.6px;top:190.0px"><span class="n">1</span>Heat index bands</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g6" class="clip" data-start="125.03" data-duration="6.5" data-track-index="1">
+  <div class="top"><div class="ch"><b>04</b>Site Safety Policy</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Settings › Weather Station</div></div>
+  <img class="shot" src="assets/st2b.png" alt="Site Safety Policy">
+  <div class="cap" id="g6_b0_cap">The band you are in sets the guidance</div>
+  <div class="co" id="g6_b0_c0" style="left:675.6px;top:423.2px;width:1008.0px;height:289.8px"></div>
+  <div class="lab" id="g6_b0_c0_l" style="left:675.6px;top:377.2px"><span class="n">1</span>Work, rest, water per band</div>
+  <div class="co" id="g6_b0_c1" style="left:675.6px;top:720.2px;width:246.6px;height:225.0px"></div>
+  <div class="lab" id="g6_b0_c1_l" style="left:675.6px;top:674.2px"><span class="n">2</span>Current band</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g7" class="clip" data-start="131.53" data-duration="5.74" data-track-index="1">
+  <div class="top"><div class="ch"><b>04</b>Site Safety Policy</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Settings › Weather Station</div></div>
+  <img class="shot" src="assets/st3.png" alt="Site Safety Policy">
+  <div class="cap" id="g7_b0_cap">Change history: none recorded on this project</div>
+  <div class="co" id="g7_b0_c0" style="left:675.6px;top:484.4px;width:1008.0px;height:122.4px"></div>
+  <div class="lab" id="g7_b0_c0_l" style="left:675.6px;top:438.4px"><span class="n">1</span>Change history</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="g8" class="clip" data-start="137.27" data-duration="28.4" data-track-index="1">
+  <div class="top"><div class="ch"><b>05</b>Lightning</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Lightning</div></div>
+  <img class="shot" src="assets/lt1.png" alt="Lightning">
+  <div class="cap" id="g8_b0_cap">Alerts are a backup. Cabinet lights and sounder first.</div>
+  <div class="co" id="g8_b0_c0" style="left:105.0px;top:230.6px;width:32.4px;height:28.8px"></div>
+  <div class="lab" id="g8_b0_c0_l" style="left:147.4px;top:224.0px"><span class="n">1</span>Connected Environment</div>
+  <div class="co" id="g8_b0_c1" style="left:153.6px;top:182.9px;width:171.9px;height:39.6px"></div>
+  <div class="lab" id="g8_b0_c1_l" style="left:153.6px;top:136.9px"><span class="n">2</span>Lightning</div>
+  <div class="co" id="g8_b0_c2" style="left:348.9px;top:153.2px;width:1459.8px;height:46.8px"></div>
+  <div class="lab" id="g8_b0_c2_l" style="left:1465.7px;top:155.6px"><span class="n">3</span>Backup notice</div>
+  <div class="cap" id="g8_b1_cap">All Clear, Safe to work</div>
+  <div class="co" id="g8_b1_c0" style="left:374.1px;top:296.3px;width:432.9px;height:84.6px"></div>
+  <div class="lab" id="g8_b1_c0_l" style="left:374.1px;top:250.3px"><span class="n">1</span>State</div>
+  <div class="cap" id="g8_b2_cap">Red within 13 km, yellow 13 to 20 km</div>
+  <div class="co" id="g8_b2_c0" style="left:389.4px;top:396.2px;width:402.3px;height:166.5px"></div>
+  <div class="lab" id="g8_b2_c0_l" style="left:389.4px;top:350.2px"><span class="n">1</span>Alert zones</div>
+  <div class="cap" id="g8_b3_cap">How long the state has lasted. Saudi time.</div>
+  <div class="co" id="g8_b3_c0" style="left:389.4px;top:578.0px;width:402.3px;height:80.1px"></div>
+  <div class="lab" id="g8_b3_c0_l" style="left:389.4px;top:532.0px"><span class="n">1</span>Held for</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="g9" class="clip" data-start="165.67" data-duration="9.98" data-track-index="1">
+  <div class="top"><div class="ch"><b>05</b>Lightning</div><div class="path"><i>CLICK</i>Left rail › Connected Environment › Lightning</div></div>
+  <img class="shot" src="assets/lt2.png" alt="Lightning">
+  <div class="cap" id="g9_b0_cap">Every yellow, orange or red interval. Empty today.</div>
+  <div class="co" id="g9_b0_c0" style="left:348.9px;top:244.1px;width:1459.8px;height:218.7px"></div>
+  <div class="lab" id="g9_b0_c0_l" style="left:348.9px;top:198.1px"><span class="n">1</span>Alarm activity</div>
+  <div class="co" id="g9_b0_c1" style="left:348.9px;top:474.5px;width:1459.8px;height:184.5px"></div>
+  <div class="lab" id="g9_b0_c1_l" style="left:348.9px;top:428.5px"><span class="n">2</span>Alarm history</div>
+  <div class="co" id="g9_b0_c2" style="left:1675.5px;top:495.2px;width:117.0px;height:32.4px"></div>
+  <div class="lab" id="g9_b0_c2_l" style="left:1596px;top:449.2px"><span class="n">3</span>Export CSV</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="g10" class="clip" data-start="175.65" data-duration="15.1" data-track-index="1">
+  <div class="top"><div class="ch"><b>06</b>Another project</div><div class="path"><i>CLICK</i>Project picker, top right</div></div>
+  <img class="shot" src="assets/wc.png" alt="Another project">
+  <div class="cap" id="g10_b0_cap">Switch project at the top right</div>
+  <div class="co" id="g10_b0_c0" style="left:1546.8px;top:61.4px;width:261.0px;height:25.2px"></div>
+  <div class="lab" id="g10_b0_c0_l" style="left:1536px;top:94.6px"><span class="n">1</span>Project picker</div>
+  <div class="cap" id="g10_b1_cap">Same layout. Danger, one station online.</div>
+  <div class="co" id="g10_b1_c0" style="left:348.0px;top:201.8px;width:1461.6px;height:55.8px"></div>
+  <div class="lab" id="g10_b1_c0_l" style="left:348.0px;top:155.8px"><span class="n">1</span>Verdict strip</div>
+  <div class="co" id="g10_b1_c1" style="left:1449.6px;top:272.9px;width:360.0px;height:135.0px"></div>
+  <div class="lab" id="g10_b1_c1_l" style="left:1449.6px;top:226.9px"><span class="n">2</span>Readiness: Ready</div>
+  <div class="cap" id="g10_b2_cap">Each reading shows its band or limit</div>
+  <div class="co" id="g10_b2_c0" style="left:1449.6px;top:567.2px;width:360.0px;height:166.5px"></div>
+  <div class="lab" id="g10_b2_c0_l" style="left:1341px;top:521.2px"><span class="n">1</span>Readings behind the verdict</div>
+  <div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span></div>
+</div>
+<div id="outro" class="clip card grid" data-start="190.75" data-duration="5.89" data-track-index="1">
+  <span class="eyebrow">Connected Environment</span>
+  <h1>Read the verdict. Check the time. Follow the steps.</h1>
+  <p class="sub">Every page in this tour opens from the same menu, inside the portal.</p>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+tl.to("#intro",{opacity:1,duration:0.4},0.0);
+tl.to("#intro",{opacity:0,duration:0.3},13.4);
+tl.set("#g0_b0_cap",{opacity:0},13.7);
+tl.to("#g0_b0_cap",{opacity:1,duration:0.3},13.8);
+tl.to("#g0_b0_cap",{opacity:0,duration:0.2},22.29);
+tl.set("#g0_b0_c0",{opacity:0},13.7);
+tl.set("#g0_b0_c0_l",{opacity:0},13.7);
+tl.to("#g0_b0_c0",{opacity:1,duration:0.3},13.95);
+tl.to("#g0_b0_c0_l",{opacity:1,duration:0.3},13.95);
+tl.to("#g0_b0_c0",{opacity:0,duration:0.2},22.29);
+tl.to("#g0_b0_c0_l",{opacity:0,duration:0.2},22.29);
+tl.set("#g0_b0_c1",{opacity:0},13.7);
+tl.set("#g0_b0_c1_l",{opacity:0},13.7);
+tl.to("#g0_b0_c1",{opacity:1,duration:0.3},14.85);
+tl.to("#g0_b0_c1_l",{opacity:1,duration:0.3},14.85);
+tl.to("#g0_b0_c1",{opacity:0,duration:0.2},22.29);
+tl.to("#g0_b0_c1_l",{opacity:0,duration:0.2},22.29);
+tl.set("#g0_b1_cap",{opacity:0},13.7);
+tl.to("#g0_b1_cap",{opacity:1,duration:0.3},22.64);
+tl.to("#g0_b1_cap",{opacity:0,duration:0.2},28.53);
+tl.set("#g0_b1_c0",{opacity:0},13.7);
+tl.set("#g0_b1_c0_l",{opacity:0},13.7);
+tl.to("#g0_b1_c0",{opacity:1,duration:0.3},22.79);
+tl.to("#g0_b1_c0_l",{opacity:1,duration:0.3},22.79);
+tl.to("#g0_b1_c0",{opacity:0,duration:0.2},28.53);
+tl.to("#g0_b1_c0_l",{opacity:0,duration:0.2},28.53);
+tl.set("#g0_b2_cap",{opacity:0},13.7);
+tl.to("#g0_b2_cap",{opacity:1,duration:0.3},28.88);
+tl.to("#g0_b2_cap",{opacity:0,duration:0.2},34.81);
+tl.set("#g0_b2_c0",{opacity:0},13.7);
+tl.set("#g0_b2_c0_l",{opacity:0},13.7);
+tl.to("#g0_b2_c0",{opacity:1,duration:0.3},29.03);
+tl.to("#g0_b2_c0_l",{opacity:1,duration:0.3},29.03);
+tl.to("#g0_b2_c0",{opacity:0,duration:0.2},34.81);
+tl.to("#g0_b2_c0_l",{opacity:0,duration:0.2},34.81);
+tl.set("#g0_b3_cap",{opacity:0},13.7);
+tl.to("#g0_b3_cap",{opacity:1,duration:0.3},35.16);
+tl.to("#g0_b3_cap",{opacity:0,duration:0.2},43.21);
+tl.set("#g0_b3_c0",{opacity:0},13.7);
+tl.set("#g0_b3_c0_l",{opacity:0},13.7);
+tl.to("#g0_b3_c0",{opacity:1,duration:0.3},35.31);
+tl.to("#g0_b3_c0_l",{opacity:1,duration:0.3},35.31);
+tl.to("#g0_b3_c0",{opacity:0,duration:0.2},43.21);
+tl.to("#g0_b3_c0_l",{opacity:0,duration:0.2},43.21);
+tl.set("#g0_b3_c1",{opacity:0},13.7);
+tl.set("#g0_b3_c1_l",{opacity:0},13.7);
+tl.to("#g0_b3_c1",{opacity:1,duration:0.3},36.21);
+tl.to("#g0_b3_c1_l",{opacity:1,duration:0.3},36.21);
+tl.to("#g0_b3_c1",{opacity:0,duration:0.2},43.21);
+tl.to("#g0_b3_c1_l",{opacity:0,duration:0.2},43.21);
+tl.set("#g0_b4_cap",{opacity:0},13.7);
+tl.to("#g0_b4_cap",{opacity:1,duration:0.3},43.56);
+tl.to("#g0_b4_cap",{opacity:0,duration:0.2},50.95);
+tl.set("#g0_b4_c0",{opacity:0},13.7);
+tl.set("#g0_b4_c0_l",{opacity:0},13.7);
+tl.to("#g0_b4_c0",{opacity:1,duration:0.3},43.71);
+tl.to("#g0_b4_c0_l",{opacity:1,duration:0.3},43.71);
+tl.to("#g0_b4_c0",{opacity:0,duration:0.2},50.95);
+tl.to("#g0_b4_c0_l",{opacity:0,duration:0.2},50.95);
+tl.to("#g0",{opacity:1,duration:0.3},13.7);
+tl.to("#g0",{opacity:0,duration:0.25},50.95);
+tl.set("#g1_b0_cap",{opacity:0},51.2);
+tl.to("#g1_b0_cap",{opacity:1,duration:0.3},51.3);
+tl.to("#g1_b0_cap",{opacity:0,duration:0.2},55.14);
+tl.set("#g1_b0_c0",{opacity:0},51.2);
+tl.set("#g1_b0_c0_l",{opacity:0},51.2);
+tl.to("#g1_b0_c0",{opacity:1,duration:0.3},51.45);
+tl.to("#g1_b0_c0_l",{opacity:1,duration:0.3},51.45);
+tl.to("#g1_b0_c0",{opacity:0,duration:0.2},55.14);
+tl.to("#g1_b0_c0_l",{opacity:0,duration:0.2},55.14);
+tl.to("#g1",{opacity:1,duration:0.3},51.2);
+tl.to("#g1",{opacity:0,duration:0.25},55.14);
+tl.set("#g2_b0_cap",{opacity:0},55.39);
+tl.to("#g2_b0_cap",{opacity:1,duration:0.3},55.49);
+tl.to("#g2_b0_cap",{opacity:0,duration:0.2},64.54);
+tl.set("#g2_b0_c0",{opacity:0},55.39);
+tl.set("#g2_b0_c0_l",{opacity:0},55.39);
+tl.to("#g2_b0_c0",{opacity:1,duration:0.3},55.64);
+tl.to("#g2_b0_c0_l",{opacity:1,duration:0.3},55.64);
+tl.to("#g2_b0_c0",{opacity:0,duration:0.2},64.54);
+tl.to("#g2_b0_c0_l",{opacity:0,duration:0.2},64.54);
+tl.set("#g2_b0_c1",{opacity:0},55.39);
+tl.set("#g2_b0_c1_l",{opacity:0},55.39);
+tl.to("#g2_b0_c1",{opacity:1,duration:0.3},56.54);
+tl.to("#g2_b0_c1_l",{opacity:1,duration:0.3},56.54);
+tl.to("#g2_b0_c1",{opacity:0,duration:0.2},64.54);
+tl.to("#g2_b0_c1_l",{opacity:0,duration:0.2},64.54);
+tl.set("#g2_b1_cap",{opacity:0},55.39);
+tl.to("#g2_b1_cap",{opacity:1,duration:0.3},64.89);
+tl.to("#g2_b1_cap",{opacity:0,duration:0.2},70.48);
+tl.set("#g2_b1_c0",{opacity:0},55.39);
+tl.set("#g2_b1_c0_l",{opacity:0},55.39);
+tl.to("#g2_b1_c0",{opacity:1,duration:0.3},65.04);
+tl.to("#g2_b1_c0_l",{opacity:1,duration:0.3},65.04);
+tl.to("#g2_b1_c0",{opacity:0,duration:0.2},70.48);
+tl.to("#g2_b1_c0_l",{opacity:0,duration:0.2},70.48);
+tl.set("#g2_b1_c1",{opacity:0},55.39);
+tl.set("#g2_b1_c1_l",{opacity:0},55.39);
+tl.to("#g2_b1_c1",{opacity:1,duration:0.3},65.94);
+tl.to("#g2_b1_c1_l",{opacity:1,duration:0.3},65.94);
+tl.to("#g2_b1_c1",{opacity:0,duration:0.2},70.48);
+tl.to("#g2_b1_c1_l",{opacity:0,duration:0.2},70.48);
+tl.set("#g2_b2_cap",{opacity:0},55.39);
+tl.to("#g2_b2_cap",{opacity:1,duration:0.3},70.83);
+tl.to("#g2_b2_cap",{opacity:0,duration:0.2},77.46);
+tl.set("#g2_b2_c0",{opacity:0},55.39);
+tl.set("#g2_b2_c0_l",{opacity:0},55.39);
+tl.to("#g2_b2_c0",{opacity:1,duration:0.3},70.98);
+tl.to("#g2_b2_c0_l",{opacity:1,duration:0.3},70.98);
+tl.to("#g2_b2_c0",{opacity:0,duration:0.2},77.46);
+tl.to("#g2_b2_c0_l",{opacity:0,duration:0.2},77.46);
+tl.set("#g2_b2_c1",{opacity:0},55.39);
+tl.set("#g2_b2_c1_l",{opacity:0},55.39);
+tl.to("#g2_b2_c1",{opacity:1,duration:0.3},71.88);
+tl.to("#g2_b2_c1_l",{opacity:1,duration:0.3},71.88);
+tl.to("#g2_b2_c1",{opacity:0,duration:0.2},77.46);
+tl.to("#g2_b2_c1_l",{opacity:0,duration:0.2},77.46);
+tl.to("#g2",{opacity:1,duration:0.3},55.39);
+tl.to("#g2",{opacity:0,duration:0.25},77.46);
+tl.set("#g3_b0_cap",{opacity:0},77.71);
+tl.to("#g3_b0_cap",{opacity:1,duration:0.3},77.81);
+tl.to("#g3_b0_cap",{opacity:0,duration:0.2},82.56);
+tl.set("#g3_b0_c0",{opacity:0},77.71);
+tl.set("#g3_b0_c0_l",{opacity:0},77.71);
+tl.to("#g3_b0_c0",{opacity:1,duration:0.3},77.96);
+tl.to("#g3_b0_c0_l",{opacity:1,duration:0.3},77.96);
+tl.to("#g3_b0_c0",{opacity:0,duration:0.2},82.56);
+tl.to("#g3_b0_c0_l",{opacity:0,duration:0.2},82.56);
+tl.set("#g3_b0_c1",{opacity:0},77.71);
+tl.set("#g3_b0_c1_l",{opacity:0},77.71);
+tl.to("#g3_b0_c1",{opacity:1,duration:0.3},78.86);
+tl.to("#g3_b0_c1_l",{opacity:1,duration:0.3},78.86);
+tl.to("#g3_b0_c1",{opacity:0,duration:0.2},82.56);
+tl.to("#g3_b0_c1_l",{opacity:0,duration:0.2},82.56);
+tl.set("#g3_b1_cap",{opacity:0},77.71);
+tl.to("#g3_b1_cap",{opacity:1,duration:0.3},82.91);
+tl.to("#g3_b1_cap",{opacity:0,duration:0.2},91.99);
+tl.set("#g3_b1_c0",{opacity:0},77.71);
+tl.set("#g3_b1_c0_l",{opacity:0},77.71);
+tl.to("#g3_b1_c0",{opacity:1,duration:0.3},83.06);
+tl.to("#g3_b1_c0_l",{opacity:1,duration:0.3},83.06);
+tl.to("#g3_b1_c0",{opacity:0,duration:0.2},91.99);
+tl.to("#g3_b1_c0_l",{opacity:0,duration:0.2},91.99);
+tl.set("#g3_b1_c1",{opacity:0},77.71);
+tl.set("#g3_b1_c1_l",{opacity:0},77.71);
+tl.to("#g3_b1_c1",{opacity:1,duration:0.3},83.96);
+tl.to("#g3_b1_c1_l",{opacity:1,duration:0.3},83.96);
+tl.to("#g3_b1_c1",{opacity:0,duration:0.2},91.99);
+tl.to("#g3_b1_c1_l",{opacity:0,duration:0.2},91.99);
+tl.to("#g3",{opacity:1,duration:0.3},77.71);
+tl.to("#g3",{opacity:0,duration:0.25},91.99);
+tl.set("#g4_b0_cap",{opacity:0},92.24);
+tl.to("#g4_b0_cap",{opacity:1,duration:0.3},92.34);
+tl.to("#g4_b0_cap",{opacity:0,duration:0.2},101.82);
+tl.set("#g4_b0_c0",{opacity:0},92.24);
+tl.set("#g4_b0_c0_l",{opacity:0},92.24);
+tl.to("#g4_b0_c0",{opacity:1,duration:0.3},92.49);
+tl.to("#g4_b0_c0_l",{opacity:1,duration:0.3},92.49);
+tl.to("#g4_b0_c0",{opacity:0,duration:0.2},101.82);
+tl.to("#g4_b0_c0_l",{opacity:0,duration:0.2},101.82);
+tl.set("#g4_b0_c1",{opacity:0},92.24);
+tl.set("#g4_b0_c1_l",{opacity:0},92.24);
+tl.to("#g4_b0_c1",{opacity:1,duration:0.3},93.39);
+tl.to("#g4_b0_c1_l",{opacity:1,duration:0.3},93.39);
+tl.to("#g4_b0_c1",{opacity:0,duration:0.2},101.82);
+tl.to("#g4_b0_c1_l",{opacity:0,duration:0.2},101.82);
+tl.set("#g4_b1_cap",{opacity:0},92.24);
+tl.to("#g4_b1_cap",{opacity:1,duration:0.3},102.17);
+tl.to("#g4_b1_cap",{opacity:0,duration:0.2},106.98);
+tl.set("#g4_b1_c0",{opacity:0},92.24);
+tl.set("#g4_b1_c0_l",{opacity:0},92.24);
+tl.to("#g4_b1_c0",{opacity:1,duration:0.3},102.32);
+tl.to("#g4_b1_c0_l",{opacity:1,duration:0.3},102.32);
+tl.to("#g4_b1_c0",{opacity:0,duration:0.2},106.98);
+tl.to("#g4_b1_c0_l",{opacity:0,duration:0.2},106.98);
+tl.set("#g4_b2_cap",{opacity:0},92.24);
+tl.to("#g4_b2_cap",{opacity:1,duration:0.3},107.33);
+tl.to("#g4_b2_cap",{opacity:0,duration:0.2},117.9);
+tl.set("#g4_b2_c0",{opacity:0},92.24);
+tl.set("#g4_b2_c0_l",{opacity:0},92.24);
+tl.to("#g4_b2_c0",{opacity:1,duration:0.3},107.48);
+tl.to("#g4_b2_c0_l",{opacity:1,duration:0.3},107.48);
+tl.to("#g4_b2_c0",{opacity:0,duration:0.2},117.9);
+tl.to("#g4_b2_c0_l",{opacity:0,duration:0.2},117.9);
+tl.to("#g4",{opacity:1,duration:0.3},92.24);
+tl.to("#g4",{opacity:0,duration:0.25},117.9);
+tl.set("#g5_b0_cap",{opacity:0},118.15);
+tl.to("#g5_b0_cap",{opacity:1,duration:0.3},118.25);
+tl.to("#g5_b0_cap",{opacity:0,duration:0.2},124.78);
+tl.set("#g5_b0_c0",{opacity:0},118.15);
+tl.set("#g5_b0_c0_l",{opacity:0},118.15);
+tl.to("#g5_b0_c0",{opacity:1,duration:0.3},118.4);
+tl.to("#g5_b0_c0_l",{opacity:1,duration:0.3},118.4);
+tl.to("#g5_b0_c0",{opacity:0,duration:0.2},124.78);
+tl.to("#g5_b0_c0_l",{opacity:0,duration:0.2},124.78);
+tl.to("#g5",{opacity:1,duration:0.3},118.15);
+tl.to("#g5",{opacity:0,duration:0.25},124.78);
+tl.set("#g6_b0_cap",{opacity:0},125.03);
+tl.to("#g6_b0_cap",{opacity:1,duration:0.3},125.13);
+tl.to("#g6_b0_cap",{opacity:0,duration:0.2},131.28);
+tl.set("#g6_b0_c0",{opacity:0},125.03);
+tl.set("#g6_b0_c0_l",{opacity:0},125.03);
+tl.to("#g6_b0_c0",{opacity:1,duration:0.3},125.28);
+tl.to("#g6_b0_c0_l",{opacity:1,duration:0.3},125.28);
+tl.to("#g6_b0_c0",{opacity:0,duration:0.2},131.28);
+tl.to("#g6_b0_c0_l",{opacity:0,duration:0.2},131.28);
+tl.set("#g6_b0_c1",{opacity:0},125.03);
+tl.set("#g6_b0_c1_l",{opacity:0},125.03);
+tl.to("#g6_b0_c1",{opacity:1,duration:0.3},126.18);
+tl.to("#g6_b0_c1_l",{opacity:1,duration:0.3},126.18);
+tl.to("#g6_b0_c1",{opacity:0,duration:0.2},131.28);
+tl.to("#g6_b0_c1_l",{opacity:0,duration:0.2},131.28);
+tl.to("#g6",{opacity:1,duration:0.3},125.03);
+tl.to("#g6",{opacity:0,duration:0.25},131.28);
+tl.set("#g7_b0_cap",{opacity:0},131.53);
+tl.to("#g7_b0_cap",{opacity:1,duration:0.3},131.63);
+tl.to("#g7_b0_cap",{opacity:0,duration:0.2},137.02);
+tl.set("#g7_b0_c0",{opacity:0},131.53);
+tl.set("#g7_b0_c0_l",{opacity:0},131.53);
+tl.to("#g7_b0_c0",{opacity:1,duration:0.3},131.78);
+tl.to("#g7_b0_c0_l",{opacity:1,duration:0.3},131.78);
+tl.to("#g7_b0_c0",{opacity:0,duration:0.2},137.02);
+tl.to("#g7_b0_c0_l",{opacity:0,duration:0.2},137.02);
+tl.to("#g7",{opacity:1,duration:0.3},131.53);
+tl.to("#g7",{opacity:0,duration:0.25},137.02);
+tl.set("#g8_b0_cap",{opacity:0},137.27);
+tl.to("#g8_b0_cap",{opacity:1,duration:0.3},137.37);
+tl.to("#g8_b0_cap",{opacity:0,duration:0.2},146.88);
+tl.set("#g8_b0_c0",{opacity:0},137.27);
+tl.set("#g8_b0_c0_l",{opacity:0},137.27);
+tl.to("#g8_b0_c0",{opacity:1,duration:0.3},137.52);
+tl.to("#g8_b0_c0_l",{opacity:1,duration:0.3},137.52);
+tl.to("#g8_b0_c0",{opacity:0,duration:0.2},146.88);
+tl.to("#g8_b0_c0_l",{opacity:0,duration:0.2},146.88);
+tl.set("#g8_b0_c1",{opacity:0},137.27);
+tl.set("#g8_b0_c1_l",{opacity:0},137.27);
+tl.to("#g8_b0_c1",{opacity:1,duration:0.3},138.42);
+tl.to("#g8_b0_c1_l",{opacity:1,duration:0.3},138.42);
+tl.to("#g8_b0_c1",{opacity:0,duration:0.2},146.88);
+tl.to("#g8_b0_c1_l",{opacity:0,duration:0.2},146.88);
+tl.set("#g8_b0_c2",{opacity:0},137.27);
+tl.set("#g8_b0_c2_l",{opacity:0},137.27);
+tl.to("#g8_b0_c2",{opacity:1,duration:0.3},139.32);
+tl.to("#g8_b0_c2_l",{opacity:1,duration:0.3},139.32);
+tl.to("#g8_b0_c2",{opacity:0,duration:0.2},146.88);
+tl.to("#g8_b0_c2_l",{opacity:0,duration:0.2},146.88);
+tl.set("#g8_b1_cap",{opacity:0},137.27);
+tl.to("#g8_b1_cap",{opacity:1,duration:0.3},147.23);
+tl.to("#g8_b1_cap",{opacity:0,duration:0.2},151.58);
+tl.set("#g8_b1_c0",{opacity:0},137.27);
+tl.set("#g8_b1_c0_l",{opacity:0},137.27);
+tl.to("#g8_b1_c0",{opacity:1,duration:0.3},147.38);
+tl.to("#g8_b1_c0_l",{opacity:1,duration:0.3},147.38);
+tl.to("#g8_b1_c0",{opacity:0,duration:0.2},151.58);
+tl.to("#g8_b1_c0_l",{opacity:0,duration:0.2},151.58);
+tl.set("#g8_b2_cap",{opacity:0},137.27);
+tl.to("#g8_b2_cap",{opacity:1,duration:0.3},151.93);
+tl.to("#g8_b2_cap",{opacity:0,duration:0.2},160.62);
+tl.set("#g8_b2_c0",{opacity:0},137.27);
+tl.set("#g8_b2_c0_l",{opacity:0},137.27);
+tl.to("#g8_b2_c0",{opacity:1,duration:0.3},152.08);
+tl.to("#g8_b2_c0_l",{opacity:1,duration:0.3},152.08);
+tl.to("#g8_b2_c0",{opacity:0,duration:0.2},160.62);
+tl.to("#g8_b2_c0_l",{opacity:0,duration:0.2},160.62);
+tl.set("#g8_b3_cap",{opacity:0},137.27);
+tl.to("#g8_b3_cap",{opacity:1,duration:0.3},160.97);
+tl.to("#g8_b3_cap",{opacity:0,duration:0.2},165.42);
+tl.set("#g8_b3_c0",{opacity:0},137.27);
+tl.set("#g8_b3_c0_l",{opacity:0},137.27);
+tl.to("#g8_b3_c0",{opacity:1,duration:0.3},161.12);
+tl.to("#g8_b3_c0_l",{opacity:1,duration:0.3},161.12);
+tl.to("#g8_b3_c0",{opacity:0,duration:0.2},165.42);
+tl.to("#g8_b3_c0_l",{opacity:0,duration:0.2},165.42);
+tl.to("#g8",{opacity:1,duration:0.3},137.27);
+tl.to("#g8",{opacity:0,duration:0.25},165.42);
+tl.set("#g9_b0_cap",{opacity:0},165.67);
+tl.to("#g9_b0_cap",{opacity:1,duration:0.3},165.77);
+tl.to("#g9_b0_cap",{opacity:0,duration:0.2},175.4);
+tl.set("#g9_b0_c0",{opacity:0},165.67);
+tl.set("#g9_b0_c0_l",{opacity:0},165.67);
+tl.to("#g9_b0_c0",{opacity:1,duration:0.3},165.92);
+tl.to("#g9_b0_c0_l",{opacity:1,duration:0.3},165.92);
+tl.to("#g9_b0_c0",{opacity:0,duration:0.2},175.4);
+tl.to("#g9_b0_c0_l",{opacity:0,duration:0.2},175.4);
+tl.set("#g9_b0_c1",{opacity:0},165.67);
+tl.set("#g9_b0_c1_l",{opacity:0},165.67);
+tl.to("#g9_b0_c1",{opacity:1,duration:0.3},166.82);
+tl.to("#g9_b0_c1_l",{opacity:1,duration:0.3},166.82);
+tl.to("#g9_b0_c1",{opacity:0,duration:0.2},175.4);
+tl.to("#g9_b0_c1_l",{opacity:0,duration:0.2},175.4);
+tl.set("#g9_b0_c2",{opacity:0},165.67);
+tl.set("#g9_b0_c2_l",{opacity:0},165.67);
+tl.to("#g9_b0_c2",{opacity:1,duration:0.3},167.72);
+tl.to("#g9_b0_c2_l",{opacity:1,duration:0.3},167.72);
+tl.to("#g9_b0_c2",{opacity:0,duration:0.2},175.4);
+tl.to("#g9_b0_c2_l",{opacity:0,duration:0.2},175.4);
+tl.to("#g9",{opacity:1,duration:0.3},165.67);
+tl.to("#g9",{opacity:0,duration:0.25},175.4);
+tl.set("#g10_b0_cap",{opacity:0},175.65);
+tl.to("#g10_b0_cap",{opacity:1,duration:0.3},175.75);
+tl.to("#g10_b0_cap",{opacity:0,duration:0.2},180.38);
+tl.set("#g10_b0_c0",{opacity:0},175.65);
+tl.set("#g10_b0_c0_l",{opacity:0},175.65);
+tl.to("#g10_b0_c0",{opacity:1,duration:0.3},175.9);
+tl.to("#g10_b0_c0_l",{opacity:1,duration:0.3},175.9);
+tl.to("#g10_b0_c0",{opacity:0,duration:0.2},180.38);
+tl.to("#g10_b0_c0_l",{opacity:0,duration:0.2},180.38);
+tl.set("#g10_b1_cap",{opacity:0},175.65);
+tl.to("#g10_b1_cap",{opacity:1,duration:0.3},180.73);
+tl.to("#g10_b1_cap",{opacity:0,duration:0.2},186.32);
+tl.set("#g10_b1_c0",{opacity:0},175.65);
+tl.set("#g10_b1_c0_l",{opacity:0},175.65);
+tl.to("#g10_b1_c0",{opacity:1,duration:0.3},180.88);
+tl.to("#g10_b1_c0_l",{opacity:1,duration:0.3},180.88);
+tl.to("#g10_b1_c0",{opacity:0,duration:0.2},186.32);
+tl.to("#g10_b1_c0_l",{opacity:0,duration:0.2},186.32);
+tl.set("#g10_b1_c1",{opacity:0},175.65);
+tl.set("#g10_b1_c1_l",{opacity:0},175.65);
+tl.to("#g10_b1_c1",{opacity:1,duration:0.3},181.78);
+tl.to("#g10_b1_c1_l",{opacity:1,duration:0.3},181.78);
+tl.to("#g10_b1_c1",{opacity:0,duration:0.2},186.32);
+tl.to("#g10_b1_c1_l",{opacity:0,duration:0.2},186.32);
+tl.set("#g10_b2_cap",{opacity:0},175.65);
+tl.to("#g10_b2_cap",{opacity:1,duration:0.3},186.67);
+tl.to("#g10_b2_cap",{opacity:0,duration:0.2},190.5);
+tl.set("#g10_b2_c0",{opacity:0},175.65);
+tl.set("#g10_b2_c0_l",{opacity:0},175.65);
+tl.to("#g10_b2_c0",{opacity:1,duration:0.3},186.82);
+tl.to("#g10_b2_c0_l",{opacity:1,duration:0.3},186.82);
+tl.to("#g10_b2_c0",{opacity:0,duration:0.2},190.5);
+tl.to("#g10_b2_c0_l",{opacity:0,duration:0.2},190.5);
+tl.to("#g10",{opacity:1,duration:0.3},175.65);
+tl.to("#g10",{opacity:0,duration:0.25},190.5);
+tl.to("#outro",{opacity:1,duration:0.4},190.75);
+</script>
+</body>
+</html>

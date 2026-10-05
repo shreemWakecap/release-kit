@@ -1,0 +1,364 @@
+{
+ "video": "gas",
+ "remaining_findings_all_severities": [
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g04b",
+   "severity": "major",
+   "issue": "Pass-2 finding only half fixed. Narration now says 'Oxygen has a low limit of nineteen point five, but its low alarm is not raised yet.' (better, but 'not raised yet' can still read as 'no low-oxygen alarm is active right now', which is reassuring). The caption was NOT changed: 'LEL alarm: 20 percent of limit. Oxygen low alarm: not raised yet.' A muted viewer sees no 19.5 and no 'limit', so it still reads as 'no low alarm has fired'. The page means a low-oxygen alarm is not raised at all today (card: 'low-oxygen alarm is not raised yet'; Compliance: 'below 19.5 (not alarmed yet)'). This is a reassuring misread on an oxygen-deficiency hazard. Also '19.5' is spoken with no unit, and 'percent of limit' is ambiguous (it is percent of the lower explosive limit).",
+   "evidence_checked": "spec g04b narration and caption; v-g04b-e.png (caption on screen); g-dashboard-c.txt; g-compliance-c.txt; integration-and-devices G11 (live_today unknown); changes gas_production_build_shows ('low oxygen is CHECK, the low-oxygen alarm is not raised yet')",
+   "suggested_fix": "Caption: 'Oxygen: low limit 19.5, no low alarm yet. LEL alarm above 20 percent of the lower explosive limit.' Narration tail: 'Oxygen shows a low limit of nineteen point five percent, but the page says it does not raise a low-oxygen alarm yet.' Do not say what a low reading would display."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g10",
+   "severity": "minor",
+   "issue": "'New on Alerts: live counts.' and caption 'New: live counts.' are only partly new. The Open and Critical tiles ('Live count from the Summary read') shipped in v1.0.0 (f2eb26a, 30 Sep). Only the Acknowledged tile reading the live Summary and the Close control arrived in 1.0.4 (7f5eef0, 4 Oct). 'Live' can also be heard as real-time, while the video itself says readings can be about 30 minutes old (the counts are alert counts, quoted from the page).",
+   "evidence_checked": "git show f2eb26a (summaryHint added); git show 7f5eef0 message ('acknowledged tile now reads the Summary'); changes.json gas-ack-close and gas-restyle; g-alerts-c.txt",
+   "suggested_fix": "'New on Alerts: you can acknowledge and close, and the acknowledged count is live.' Or drop 'New' for the counts and keep it for Close."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g10",
+   "severity": "minor",
+   "issue": "'People with edit access see Close. This is where you click.' with the cursor on a Critical row. The evidence for Close is code only (a closed alert cannot be reopened from here; Close asks first). The video drops the confirm clause but gives no hint that closing is final, so 'this is where you click' reads as a plain instruction to close real Critical alerts. The wording is demonstration style, so guardrail 9 is met.",
+   "evidence_checked": "v-g10-e.png; changes gas-ack-close capture_note ('Closing cannot be undone'); 7f5eef0 commit message",
+   "suggested_fix": "Optional: 'Close is final here, so only people with edit access see it.' Use it only if the lead accepts code evidence; otherwise leave as is."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g09",
+   "severity": "minor",
+   "issue": "The reviser's rejection reason is wrong in detail. vbuild only floors and caps the zoom scale when 's' is NOT given (vbuild.py line 324: s = zoom.get('s') or max(1.15, min(1.9, ...))), so an explicit s (as g11 uses) is not capped at 1.9. The true limit is the bottom clamp at the stage edge: the id block (frame y about 513-531) leaves the view only at s above about 2.16, which would cut the LEL bar. The conclusion (cannot hide it with both bars readable) stands. The record UUID 'e49b66aa-...' is legible on screen for the whole beat (confirmed at beat end).",
+   "evidence_checked": "vbuild.py lines 321-328; v-g09-e.png; g-detector-detail-c.txt",
+   "suggested_fix": "Accept it (database id, not a serial, no name) or tell the lead plainly that the id is on screen. Correct the reason in beatsheet assumption 7 if kept."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g06",
+   "severity": "minor",
+   "issue": "'On the wallboard the words get bigger, not softer.' implies the same words as the dashboard in larger type. The dashboard (g05) never says 'Not confirmed safe'; it says 'is offline' and 'Readiness Not ready'. The wallboard words are different (CHECK, 'Not confirmed safe: 1 detector not reporting.'). 'Not confirmed safe' is a page quote, but the spoken word 'safe' may be heard as a claim about the site without quote framing.",
+   "evidence_checked": "g-dashboard-c.txt (no 'Not confirmed safe'); g-wallboard-c.txt; v-g06-e.png; guardrail 8",
+   "suggested_fix": "'The wallboard says it in big type: Check. And the page words it as: Not confirmed safe, one detector not reporting.' Keep the real-voice listen the lead already planned."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g04b",
+   "severity": "minor",
+   "issue": "Caption 'LEL alarm: 20 percent of limit.' stays ambiguous for muted viewers ('the limit' reads as the alarm limit). The page value is 20 %LEL, i.e. percent of the lower explosive limit.",
+   "evidence_checked": "v-g04b-e.png; g-dashboard-c.txt 'alarm above 20 %LEL'",
+   "suggested_fix": "'Alarm above 20 percent of the lower explosive limit.'"
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g15",
+   "severity": "minor",
+   "issue": "Narration 'how old each reading is' versus caption 'how long ago each detector last reported'. The screen shows age per detector on the dashboard list and the newest age in the header, and absolute last-reported times on the Detectors page; the gas cards show no age. 'often half an hour apart' rests on G03 (live_today unknown, 'not a guarantee'). Frames show detectors 2 min, just now, 21 and 29 min old, so reporting is uneven.",
+   "evidence_checked": "g-dashboard-c.txt Detectors list; g-detectors-c.txt Last reported column; G03 safe_phrase and caveats; v-g15-e.png",
+   "suggested_fix": "'So the screen shows how long ago each detector last reported.' Keep 'often' and the soft wording."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g15",
+   "severity": "minor",
+   "issue": "Sink 'ONE PORTAL / Gas sits in the same menu' is never narrated, and 'the same menu as what' is not stated in a Gas-only video. It is true (X06 live yes; guardrail 3 allows one portal menu), but an arrow from Gas screens into 'ONE PORTAL' could be read as readings merging with other products.",
+   "evidence_checked": "v-g15-e.png; integration-and-devices X06; guardrail 3",
+   "suggested_fix": "Optional: 'Gas sits in the same Connected Environment menu as Weather Station and Lightning', or cut the sink."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g16",
+   "severity": "minor",
+   "issue": "'Your next step: open Gas and read the top line first.' assumes Gas is switched on for the viewer's project. Gas appears only with the project entitlement and the read grant. All beats are Project C only.",
+   "evidence_checked": "changes.json shell-rail visible_when and gas-live-glance visible_when",
+   "suggested_fix": "'If your project has Gas, open it and read the top line first.' (about 4 more words; watch the 150 s ceiling)."
+  },
+  {
+   "lens": "claims-vs-evidence (pass3)",
+   "beat": "g03/g10",
+   "severity": "minor",
+   "issue": "'Live alarms: none waiting for a person' (g03), then 'Fifteen open, all acknowledged' (g10) over rows all labelled Critical, next to a 'Critical open 0' tile. All are page words and hedged ('the page says'), but a viewer may be unsure how 0 Critical open sits beside 15 Critical rows. Not a breach.",
+   "evidence_checked": "g-dashboard-c.txt; g-alerts-c.txt; v-g10-e.png",
+   "suggested_fix": "None required. Optionally say once that the page counts acknowledged alerts separately from live alarms."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "g09",
+   "severity": "minor",
+   "issue": "The Detector ID (a database record UUID, e49b66aa-0ec4-...) is now legible for the whole 9 s hold, inside the orange 'Opens in place' box. In pass 2 it showed only briefly during the glide. The reviser's rejection reason is partly wrong: the 1.15 to 1.9 range applies only to vbuild's automatic scale, and an explicit zoom.s is used unclamped (vbuild.py camera()). Hiding the id also does not need s above 2.0, because the id sits at frame x 305-542 and a window starting right of x 545 excludes it. It is not a secret or a serial, and the product shows 'Detector ID' to customers anyway, so I rate it minor. The lead should decide knowingly.",
+   "evidence_checked": "Stills p3/g09-a.png and g09-m.png from final-dry.mp4; assets/g-detector-detail-c.png (id block at about x 305-542, y 513-531); vbuild.py lines 321-328; captures.json note for g-detector-detail-c",
+   "suggested_fix": "Accept, or zoom to the right half, e.g. r=[1000,548,895,250] (auto s about 1.76). That drops the id but cuts the H two S and O2 labels. Alternatively move the 'Opens in place' callout onto the bars only, since it currently frames the id block."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "g13 (and g08/g09 table)",
+   "severity": "minor",
+   "issue": "Small green SAFE chips stay visible next to a CHECK header: the Now column in g13 (held about 9 s) and the State column in g08/g09. They are page-literal and not narrated, but a viewer could read them as contradicting the story or as 'safe'.",
+   "evidence_checked": "p3/g13-m.png, p3/g08-a.png, assets/g-compliance-c.png, assets/g-detectors-c.png",
+   "suggested_fix": "None required. Do not add any callout on the Now column."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "g02-g05, g08-g13",
+   "severity": "minor",
+   "issue": "Every chaptered shot prints the fixed vbuild prefix 'CLICK Left rail > Connected Environment > Gas > ...', even on read-only beats (g02 to g05). Only g06 and g07 avoid it. Not a safety issue, but it reads as an instruction on beats where nothing is clicked.",
+   "evidence_checked": "p3/g02-m.png, sheet0; vbuild.py scene_shot header",
+   "suggested_fix": "Lead may add a per-chapter prefix option to vbuild, or accept."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "all (vbuild note)",
+   "severity": "minor",
+   "issue": "SPEC.md documents the zoom 's' override as 1.15 to 1.9, but vbuild.py clamps only the automatic scale. The reviser relied on the documented cap.",
+   "evidence_checked": "vbuild.py camera() lines 321-328 versus the SPEC.md shot section",
+   "suggested_fix": "Document or enforce the override range."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "visible frames",
+   "severity": "minor",
+   "issue": "The product left rail shows 'Trends  Planned' in the Dashboard, Detectors, Alerts and Compliance frames. It is page-literal and never narrated, but it is a forward-looking label in a video that must make no expansion claims.",
+   "evidence_checked": "assets/g-dashboard-c.png, g-detectors-c.png, p3/g09-a.png",
+   "suggested_fix": "Accept. The frames are final and most zooms crop it out."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g09",
+   "severity": "minor",
+   "issue": "The reviser's rejection is correct: the zoom is capped at 1.9 and the camera clamps to the 988 px frame, so the view always spans frame y 468 to 988 at best, and the Detector ID (y about 513 to 531) cannot be hidden. The record UUID 'e49b66aa-0ec4-461f-8ca0-521ba707a169' is therefore legible for the whole 9 s hold. It is a database id, not a serial. The offline row's key text 'No current reading. Last known values, not current:' renders about 7 px tall at 1280 wide, so it is hard to read. The large label 'Last known, not current' carries the meaning for muted viewers. The pass-2 crop problem is fixed: H2S, O2 and LEL labels and bars are all readable and callout 1 sits in empty space.",
+   "evidence_checked": "v3-t79.3.png, v3-t79.9.png, v3-b-g09.png, v3-e-g09.png; ov-g09.png (drawbox overlay of both callout rects on assets/g-detector-detail-c.png: both land correctly); zoom clamp arithmetic",
+   "suggested_fix": "Accept, or tell the lead the UUID is visible. Optional: a right-hand zoom (x from about 900, s 1.9) would hide the id and enlarge the offline text, but it cuts the H2S and O2 labels, which is the old awkward crop. Keep the current choice."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g02",
+   "severity": "minor",
+   "issue": "The status-line callout rect [116,50,490,22] is tight to the text. The orange border crosses the glyph baselines and descenders of 'Last reading 3 min ago \u00b7 4 of 5 detectors reporting', and the line looks underlined.",
+   "evidence_checked": "v3-b-g02.png and v3-e-g02.png; rect against assets/g-header-c.png",
+   "suggested_fix": "Pad the rect by 3 to 4 px on each side, e.g. [112,46,498,30]."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g04b",
+   "severity": "minor",
+   "issue": "Callout numbers read right to left: '1 LEL' sits on the right card and '2 Oxygen' on the left. Narration order (LEL, then oxygen) is correct, but the eye reads left first.",
+   "evidence_checked": "v3-b-g04b.png, v3-e-g04b.png; spec callout order",
+   "suggested_fix": "Cosmetic. Accept, or swap the two sentences so oxygen comes first and renumber the callouts."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g13",
+   "severity": "minor",
+   "issue": "Callout 1 'Limits in force' [769,221,1126,189] boxes only the Low alarm, High alarm, TWA and STEL columns, so the gas names, units and the 'Now' column sit outside the box. The 'Now' column shows green SAFE chips beside a CHECK header, and they are not narrated. This is page content, not a video claim.",
+   "evidence_checked": "v3-b-g13.png, v3-e-g13.png; g-compliance-c.png",
+   "suggested_fix": "Optional: widen callout 1 to x=289 so the gas names are inside, accepting that the SAFE chips come with it. The claims lens decides whether the chips need a caption."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g10",
+   "severity": "minor",
+   "issue": "Label 'Acknowledged' (pos b) covers the 'Alarm point crossed' and part of the 'Detector's latest reading' headers. Label 'Close' covers the 'Actions' header. Separately, the frame shows 'CRITICAL OPEN 0' beside 15 Critical rows. That is a page inconsistency that a viewer could read as reassuring. It is not narrated.",
+   "evidence_checked": "v3-b-g10.png, v3-e-g10.png; ov-g10.png (rects land on the Open tile, the Acknowledged tile and the first Close button)",
+   "suggested_fix": "Cosmetic for the labels. Tell the claims lens about the 'Critical open 0' tile; nothing to change in the spec unless they object."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g11, g12, g14, g15",
+   "severity": "minor",
+   "issue": "Static holds. g11 is 12 s on one spotlight with identical b and e frames. g11 and g12 are two back-to-back static beats (g06 and g07 are another pair). g14 and g15 are about 16 s of near-static diagram. 'ONE PORTAL / Gas sits in the same menu' is never narrated. The last arrow points at empty space until the sink appears. 'Half an hour' is narrated but appears nowhere on screen. No text is clipped or overlapping in any diagram box, and nothing collides with the caption bar. The no-movement rule (at most 2 consecutive) is met.",
+   "evidence_checked": "v3-b/e-g11, g12, g14, g15; timeline.json",
+   "suggested_fix": "Optional: give g11 a second callout on the Close or status wording. Optional: a step subtitle 'often about half an hour'. Acceptable as is."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "g06, g07",
+   "severity": "minor",
+   "issue": "With no chapter, g06 and g07 have no header strip and no progress pips, so the chrome disappears for 13 s and returns at g08. This is the cost of avoiding vbuild's fixed 'CLICK' prefix. Layout is clean and nothing is clipped. Callouts land correctly: CHECK, the Not-confirmed-safe block and the phone status card.",
+   "evidence_checked": "v3-b/e-g06, v3-b/e-g07; vbuild.py lines 345 to 351",
+   "suggested_fix": "Accept. If the lead adds a per-chapter path prefix to vbuild, restore a 'Wallboard and phone' header."
+  },
+  {
+   "lens": "visual-timing-craft (pass3)",
+   "beat": "all",
+   "severity": "minor",
+   "issue": "Length is 148.9 s (340 words) against the 150 s ceiling, so a voice slower than 2.35 words per second would pass 2:30. That is still inside the 20 percent tolerance. Word counts are 15 to 28 per beat. The longest sentence is 17 words (g04b). The first four words are unique and free of digits and abbreviations in all 17 beats. The hook question lands at about 7 to 8.6 s. g-mobile-desktopview-c from the brief is not used (optional). beatsheet.md matches spec narration for every beat.",
+   "evidence_checked": "timeline.json; ffprobe 148.917 s; computed per-beat words, sentence lengths and first-four-words; vbuild --check (beats=17 words=340, no errors)",
+   "suggested_fix": "If the real voice runs long, trim g11 (28 words) or g04b (28 words)."
+  }
+ ],
+ "last_reviser_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/final-dry.mp4",
+  "changed_beats": [
+   "g02",
+   "g03",
+   "g04b",
+   "g06 (no chapter header)",
+   "g07 (no chapter header)",
+   "g09",
+   "g10",
+   "g11",
+   "g13",
+   "g14/g15 diagram",
+   "g15",
+   "g16"
+  ],
+  "resolved": [
+   "g13 callouts 2 and 3 relabelled 'Not available yet' (was 'No exposure data' / 'No exceedances').",
+   "g04b narration now 'Combustible gas alarms above twenty percent of the lower explosive limit. Oxygen has a low limit of nineteen point five, but its low alarm is not raised yet.' Caption 'LEL alarm: 20 percent of limit. Oxygen low alarm: not raised yet.' Callouts reordered LEL first. First four words are plain words, so the aligner issue is gone.",
+   "Diagram step 'Alert actions / recorded in WakeCap' removed. Chain is now Vendor cloud, WakeCap asks, Gas screens.",
+   "g13 'green chips' sentence cut (source-only claim, SAFE chips beside a CHECK header). Narration is now 'Compliance lists the limits every reading is judged against. Exposure and exceedances say Not available yet, rather than drawing an empty chart.'",
+   "g02 narration and caption fixed: 'on Gas pages', says newest reading age and detectors reporting, no 'every page' claim.",
+   "g16 compliance item now 'Limits listed. Exposure and exceedances say Not available yet'; the close is a single next step.",
+   "g11 'An alert closed here stays open in Blackline Live.' and zoom raised to 1.9, so the note is readable.",
+   "g10 'asks you to confirm' dropped (code-only evidence). Caption 'You can close an alert here, with edit access.' Narration 'This is where you click.' states the demonstration.",
+   "g03 now 'Acknowledged: the page says open, being handled.'",
+   "Chapter 2 'not in the left rail' clause dropped. g06 and g07 now have no chapter header (the vbuild CLICK prefix would mislead), and the later chapters were renumbered.",
+   "g09 crop fixed: wide view of the whole open row, H two S, O2 and LEL labels and bars readable, first callout now frames the open panel and sits in empty space.",
+   "g15 starts 'Reports arrive every so often' so g14 and g15 do not share their first words.",
+   "Length kept in range: 340 words, 148.9 s."
+  ],
+  "rejected": [
+   {
+    "finding": "g09 keep the Detector ID out of view by zooming to r=[289,548,1606,250]",
+    "why": "Not achievable. vbuild floors the zoom scale at 1.15 and caps it at 1.9, and the camera clamps to the stage. A full-width view of both gas columns at 1.15 always includes the id block (frame y about 513 to 531). Hiding it needs s of about 2.0 or more, which cuts the H two S label or the offline text. I chose a readable crop. The id is a record UUID, not a serial, and the reviewer rated it minor and acceptable."
+   },
+   {
+    "finding": "g10 move 'Acknowledged' label to pos 'a'",
+    "why": "Tried pos 'inr'; it covered the value 15. 'a' puts the label above the zoom edge, behind the top bar. Kept pos 'b', which covers only two column headers (cosmetic)."
+   },
+   {
+    "finding": "g14/g15 near-static diagram, put cadence in a subtitle, nudge the sink",
+    "why": "Optional. The sink is a real claim (Gas sits in the portal menu, integration-and-devices#X06). A subtitle with 'half an hour' would be a longer label and would risk clipping. Left as is."
+   },
+   {
+    "finding": "Add a tri of wallboard, phone and desktop-view frames",
+    "why": "Optional, and the reviewer accepted the current variety. It would add a shot. Brief and memory say keep it simple."
+   },
+   {
+    "finding": "g01-g16 scene variety and g06/g12 static camera",
+    "why": "The reviewer said no change is required. The no-movement rule is met."
+   }
+  ],
+  "unresolved": [
+   "vbuild limitation: every chapter path is prefixed with a fixed 'CLICK' (vbuild.py line 351). I avoided it by giving g06 and g07 no chapter. A per-chapter prefix option in vbuild would let the lead restore a 'Wallboard and phone' header.",
+   "g09 Detector ID (record UUID) is visible in the view during the beat; see rejected.",
+   "Length is tight: 340 words, 148.9 s against a 150 s ceiling. If the real voice runs slower than 2.35 words per second, trim g11 (28 words), g04b (28) or g16 (17).",
+   "The dry render prints '14 warning(s)' without listing them (0 errors; earlier review identified them as hyperframes lint hints: composition_file_too_large, timeline_track_too_dense, nested_structure_needs_subcomposition).",
+   "Facts still live_today unknown: poll about every minute and detectors about every half hour (G03, phrased softly). The Close backend deploy is unverified; the page text and the visible Close buttons support the claim.",
+   "Aligner: listen once with the real voice. 'Not confirmed safe' in g06 must read as a page quote, not a claim about the site."
+  ],
+  "check_clean": true,
+  "dry_render": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/final-dry.mp4 (148.9 s, silent draft, 17 beats, 12 scenes; timeline.json beside it; stills under gas/.work/r3-*, r4-*, r5-*)",
+  "frames_inspected": 16
+ },
+ "director_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/final-dry.mp4",
+  "spec_path": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/spec.json",
+  "beatsheet_path": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/beatsheet.md",
+  "beats": 16,
+  "words": 340,
+  "est_seconds": 148.9,
+  "check_clean": true,
+  "dry_render": "/Users/admin/wc/weather-station/release-kit/four-videos/gas/final-dry.mp4 (148.9 s, 12 scenes, silent draft; timeline.json beside it; inspected stills under gas/.work/)",
+  "frames_inspected": 34,
+  "open_issues": [
+   "Length is tight: 340 words, est 2:29 against a 2:30 ceiling. If the real Aoede voice runs slower than 2.35 words per second, trim g06, g11 or g14 (each 25 to 27 words).",
+   "The dry render prints '14 warning(s)' from the render step without listing them (0 errors, --check is clean). I could not see what they are; probably the same lint noise as other videos, but the lead should check.",
+   "vbuild camera: zoom scale is floored at 1.15, so a beat cannot zoom out below that. For the wallboard (g06) I removed the zoom so the full headline block is visible; callouts there act as the camera target.",
+   "Callout label placement: labels use 'inr' on the Overview tiles and I relabelled the Acknowledged tile 'Handled' (g03, g10) because the long label covered the value '15'. No vbuild bug, just a layout limit.",
+   "Frame defects left as is: the 2 px black strip under the top bar (cap_clean) is visible on the zoomed shots. g-alerts-bottom-c.png is 1920x988 although captures.json says the raw was 1920x1600; rects in captures.json match the 988 version, so it works.",
+   "Not shown or not narrated by design: Needs attention filter, Trends (Planned), Zones, CO and CO2, g-mobile-desktopview-c, Peak today and Longest quiet gap. No missing frame was needed.",
+   "Research items still unverified and affecting wording: G03 (poll about every minute, detectors about every half hour) is live_today unknown; the Close/Acknowledge backend deploy is unverified (the page text and visible Close buttons support the claim). Both are phrased softly.",
+   "g14 states 'not the site's wireless mesh' for gas, based on integration-and-devices#G12 (live_today no for a mesh path) and the brief's guardrail; the reviewer may prefer to drop the clause if it feels like an extra claim."
+  ],
+  "assumptions": [
+   "Gas reaches WakeCap only through the manufacturer's cloud; WakeCap asks about every minute (45 s default, not spoken) and detectors report about every half hour (integration-and-devices#G03, #G12, #G02).",
+   "Gas alarm limits are read-only (guardrail); the video only says the page lists the limits in force.",
+   "'Alerts now has a Close control' and the New caption rely on changes#gas-ack-close (yes) and visible Close buttons; nothing was clicked, so click callouts are demonstrations ('You can click', 'This is where you click').",
+   "Wallboard and phone pages are not linked from the rail, so the chapter path reads 'Gas wallboard and phone pages' without claiming a click route.",
+   "'Not confirmed safe' appears only as a quote of the page text (g06 narration and caption); the word safe is never used about the site otherwise.",
+   "Only live value spoken: five detectors, four online, one offline (on screen and the point). Serial numbers, times and the 15 acknowledged count are not read aloud.",
+   "No beat is DIRECTION: no AI agent, gas notifications, Observation Manager, vendor write-back, compliance numbers, CO/CO2 or Zones are mentioned."
+  ]
+ },
+ "cross_video_contradictions_mentioning_this_video": [
+  {
+   "videos": "connected-environment (a01, agent diagram column, u03/p04 'One platform') vs gas (g12, g13, Overview 'Not available yet' cards)",
+   "issue": "Umbrella a01 says 'Everything lands in one platform' and its diagram lists 'Gas readings' and 'Alerts and history' as what the platform knows. The gas frames say the opposite for those items. Peak today and Longest quiet gap say 'Needs stored readings for the day, which the backend does not keep yet'. Compliance says 'Needs alert history and stored readings. Both are missing today'. Alerts says there is no timeline or closed count. The gas beatsheet itself refuses to claim stored readings (assumption 3). The umbrella states what the gas video declines to claim.",
+   "fix": "Reword a01 and the diagram column to what screens show today ('Readings and status from all three products reach one portal'). Drop 'Alerts and history' and 'Everything'. Keep 'could one day feed an assistant' as the only forward-looking part."
+  },
+  {
+   "videos": "gas (g03 vs g10, g12) and connected-environment k04 frame",
+   "issue": "Gas g03 narrates 'Live alarms: none waiting for a person' and 'Acknowledged: open, being handled'. Seven beats later g10 narrates 'Fifteen open, all acknowledged'. g12 then says no assignee is available. A viewer sees 'Live alarms 0' and 'Open alerts 15' with Critical-labelled rows and is not told how they fit. The umbrella k04 frame also shows 'Critical open 0' beside rows labelled Critical. 'Being handled' implies someone is handling them while g12 says nobody is assigned.",
+   "fix": "Add one sentence in g03 or g10: live alarms count ones still waiting for a person. Acknowledged ones are counted separately. Prefer 'Acknowledged' over quoting 'being handled'."
+  },
+  {
+   "videos": "gas (g08, g09, g13 frames) vs gas/umbrella story and guardrail 8",
+   "issue": "The Detectors table, expanded row and Compliance 'Now' column show green 'SAFE' chips on detector rows. Two of those rows have readings 24 to 31 minutes old. The story is that a quiet screen proves nothing and the product never reads safe on stale data. The chips are unspoken but legible, and the page uses the word SAFE for individual detectors. The page also prints 'Every reading inside its limits'.",
+   "fix": "Keep narration as is. Add a caption or zoom that stays off the SAFE chips, or add one clause that SAFE is per detector and depends on how old the reading is."
+  }
+ ],
+ "wording_inconsistencies": [
+  "Navigation path wording differs. Weather: 'Left rail > Weather Station', 'Left rail > Reports', 'Left rail > Settings > Weather Station'. Lightning: 'Left rail > Lightning'. Gas: 'Left rail > Connected Environment > Gas > Dashboard'. Umbrella: 'Portal left rail > Connected Environment'. 'Left rail' means the portal icon rail in the gas and umbrella videos and the micro-app's own menu in weather and lightning. The captures show weather and gas items inside the Connected Environment menu.",
+  "Umbrella chapter bars 'Connected Environment > Weather Station, Lightning, Gas' (chapters 2 and 3) read as one menu holding all three. No frame has all three. Projects A, B and C each hold different products, and the umbrella itself says 'Switched on per project'.",
+  "Every spec has the same title 'Connected Environment'. The eyebrows differ: Weather 'WEATHER STATION', Lightning 'LIGHTNING . CONNECTED ENVIRONMENT', Gas 'GAS . CONNECTED ENVIRONMENT'. Weather alone drops the umbrella tag.",
+  "Weather lane is labelled three ways. Umbrella: 'WIRELESS MESH . MODBUS STYLE FRAMES', steps 'on-site radio network / decoded and stored / Weather Station readings and status'. Weather video: 'ON-SITE MESH', steps 'on the site / decode and store / WakeCap reads and serves'. Lightning video: 'WIRELESS MESH' with no Modbus. Lightning sensor path wording also differs: umbrella 'A small input module on a mesh node reads Lightning'; lightning video 'A radio node reads the sensor through an input module'. Umbrella uses 'Cloud queues' (plural) and the lightning video 'Cloud queue'.",
+  "Modbus appears only in the umbrella (p01 label, narration, caption, 'no Modbus' for gas). The weather and lightning videos never mention it, and the lightning video's diagram says 'WIRELESS MESH' only. The Modbus explanation is on first use in the umbrella as required and word for word as the guardrail has it. The product videos carry no Modbus line, so a viewer of the Lightning video alone gets no sign of the Modbus framing.",
+  "Gas cadence is hedged differently. Umbrella states it plainly in narration and the diagram: 'detectors report ... about every half hour', 'WakeCap checks it about every minute'. Gas video softens it: 'every minute or so', 'often half an hour apart'. The gas diagram omits the half hour figure that the umbrella diagram has. G03 is live_today unknown. Pick one hedge.",
+  "'Blackline' is first named in the umbrella k04 as page text with no gloss, before the paths section introduces 'vendor'. The gas video glosses it once ('the gas vendor', g11) before the paths diagram. Umbrella viewers meet the name unexplained.",
+  "The acknowledge and close statement is hedged differently. Umbrella k04: 'the page says acknowledging or closing is recorded here, with who and when'. Gas g11 states it plainly. Gas g12 then says the timeline and assignee are not available. Use the same attribution to the page, since the frame shows no who or when column.",
+  "'Here is the answer, in one strip.' is reused almost verbatim in weather w02 and umbrella c01. 'The page names the offline station. Readiness reads Not ready, and lists why' (weather w05), 'One detector is offline, and the page says so. Readiness reads Not ready, and the list names it' (gas g05) and umbrella s01 are three near copies of one sentence. 'You and your team stay in control' (umbrella z01) repeats a04 'People stay in control'.",
+  "Opening hooks all use the same template: a scene, then a question ('Is it safe ...? Where do you look first?', 'The supervisor asks, so what now?', 'What warns the crew first?', 'How would you know?'). Closings all use 'Your next step' (lightning, gas) or 'Next time ... open' (weather) and a 'What is new' list card in three of four. Four videos in a row sound alike.",
+  "DIRECTION framing is consistent in the umbrella (badge, ribbon 'DIRECTION . NOT LIVE TODAY', 'could one day', 'The direction:', 'meant to come from'). The captions of a02 and a04 are in present tense ('An assistant proposes. A person approves.'; 'People stay in control') and the diagram guard bar says 'People stay in control: an assistant proposes, a person approves'. Only the ribbon marks them as direction. a01 and a03 captions begin 'Direction:'. a02 and a04 captions do not.",
+  "Peak value wording varies for the same report: umbrella 'peak heat index and peak wind speed' and 'peaks, day by day'; weather 'highest heat index and wind speed'; page 'Maximum'. 'Vendor' (videos) vs 'manufacturer' (research safe phrases) vs 'Blackline' (page quote).",
+  "'New' is applied unevenly. The umbrella calls the gas status line new (o02). The gas video's own g02 on the same status line is not marked new. The Detectors page (changes: gas-detectors-page, live yes) is not marked new in gas g08. Lightning marks the alarm activity chart 'New' while showing an empty chart.",
+  "Wallboard and phone pages: lightning says 'Neither has a menu link. Both open by address.' Gas says nothing about how to reach them, although the research says the gas pages are also not linked from the rail. The two videos describe the same situation differently.",
+  "Times: weather w04 says 'Saudi time' plainly on commit evidence (the page prints no zone). Lightning says 'Saudi time' with the page's own 'AST, UTC+3'. Gas shows clock times in frames and says nothing. The two on-screen clocks agree (15:22 on both products), which supports the claim, but the evidence basis differs between the two videos.",
+  "Heat index values differ across videos and are all on screen unspoken: 49.5 (weather, umbrella tri), 49.7 (umbrella c01), 50.1 (weather policy), 50.2 (umbrella k01), 41.5 (Project C). The green line 'Last reading was 0 minute(s) ago' next to an online station in the umbrella o02 and 'Last reading was 1 minute(s) ago' in weather w06 are consistent with their frames.",
+  "Weather w07 puts a click callout and cursor on the gear while the Select parameters popup is already open, so the 'click' demonstration and the frame disagree. The chapter bar shows 'Weather Station > gear icon' (a click path) over a page the viewer is told only 'you can' use."
+ ],
+ "coverage_of_user_brief": [
+  {
+   "requirement": "Umbrella over all environment products (Weather Station, Lightning, Gas under one product)",
+   "status": "covered",
+   "where": "connected-environment u01 to u03, o01 to o03, p04 and the umbrella diagram",
+   "note": "Strong animated canopy, three product cards, four honest chips and a three-project tri. The chips are scoped as the guardrail allows (one backend, one menu and header, same view permission, switched on per project). No frame shows all three in one portal, so the 'one place' idea rests on the diagram and the tri. The chapter bars imply one menu with all three, which is a weak spot. 'One platform' is a loose label that research X01 approves, but it needs the chips next to it each time."
+  },
+  {
+   "requirement": "Manage plus a detailed eye on the site",
+   "status": "covered",
+   "where": "connected-environment o01 (Connected Products), o02, c01, g01, c02, k01; chapters 'A detailed eye' and 'Control'",
+   "note": "'Manage' is shown through Connected Products and the Safety Policy. 'Eye' is shown by the answer strip, steps, gas overview and max report. The details drawer, gas detectors, wallboard and phone, and the Lightning alarm history were cut for length, so the 'detailed' part is thin. All three products are not shown as equals: Weather gets two chapters, Lightning one beat (s03), Gas two."
+  },
+  {
+   "requirement": "Control what happens when something happens",
+   "status": "weak",
+   "where": "connected-environment u04, k01, k04",
+   "note": "Honestly scoped but narrow. Control is the weather stop-work limits plus recommended steps, and gas Close recorded in WakeCap only (which ends the Control chapter on a limit). Lightning has no control beat (the cabinet lights come first), and gas limits are read-only. A viewer can read 'Set limits' on the team card as covering all three products although the narration says weather. Nothing shows a response to an event across products. Possibly acceptable given what is true. Say so explicitly in the narration if kept ('control today is weather limits and recorded actions')."
+  },
+  {
+   "requirement": "Feeds a future AI agent, honestly framed",
+   "status": "covered",
+   "where": "connected-environment a01 to a04 and the agent diagram, DIRECTION badge and ribbon",
+   "note": "Framing follows guardrail 4 well: 'could one day', 'Building blocks exist for Weather Station only, not Lightning or Gas', 'No assistant runs on any site today', 'A person approves each proposal', 'Safety answers are meant to come from fixed rules'. No tool count, no agent screens, no claim of control. Fixes needed: a01 'Everything lands in one platform' and the column items 'Gas readings', 'Alerts and history' (see contradictions). a02 and a04 captions are in present tense with only the ribbon marking them as direction. About 28 seconds of text-only diagrams at the end. The brief's 'control everything' is correctly not claimed."
+  },
+  {
+   "requirement": "Multiple integration paths: Modbus-style mesh and the vendor-cloud black box for gas",
+   "status": "covered",
+   "where": "connected-environment p01 to p04 (paths diagram, three lanes); gas g14, g15; lightning l12, l13; weather w16, w17",
+   "note": "Umbrella explains Modbus on first use in the required wording, shows the Lightning input module and separate queue, and names gas as 'a black box to us. No mesh, no Modbus.' The gas video repeats the black-box path with 'vendor cloud only'. Cadence is stated plainly in the umbrella (G03 unknown live). Weather and lightning videos do not mention Modbus at all, so the umbrella alone carries that requirement. The lightning lane label drops 'Modbus style'. The gas video does not say 'no mesh, no Modbus' although a director note claims it."
+  },
+  {
+   "requirement": "Screens have new changes: each video shows its new screens",
+   "status": "weak",
+   "where": "weather: gear, Reports, Safety Policy, Connected Products (w07 to w14). lightning: radii map, alarm activity, settings, wallboard and phone (l05 to l11). gas: overview, status line, wallboard, phone, detectors, alerts (g02 to g12). umbrella: o01, o02, g01, c02, k01, k04",
+   "note": "Weather, Lightning and Gas each show most of their new screens, with 'New' captions and a list card. Gaps: (1) the umbrella shows no new Lightning screen at all and its 'What is new' list has no Lightning item, although the Lightning assets exist in the lightning folder. (2) The umbrella and gas videos do not show the gas wallboard, phone or Detectors page as new. (3) The new Lightning radii map is blurred so heavily the rings are not visible, so l05 and l06 show a white void and a blur. (4) 'New' is applied inconsistently across videos (see wording). (5) The lightning refreshed tile is never labelled."
+  },
+  {
+   "requirement": "Videos are stronger than before: story, visuals and voice",
+   "status": "weak",
+   "where": "all four, mostly weather w09 to w13, gas g08 to g13, lightning l05 to l11, umbrella tri scenes and diagrams",
+   "note": "Story is clearly stronger. Each has a concrete hook and one thesis ('A heat number is not an answer', 'what warns the crew first', 'silence is not calm', 'where do you look first'). Spec check passes and lengths are 2:22 to 3:21 at the tool's pace, with the umbrella and weather at the upper limit. Visuals are improved with zooms, spotlight callouts and diagrams, but still weak in places. Tri scenes (umbrella o03, s01, c02; lightning l11) leave the lower half black. Path diagrams (weather w16 to w17, lightning l12 to l13, gas g14 to g15) are a thin strip in a large empty frame. Weather has four consecutive dense Settings pages (about 40 s), gas has six table-heavy beats, the lightning map beats show a blur. The four openings and closings share one template, so the set sounds samey. Voice cannot be judged without the real run, and word counts are at the 2.5 minute ceiling so real pace may overrun."
+  }
+ ]
+}

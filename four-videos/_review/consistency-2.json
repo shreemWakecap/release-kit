@@ -1,0 +1,132 @@
+{
+  "contradictions": [
+    {
+      "videos": "connected-environment (h01) vs lightning (l01, l02, l16)",
+      "issue": "The umbrella hook asks 'Is it safe to work right now?' and answers 'Heat has an answer. Lightning has one. So does gas.' The Lightning video says the opposite stance: this page is the backup, the cabinet lights and sounder come first. The umbrella only corrects this later (l01, 1:19). Gas also contradicts the hook in tone: the Gas video's thesis is 'a quiet screen is not an answer' and the Gas Overview has no state word.",
+      "fix": "Reword h01 so no product is promised as 'the answer' to safe-to-work, for example 'Heat has a verdict. Lightning has a state. Gas has a status line.' Keep 'one place to look'."
+    },
+    {
+      "videos": "connected-environment (u04 stage-6 card, k02) vs lightning (l04, l13)",
+      "issue": "The umbrella puts Lightning alerting radii under the chapter 'Control' (chapter bar 'Control', k02, and the on-screen team card verb 'Control'), while the Lightning video presents the same radii as configured reference distances and never as control (and must not claim they change the alarm, L10 conflict). Also the stage-6 team card prints the unscoped verb 'Control' with its only connector drawn to the Weather Station card, which contradicts k02 and k03 (Lightning and Gas control) and the narration 'Control is narrower'.",
+      "fix": "Change the team-card verbs to Watch, Decide, Act (or Set limits), or drop the connector; rename chapter 3 to 'Settings and alerts' or add 'shown as reference rings' to k02. Keep the L10 caveat out of any 'control' wording."
+    },
+    {
+      "videos": "gas (g10, g11 text 'The newest three read Closed') vs connected-environment (k03b evidence)",
+      "issue": "Same Gas Alerts frame, two treatments. The umbrella deliberately stopped quoting the count of Closed rows (stale live value, a fourth older Closed row sits below the fold), while the Gas video narrates 'The newest three read Closed' and callouts the three Closed cells. 'Newest three' is true, but it is the live-value habit the umbrella dropped.",
+      "fix": "Align: either both avoid the count (Gas g10: 'The newest rows read Closed, with no button.') or both state it with the 'newest' qualifier."
+    },
+    {
+      "videos": "lightning (l09 'Neither has a menu link. You open both by address.') vs gas (g07, g08) and connected-environment (g01)",
+      "issue": "Gas wallboard and phone routes are also not linked from the menu (changes#gas-wall-phone, 'Not linked from the rail'), but the Gas video and the umbrella g01 say nothing about how to reach them, and Gas parks them at chapter 0 while Lightning gives them chapter 3 with the path text 'Wallboard and phone: by address' printed after the builder's 'CLICK' prefix. A viewer of the Gas video cannot find the views it spends 15 s on.",
+      "fix": "Add the same one-clause 'opened by address, no menu link' to g07 or g08 (and to umbrella g01 caption), and treat the chapter bar the same way in both videos."
+    },
+    {
+      "videos": "all four (chapter bar, vbuild)",
+      "issue": "The builder prints 'CLICK <path>' on every chaptered shot, including shots where nothing is clicked and the Lightning path 'Wallboard and phone: by address', which is a URL, not a click. Guardrail 9 says click callouts are demonstrations only. Chapter-path naming is also inconsistent for the same navigation: Weather says 'Left rail > Weather Station / Reports / Settings', the umbrella says 'Left menu >' (correct, it is the app's inner menu) and 'Portal left rail >' (correct for the portal icon rail, used again in z01), Gas and Lightning say 'Connected Environment > ...'. In the Weather video 'Left rail' therefore names the wrong thing (Weather Station, Reports and Settings sit in the inner left menu, not the portal's icon rail).",
+      "fix": "Use one convention: 'Left menu' for the app menu, 'portal rail' only for the Connected Environment icon. Ask the lead for a builder prefix option (WHERE / PATH) or no prefix unless click:true."
+    },
+    {
+      "videos": "connected-environment (p02 lane, evidence) vs lightning (l11) vs weather (w17)",
+      "issue": "Modbus treatment differs. The umbrella shows MODBUS STYLE FRAMES only on the weather lane; the Lightning lane says 'same kind of frames' and the badge omits Modbus, and the evidence note says 'Lightning's frame differs from weather's', so 'same kind' needs the reader to infer Modbus. The Lightning video says outright that Lightning frames are 'Modbus style frames'. A viewer of the umbrella would conclude only weather is Modbus.",
+      "fix": "In umbrella p02 add 'in Modbus style frames too' or make the Lightning lane badge 'SAME MESH TRANSPORT · MODBUS STYLE FRAMES'; keep the explanation sentence only in p01."
+    },
+    {
+      "videos": "gas (g15, g16, diagram sink 'Over an hour old: Check') vs connected-environment (p03, assumptions)",
+      "issue": "Different evidence threshold for the same unknown claims. The umbrella keeps the gas cadence (about every minute / about every 30 min) out of the voice because G03 is live_today unknown, and says only vendor cloud, black box, no mesh, no Modbus. The Gas video speaks the cadence and also states plainly 'One quiet for over an hour reads Check' (G10 and G11 both live_today unknown; only an offline detector was seen live, no stale-but-reporting one). Guardrail 11: unknown means omit or soften to what the page shows.",
+      "fix": "Soften g16 to what the page shows: 'Each reading shows its age, and the page counts a reading as new only if it is under an hour old. The fifth is offline and reads Check.' (Overview tile text: 'Reading newer than 60 min'.) Keep cadence with 'about'/'typically' or move it to lane text only, as the umbrella does."
+    },
+    {
+      "videos": "weather (w09 spotlight on the whole Select parameters dialog) vs connected-environment (w03 window) and gas (g04, beatsheet 'CO and CO2 removed')",
+      "issue": "Same gear dialog, different treatment. The umbrella crops the window so no gas row (CO2, H2S, CO) shows. The Weather video spotlights the entire dialog, which lists H2S, CO and CO2 switches, while the Gas video shows only H2S, oxygen and LEL (CO and CO2 were removed from Gas). Nothing is narrated, but a viewer of both sees H2S and CO in a weather menu and a Gas screen that says three gases.",
+      "fix": "Narrow the w09 zoom and spotlight to the first six or seven rows (as the umbrella does), or add one clause that the dialog lists weather parameters."
+    },
+    {
+      "videos": "weather (w18) vs connected-environment (z01), gas (g17), lightning (l16 card)",
+      "issue": "Next-step lines differ on the entitlement qualifier. Umbrella, Gas and the Lightning card say 'if your project has it'; Weather w18 says 'open Weather Station' with no qualifier, although w15 in the same video says each project switches on only the products it uses (and Project B has Weather Station Inactive). Lightning l16 narration also drops the qualifier that its card carries.",
+      "fix": "Add 'if your project has it' to w18 and l16 narration."
+    },
+    {
+      "videos": "connected-environment (o03) vs lightning (l03)",
+      "issue": "Capture-time framing differs. Lightning says 'The state tile read All Clear when we captured this'. The umbrella o03 says in present tense 'Weather reads Danger. Lightning reads All Clear. Gas reads Check.' Labels say Project A, B, C, and every video carries the LIVE CAPTURE 4 OCT 2026 label, so this is low risk, but the careful past tense exists in only one video.",
+      "fix": "Use 'read ... when captured' in o03 (or 'show') to match the Lightning wording."
+    }
+  ],
+  "wording_inconsistencies": [
+    "Gas page names: the menu item is 'Dashboard' and the page heading is 'Overview'. Gas chapter paths say '... > Gas > Dashboard' and narration says 'Overview' (g03, umbrella g02). Pick one, probably 'Overview' in voice and 'Dashboard' only in the path, and say so once.",
+    "Modbus explanation: the same sentence 'Modbus is an industrial wiring and data standard many sensors speak.' is reused verbatim in umbrella p01 and weather w17 (acceptable, each video stands alone). Lightning l11 changes the form to an appositive ('They travel in Modbus style frames, an industrial wiring and data standard many sensors speak'), which reads as if the frames are the standard. SPEC.md's own wording ('industrial wiring standard') also differs from the guardrail wording ('wiring and data standard'); all three videos use the guardrail version, good. Align l11 to the two-sentence form.",
+    "Other sentences reused verbatim across videos: 'Readiness reads Not ready.' (umbrella c02, weather w07), 'Compliance lists the limits.' (umbrella g03, gas g14), 'the vendor's cloud, a black box to us' (umbrella p03, gas g15), 'With edit access, this is where you close one' (umbrella k03b, gas g10). Acceptable repetition for the same facts; vary at least the umbrella versions if the four are watched back to back.",
+    "The page note on Gas Alerts is paraphrased two ways, neither verbatim: umbrella k03 'It is not sent to Blackline, the vendor: the alert stays open in Blackline Live' and gas g12 'Closing is recorded here, not sent to Blackline, the vendor. A closed alert stays open in Blackline Live.' Guardrail: name Blackline only when quoting the page. Use the exact page sentence ('It is not sent to Blackline: an alert closed here stays open in Blackline Live.') in both and keep 'the vendor' as a separate gloss. Caption and callout 'Not sent to Blackline' in gas are fragments of the page text and are fine.",
+    "Cadence wording for gas detectors: 'usually about every 30 min' (umbrella lane), 'typically ... about every thirty minutes' (gas g16), 'REPORT ABOUT EVERY 30 MIN' (gas badge). Use one adverb.",
+    "Lightning lane wording: umbrella 'Cloud queues' (plural), Lightning 'Cloud queue'; umbrella narration 'go to a separate queue', Lightning 'are set aside'; badges say 'WIRELESS MESH' (Lightning), 'ON-SITE MESH' (Weather), 'WIRELESS MESH . MODBUS STYLE FRAMES' (umbrella); caption p04 says 'the site mesh'. Weather lane last step is 'WakeCap' in the Weather video and 'Weather Station' in the umbrella.",
+    "Lightning distance vocabulary within one video: 'configured thresholds' (l04), 'radii' (l05, page label 'Alarm radii' vs 'Alerting radii'), 'distances' (l13), 'rings'. The umbrella adds 'alerting radii' under Control. Choose 'alert distances' (lead decision 6) for voice and keep page labels only in quotes.",
+    "How the green-only rule is attributed: umbrella l01 'In Lightning, only green counts as safe to work.' (no owner) vs Lightning l03 'WakeCap treats only the green state as safe to work.' Use the Lightning wording in both.",
+    "'New' labelling: umbrella captions use 'Recently added' on only two beats (Connected Products, alarm history); Weather uses 'New:' and 'New home'; Lightning uses 'New'; Gas says 'new' once ('the new Overview'). The chosen baseline (August answer-first dashboard) is the same in the notes but is never said on screen.",
+    "DIRECTION framing (umbrella only): diagram title 'DIRECTION: A FUTURE AI ASSISTANT', ribbon 'DIRECTION . NOT LIVE TODAY', caption badge 'DIRECTION', captions 'Direction: ...'. The voice never says 'direction' or 'not live today' (a01 says 'future', a02 'No assistant runs on any site'). a02 states what exists today but carries the DIRECTION badge. The brief and research say 'agent'; all copy says 'assistant' (the unrendered stage-7 card still says 'Future AI assistant' and 'Proposes actions', whereas the agent diagram says 'Propose' and a03 says 'propose changes'). Decide on 'assistant' deliberately and keep 'proposes changes' everywhere.",
+    "Product name forms: 'Weather' (umbrella tile labels, o03, k01 'In weather') vs 'Weather Station' (menu, cards); 'Lightning sensors' vs 'Lightning sensor' vs 'lightning warning unit' (none used, good); 'Gas detectors' consistent.",
+    "Beat ids are reused across videos with different content (w03, l01 to l03, g01 to g03 exist in both the umbrella and a product video). Harmless in the builder, confusing in review notes; prefix umbrella ids if the lead cross-references them.",
+    "Present-tense live values: Gas narrates 'Five detectors, four online' and 'Twelve' (on screen and part of the point, allowed); the umbrella avoids all of these. Fine under guardrail 10, but inconsistent."
+  ],
+  "coverage": [
+    {
+      "requirement": "Umbrella over all environment products",
+      "status": "covered",
+      "where": "connected-environment u01 to u03, o01 to o03, p01 to p04; every product video repeats its own one-product frame",
+      "note": "Scoped to the three named products plus the shared header, the Connected Products switches and the three-project tri tiles (Project A, B, C, never one site). Chips are the safe ones (one backend, one menu and header, same view permission, switched on per project). Weak spot: the hook h01 says Lightning and gas 'have an answer' (see contradiction 1)."
+    },
+    {
+      "requirement": "Manage",
+      "status": "weak",
+      "where": "o01 (Connected Products), k01 to k03 (Settings)",
+      "note": "The word and idea of managing is never stated. Connected Products is shown as a list of what is switched on, with no beat on who can switch products or that Settings is permission-gated per area (only Lightning l12 says so). Weather w15 does the same. Acceptable, but the brief's 'manage' leg is implicit."
+    },
+    {
+      "requirement": "Detailed eye on the site",
+      "status": "covered",
+      "where": "umbrella c01, c02, w03, c03, l01 to l03, g01 to g03; weather w02 to w10; lightning l02 to l09, l14; gas g02 to g09, g13, g14",
+      "note": "Strong. Umbrella chapter 2 is a 12-beat tour at one sentence per screen, which risks reading as a feature list; the umbrella cut order (g03, w03, l03, p04, k03b) is sensible."
+    },
+    {
+      "requirement": "Control what happens when something happens (scoped as the lead decided)",
+      "status": "covered",
+      "where": "umbrella k01 (30 day would-have-stopped preview), k02 (Lightning radii, Temporary location), k03 and k03b (Gas close, WakeCap only); weather w11 to w14; lightning l12, l13; gas g10 to g12",
+      "note": "Scope matches lead decisions 6, 7, 9 and guardrail 1 (recorded in WakeCap only, never told to the vendor). Gaps: (a) Acknowledge is never shown as an action anywhere, only Close (the lead scope says acknowledged and closed; the page also has an Acknowledge button while an alert is open); (b) 'when something happens' is only really answered for Weather (limits decide when work stops); Lightning and Gas control are bookkeeping or reference by design; (c) the stage, review and publish flow of the weather policy is not shown (never exercised live)."
+    },
+    {
+      "requirement": "Feeds a future AI agent, honestly framed",
+      "status": "covered",
+      "where": "umbrella a01 to a04 (agent diagram, DIRECTION badge), z01",
+      "note": "Honest: weather only, no Lightning or Gas tools, no assistant on any site, proposes and a person approves, no tool counts, no agent screens, 'would only reword'. Weakness: the brief says 'control everything in the site'; the video correctly declines that. a01 says 'the platform holds readings and status from all three' next to a02 'building blocks for Weather Station only', which is consistent but needs the viewer to follow the caveat. Product videos contain no AI claim (correct)."
+    },
+    {
+      "requirement": "Multiple integration paths: Modbus for weather and Lightning, vendor-cloud black box for gas",
+      "status": "covered",
+      "where": "umbrella p01 to p04; weather w17, w18; lightning l10, l11; gas g15, g16",
+      "note": "All four explain Modbus on first use with the guardrail wording and none says gas uses Modbus or the mesh (only the umbrella says 'No mesh, no Modbus'). Gaps: Modbus is not named for the Lightning lane in the umbrella (contradiction 6); the Gas video never contrasts with the mesh; the paths diagram is a thin one-lane strip in a mostly empty frame in all four (builder layout)."
+    },
+    {
+      "requirement": "The screens have new changes: each video shows its new screens",
+      "status": "covered",
+      "where": "weather w09, w10, w11 to w13, w15, w16 (list card); lightning l05 to l07, l12 to l15 (list card); gas g02 to g14; umbrella o01, o02, c01, w03, c03, l02, l03, g02, g03, k01, k02, k03",
+      "note": "Every video shows its new screens. Weather and Lightning flag them as new and recap on a card. The umbrella flags 'Recently added' on only two beats. Gas flags 'new' once (g03) and ends on a 'screen by screen' card instead of a what-is-new recap, so its new pages (Detectors, Alerts with Close, Compliance, wallboard, phone, header line) are not labelled new."
+    },
+    {
+      "requirement": "Lightning and Gas videos match the CURRENT screens in the refresh note",
+      "status": "covered",
+      "where": "lightning l05 (blurred satellite map beside the tile, legend text), l12 to l14 (Temporary badge and the manual-location note only in Settings, none on the main page); gas g03, g10, g11, g13 (Open 12, Acknowledged 12, Closed not available yet, three Closed rows, Live alarms 0)",
+      "note": "Held for is never narrated or targeted and stays outside the settled zooms (only visible in glides); intro line and manual-location note are never spotlighted or read aloud. Weak visual: the blurred map shows only an orange blob with no visible dot or rings, so 'the dot shows the sensor's state' (l05, umbrella l02) points at a legend line over nothing visible; the tile on the left, which does show the dot and rings, is the better visual for that sentence."
+    },
+    {
+      "requirement": "Videos are stronger than before: story",
+      "status": "covered",
+      "where": "hooks h01, w01, l01, g01; bookend closes z01, w18, l16, g17",
+      "note": "Each video opens on a concrete question or scene and closes on one next step that echoes the hook. Umbrella has a clear three-chapter arc (one place to look, a detailed eye, control) and a cut-order list. Weak points: the umbrella is 517 words, about 223 to 226 s against a 3:30 target and has 9 beats under the 15-word floor; product videos sit at the top of their 2:30 ceiling (337, 335, 340 words, estimate 145 to 148 s) so a slower real voice will overrun; Weather's w16 recap card and Lightning's l15 repeat what the shots already said."
+    },
+    {
+      "requirement": "Videos are stronger than before: visuals",
+      "status": "weak",
+      "where": "all four",
+      "note": "Positives: camera zooms with spotlight callouts on every shot beat, three-tile cross-project moment, new screens first-class. Weaknesses (mostly builder): the paths diagram is a thin left-aligned strip with a dangling chevron in all four; umbrella stage 6 leaves the lower third empty and connects only to the Weather card; Gas wallboard beat and two diagram beats are static for about 8 s and 18 s; the 'CLICK' prefix appears on non-click shots; the blurred Lightning map gives the eye nothing to land on; Weather w02, w06 and w07 reuse one frame three times; 'Held for' and the green 'Last reading was N minute(s) ago' line flash for about a second at the start of several shot scenes. A 'start already zoomed' builder option would remove most of the flashes."
+    }
+  ],
+  "overall": "The four videos agree on the facts that matter: Gas close and acknowledge are recorded in WakeCap only (never told to the vendor), no Gas to Observation Manager, no gas notifications, no gas compliance numbers, Gas reads Check and 'Not confirmed safe' on stale data, Lightning is a backup with only green safe (stated as a rule), the AI assistant is DIRECTION and weather only with people approving, gas never uses Modbus or the mesh, and Modbus is explained on first use. Beatsheets match the specs word for word, vbuild --check passes on all four, no first-four-word duplicates, no banned words or dashes, no ticket ids, version numbers or flag names in customer-facing text, and Blackline appears only in k03 and g12. No outright guardrail break found. Fix before the real run, in order: (1) umbrella h01 vs the Lightning and Gas stance, (2) umbrella 'Control' verb and connector vs k02 and k03 scope, (3) soften Gas g16 and its diagram sink to what the page shows (guardrail 11), (4) mention how to reach the Gas wallboard and phone views and align chapter bar handling, (5) one navigation vocabulary (Left menu vs Left rail) and the 'CLICK' prefix, (6) narrow the Weather gear spotlight, (7) add 'Modbus style' to the umbrella Lightning lane. Process note: the updater reports are stale against the specs (umbrella says 30 beats, 497 words, 218 s; the spec has 31 beats, 517 words, about 223 to 226 s; Lightning says 15 beats, 338 words; spec has 16, 335; Gas says 343; spec has 340), and the umbrella remains about 13 to 16 s over the 3:30 target."
+}

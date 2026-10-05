@@ -1,0 +1,381 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:06,480"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 6480
+			},
+			"text": " A card also has its own small button. Use it on barometric pressure and the card leaves the list.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.734945,
+					"t_dtw": -1
+				},
+				{
+					"text": " A",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,080"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 80
+					},
+					"id": 316,
+					"p": 0.975816,
+					"t_dtw": -1
+				},
+				{
+					"text": " card",
+					"timestamps": {
+						"from": "00:00:00,290",
+						"to": "00:00:00,470"
+					},
+					"offsets": {
+						"from": 290,
+						"to": 470
+					},
+					"id": 2920,
+					"p": 0.994042,
+					"t_dtw": -1
+				},
+				{
+					"text": " also",
+					"timestamps": {
+						"from": "00:00:00,470",
+						"to": "00:00:00,850"
+					},
+					"offsets": {
+						"from": 470,
+						"to": 850
+					},
+					"id": 611,
+					"p": 0.996088,
+					"t_dtw": -1
+				},
+				{
+					"text": " has",
+					"timestamps": {
+						"from": "00:00:00,850",
+						"to": "00:00:01,120"
+					},
+					"offsets": {
+						"from": 850,
+						"to": 1120
+					},
+					"id": 575,
+					"p": 0.999365,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:01,230",
+						"to": "00:00:01,410"
+					},
+					"offsets": {
+						"from": 1230,
+						"to": 1410
+					},
+					"id": 1080,
+					"p": 0.98034,
+					"t_dtw": -1
+				},
+				{
+					"text": " own",
+					"timestamps": {
+						"from": "00:00:01,410",
+						"to": "00:00:01,680"
+					},
+					"offsets": {
+						"from": 1410,
+						"to": 1680
+					},
+					"id": 1065,
+					"p": 0.998296,
+					"t_dtw": -1
+				},
+				{
+					"text": " small",
+					"timestamps": {
+						"from": "00:00:01,680",
+						"to": "00:00:02,170"
+					},
+					"offsets": {
+						"from": 1680,
+						"to": 2170
+					},
+					"id": 1359,
+					"p": 0.997784,
+					"t_dtw": -1
+				},
+				{
+					"text": " button",
+					"timestamps": {
+						"from": "00:00:02,170",
+						"to": "00:00:02,620"
+					},
+					"offsets": {
+						"from": 2170,
+						"to": 2620
+					},
+					"id": 2960,
+					"p": 0.997611,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:03,010",
+						"to": "00:00:03,010"
+					},
+					"offsets": {
+						"from": 3010,
+						"to": 3010
+					},
+					"id": 13,
+					"p": 0.925579,
+					"t_dtw": -1
+				},
+				{
+					"text": " Use",
+					"timestamps": {
+						"from": "00:00:03,050",
+						"to": "00:00:03,220"
+					},
+					"offsets": {
+						"from": 3050,
+						"to": 3220
+					},
+					"id": 8278,
+					"p": 0.498173,
+					"t_dtw": -1
+				},
+				{
+					"text": " it",
+					"timestamps": {
+						"from": "00:00:03,220",
+						"to": "00:00:03,360"
+					},
+					"offsets": {
+						"from": 3220,
+						"to": 3360
+					},
+					"id": 309,
+					"p": 0.998622,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:03,360",
+						"to": "00:00:03,410"
+					},
+					"offsets": {
+						"from": 3360,
+						"to": 3410
+					},
+					"id": 322,
+					"p": 0.994788,
+					"t_dtw": -1
+				},
+				{
+					"text": " bar",
+					"timestamps": {
+						"from": "00:00:03,520",
+						"to": "00:00:03,690"
+					},
+					"offsets": {
+						"from": 3520,
+						"to": 3690
+					},
+					"id": 2159,
+					"p": 0.982647,
+					"t_dtw": -1
+				},
+				{
+					"text": "ometric",
+					"timestamps": {
+						"from": "00:00:03,760",
+						"to": "00:00:04,160"
+					},
+					"offsets": {
+						"from": 3760,
+						"to": 4160
+					},
+					"id": 29470,
+					"p": 0.999596,
+					"t_dtw": -1
+				},
+				{
+					"text": " pressure",
+					"timestamps": {
+						"from": "00:00:04,190",
+						"to": "00:00:04,770"
+					},
+					"offsets": {
+						"from": 4190,
+						"to": 4770
+					},
+					"id": 3321,
+					"p": 0.99401,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:05,020",
+						"to": "00:00:05,020"
+					},
+					"offsets": {
+						"from": 5020,
+						"to": 5020
+					},
+					"id": 293,
+					"p": 0.607842,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:05,050",
+						"to": "00:00:05,200"
+					},
+					"offsets": {
+						"from": 5050,
+						"to": 5200
+					},
+					"id": 264,
+					"p": 0.996827,
+					"t_dtw": -1
+				},
+				{
+					"text": " card",
+					"timestamps": {
+						"from": "00:00:05,270",
+						"to": "00:00:05,540"
+					},
+					"offsets": {
+						"from": 5270,
+						"to": 5540
+					},
+					"id": 2920,
+					"p": 0.99481,
+					"t_dtw": -1
+				},
+				{
+					"text": " leaves",
+					"timestamps": {
+						"from": "00:00:05,540",
+						"to": "00:00:05,940"
+					},
+					"offsets": {
+						"from": 5540,
+						"to": 5940
+					},
+					"id": 5510,
+					"p": 0.984948,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:05,940",
+						"to": "00:00:06,100"
+					},
+					"offsets": {
+						"from": 5940,
+						"to": 6100
+					},
+					"id": 264,
+					"p": 0.982845,
+					"t_dtw": -1
+				},
+				{
+					"text": " list",
+					"timestamps": {
+						"from": "00:00:06,100",
+						"to": "00:00:06,290"
+					},
+					"offsets": {
+						"from": 6100,
+						"to": 6290
+					},
+					"id": 1329,
+					"p": 0.999558,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:06,310",
+						"to": "00:00:06,470"
+					},
+					"offsets": {
+						"from": 6310,
+						"to": 6470
+					},
+					"id": 13,
+					"p": 0.973488,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_324]",
+					"timestamps": {
+						"from": "00:00:06,480",
+						"to": "00:00:06,480"
+					},
+					"offsets": {
+						"from": 6480,
+						"to": 6480
+					},
+					"id": 50689,
+					"p": 0.173263,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

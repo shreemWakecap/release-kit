@@ -1,0 +1,437 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:07,880"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 7880
+			},
+			"text": " Below, the featured cards. The heat index card shows its band and the work, rest, and water cycle for the crew.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.920452,
+					"t_dtw": -1
+				},
+				{
+					"text": " Below",
+					"timestamps": {
+						"from": "00:00:00,270",
+						"to": "00:00:00,400"
+					},
+					"offsets": {
+						"from": 270,
+						"to": 400
+					},
+					"id": 36261,
+					"p": 0.987786,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:00,400",
+						"to": "00:00:00,550"
+					},
+					"offsets": {
+						"from": 400,
+						"to": 550
+					},
+					"id": 11,
+					"p": 0.762958,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:00,550",
+						"to": "00:00:00,790"
+					},
+					"offsets": {
+						"from": 550,
+						"to": 790
+					},
+					"id": 264,
+					"p": 0.994622,
+					"t_dtw": -1
+				},
+				{
+					"text": " featured",
+					"timestamps": {
+						"from": "00:00:00,790",
+						"to": "00:00:01,380"
+					},
+					"offsets": {
+						"from": 790,
+						"to": 1380
+					},
+					"id": 13822,
+					"p": 0.535125,
+					"t_dtw": -1
+				},
+				{
+					"text": " cards",
+					"timestamps": {
+						"from": "00:00:01,430",
+						"to": "00:00:01,820"
+					},
+					"offsets": {
+						"from": 1430,
+						"to": 1820
+					},
+					"id": 5632,
+					"p": 0.997727,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:01,820",
+						"to": "00:00:02,030"
+					},
+					"offsets": {
+						"from": 1820,
+						"to": 2030
+					},
+					"id": 13,
+					"p": 0.925253,
+					"t_dtw": -1
+				},
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:02,070",
+						"to": "00:00:02,180"
+					},
+					"offsets": {
+						"from": 2070,
+						"to": 2180
+					},
+					"id": 440,
+					"p": 0.544031,
+					"t_dtw": -1
+				},
+				{
+					"text": " heat",
+					"timestamps": {
+						"from": "00:00:02,630",
+						"to": "00:00:02,740"
+					},
+					"offsets": {
+						"from": 2630,
+						"to": 2740
+					},
+					"id": 3738,
+					"p": 0.777385,
+					"t_dtw": -1
+				},
+				{
+					"text": " index",
+					"timestamps": {
+						"from": "00:00:02,740",
+						"to": "00:00:03,220"
+					},
+					"offsets": {
+						"from": 2740,
+						"to": 3220
+					},
+					"id": 8186,
+					"p": 0.99815,
+					"t_dtw": -1
+				},
+				{
+					"text": " card",
+					"timestamps": {
+						"from": "00:00:03,220",
+						"to": "00:00:03,570"
+					},
+					"offsets": {
+						"from": 3220,
+						"to": 3570
+					},
+					"id": 2920,
+					"p": 0.998041,
+					"t_dtw": -1
+				},
+				{
+					"text": " shows",
+					"timestamps": {
+						"from": "00:00:03,610",
+						"to": "00:00:04,080"
+					},
+					"offsets": {
+						"from": 3610,
+						"to": 4080
+					},
+					"id": 3110,
+					"p": 0.997535,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:04,080",
+						"to": "00:00:04,340"
+					},
+					"offsets": {
+						"from": 4080,
+						"to": 4340
+					},
+					"id": 1080,
+					"p": 0.991751,
+					"t_dtw": -1
+				},
+				{
+					"text": " band",
+					"timestamps": {
+						"from": "00:00:04,430",
+						"to": "00:00:04,780"
+					},
+					"offsets": {
+						"from": 4430,
+						"to": 4780
+					},
+					"id": 4116,
+					"p": 0.99823,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:04,780",
+						"to": "00:00:04,830"
+					},
+					"offsets": {
+						"from": 4780,
+						"to": 4830
+					},
+					"id": 293,
+					"p": 0.908779,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:05,150",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5150,
+						"to": 5340
+					},
+					"id": 264,
+					"p": 0.99705,
+					"t_dtw": -1
+				},
+				{
+					"text": " work",
+					"timestamps": {
+						"from": "00:00:05,340",
+						"to": "00:00:05,720"
+					},
+					"offsets": {
+						"from": 5340,
+						"to": 5720
+					},
+					"id": 589,
+					"p": 0.997889,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:05,720",
+						"to": "00:00:05,820"
+					},
+					"offsets": {
+						"from": 5720,
+						"to": 5820
+					},
+					"id": 11,
+					"p": 0.987157,
+					"t_dtw": -1
+				},
+				{
+					"text": " rest",
+					"timestamps": {
+						"from": "00:00:05,920",
+						"to": "00:00:06,250"
+					},
+					"offsets": {
+						"from": 5920,
+						"to": 6250
+					},
+					"id": 1472,
+					"p": 0.977573,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:06,250",
+						"to": "00:00:06,410"
+					},
+					"offsets": {
+						"from": 6250,
+						"to": 6410
+					},
+					"id": 11,
+					"p": 0.888005,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:06,440",
+						"to": "00:00:06,580"
+					},
+					"offsets": {
+						"from": 6440,
+						"to": 6580
+					},
+					"id": 293,
+					"p": 0.984534,
+					"t_dtw": -1
+				},
+				{
+					"text": " water",
+					"timestamps": {
+						"from": "00:00:06,580",
+						"to": "00:00:06,860"
+					},
+					"offsets": {
+						"from": 6580,
+						"to": 6860
+					},
+					"id": 1281,
+					"p": 0.998195,
+					"t_dtw": -1
+				},
+				{
+					"text": " cycle",
+					"timestamps": {
+						"from": "00:00:06,860",
+						"to": "00:00:07,140"
+					},
+					"offsets": {
+						"from": 6860,
+						"to": 7140
+					},
+					"id": 6586,
+					"p": 0.996179,
+					"t_dtw": -1
+				},
+				{
+					"text": " for",
+					"timestamps": {
+						"from": "00:00:07,140",
+						"to": "00:00:07,300"
+					},
+					"offsets": {
+						"from": 7140,
+						"to": 7300
+					},
+					"id": 337,
+					"p": 0.992267,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:07,300",
+						"to": "00:00:07,460"
+					},
+					"offsets": {
+						"from": 7300,
+						"to": 7460
+					},
+					"id": 264,
+					"p": 0.999611,
+					"t_dtw": -1
+				},
+				{
+					"text": " crew",
+					"timestamps": {
+						"from": "00:00:07,460",
+						"to": "00:00:07,650"
+					},
+					"offsets": {
+						"from": 7460,
+						"to": 7650
+					},
+					"id": 7260,
+					"p": 0.998824,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:07,710",
+						"to": "00:00:07,870"
+					},
+					"offsets": {
+						"from": 7710,
+						"to": 7870
+					},
+					"id": 13,
+					"p": 0.996286,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_394]",
+					"timestamps": {
+						"from": "00:00:07,880",
+						"to": "00:00:07,880"
+					},
+					"offsets": {
+						"from": 7880,
+						"to": 7880
+					},
+					"id": 50759,
+					"p": 0.46335,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

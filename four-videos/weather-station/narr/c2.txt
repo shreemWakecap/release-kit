@@ -1,0 +1,11 @@
+Next, station health. One station is offline, and the page names it. Readiness reads Not ready.
+
+Another project, same page. Three readings are in Danger: heat index, temperature and pressure. The page names each.
+
+Back in the first project, a new gear opens Select parameters. Switches choose which readings are featured.
+
+Reports is new. Pick a period to see the highest heat index and wind speed. You can export an Excel file.
+
+The safety limits live in Settings. The page warns that changing anything here changes when work stops, for everyone on the project.
+
+Two limits preview the last thirty days. Temperature would have stopped work on eight of those days. Wind would have stopped it on just one.

@@ -1,0 +1,87 @@
+[
+ {
+  "id": "g01",
+  "start": 0.0,
+  "kind": "card"
+ },
+ {
+  "id": "g02",
+  "start": 9.18,
+  "kind": "shot"
+ },
+ {
+  "id": "g03",
+  "start": 17.72,
+  "kind": "shot"
+ },
+ {
+  "id": "g04",
+  "start": 32.46,
+  "kind": "shot"
+ },
+ {
+  "id": "g05",
+  "start": 43.89,
+  "kind": "shot"
+ },
+ {
+  "id": "g06",
+  "start": 54.31,
+  "kind": "shot"
+ },
+ {
+  "id": "g07",
+  "start": 62.62,
+  "kind": "shot"
+ },
+ {
+  "id": "g08",
+  "start": 72.98,
+  "kind": "shot"
+ },
+ {
+  "id": "g09",
+  "start": 77.76,
+  "kind": "shot"
+ },
+ {
+  "id": "g10",
+  "start": 86.88,
+  "kind": "shot"
+ },
+ {
+  "id": "g11",
+  "start": 93.94,
+  "kind": "shot"
+ },
+ {
+  "id": "g12",
+  "start": 102.68,
+  "kind": "shot"
+ },
+ {
+  "id": "g13",
+  "start": 112.1,
+  "kind": "shot"
+ },
+ {
+  "id": "g14",
+  "start": 119.0,
+  "kind": "shot"
+ },
+ {
+  "id": "g15",
+  "start": 127.97,
+  "kind": "diagram"
+ },
+ {
+  "id": "g16",
+  "start": 135.2,
+  "kind": "diagram"
+ },
+ {
+  "id": "g17",
+  "start": 142.88,
+  "kind": "card"
+ }
+]

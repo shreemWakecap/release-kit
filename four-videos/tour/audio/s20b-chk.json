@@ -1,0 +1,409 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:07,300"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 7300
+			},
+			"text": " At the top, Right Now shows the current band, the work, rest, and water cycle in force on site.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.865415,
+					"t_dtw": -1
+				},
+				{
+					"text": " At",
+					"timestamps": {
+						"from": "00:00:00,240",
+						"to": "00:00:00,240"
+					},
+					"offsets": {
+						"from": 240,
+						"to": 240
+					},
+					"id": 1711,
+					"p": 0.9518,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:00,290",
+						"to": "00:00:00,590"
+					},
+					"offsets": {
+						"from": 290,
+						"to": 590
+					},
+					"id": 264,
+					"p": 0.99938,
+					"t_dtw": -1
+				},
+				{
+					"text": " top",
+					"timestamps": {
+						"from": "00:00:00,620",
+						"to": "00:00:00,910"
+					},
+					"offsets": {
+						"from": 620,
+						"to": 910
+					},
+					"id": 1192,
+					"p": 0.999163,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:01,010",
+						"to": "00:00:01,010"
+					},
+					"offsets": {
+						"from": 1010,
+						"to": 1010
+					},
+					"id": 11,
+					"p": 0.952631,
+					"t_dtw": -1
+				},
+				{
+					"text": " Right",
+					"timestamps": {
+						"from": "00:00:01,340",
+						"to": "00:00:01,660"
+					},
+					"offsets": {
+						"from": 1340,
+						"to": 1660
+					},
+					"id": 1779,
+					"p": 0.588418,
+					"t_dtw": -1
+				},
+				{
+					"text": " Now",
+					"timestamps": {
+						"from": "00:00:01,740",
+						"to": "00:00:01,950"
+					},
+					"offsets": {
+						"from": 1740,
+						"to": 1950
+					},
+					"id": 823,
+					"p": 0.79766,
+					"t_dtw": -1
+				},
+				{
+					"text": " shows",
+					"timestamps": {
+						"from": "00:00:01,950",
+						"to": "00:00:02,410"
+					},
+					"offsets": {
+						"from": 1950,
+						"to": 2410
+					},
+					"id": 3110,
+					"p": 0.901013,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:02,410",
+						"to": "00:00:02,700"
+					},
+					"offsets": {
+						"from": 2410,
+						"to": 2700
+					},
+					"id": 264,
+					"p": 0.991045,
+					"t_dtw": -1
+				},
+				{
+					"text": " current",
+					"timestamps": {
+						"from": "00:00:02,700",
+						"to": "00:00:03,360"
+					},
+					"offsets": {
+						"from": 2700,
+						"to": 3360
+					},
+					"id": 2190,
+					"p": 0.967049,
+					"t_dtw": -1
+				},
+				{
+					"text": " band",
+					"timestamps": {
+						"from": "00:00:03,360",
+						"to": "00:00:03,620"
+					},
+					"offsets": {
+						"from": 3360,
+						"to": 3620
+					},
+					"id": 4116,
+					"p": 0.968361,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,890",
+						"to": "00:00:03,890"
+					},
+					"offsets": {
+						"from": 3890,
+						"to": 3890
+					},
+					"id": 11,
+					"p": 0.93349,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:03,930",
+						"to": "00:00:04,090"
+					},
+					"offsets": {
+						"from": 3930,
+						"to": 4090
+					},
+					"id": 264,
+					"p": 0.757183,
+					"t_dtw": -1
+				},
+				{
+					"text": " work",
+					"timestamps": {
+						"from": "00:00:04,090",
+						"to": "00:00:04,270"
+					},
+					"offsets": {
+						"from": 4090,
+						"to": 4270
+					},
+					"id": 589,
+					"p": 0.981972,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,370",
+						"to": "00:00:04,460"
+					},
+					"offsets": {
+						"from": 4370,
+						"to": 4460
+					},
+					"id": 11,
+					"p": 0.974293,
+					"t_dtw": -1
+				},
+				{
+					"text": " rest",
+					"timestamps": {
+						"from": "00:00:04,530",
+						"to": "00:00:04,790"
+					},
+					"offsets": {
+						"from": 4530,
+						"to": 4790
+					},
+					"id": 1472,
+					"p": 0.980771,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,840",
+						"to": "00:00:04,930"
+					},
+					"offsets": {
+						"from": 4840,
+						"to": 4930
+					},
+					"id": 11,
+					"p": 0.590366,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:04,990",
+						"to": "00:00:05,190"
+					},
+					"offsets": {
+						"from": 4990,
+						"to": 5190
+					},
+					"id": 293,
+					"p": 0.942637,
+					"t_dtw": -1
+				},
+				{
+					"text": " water",
+					"timestamps": {
+						"from": "00:00:05,190",
+						"to": "00:00:05,580"
+					},
+					"offsets": {
+						"from": 5190,
+						"to": 5580
+					},
+					"id": 1281,
+					"p": 0.995528,
+					"t_dtw": -1
+				},
+				{
+					"text": " cycle",
+					"timestamps": {
+						"from": "00:00:05,580",
+						"to": "00:00:05,970"
+					},
+					"offsets": {
+						"from": 5580,
+						"to": 5970
+					},
+					"id": 6586,
+					"p": 0.99053,
+					"t_dtw": -1
+				},
+				{
+					"text": " in",
+					"timestamps": {
+						"from": "00:00:05,970",
+						"to": "00:00:06,040"
+					},
+					"offsets": {
+						"from": 5970,
+						"to": 6040
+					},
+					"id": 294,
+					"p": 0.981882,
+					"t_dtw": -1
+				},
+				{
+					"text": " force",
+					"timestamps": {
+						"from": "00:00:06,160",
+						"to": "00:00:06,510"
+					},
+					"offsets": {
+						"from": 6160,
+						"to": 6510
+					},
+					"id": 3464,
+					"p": 0.986959,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:06,510",
+						"to": "00:00:06,570"
+					},
+					"offsets": {
+						"from": 6510,
+						"to": 6570
+					},
+					"id": 322,
+					"p": 0.962234,
+					"t_dtw": -1
+				},
+				{
+					"text": " site",
+					"timestamps": {
+						"from": "00:00:06,680",
+						"to": "00:00:06,970"
+					},
+					"offsets": {
+						"from": 6680,
+						"to": 6970
+					},
+					"id": 3621,
+					"p": 0.655672,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:07,300",
+						"to": "00:00:07,300"
+					},
+					"offsets": {
+						"from": 7300,
+						"to": 7300
+					},
+					"id": 13,
+					"p": 0.937664,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_365]",
+					"timestamps": {
+						"from": "00:00:07,300",
+						"to": "00:00:07,300"
+					},
+					"offsets": {
+						"from": 7300,
+						"to": 7300
+					},
+					"id": 50730,
+					"p": 0.424159,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

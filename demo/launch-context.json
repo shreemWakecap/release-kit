@@ -1,0 +1,51 @@
+{
+  "feature_name": "Connected Environment",
+  "value_prop": "Is it safe to work right now? The answer comes first.",
+  "problem": "Numbers without answers. Old data that still looks fine.",
+  "pain_list": [
+    "Numbers without answers",
+    "A stopped sensor, old data that still looks fine"
+  ],
+  "hero_features": [
+    {
+      "id": "weather_station",
+      "title": "Weather Station: the verdict comes first",
+      "description": "A verdict strip leads the page with the steps to take. An offline station is named, not hidden.",
+      "linear_refs": [],
+      "demo_url": "https://portal.wakecap.com/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/connected-env/weather-station",
+      "demo_actions": [
+        {"kind": "click", "label": "The steps to take"},
+        {"kind": "click", "label": "Verdict, confidence, freshness"}
+      ]
+    },
+    {
+      "id": "lightning",
+      "title": "Lightning: status and alarm history",
+      "description": "Each device shows its status and alert zones. The alarm history lists every yellow, orange or red interval.",
+      "linear_refs": [],
+      "demo_url": "https://portal.wakecap.com/project/28df7ba2-94b1-436d-b114-fe7e16a15e07/connected-env/lightning",
+      "demo_actions": [
+        {"kind": "scroll", "label": "Every alarm interval, on record"}
+      ]
+    },
+    {
+      "id": "reports_settings",
+      "title": "Reports and a Safety Policy with history",
+      "description": "Maximums for any period. Limits that show what they would have done, and a change history.",
+      "linear_refs": [],
+      "demo_url": "https://portal.wakecap.com/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/connected-env/reports",
+      "demo_actions": [
+        {"kind": "click", "label": "What each limit would have done"},
+        {"kind": "scroll", "label": "Heat index bands"},
+        {"kind": "click", "label": "Change history"}
+      ]
+    }
+  ],
+  "rest": [],
+  "outcome_stats": [
+    {"title": "Answer first", "subtitle": "The verdict and the next step lead the page"},
+    {"title": "Nothing hidden", "subtitle": "Offline stations are named, not silent"},
+    {"title": "On record", "subtitle": "The Safety Policy keeps a change history"}
+  ],
+  "cta": "Open Connected Environment in the portal"
+}

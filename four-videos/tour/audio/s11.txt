@@ -1,0 +1,1 @@
+Each card can also move up, move down, or leave the featured area.

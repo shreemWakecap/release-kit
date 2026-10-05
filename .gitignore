@@ -1,0 +1,13 @@
+# Not pushed: caches, virtual environments, test screenshots, dev builds, logs
+.DS_Store
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/.work/
+presentation/story/qa/
+presentation/story/dist/
+presentation/qa/
+presentation/live.json
+four-videos/tour/qa/
+four-videos/tour/out/raw*/
+*.log

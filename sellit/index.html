@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Connected Environment: advocacy brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000000; --white:#FFFFFF; --orange:#FF8300;
+  --ink2:#0C0C0C; --ink3:#161616; --line:#2B2B2B; --dim:#B4B4B4; --faint:#7C7C7C;
+  --clip:polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:10;background:var(--black);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px}
+.brand{font-weight:800;letter-spacing:.12em;font-size:13px;white-space:nowrap}
+.brand span{color:var(--orange)}
+.top nav{display:flex;gap:14px;font-size:12px;color:var(--dim);flex-wrap:nowrap;white-space:nowrap}
+.top nav a{text-decoration:none;letter-spacing:.04em}
+.top nav a:hover{color:var(--white)}
+.badge{font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--orange);color:var(--orange);padding:3px 9px;white-space:nowrap}
+
+/* sections */
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:14px}
+h1{font-size:clamp(38px,6vw,76px);line-height:1.02;font-weight:800;letter-spacing:-.02em;max-width:16ch}
+h2{font-size:clamp(28px,3.6vw,44px);line-height:1.1;font-weight:700;letter-spacing:-.015em;max-width:24ch;margin-bottom:28px}
+h3{font-size:20px;line-height:1.25;font-weight:700;margin-bottom:10px}
+.lede{font-size:clamp(18px,2vw,23px);line-height:1.5;color:var(--dim);max-width:60ch;margin-top:26px}
+.lede b{color:var(--white);font-weight:600}
+.meta{margin-top:30px;font-size:13px;color:var(--faint)}
+
+/* cards */
+.card{position:relative;background:var(--ink2);border:1px solid var(--line);padding:24px 24px 24px 28px;clip-path:var(--clip)}
+.card.key::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange)}
+.cols{display:grid;gap:20px}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.c2{grid-template-columns:repeat(2,1fr)}
+.card p,.card li{color:var(--dim);font-size:16px}
+.card p b{color:var(--white)}
+.where{margin-top:14px;font-size:13px;color:var(--white);border-top:1px solid var(--line);padding-top:12px;letter-spacing:.02em}
+.where i{font-style:normal;color:var(--orange)}
+ul.pts{list-style:none;display:grid;gap:14px;max-width:78ch}
+ul.pts li{position:relative;padding-left:22px;color:var(--white)}
+ul.pts li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:2px;background:var(--orange)}
+
+/* source tags */
+.source-tag{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.75em;color:#FF8300;margin-left:.5em;white-space:nowrap}
+
+/* screens */
+.screen{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:36px;align-items:start;padding:48px 0;border-top:1px solid var(--line)}
+.screen:first-of-type{border-top:0;padding-top:8px}
+.screen .num{font-size:13px;letter-spacing:.2em;color:var(--orange);font-weight:600;margin-bottom:10px}
+.shot{background:#fff;border:1px solid var(--line);clip-path:var(--clip)}
+.shot img{display:block;width:100%;height:auto}
+.shots2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cap{font-size:13px;color:var(--faint);margin-top:10px}
+.screen ul{list-style:none;display:grid;gap:12px;margin-top:6px}
+.screen li{color:var(--dim);font-size:16px;padding-left:18px;position:relative}
+.screen li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--orange)}
+.screen li b{color:var(--white);font-weight:600}
+
+/* proof tiers */
+.tier{position:relative;border:1px solid var(--line);background:var(--ink2);padding:26px 28px 26px 32px;clip-path:var(--clip);margin-bottom:20px}
+.tier::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--orange)}
+.tier h3{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.tier ul{list-style:none;display:grid;gap:12px}
+.tier li{color:var(--white);padding-left:18px;position:relative;font-size:16px}
+.tier li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--white)}
+.tier .none{color:var(--dim);font-style:normal}
+
+/* internal appendix */
+.internal-band{background:var(--ink3)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:12px 12px;border-bottom:1px solid var(--line)}
+th{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600;white-space:nowrap}
+td{color:var(--dim)}
+td b,td strong{color:var(--white);font-weight:600}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);background:var(--ink2)}
+.note{font-size:14px;color:var(--faint);max-width:80ch;margin-bottom:22px}
+
+.btn{display:inline-block;background:var(--black);color:var(--white);border:1px solid var(--white);padding:12px 22px;text-decoration:none;font-weight:600;font-size:15px;margin-top:26px}
+.btn:hover{background:var(--orange);border-color:var(--orange);color:var(--black)}
+footer{padding:40px 0;color:var(--faint);font-size:13px}
+
+@media (max-width:980px){
+  .c3,.c4,.c2{grid-template-columns:1fr}
+  .screen{grid-template-columns:1fr;gap:22px}
+  .top nav{display:none}
+  section{padding:56px 0}
+}
+@media (max-width:560px){.wrap{padding:0 18px}.shots2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">WAKE<span>CAP</span> &nbsp;/&nbsp; CONNECTED ENVIRONMENT</div>
+    <nav>
+      <a href="#problem">Problem</a>
+      <a href="#what">What it is</a>
+      <a href="#walkthrough">Walkthrough</a>
+      <a href="#proof">Proof</a>
+      <a href="#rollout">Rollout</a>
+      <!--INTERNAL--><a href="#stakeholders">Stakeholders</a><a href="#friction">Friction</a><a href="#gaps">Gaps</a><!--/INTERNAL-->
+    </nav>
+    <!--TAGGED--><span class="badge">Internal · tagged</span><!--/TAGGED-->
+  </div>
+</header>
+
+<section class="grid-bg" id="top">
+  <div class="wrap">
+    <div class="kicker">Advocacy brief · pilot stage</div>
+    <h1>Is it safe to work right now?</h1>
+    <p class="lede">Connected Environment <b>answers first</b>. Open a project, read the verdict and what to do about it, then check the numbers behind it. Heat and lightning for the site, in one place inside the portal your teams already use.</p>
+
+    <div class="cols c3" style="margin-top:44px">
+      <div class="card key">
+        <h3>Answer first.</h3>
+        <p>The page opens on the verdict and the next step, not a wall of numbers.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+      </div>
+      <div class="card key">
+        <h3>Never falsely safe.</h3>
+        <p>A device that is offline, faulty, stale or unknown is never shown as safe.<code class="source-tag">[spec]</code></p>
+      </div>
+      <div class="card key">
+        <h3>Every change audited.</h3>
+        <p>The site Safety Policy has a Change history on the Settings page.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+      </div>
+    </div>
+    <p class="meta">Everything on this page was read from live sites, read-only, on 4 October 2026. All times are Saudi time (AST, UTC+3).<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="kicker">1 · The problem on site</div>
+    <h2>Numbers without answers. Data that looks fine and is not.</h2>
+    <ul class="pts">
+      <li>A grid of readings makes the supervisor do the sums. The one question on site is whether work can continue.<code class="source-tag">[spec]</code></li>
+      <li>A dead or frozen sensor can read as calm. Old data that looks fine is worse than no data.<code class="source-tag">[spec]</code></li>
+    </ul>
+  </div>
+</section>
+
+<section id="what" class="grid-bg">
+  <div class="wrap">
+    <div class="kicker">2 · What it is</div>
+    <h2>One area per project. Four places to look.</h2>
+    <p class="note" style="color:var(--dim);font-size:16px">Find it in the portal's left rail, under <b style="color:#fff">Connected Environment</b>.<code class="source-tag">[portal: 2026-10-04 live]</code> Access follows the view and edit permissions the project already has.<code class="source-tag">[spec]</code></p>
+    <div class="cols c4">
+      <div class="card key">
+        <h3>Weather Station</h3>
+        <p>Live readings and a heat index with work, rest and drinking-water guidance. The verdict comes first.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+        <div class="where"><i>Where</i> &nbsp;Connected Environment › Weather Station</div>
+      </div>
+      <div class="card key">
+        <h3>Lightning</h3>
+        <p>Status per device with its alert zones, an alarm history and CSV export.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+        <div class="where"><i>Where</i> &nbsp;Connected Environment › Lightning, where Lightning is switched on</div>
+      </div>
+      <div class="card key">
+        <h3>Reports</h3>
+        <p>A Maximum Values Report for the period you pick, with a daily breakdown and an Excel export.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+        <div class="where"><i>Where</i> &nbsp;Connected Environment › Reports</div>
+      </div>
+      <div class="card key">
+        <h3>Settings</h3>
+        <p>Which products are switched on for the project, and the Safety Policy: limits, heat-index bands and a change history.<code class="source-tag">[portal: 2026-10-04 live]</code></p>
+        <div class="where"><i>Where</i> &nbsp;Connected Environment › Settings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="walkthrough">
+  <div class="wrap">
+    <div class="kicker">3 · Walkthrough</div>
+    <h2>Six screens, starting with the bad news.</h2>
+
+    <div class="screen">
+      <div>
+        <div class="shot"><img src="assets/s1-weather-station.png" alt="Weather Station page showing a red Danger strip, the Heat Index card at 50.4 degrees Celsius with work and rest times, and a station panel flagging one offline station"></div>
+        <p class="cap">Weather Station, read-only capture, 4 Oct 2026, 12:41 PM AST.</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 1</div>
+        <h3>The verdict leads the page.</h3>
+        <ul>
+          <li><b>Danger</b> sits in a strip across the top, with data confidence and the time of the last update.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>Heat Index <b>50.4 °C</b>. In this band: 30 min work, 10 min rest, one cup (250 ml) of water every 15 min.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>One of three stations is <b>offline</b>. The panel says <b>Not ready</b> and names the station. It does not hide it.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div>
+        <div class="shots2">
+          <div class="shot"><img src="assets/s1c-actions-drawer.png" alt="Recommended actions drawer listing two steps: pause outdoor work and move crews to shade or rest, then notify the site safety officer"></div>
+          <div class="shot"><img src="assets/s1b-details-drawer.png" alt="Details drawer showing the verdict, data confidence and data freshness"></div>
+        </div>
+        <p class="cap">View Recommended Steps (left) and Details (right).</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 2</div>
+        <h3>What to do, in order.</h3>
+        <ul>
+          <li><b>View Recommended Steps</b> lists the actions in priority order: pause outdoor work and move crews to shade or rest, then notify the site safety officer. A Copy actions button sits under the list.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li><b>Details</b> shows the full verdict, the data confidence and when the data was last updated. Nothing else is claimed.<code class="source-tag">[FE-observation]</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div>
+        <div class="shot"><img src="assets/s5-lightning.png" alt="Lightning page showing All Clear and Safe to work, concentric alert zones, a held-for timer, an empty alarm activity chart and an empty alarm history with a disabled Export CSV button"></div>
+        <p class="cap">Lightning, read-only capture, 4 Oct 2026, 12:45 PM AST. One site label is redacted.</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 3</div>
+        <h3>Lightning: status and alarm history.</h3>
+        <ul>
+          <li>The device tile reads <b>All Clear, Safe to work</b>. The rings show the configured zones: RED 13 km or less, YELLOW 13 to 20 km, and an ALL-CLEAR setting of 30 min. They are a reference, not a live strike position.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>The tile says how long the state has held: <b>114 h 52 m</b> since 29 Sep, 17:53 AST.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>A banner reminds people that WakeCap lightning alerts are a backup and the site's cabinet lights and sounder come first.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>Alarm history lists every YELLOW, ORANGE or RED interval in the window. <b>On this project it is empty today</b>, the Alarm activity chart is empty, and Export CSV is disabled.<code class="source-tag">[FE-observation]</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div>
+        <div class="shot"><img src="assets/s2-reports.png" alt="Maximum Values Report with period buttons, a maximum heat index tile of 60.2 degrees Celsius, a maximum wind speed tile of 32 kilometres per hour, and the start of a daily breakdown table"></div>
+        <p class="cap">Reports, last 30 days, 4 Oct 2026, 12:42 PM AST.</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 4</div>
+        <h3>Reports: the worst day, in one place.</h3>
+        <ul>
+          <li>Pick a period: Today, Yesterday, This Week, Last 7 Days, This Month, Last 30 Days, or a custom range.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>Two tiles give the maximums for the period. Last 30 days here: heat index <b>60.2 °C, Extreme Danger</b> (9 Sep, 3:01 PM) and wind <b>32.0 km/h</b> (7 Sep, 1:27 PM).<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>A daily breakdown lists the highest heat index and wind speed for every day, across all stations. Export .xlsx is one click away.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div>
+        <div class="shot" style="margin-bottom:14px"><img src="assets/s3-connected-products.png" alt="Connected Products list with the Weather Station switch set to Active"></div>
+        <div class="shot" style="margin-bottom:14px"><img src="assets/s4a-policy-limits.png" alt="Site Safety Policy page with a Right now banner and stop-work limit charts for temperature and wind speed showing how many of the last 30 days would have stopped work"></div>
+        <div class="shot"><img src="assets/s4b-policy-bands.png" alt="Heat index bands ribbon with five bands, a 30-day strip of days per band, and a card per band with work, rest and water settings"></div>
+        <p class="cap">Settings: Connected Products and Site Safety Policy. Nothing was edited or saved.</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 5</div>
+        <h3>Settings: who is on, and what stops work.</h3>
+        <ul>
+          <li><b>Connected Products</b> has an Active or Inactive switch for each product on the project. Weather Station is Active here.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>The <b>Safety Policy</b> page warns that changing anything changes when work stops, for everyone on the project.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>Each stop-work limit shows what it would have done over the last 30 days: Temperature 46 °C would have stopped work on <b>8 of 30 days</b>, Wind Speed 32 km/h on <b>1 of 30</b>.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>Five heat-index bands (Normal below 25, Caution 25 to 30, Extreme Caution 30 to 39, Danger 39 to 52, Extreme Danger 52 and up) each carry their work, rest and water settings. A 30-day strip shows 18 days in Danger and 12 in Extreme Danger.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>A <b>Change history</b> tab sits at the bottom. On this project it reads "No changes were recorded in the history we read for this project. Older changes may sit further back than this page reaches."<code class="source-tag">[FE-observation]</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="screen">
+      <div>
+        <div class="shot"><img src="assets/s6-weather-station-C.png" alt="Weather Station page for a second project showing Danger, Heat Index 43.3 degrees Celsius, one station online with readiness Ready, and the readings that crossed their limits"></div>
+        <p class="cap">A second project, read-only capture, 4 Oct 2026, 12:45 PM AST.</p>
+      </div>
+      <div>
+        <div class="num">SCREEN 6</div>
+        <h3>Same layout on the next project.</h3>
+        <ul>
+          <li>Danger again, Heat Index <b>43.3 °C</b>. One station, online, readiness <b>Ready</b>.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+          <li>The panel lists the readings behind the verdict, each with its band or limit: Heat Index in the Danger band, Temperature 41.0 °C and Barometric Pressure 1002.8 hPa past their configured limits.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" class="grid-bg">
+  <div class="wrap">
+    <div class="kicker">4 · Proof, in three tiers</div>
+    <h2>What is promised, what we saw, what a pilot proved.</h2>
+
+    <div class="tier">
+      <h3>Targets</h3>
+      <ul>
+        <li>One verdict leads the page, with what to do next.<code class="source-tag">[spec]</code></li>
+        <li>An offline, faulty, stale or unknown device never reads as safe.<code class="source-tag">[spec]</code></li>
+        <li>A safety policy that can face an auditor: in-force values with units, and a history of changes.<code class="source-tag">[spec]</code></li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <h3>Demo-observed</h3>
+      <ul>
+        <li>On both Weather Station projects checked, the verdict strip led the page. Both showed Danger at the time.<code class="source-tag">[FE-observation]</code></li>
+        <li>An offline station was flagged by name, and the panel read Not ready. It was not shown as a calm reading.<code class="source-tag">[FE-observation]</code></li>
+        <li>Times show in Saudi time. We checked by running the browser in Los Angeles time; the portal still showed Saudi time.<code class="source-tag">[FE-observation]</code></li>
+        <li>Lightning alarm history and Change history were both empty on the projects checked, so no alarm rows or change entries were seen.<code class="source-tag">[FE-observation]</code></li>
+      </ul>
+    </div>
+
+    <div class="tier">
+      <h3>Pilot-observed</h3>
+      <ul><li class="none">None. No pilot results exist yet, and none are claimed on this page.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="rollout">
+  <div class="wrap">
+    <div class="kicker">5 · Rollout and next step</div>
+    <h2>Nothing to install. Start with one project.</h2>
+    <ul class="pts">
+      <li>It opens inside the portal, from the left rail. There is no separate app or login.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+      <li>The readings board has a Copy as image button, so a supervisor can share the board into a group chat.<code class="source-tag">[portal: 2026-10-04 live]</code></li>
+      <li>Hypothesis: a supervisor can read the strip and the steps without training, because the answer comes first. Training time has not been measured.<code class="source-tag">[inferred]</code></li>
+      <li>Suggested next step, for discussion: pick one project with a Weather Station and let the site HSE lead use it for working shifts, then tell us where the verdict or the steps are unclear.<code class="source-tag">[inferred]</code></li>
+    </ul>
+    <a class="btn" href="#top">Back to top</a>
+  </div>
+</section>
+
+<!--INTERNAL-->
+<section id="stakeholders" class="internal-band">
+  <div class="wrap">
+    <div class="kicker">Internal · stakeholder map</div>
+    <h2>Seven roles. All hypotheses.</h2>
+    <p class="note">Roles only, no names. Every row is a hypothesis for review before use. Sequence is the order to engage.</p>
+    <div class="tablewrap"><table>
+      <tr><th>#</th><th>Role</th><th>Cares about</th><th>Approach</th><th>May resist</th><th>Disarm</th></tr>
+      <tr><td>1</td><td><b>Site HSE lead</b><br>customer · primary</td>
+        <td>Hypothesis: a defensible reason to stop work, fresh data, a record an auditor accepts.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: show their own project live. Lead with the offline-station case and the steps drawer. Plain words.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: distrusts a screen over their own judgement and the site's cabinet lights and sounder.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: reframe as a backup. The Lightning page already says so.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>2</td><td><b>Project or site manager</b><br>customer · primary</td>
+        <td>Hypothesis: schedule, cost of stopped work, visibility across the site.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: Reports page and the Safety Policy 30-day preview, after the HSE lead has used it.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: stop-work days cost output, so they may push to loosen limits.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: show what a limit would have done before it changes. Changes are kept in Change history.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>3</td><td><b>Supervisors, foremen, crew leads</b><br>customer</td>
+        <td>Hypothesis: finishing the shift, clear instructions.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: reach them through the HSE lead, with the steps list.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: rest cycles interrupt work, so they may dispute the verdict.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: the cycles are the site's own policy in force, mandated by management.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>4</td><td><b>Instrumentation or maintenance team</b><br>customer</td>
+        <td>Hypothesis: not being blamed for offline stations.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: engage after the pilot starts.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: passive. Offline devices are now named on the page.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: accept it. Frame the flag as a work list, not a fault report.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>5</td><td><b>WakeCap field engineers</b><br>internal · champion</td>
+        <td>Hypothesis: a demo that works on real data, no surprises from empty states.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: this brief plus the walkthrough video. Know the empty states first.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: may avoid parts that show Planned or empty.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: accept. Say what is live and what is not.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>6</td><td><b>WakeCap sales</b><br>internal</td>
+        <td>Hypothesis: a story with proof they can repeat without overclaiming.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: use the clean page and the release note only.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: wants to pitch what is not live yet.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: reframe. The page lists only what is live today.<code class="source-tag">[inferred]</code></td></tr>
+      <tr><td>7</td><td><b>WakeCap leadership</b><br>internal</td>
+        <td>Hypothesis: one shell for several products, pilot readiness, no false-safe incident.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: the gaps list below, then the demo video.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: concern that "never falsely safe" is a promise we must keep.<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: accept and show which states were not observed live.<code class="source-tag">[inferred]</code></td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section id="friction">
+  <div class="wrap">
+    <div class="kicker">Internal · friction matrix</div>
+    <h2>Who is worse off if this ships.</h2>
+    <p class="note">Hypotheses, roles only. Routing says where each disarm lands: reframe goes to page copy, product change to the proposal, contract to the owner ask, accept to the stakeholder map.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Party</th><th>Active or passive</th><th>Specific threat</th><th>Disarm</th><th>Routing</th></tr>
+      <tr><td><b>Supervisors and crew leads</b></td><td>Passive<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: a Danger verdict brings work and rest cycles (30 min work, 10 min rest in the band checked).<code class="source-tag">[inferred]</code></td>
+        <td>Reframe: the cycles are the site's policy in force.<code class="source-tag">[inferred]</code></td><td>Page copy</td></tr>
+      <tr><td><b>Anyone who judged heat by feel</b></td><td>Active<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: a shared, visible verdict replaces informal calls.<code class="source-tag">[inferred]</code></td>
+        <td>Contract: management mandates the policy and the verdict.<code class="source-tag">[inferred]</code></td><td>Owner ask</td></tr>
+      <tr><td><b>Device owners</b></td><td>Passive<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: offline devices are named on the page.<code class="source-tag">[inferred]</code></td>
+        <td>Accept: engage through the stakeholder map.<code class="source-tag">[inferred]</code></td><td>Stakeholder map</td></tr>
+      <tr><td><b>Production managers</b></td><td>Active<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: "would have stopped work on 8 of 30 days" makes the cost of a limit visible.<code class="source-tag">[inferred]</code></td>
+        <td>Reframe: the same view shows what a limit protects.<code class="source-tag">[inferred]</code></td><td>Page copy</td></tr>
+      <tr><td><b>Whoever could change limits quietly</b></td><td>Passive<code class="source-tag">[inferred]</code></td>
+        <td>Hypothesis: policy changes are meant to appear in Change history. It was empty on the project checked, so this was not seen working.<code class="source-tag">[inferred]</code></td>
+        <td>Accept: intrinsic to the product.<code class="source-tag">[inferred]</code></td><td>Stakeholder map</td></tr>
+    </table></div>
+    <p class="note" style="margin-top:22px"><b style="color:#fff">Owner embedding.</b> It lives in the portal's left rail as Connected Environment, one area per project.<code class="source-tag">[portal: 2026-10-04 live]</code> Hypothesis: the Copy as image button gives it a second home in the site's group chat.<code class="source-tag">[inferred]</code></p>
+  </div>
+</section>
+
+<section id="gaps" class="internal-band">
+  <div class="wrap">
+    <div class="kicker">Internal · evidence gaps</div>
+    <h2>What the repos say and the portal does not show.</h2>
+    <p class="note">Excluded from both renders of this page. Reason is what was seen live on 4 Oct 2026 on the six surfaces.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Item</th><th>Why excluded</th></tr>
+      <tr><td><b>Agent-composed dashboard, dynamic charts, observation drawer</b></td><td>Flag off. The Details drawer shows only verdict, confidence and freshness. No "Why this verdict" or observation text on any page.<code class="source-tag">[FE-observation]</code></td></tr>
+      <tr><td><b>History charts (Trends)</b></td><td>Rail shows Trends as Planned and disabled.<code class="source-tag">[portal: 2026-10-04 live]</code></td></tr>
+      <tr><td><b>Lightning wallboard and mobile glance</b></td><td>No link from the Lightning page, and not one of the six URLs.<code class="source-tag">[FE-observation]</code></td></tr>
+      <tr><td><b>Lightning red alarm flash, non-green states</b></td><td>Only All Clear was visible. Alarm history empty, CSV export disabled.<code class="source-tag">[FE-observation]</code></td></tr>
+      <tr><td><b>Version-checked edits, staged publish, loosening gate</b></td><td>Not exercised (read-only). Change history empty on the project checked.<code class="source-tag">[FE-observation]</code></td></tr>
+      <tr><td><b>Share image and Excel results</b></td><td>Buttons seen, not clicked (clipboard and downloads).<code class="source-tag">[FE-observation]</code></td></tr>
+      <tr><td><b>Other products in the rail, mobile, Arabic, notifications</b></td><td>Out of scope or not visible on the six surfaces.<code class="source-tag">[FE-observation]</code></td></tr>
+    </table></div>
+  </div>
+</section>
+<!--/INTERNAL-->
+
+<footer>
+  <div class="wrap">WakeCap · Connected Environment · advocacy brief, no prices. Live captures read-only on 4 October 2026.</div>
+</footer>
+
+</body>
+</html>

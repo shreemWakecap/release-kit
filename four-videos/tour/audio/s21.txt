@@ -1,0 +1,1 @@
+Each reading has a limit, set with plus and minus, and a switch to count it in the policy. For temperature and wind, a thirty day chart shows what the limit would have done.

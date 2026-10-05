@@ -1,0 +1,1 @@
+Where a device reports, the page shows its alert distances and its sensor location. Edit alerting radii opens a small form: the red distance, the yellow distance, and the all-clear delay.

@@ -1,0 +1,912 @@
+{
+ "video": "Gas",
+ "captured_at": "Oct 4, 2026, 4:48 PM to 4:51 PM (portal header clock, Saudi time). Build 1.0.7.",
+ "frames": [
+  {
+   "file": "assets/g-dashboard-c.png",
+   "page": "/gas",
+   "what": "Gas dashboard: overview figures, worst reading per gas, Today strip and detector panel.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; 4 of 5 detectors reporting; 0 live alarms; 12 acknowledged; all three gases within limits; one detector offline, Readiness Not ready",
+   "visible_text": [
+    "Gas CHECK",
+    "Overview",
+    "Registered on this project",
+    "1 offline",
+    "None waiting for a person",
+    "Open, being handled",
+    "Gases, worst current reading",
+    "Within limits",
+    "Peak today",
+    "Not available yet",
+    "Longest quiet gap",
+    "Readiness",
+    "Not ready",
+    "What needs attention"
+   ],
+   "rects": {
+    "status_line": [
+     116,
+     50,
+     466,
+     22
+    ],
+    "clock": [
+     1745,
+     50,
+     151,
+     22
+    ],
+    "nav_gas": [
+     64,
+     189,
+     191,
+     44
+    ],
+    "nav_trends_planned": [
+     64,
+     490,
+     191,
+     44
+    ],
+    "card_detectors": [
+     288,
+     138,
+     393,
+     128
+    ],
+    "card_online": [
+     693,
+     138,
+     393,
+     128
+    ],
+    "card_live_alarms": [
+     1098,
+     138,
+     393,
+     128
+    ],
+    "card_acknowledged": [
+     1503,
+     138,
+     393,
+     128
+    ],
+    "gas_h2s": [
+     288,
+     318,
+     416,
+     212
+    ],
+    "gas_o2": [
+     716,
+     318,
+     416,
+     212
+    ],
+    "gas_lel": [
+     1144,
+     318,
+     416,
+     212
+    ],
+    "today_reporting": [
+     288,
+     583,
+     245,
+     135
+    ],
+    "today_oldest": [
+     545,
+     583,
+     245,
+     135
+    ],
+    "today_closest": [
+     802,
+     583,
+     245,
+     135
+    ],
+    "today_peak_na": [
+     1058,
+     583,
+     245,
+     135
+    ],
+    "today_gap_na": [
+     1315,
+     583,
+     245,
+     135
+    ],
+    "offline_panel": [
+     1576,
+     282,
+     320,
+     191
+    ],
+    "readiness_pill": [
+     1658,
+     335,
+     72,
+     22
+    ],
+    "attention_item": [
+     1602,
+     404,
+     268,
+     52
+    ],
+    "detector_list": [
+     1576,
+     485,
+     320,
+     312
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Same layout as the earlier capture; numbers moved (Acknowledged 15 to 12 because three alerts were closed; reading ages). Rects kept from the earlier capture. Old visible strings no longer on the page: Last reading just now · 4 of 5 detectors reporting; Oct 4, 2026, 3:23 PM",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-header-c.png",
+   "page": "/gas",
+   "what": "Gas dashboard a few minutes later, used to show the shared header status line and side-nav state dot.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; Last reading about 18 min ago; 4 of 5 detectors reporting",
+   "visible_text": [
+    "Gas CHECK",
+    "Check"
+   ],
+   "rects": {
+    "status_line": [
+     116,
+     50,
+     477,
+     22
+    ],
+    "clock": [
+     1746,
+     50,
+     150,
+     22
+    ],
+    "nav_gas_with_dot": [
+     64,
+     189,
+     191,
+     44
+    ],
+    "nav_gas_state": [
+     190,
+     203,
+     55,
+     16
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Header status line; rects kept. Old visible strings no longer on the page: Last reading 3 min ago · 4 of 5 detectors reporting; Oct 4, 2026, 3:27 PM",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-detectors-c.png",
+   "page": "/gas/devices",
+   "what": "Detectors table: five detectors with state, last reported, battery, latest readings, Show detail.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; 4 SAFE rows, 1 CHECK row (no current reading, last known values)",
+   "visible_text": [
+    "Every gas detector registered on this project.",
+    "All",
+    "Needs attention",
+    "Show detail for a row to see its readings and limits",
+    "SAFE",
+    "CHECK",
+    "No current reading. Last known values, not current:",
+    "Show detail",
+    "exo_mk2"
+   ],
+   "rects": {
+    "status_line": [
+     116,
+     50,
+     474,
+     22
+    ],
+    "intro": [
+     288,
+     102,
+     1608,
+     24
+    ],
+    "tab_all": [
+     288,
+     142,
+     44,
+     32
+    ],
+    "tab_needs_attention": [
+     340,
+     142,
+     138,
+     32
+    ],
+    "hint": [
+     1618,
+     149,
+     278,
+     18
+    ],
+    "table_head": [
+     289,
+     191,
+     1606,
+     42
+    ],
+    "row_3589602342": [
+     289,
+     234,
+     1606,
+     65
+    ],
+    "row_3589602343": [
+     289,
+     299,
+     1606,
+     65
+    ],
+    "row_3589602344": [
+     289,
+     364,
+     1606,
+     65
+    ],
+    "row_3589602345": [
+     289,
+     429,
+     1606,
+     65
+    ],
+    "row_3589602346_offline": [
+     289,
+     494,
+     1606,
+     65
+    ],
+    "col_state": [
+     508,
+     191,
+     191,
+     42
+    ],
+    "col_battery": [
+     975,
+     191,
+     127,
+     42
+    ],
+    "col_latest_readings": [
+     1102,
+     191,
+     596,
+     42
+    ],
+    "btn_show_detail_1": [
+     1713,
+     246,
+     83,
+     28
+    ],
+    "btn_show_detail_5": [
+     1713,
+     506,
+     83,
+     28
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept. Old visible strings no longer on the page: Oct 4, 2026, 3:24 PM",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-detector-detail-c.png",
+   "page": "/gas/devices",
+   "what": "Detectors table with the row for one detector expanded inline: Detector ID, 'Every reading inside its limits.' and a limit bar per gas.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; detector 3589602345 expanded inline: Detector ID, 'Every reading inside its limits.'",
+   "visible_text": [
+    "Hide detail",
+    "Detector ID",
+    "Latest readings",
+    "Every reading inside its limits.",
+    "H₂S 0 ppm",
+    "LEL 0 %LEL"
+   ],
+   "rects": {
+    "expanded_panel": [
+     305,
+     506,
+     1574,
+     208
+    ],
+    "detector_id_block": [
+     305,
+     506,
+     783,
+     35
+    ],
+    "verdict_line": [
+     305,
+     575,
+     1574,
+     22
+    ],
+    "btn_hide_detail": [
+     1713,
+     441,
+     77,
+     28
+    ],
+    "row_expanded": [
+     289,
+     429,
+     1606,
+     65
+    ],
+    "row_3589602346_offline": [
+     289,
+     727,
+     1606,
+     65
+    ],
+    "status_line": [
+     116,
+     50,
+     474,
+     22
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "Show detail on detector 3589602345 (inline expander, read-only)"
+   ],
+   "notes": "Rects kept. Old visible strings no longer on the page: O₂ 20.5 %VOL",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-alerts-c.png",
+   "page": "/gas/alerts",
+   "what": "Alerts page: summary tiles, explanatory note, and the alert list newest first. The three newest rows now read Closed (no action); acknowledged rows keep a Close button.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Open alerts 12, Critical open 0, Acknowledged 12, Closed not available yet; the three newest alerts (2026-10-04 13:11) now show Closed with no Close button; older alerts show Acknowledged with a Close button",
+   "visible_text": [
+    "Alerts raised on this project.",
+    "Open alerts",
+    "Critical open",
+    "Acknowledged",
+    "Closed",
+    "Not available yet",
+    "Live count from the Summary read",
+    "Detector tipped over",
+    "SOS",
+    "Critical",
+    "Acknowledged",
+    "Close"
+   ],
+   "rects": {
+    "status_line": [
+     378,
+     103,
+     198,
+     22
+    ],
+    "page_note": [
+     288,
+     138,
+     482,
+     53
+    ],
+    "tile_open": [
+     288,
+     203,
+     393,
+     132
+    ],
+    "tile_critical": [
+     693,
+     203,
+     393,
+     132
+    ],
+    "tile_acknowledged": [
+     1098,
+     203,
+     393,
+     132
+    ],
+    "tile_closed": [
+     1503,
+     203,
+     393,
+     132
+    ],
+    "table_header": [
+     289,
+     348,
+     1606,
+     42
+    ],
+    "table": [
+     289,
+     348,
+     1606,
+     868
+    ],
+    "bottom_panel": [
+     288,
+     1229,
+     1608,
+     261
+    ],
+    "not_available_chip": [
+     1037,
+     1444,
+     109,
+     22
+    ],
+    "row_closed_first": [
+     289,
+     390,
+     1606,
+     49
+    ],
+    "row_closed_second": [
+     289,
+     439,
+     1606,
+     49
+    ],
+    "row_closed_third": [
+     289,
+     488,
+     1606,
+     49
+    ],
+    "row_acknowledged_first": [
+     289,
+     536,
+     1606,
+     53
+    ],
+    "close_button_first": [
+     1793,
+     549,
+     50,
+     28
+    ],
+    "close_button_second": [
+     1793,
+     601,
+     50,
+     28
+    ],
+    "status_closed_first": [
+     1578,
+     390,
+     199,
+     49
+    ],
+    "status_column_header": [
+     1578,
+     348,
+     199,
+     42
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "CHANGED since the first capture: three alerts were closed between 4:40 and 4:46 PM by someone else (we never clicked). Counts moved from Open 15 and Acknowledged 15 to 12 and 12. The Closed tile still says Not available yet. Old visible strings no longer on the page: Oct 4, 2026, 3:24 PM",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-alerts-bottom-c.png",
+   "page": "/gas/alerts",
+   "what": "Bottom of the Alerts page (raw capture 1920x1600, window y0=600): last rows, a Closed row without buttons, and the not-available-yet card.",
+   "window_y0": 600,
+   "viewport": "1920x1600 (window 988)",
+   "states": "bottom of the alert list: acknowledged rows with Close buttons, the oldest row Closed, then the 'alert timeline and assignee are not available yet' panel",
+   "visible_text": [
+    "Closed",
+    "The alert timeline and assignee are not available yet",
+    "Not available yet",
+    "Close"
+   ],
+   "rects": {
+    "table": [
+     289,
+     -252,
+     1606,
+     868
+    ],
+    "bottom_panel": [
+     288,
+     629,
+     1608,
+     261
+    ],
+    "not_available_chip": [
+     1037,
+     844,
+     109,
+     22
+    ],
+    "last_row_closed": [
+     289,
+     568,
+     1606,
+     48
+    ]
+   },
+   "masks_applied": [
+    "left-rail avatar masked by cap_clean (bottom of the 1600 px viewport)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Window y0=600.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-compliance-c.png",
+   "page": "/gas/compliance",
+   "what": "Compliance page: limits table and two Not available yet cards.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; limits table; Exposure and Exceedances panels say Not available yet",
+   "visible_text": [
+    "The limits every reading is judged against.",
+    "Compliance figures, exposure and exceedances are not available yet.",
+    "Limits in force",
+    "Low alarm",
+    "High alarm",
+    "TWA (8 h)",
+    "STEL (15 min)",
+    "below 19.5 (not alarmed yet)",
+    "above 23.5",
+    "Exposure against TWA and STEL, and a compliance percentage",
+    "Exceedances per gas over time",
+    "Not available yet"
+   ],
+   "rects": {
+    "status_line": [
+     116,
+     50,
+     474,
+     22
+    ],
+    "intro": [
+     378,
+     103,
+     298,
+     22
+    ],
+    "notice": [
+     288,
+     142,
+     613,
+     22
+    ],
+    "title_limits": [
+     288,
+     180,
+     1608,
+     28
+    ],
+    "table": [
+     289,
+     221,
+     1606,
+     189
+    ],
+    "row_h2s": [
+     289,
+     264,
+     1606,
+     49
+    ],
+    "row_lel": [
+     289,
+     312,
+     1606,
+     49
+    ],
+    "row_o2": [
+     289,
+     361,
+     1606,
+     48
+    ],
+    "o2_low_cell": [
+     769,
+     361,
+     488,
+     48
+    ],
+    "col_twa": [
+     1488,
+     221,
+     183,
+     42
+    ],
+    "col_stel": [
+     1671,
+     221,
+     224,
+     42
+    ],
+    "card_exposure": [
+     288,
+     426,
+     796,
+     216
+    ],
+    "card_exceedances": [
+     1100,
+     426,
+     796,
+     216
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-wallboard-c.png",
+   "page": "/gas/wallboard",
+   "what": "Gas wallboard: big status word, reason line, what needs attention and three gas cards, no portal chrome visible.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK: Not confirmed safe: 1 detector not reporting",
+   "visible_text": [
+    "CHECK",
+    "Not confirmed safe: 1 detector not reporting.",
+    "Resolve the items listed before relying on this reading.",
+    "What needs attention",
+    "Within limits"
+   ],
+   "rects": {
+    "status_word": [
+     34,
+     86,
+     725,
+     135
+    ],
+    "headline": [
+     943,
+     17,
+     960,
+     55
+    ],
+    "resolve_line": [
+     943,
+     84,
+     960,
+     46
+    ],
+    "last_reading": [
+     943,
+     142,
+     960,
+     150
+    ],
+    "attention_item": [
+     17,
+     309,
+     621,
+     119
+    ],
+    "gas_h2s": [
+     17,
+     445,
+     618,
+     270
+    ],
+    "gas_o2": [
+     651,
+     445,
+     618,
+     270
+    ],
+    "gas_lel": [
+     1285,
+     445,
+     618,
+     270
+    ]
+   },
+   "masks_applied": [
+    "no portal chrome and no names: cap_clean not applied"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept. Old visible strings no longer on the page: Last reading 1 min ago · 4 of 5 detectors reporting; Offline. Last reading 2 h 4 min ago.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-mobile-c.png",
+   "page": "/gas/mobile",
+   "what": "Gas phone view captured at a 430px-wide viewport and centred on a 1920x988 canvas.",
+   "window_y0": 0,
+   "viewport": "458x960 composite on 1920x988",
+   "states": "CHECK: Not confirmed safe: 1 detector not reporting",
+   "visible_text": [
+    "Gas CHECK",
+    "CHECK",
+    "Not confirmed safe: 1 detector not reporting.",
+    "What needs attention",
+    "Gases, worst current reading",
+    "Within limits"
+   ],
+   "rects": {
+    "phone": [
+     731,
+     14,
+     459,
+     960
+    ],
+    "header": [
+     850,
+     67,
+     314,
+     67
+    ],
+    "clock": [
+     816,
+     139,
+     150,
+     22
+    ],
+    "status_card": [
+     863,
+     223,
+     314,
+     251
+    ],
+    "attention_card": [
+     863,
+     487,
+     314,
+     115
+    ],
+    "gas_h2s": [
+     863,
+     649,
+     314,
+     251
+    ]
+   },
+   "masks_applied": [
+    "avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Phone column at x 731, y 14; rects kept from the earlier frame. Old visible strings no longer on the page: Last reading 2 min ago · 4 of 5 detectors reporting; Oct 4, 2026, 3:26 PM; Offline. Last reading 2 h 5 min ago.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/g-mobile-desktopview-c.png",
+   "page": "/gas/mobile",
+   "what": "The same /gas/mobile route at desktop width (inside the portal chrome).",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "CHECK; the phone route at desktop width",
+   "visible_text": [
+    "Gas",
+    "CHECK",
+    "Not confirmed safe: 1 detector not reporting.",
+    "What needs attention",
+    "Gases, worst current reading"
+   ],
+   "rects": {
+    "status_card": [
+     276,
+     130,
+     1632,
+     183
+    ],
+    "attention_card": [
+     276,
+     357,
+     1632,
+     76
+    ],
+    "gas_h2s": [
+     276,
+     477,
+     1632,
+     215
+    ],
+    "gas_o2": [
+     276,
+     700,
+     1632,
+     215
+    ]
+   },
+   "masks_applied": [
+    "top bar organization and project names blanked and avatar masked by cap_clean (38 px mask, no strip)"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  }
+ ],
+ "observations": [
+  "[live] Gas is built on real detector data today: detectors, readings, alarms and counts are live; sample data is flagged off.",
+  "[live] Header status line reads 'Gas CHECK  Last reading just now · 4 of 5 detectors reporting' and the side nav shows a 'Check' dot beside Gas.",
+  "[live] A detector that stops reporting makes the whole site CHECK, not SAFE: 'Not confirmed safe: 1 detector not reporting.'",
+  "[live] No big SAFE hero on the dashboard any more; Overview figures (Detectors, Online, Live alarms, Acknowledged) lead.",
+  "[live] Gases cards show H2S, O2 and LEL only (no CO/CO2), each with worst reading across reporting detectors and the detector it came from.",
+  "[live] Alerts can be acknowledged and closed; page states the action is recorded here and NOT sent to the vendor system.",
+  "[live] /gas/zones redirects to /gas (the dashboard); the Zones tab is gone from the nav.",
+  "[live] Trends is shown in the side nav tagged 'Planned'.",
+  "[code] Wallboard segment is 'wallboard', phone segment is 'mobile' (routes.ts).",
+  "1.0.7 REFRESH (4 Oct 2026, 4:48 to 4:51 PM, visible browser): the Gas UI is unchanged since 1.0.5 (same text on all six pages apart from numbers). What changed is the DATA: three alerts were closed in production between 4:40 and 4:46 PM, so Alerts now shows Open 12, Acknowledged 12 and three Closed rows without a Close button. The Closed tile still reads Not available yet.",
+  "Reading ages moved: oldest reading about 3 h 25 min, offline detector 3589602346 last reading 13:21."
+ ],
+ "not_visible": [
+  "Zones tab (hidden by design)",
+  "CO and CO2 gas cards (removed)",
+  "SAFE hero (removed)",
+  "Acknowledge button (every open alert was already Acknowledged)",
+  "Peak today and Longest quiet gap values (Not available yet)",
+  "A live alarm state: none was in alarm during capture",
+  "Counts of closed alerts (Not available yet)"
+ ],
+ "never_clicked": [
+  "Close buttons on alerts",
+  "Acknowledge (not visible)",
+  "Needs attention filter tab (not needed)",
+  "Trends (Planned) nav item",
+  "Settings",
+  "Reports",
+  "Rename/Edit pencils, any switches, exports"
+ ]
+}

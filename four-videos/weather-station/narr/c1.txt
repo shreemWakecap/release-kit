@@ -1,0 +1,11 @@
+On site, a supervisor reads a heat number and asks: so what now? A number cannot say. An answer can.
+
+Weather Station answers in one strip. Danger, in words, and an instruction: act on the recommended steps.
+
+Need the actions? You can click View Recommended Steps, right in the strip, to open them.
+
+Two actions, in priority order. First, pause outdoor work and move crews to shade or rest.
+
+Then Details. It shows the verdict, a data confidence mark, and the last update, in Saudi time.
+
+The heat card also carries the cycle in force. Thirty minutes of work, ten of rest, water every fifteen.

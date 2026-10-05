@@ -1,0 +1,9 @@
+Lightning is close. Who tells the crew to stop? The cabinet lights and sounder, first. This page is the backup.
+
+The top line says it too. WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.
+
+The state tile read All Clear when we captured this. WakeCap treats only the green state as safe to work.
+
+The rings and chips are the configured alert distances. The page says so plainly: zone reference only, not a live strike position.
+
+New here: a map of the alert distances. Its legend reads: a red ring, a yellow ring and a dot for the sensor.

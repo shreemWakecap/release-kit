@@ -1,0 +1,1400 @@
+{
+ "video": "weather-station",
+ "captured_at": "Oct 4, 2026, 3:27 PM (portal header clock, Saudi time)",
+ "frames": [
+  {
+   "file": "assets/w-top-a.png",
+   "page": "weather-station",
+   "what": "Project A dashboard in Danger: heat index 49.5, work/rest/water guidance, 1 of 3 stations offline",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Danger; Heat Index 49.5 C; 30 min work / 10 min rest; 1 Cup (250ml) every 15 min; Readiness Not ready; 2 online 1 offline",
+   "visible_text": [
+    "Danger",
+    "Unsafe conditions",
+    "Heat Index",
+    "49.5",
+    "30 min Work",
+    "10 min Rest",
+    "1 Cup (250ml)",
+    "every 15 min",
+    "1925073288 is offline",
+    "Not ready",
+    "Total stations: 3",
+    "1 station offline",
+    "Main Plant Weather Station",
+    "SCC Weather Station",
+    "Last reading was 1 minute(s) ago.",
+    "Trends Planned",
+    "Data confidence",
+    "Last updated 04 Oct, 2026 03:22 PM"
+   ],
+   "rects": {
+    "verdict_banner": [
+     280,
+     162,
+     1624,
+     62
+    ],
+    "danger_label": [
+     297,
+     183,
+     86,
+     22
+    ],
+    "steps_button": [
+     1602,
+     175,
+     216,
+     36
+    ],
+    "details_button": [
+     1827,
+     180,
+     67,
+     28
+    ],
+    "data_confidence": [
+     1258,
+     185,
+     120,
+     18
+    ],
+    "last_updated": [
+     1386,
+     185,
+     207,
+     18
+    ],
+    "weather_params_title": [
+     298,
+     259,
+     172,
+     28
+    ],
+    "as_of": [
+     1153,
+     264,
+     191,
+     18
+    ],
+    "copy_as_image": [
+     1379,
+     264,
+     83,
+     18
+    ],
+    "gear": [
+     1440,
+     300,
+     28,
+     28
+    ],
+    "heat_index_card": [
+     298,
+     363,
+     577,
+     437
+    ],
+    "heat_index_value": [
+     319,
+     440,
+     105,
+     40
+    ],
+    "danger_badge": [
+     782,
+     384,
+     72,
+     26
+    ],
+    "work_rest_block": [
+     319,
+     507,
+     535,
+     127
+    ],
+    "drinking_water_block": [
+     319,
+     646,
+     535,
+     134
+    ],
+    "featured_empty_slot": [
+     893,
+     348,
+     577,
+     452
+    ],
+    "station_summary": [
+     1504,
+     241,
+     400,
+     187
+    ],
+    "stations_list": [
+     1504,
+     441,
+     400,
+     147
+    ],
+    "offline_station_row": [
+     1504,
+     552,
+     376,
+     32
+    ],
+    "last_reading_line": [
+     1504,
+     606,
+     300,
+     22
+    ],
+    "heat_index_reason": [
+     1504,
+     696,
+     400,
+     50
+    ],
+    "dust_reason": [
+     1504,
+     760,
+     400,
+     50
+    ],
+    "recommended_actions_card": [
+     1504,
+     823,
+     400,
+     78
+    ],
+    "rail_weather_station": [
+     64,
+     141,
+     191,
+     44
+    ],
+    "rail_reports": [
+     64,
+     189,
+     191,
+     44
+    ],
+    "rail_trends_planned": [
+     64,
+     250,
+     191,
+     44
+    ],
+    "rail_settings": [
+     64,
+     298,
+     191,
+     44
+    ],
+    "clock": [
+     1745,
+     50,
+     152,
+     22
+    ],
+    "export": [
+     1761,
+     105,
+     90,
+     28
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box",
+    "station display names ('Main Plant Weather Station', 'SCC Weather Station') blurred (gaussian) on 4 Oct 2026 after the first fact-check; station serial numbers stay visible"
+   ],
+   "clicks_done": [],
+   "notes": "Offline station 1925073288: 'The sensors service reports this station offline. Last reading: 15 Jul, 2026 04:54 PM' is in the page text but only the headline and badge are visible. A green 'Last reading was 1 minute(s) ago.' line sits under the offline headline and contradicts it."
+  },
+  {
+   "file": "assets/w-steps-a.png",
+   "page": "weather-station",
+   "what": "View Recommended Steps drawer: two prioritised actions",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Danger; drawer open with 2 actions",
+   "visible_text": [
+    "Recommended actions",
+    "Listed in the order the safety service prioritised them.",
+    "Pause outdoor work and move crews to shade/rest",
+    "Do first",
+    "Notify the site safety officer",
+    "Copy actions"
+   ],
+   "rects": {
+    "drawer": [
+     1504,
+     0,
+     416,
+     988
+    ],
+    "title": [
+     1521,
+     20,
+     190,
+     22
+    ],
+    "subtitle": [
+     1521,
+     49,
+     297,
+     18
+    ],
+    "action_1": [
+     1521,
+     110,
+     382,
+     50
+    ],
+    "do_first_chip": [
+     1850,
+     115,
+     53,
+     18
+    ],
+    "action_2": [
+     1521,
+     171,
+     300,
+     26
+    ],
+    "copy_actions_button": [
+     1521,
+     211,
+     131,
+     37
+    ],
+    "close_x": [
+     1873,
+     15,
+     34,
+     36
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean (drawer variant)",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box"
+   ],
+   "clicks_done": [
+    "opened View Recommended Steps, then Escape"
+   ],
+   "notes": "Copy actions not clicked."
+  },
+  {
+   "file": "assets/w-details-a.png",
+   "page": "weather-station",
+   "what": "Details drawer: verdict, data confidence, data freshness",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Danger; drawer open",
+   "visible_text": [
+    "Unsafe conditions",
+    "The full safety verdict as the safety service reported it.",
+    "VERDICT",
+    "DATA CONFIDENCE",
+    "DATA FRESHNESS",
+    "Last updated 04 Oct, 2026 03:22 PM"
+   ],
+   "rects": {
+    "drawer": [
+     1504,
+     0,
+     416,
+     988
+    ],
+    "title": [
+     1521,
+     20,
+     230,
+     22
+    ],
+    "verdict_block": [
+     1521,
+     100,
+     382,
+     80
+    ],
+    "confidence_block": [
+     1521,
+     200,
+     382,
+     45
+    ],
+    "freshness_block": [
+     1521,
+     263,
+     382,
+     40
+    ],
+    "close_x": [
+     1873,
+     15,
+     34,
+     36
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean (drawer variant)",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box"
+   ],
+   "clicks_done": [
+    "opened Details, then Escape"
+   ],
+   "notes": ""
+  },
+  {
+   "file": "assets/w-gear-a.png",
+   "page": "weather-station",
+   "what": "Dashboard settings gear popup (Select parameters), viewed only",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "popup open, all switches off",
+   "visible_text": [
+    "Select parameters",
+    "Choose which parameters appear in the featured area.",
+    "Temperature",
+    "Wind Speed",
+    "Air Humidity",
+    "Rainfall",
+    "Barometric Pressure",
+    "Wind Direction",
+    "Dust Particles",
+    "PM10",
+    "CO2",
+    "TSP",
+    "H2S",
+    "CO"
+   ],
+   "rects": {
+    "popup": [
+     810,
+     199,
+     300,
+     590
+    ],
+    "title": [
+     834,
+     223,
+     252,
+     18
+    ],
+    "intro": [
+     834,
+     283,
+     230,
+     34
+    ],
+    "switch_list": [
+     834,
+     325,
+     252,
+     430
+    ],
+    "close_x": [
+     1078,
+     217,
+     20,
+     20
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box",
+    "station display names ('Main Plant Weather Station', 'SCC Weather Station') blurred (gaussian) on 4 Oct 2026 after the first fact-check; station serial numbers stay visible"
+   ],
+   "clicks_done": [
+    "opened Dashboard settings gear, then Escape"
+   ],
+   "notes": "No switch touched. The first switch (Temperature) shows a focus ring only because the dialog auto-focuses it."
+  },
+  {
+   "file": "assets/w-reports-a.png",
+   "page": "reports",
+   "what": "Maximum Values Report, Last 30 Days: max heat index 60.2 and max wind 32.0 with daily table",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Last 30 Days selected",
+   "visible_text": [
+    "Maximum Values Report",
+    "Maximum Heat Index",
+    "60.2",
+    "Extreme Danger",
+    "09 Sep, 2026 · 03:01 PM · Main Plant Weather Station",
+    "Maximum Wind Speed",
+    "32.0",
+    "Daily breakdown",
+    "Computed from raw readings, project-wide across every station"
+   ],
+   "rects": {
+    "title": [
+     280,
+     104,
+     397,
+     32
+    ],
+    "pill_today": [
+     280,
+     154,
+     70,
+     36
+    ],
+    "pill_yesterday": [
+     358,
+     154,
+     97,
+     36
+    ],
+    "pill_this_week": [
+     463,
+     154,
+     101,
+     36
+    ],
+    "pill_last7": [
+     572,
+     154,
+     108,
+     36
+    ],
+    "pill_this_month": [
+     688,
+     154,
+     106,
+     36
+    ],
+    "pill_last30": [
+     803,
+     154,
+     119,
+     36
+    ],
+    "pill_custom": [
+     930,
+     154,
+     94,
+     36
+    ],
+    "export_xlsx": [
+     1781,
+     102,
+     123,
+     36
+    ],
+    "max_heat_card": [
+     280,
+     207,
+     804,
+     142
+    ],
+    "max_wind_card": [
+     1100,
+     207,
+     804,
+     142
+    ],
+    "extreme_danger_chip": [
+     305,
+     298,
+     125,
+     26
+    ],
+    "daily_table": [
+     280,
+     365,
+     1624,
+     623
+    ],
+    "table_note": [
+     1524,
+     400,
+     355,
+     18
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "station display names ('Main Plant Weather Station', 'SCC Weather Station') blurred (gaussian) on 4 Oct 2026 after the first fact-check; station serial numbers stay visible"
+   ],
+   "clicks_done": [
+    "none (default view)"
+   ],
+   "notes": "Export .xlsx never clicked."
+  },
+  {
+   "file": "assets/w-reports-7d-a.png",
+   "page": "reports",
+   "what": "Same report after the Last 7 Days pill: max heat index 58.2, max wind 28.4",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Last 7 Days selected",
+   "visible_text": [
+    "Last 7 Days",
+    "58.2",
+    "02 Oct, 2026 · 02:04 PM · SCC Weather Station",
+    "28.4",
+    "29 Sep, 2026 · 01:56 PM · Main Plant Weather Station"
+   ],
+   "rects": {
+    "pill_last7": [
+     572,
+     154,
+     108,
+     36
+    ],
+    "max_heat_card": [
+     280,
+     207,
+     804,
+     142
+    ],
+    "max_wind_card": [
+     1100,
+     207,
+     804,
+     142
+    ],
+    "daily_table": [
+     280,
+     365,
+     1624,
+     432
+    ],
+    "export_xlsx": [
+     1781,
+     102,
+     123,
+     36
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "station display names ('Main Plant Weather Station', 'SCC Weather Station') blurred (gaussian) on 4 Oct 2026 after the first fact-check; station serial numbers stay visible"
+   ],
+   "clicks_done": [
+    "clicked Last 7 Days pill, then Last 30 Days pill back"
+   ],
+   "notes": ""
+  },
+  {
+   "file": "assets/w-settings-products-a.png",
+   "page": "settings/connected-products",
+   "what": "Settings > Connected Products tab: Weather Station Active, Gas Inactive, Lightning Inactive",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Weather Station on, Gas off, Lightning off",
+   "visible_text": [
+    "Connected Products",
+    "Weather Station Active",
+    "Gas Inactive",
+    "Lightning Inactive"
+   ],
+   "rects": {
+    "settings_nav": [
+     276,
+     138,
+     200,
+     160
+    ],
+    "title": [
+     512,
+     104,
+     212,
+     26
+    ],
+    "row_ws": [
+     512,
+     150,
+     1384,
+     36
+    ],
+    "row_gas": [
+     512,
+     196,
+     1384,
+     36
+    ],
+    "row_lightning": [
+     512,
+     241,
+     1384,
+     36
+    ],
+    "switch_ws": [
+     1852,
+     150,
+     44,
+     24
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "opened Settings via the rail (lands on Connected Products)"
+   ],
+   "notes": "No switch clicked."
+  },
+  {
+   "file": "assets/w-policy-a-top.png",
+   "page": "settings/weather-station",
+   "what": "Site Safety Policy top: intro, Right now banner, start of Stop-work limits",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Danger, heat index 50.1 C in force 30 work / 10 rest / 250 ml every 15 min",
+   "visible_text": [
+    "Site Safety Policy",
+    "This page shows the limits and cycles that decide when work stops on this site. Changing anything here changes when work stops, for everyone on the project.",
+    "RIGHT NOW",
+    "Danger — heat index 50.1 °C",
+    "In force on site: 30 minutes of work, then 10 minutes of rest, with 250 ml of water every 15 minutes."
+   ],
+   "rects": {
+    "intro": [
+     644,
+     221,
+     704,
+     45
+    ],
+    "right_now_banner": [
+     644,
+     290,
+     1120,
+     100
+    ],
+    "stop_work_title": [
+     644,
+     418,
+     152,
+     24
+    ],
+    "stop_work_intro": [
+     644,
+     448,
+     680,
+     40
+    ],
+    "temperature_row": [
+     644,
+     496,
+     1120,
+     236
+    ],
+    "temp_chart": [
+     657,
+     585,
+     1094,
+     84
+    ],
+    "temp_limit_label": [
+     1675,
+     585,
+     76,
+     16
+    ],
+    "temp_would_have": [
+     657,
+     697,
+     365,
+     20
+    ],
+    "wind_row": [
+     644,
+     732,
+     1120,
+     236
+    ],
+    "settings_subnav": [
+     276,
+     138,
+     200,
+     160
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "viewport 3800 capture"
+   ],
+   "notes": "Policy shows a single 'Site Safety Policy' tab; the old five tabs are gone."
+  },
+  {
+   "file": "assets/w-policy-a-limits.png",
+   "page": "settings/weather-station",
+   "what": "Stop-work limits for every sensor with 30-day what-if charts for Temperature and Wind Speed",
+   "window_y0": 380,
+   "viewport": "1920x988",
+   "states": "Temperature limit 46 C (would have stopped 8 of 30 days), Wind 32 km/h (1 of 30), Rainfall Off",
+   "visible_text": [
+    "Stop-work limits",
+    "Temperature",
+    "In force: 46 °C",
+    "Would have stopped work on 8 of the last 30 days",
+    "Wind Speed",
+    "In force: 32 km/h",
+    "Would have stopped work on 1 of the last 30 days",
+    "Dust Particles",
+    "Rainfall",
+    "Off — no danger check",
+    "No reading will ever be marked Danger for Rainfall.",
+    "Counted"
+   ],
+   "rects": {
+    "title": [
+     644,
+     38,
+     152,
+     24
+    ],
+    "intro": [
+     644,
+     68,
+     680,
+     40
+    ],
+    "temperature_row": [
+     644,
+     116,
+     1120,
+     236
+    ],
+    "temp_chart": [
+     657,
+     205,
+     1094,
+     84
+    ],
+    "temp_summary": [
+     657,
+     317,
+     365,
+     20
+    ],
+    "wind_row": [
+     644,
+     352,
+     1120,
+     236
+    ],
+    "wind_chart": [
+     657,
+     440,
+     1094,
+     84
+    ],
+    "wind_summary": [
+     657,
+     552,
+     360,
+     20
+    ],
+    "dust_row": [
+     644,
+     588,
+     1120,
+     70
+    ],
+    "rainfall_row": [
+     644,
+     659,
+     1120,
+     105
+    ],
+    "off_chip": [
+     657,
+     725,
+     172,
+     26
+    ],
+    "pressure_row": [
+     644,
+     764,
+     1120,
+     70
+    ],
+    "humidity_row": [
+     644,
+     835,
+     1120,
+     70
+    ],
+    "pm10_row": [
+     644,
+     906,
+     1120,
+     70
+    ],
+    "counted_switches": [
+     1706,
+     140,
+     46,
+     24
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "none"
+   ],
+   "notes": "No stepper, input or switch touched."
+  },
+  {
+   "file": "assets/w-policy-a-bands.png",
+   "page": "settings/weather-station",
+   "what": "Heat index bands ribbon, 30-day band strip and the first band cards",
+   "window_y0": 1540,
+   "viewport": "1920x988",
+   "states": "Now 50.1 C Danger; 30 days: Danger 18, Extreme Danger 12",
+   "visible_text": [
+    "Heat index bands",
+    "Default (global) bands",
+    "Now 50.1 °C — Danger",
+    "Normal <25 °C",
+    "Caution",
+    "Extreme Caution 30 – 39 °C",
+    "Danger 39 – 52 °C",
+    "Extreme Danger ≥52 °C",
+    "Days in each band over the last 30 days",
+    "Danger 18 days",
+    "Extreme Danger 12 days",
+    "A day is banded by its highest heat index reading, over the last 30 days."
+   ],
+   "rects": {
+    "title": [
+     644,
+     56,
+     160,
+     24
+    ],
+    "intro": [
+     644,
+     88,
+     710,
+     36
+    ],
+    "drag_hint": [
+     644,
+     135,
+     1100,
+     40
+    ],
+    "ribbon": [
+     652,
+     226,
+     1104,
+     165
+    ],
+    "now_marker": [
+     1278,
+     226,
+     168,
+     26
+    ],
+    "normal_label": [
+     800,
+     303,
+     72,
+     40
+    ],
+    "danger_label": [
+     1264,
+     303,
+     70,
+     40
+    ],
+    "extreme_danger_label": [
+     1517,
+     303,
+     110,
+     40
+    ],
+    "policy_range_inputs": [
+     644,
+     410,
+     262,
+     64
+    ],
+    "band_strip_panel": [
+     644,
+     486,
+     1120,
+     155
+    ],
+    "strip": [
+     653,
+     523,
+     1102,
+     24
+    ],
+    "legend": [
+     653,
+     556,
+     1100,
+     26
+    ],
+    "zoom_note": [
+     644,
+     654,
+     995,
+     20
+    ],
+    "project_now_note": [
+     644,
+     686,
+     360,
+     20
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "none"
+   ],
+   "notes": "Boundary handles on the ribbon never touched."
+  },
+  {
+   "file": "assets/w-policy-a-cards.png",
+   "page": "settings/weather-station",
+   "what": "Five band cards with work/rest/water per band, then the calculation-method tab",
+   "window_y0": 2250,
+   "viewport": "1920x988",
+   "states": "Danger card highlighted (current band); Normal has No work restriction on",
+   "visible_text": [
+    "<25 °C",
+    "25 – 30 °C",
+    "30 – 39 °C",
+    "39 – 52 °C",
+    "≥52 °C",
+    "Band name",
+    "Work (min)",
+    "Rest (min)",
+    "Water every (min)",
+    "Water amount (ml)",
+    "No work restriction",
+    "Band colours are set by severity — coolest green through hottest deep red — and are no longer chosen by hand."
+   ],
+   "rects": {
+    "card_normal": [
+     644,
+     8,
+     274,
+     320
+    ],
+    "card_caution": [
+     926,
+     8,
+     274,
+     320
+    ],
+    "card_extreme_caution": [
+     1208,
+     8,
+     274,
+     320
+    ],
+    "card_danger_current": [
+     1490,
+     8,
+     274,
+     320
+    ],
+    "card_extreme_danger": [
+     644,
+     336,
+     274,
+     320
+    ],
+    "colours_note": [
+     644,
+     668,
+     745,
+     20
+    ],
+    "tab_method": [
+     1026,
+     712,
+     226,
+     38
+    ],
+    "tab_history": [
+     1256,
+     713,
+     126,
+     36
+    ],
+    "edit_button": [
+     1708,
+     775,
+     56,
+     36
+    ],
+    "method_row": [
+     654,
+     833,
+     702,
+     45
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "none"
+   ],
+   "notes": "Edit and No work restriction switches never clicked."
+  },
+  {
+   "file": "assets/w-policy-a-method.png",
+   "page": "settings/weather-station",
+   "what": "Heat index calculation method tab (NOAA)",
+   "window_y0": 2500,
+   "viewport": "1920x988",
+   "states": "method tab selected, value NOAA",
+   "visible_text": [
+    "Heat index calculation method",
+    "Change history",
+    "Edit",
+    "NOAA"
+   ],
+   "rects": {
+    "tabs": [
+     644,
+     462,
+     1120,
+     39
+    ],
+    "edit_button": [
+     1708,
+     525,
+     56,
+     36
+    ],
+    "method_row": [
+     654,
+     583,
+     702,
+     45
+    ],
+    "noaa_value": [
+     1290,
+     595,
+     60,
+     22
+    ],
+    "extreme_danger_card": [
+     644,
+     86,
+     274,
+     320
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "method tab is the default selected tab"
+   ],
+   "notes": ""
+  },
+  {
+   "file": "assets/w-policy-a-history.png",
+   "page": "settings/weather-station",
+   "what": "Change history tab: empty state",
+   "window_y0": 2500,
+   "viewport": "1920x988",
+   "states": "no changes recorded",
+   "visible_text": [
+    "Change history",
+    "No changes were recorded in the history we read for this project. Older changes may sit further back than this page reaches."
+   ],
+   "rects": {
+    "tabs": [
+     644,
+     462,
+     1120,
+     39
+    ],
+    "history_title": [
+     644,
+     538,
+     140,
+     24
+    ],
+    "empty_message": [
+     644,
+     561,
+     885,
+     23
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean"
+   ],
+   "clicks_done": [
+    "clicked Change history tab"
+   ],
+   "notes": "Whole history is empty for this project, so the table (introduced earlier) can't be shown."
+  },
+  {
+   "file": "assets/w-top-c.png",
+   "page": "weather-station",
+   "what": "Project C dashboard in Danger: 1 station, Gas CHECK strip in the header, Gas row in rail",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Danger; heat index 41.5 C; 1 of 1 station online; Gas CHECK (4 of 5 detectors reporting)",
+   "visible_text": [
+    "Gas CHECK",
+    "Last reading 2 min ago · 4 of 5 detectors reporting",
+    "Danger",
+    "Heat Index",
+    "41.5",
+    "All 1 station reporting",
+    "Ready",
+    "1 Online",
+    "Temperature 39.4",
+    "Barometric Pressure 1001.9",
+    "Threshold: Danger"
+   ],
+   "rects": {
+    "gas_check_strip": [
+     116,
+     50,
+     477,
+     22
+    ],
+    "clock": [
+     1746,
+     50,
+     150,
+     22
+    ],
+    "rail_gas_check": [
+     64,
+     189,
+     191,
+     44
+    ],
+    "rail_trends_planned": [
+     64,
+     298,
+     191,
+     44
+    ],
+    "verdict_banner": [
+     280,
+     162,
+     1624,
+     62
+    ],
+    "heat_index_card": [
+     298,
+     363,
+     577,
+     437
+    ],
+    "station_summary": [
+     1504,
+     241,
+     400,
+     148
+    ],
+    "station_row": [
+     1504,
+     427,
+     376,
+     38
+    ],
+    "readings_list": [
+     1504,
+     563,
+     400,
+     192
+    ],
+    "heat_index_reason": [
+     1504,
+     571,
+     400,
+     26
+    ],
+    "temperature_reason": [
+     1504,
+     635,
+     400,
+     26
+    ],
+    "pressure_reason": [
+     1504,
+     700,
+     400,
+     26
+    ],
+    "recommended_actions_card": [
+     1504,
+     764,
+     400,
+     80
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box"
+   ],
+   "clicks_done": [],
+   "notes": ""
+  },
+  {
+   "file": "assets/w-reasons-c.png",
+   "page": "weather-station",
+   "what": "Same state as w-top-c: the readings behind the verdict (Heat Index, Temperature, Barometric Pressure)",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "3 readings in Danger",
+   "visible_text": [
+    "Heat Index 41.5 °C Band: Danger",
+    "Heat Index is in a danger band — heat-stress risk to workers.",
+    "Temperature 39.4 °C Threshold: Danger",
+    "Temperature has breached its configured safety threshold.",
+    "Barometric Pressure 1001.9 hPa Threshold: Danger",
+    "Barometric Pressure has breached its configured safety threshold."
+   ],
+   "rects": {
+    "readings_list": [
+     1504,
+     563,
+     400,
+     192
+    ],
+    "heat_index_reason": [
+     1504,
+     571,
+     400,
+     50
+    ],
+    "temperature_reason": [
+     1504,
+     635,
+     400,
+     50
+    ],
+    "pressure_reason": [
+     1504,
+     700,
+     400,
+     50
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box"
+   ],
+   "clicks_done": [],
+   "notes": "Identical pixels to w-top-c (page fits in one screen, so no closer crop was possible at 1920x988); use as a second cue point."
+  },
+  {
+   "file": "assets/w-menu-a.png",
+   "page": "weather-station",
+   "what": "Rail with the Trends row marked Planned and its hover tooltip 'Not available yet' (Project C, which also has the Gas row)",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "Trends tooltip showing",
+   "visible_text": [
+    "Weather Station",
+    "Gas Check",
+    "Reports",
+    "Trends Planned",
+    "Not available yet",
+    "Settings"
+   ],
+   "rects": {
+    "rail_weather_station": [
+     64,
+     141,
+     191,
+     44
+    ],
+    "rail_gas": [
+     64,
+     189,
+     191,
+     44
+    ],
+    "rail_reports": [
+     64,
+     237,
+     191,
+     44
+    ],
+    "rail_trends": [
+     64,
+     298,
+     191,
+     44
+    ],
+    "planned_chip": [
+     188,
+     312,
+     55,
+     17
+    ],
+    "tooltip": [
+     259,
+     298,
+     192,
+     36
+    ],
+    "rail_settings": [
+     64,
+     346,
+     191,
+     44
+    ]
+   },
+   "masks_applied": [
+    "top bar blanked (organization/project names) and avatar masked by cap_clean",
+    "hidden snapshot card text (customer/project name) at raw 380,831 white box"
+   ],
+   "clicks_done": [
+    "hovered Trends (no click)"
+   ],
+   "notes": "Project A's rail (w-top-a) has no Gas row because Gas is inactive there."
+  }
+ ],
+ "observations": [
+  "Header now shows a live clock 'Oct 4, 2026, 3:27 PM' (page clock, Saudi time per code); no timezone label anywhere on screen.",
+  "Dashboard times use 'DD Mon, YYYY hh:mm AM/PM' (e.g. 04 Oct, 2026 03:22 PM); station tiles hidden snapshot uses 'Data as of 03:23 PM'; reports use '09 Sep, 2026 · 03:01 PM' and '04 Sep, 2026' dates.",
+  "Parent says build 1.0.5 serves; git log v1.0.3..v1.0.5 only lists three Gas/Lightning commits, the weather-relevant changes live in earlier commits since 2026-08-09.",
+  "Heat index band bounds differ in text: dashboard scale Danger 39-51, Extreme Danger >=52; policy page Danger 39-52, Caution 25-30. Colours: Normal dark green, Caution green, Extreme Caution yellow, Danger orange, Extreme Danger deep red.",
+  "Offline station 1925073288: badge Offline, headline '1925073288 is offline', Readiness 'Not ready', 'What needs attention: 1 station offline / Check station 1925073288'; yet a green 'Last reading was 1 minute(s) ago.' line and 'Last seen: 04 Oct, 2026 03:22 PM' show beneath, which contradicts it (a surprise).",
+  "Project A shows 'No parameters featured' empty dashed slot with a Featured hint; the gear popup is how parameters are added.",
+  "Heat index differs between pages at different minutes (49.5 at 03:22 dashboard, 50.1 on policy at 03:25).",
+  "Station display names are blurred in the frames that show them (decision of 4 Oct 2026). Never narrate a station name."
+ ],
+ "not_visible": [
+  "Per code, not found live: the flag-gated agent dashboard composition and dynamic charts are not visible (default off) - DIRECTION, not live.",
+  "No tooltip on Copy as image hover; Rename pencil only carries a native title 'Rename <station>' so w-hover-copy-a and w-hover-rename-a were not captured.",
+  "Historical dashboard tab (removed per code) correctly absent.",
+  "Change history table could not be shown: history empty for Project A.",
+  "Lightning/Gas content not captured (not my product)."
+ ],
+ "never_clicked": [
+  "Switches on Connected Products",
+  "Counted switches",
+  "No work restriction switches",
+  "Edit (heat index method)",
+  "Export, Export .xlsx",
+  "Copy as image, Copy actions",
+  "Rename pencils",
+  "Stepper +/- and number inputs, ribbon boundary handles, band name fields",
+  "full-screen toggle",
+  "Report period 'Custom...'"
+ ]
+}

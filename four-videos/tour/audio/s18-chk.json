@@ -1,0 +1,324 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:03,040"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 3040
+			},
+			"text": " Here is a project where lightning is on.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.568952,
+					"t_dtw": -1
+				},
+				{
+					"text": " Here",
+					"timestamps": {
+						"from": "00:00:00,340",
+						"to": "00:00:00,350"
+					},
+					"offsets": {
+						"from": 340,
+						"to": 350
+					},
+					"id": 1692,
+					"p": 0.980028,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:00,370",
+						"to": "00:00:00,550"
+					},
+					"offsets": {
+						"from": 370,
+						"to": 550
+					},
+					"id": 307,
+					"p": 0.981862,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:00,550",
+						"to": "00:00:00,640"
+					},
+					"offsets": {
+						"from": 550,
+						"to": 640
+					},
+					"id": 257,
+					"p": 0.995733,
+					"t_dtw": -1
+				},
+				{
+					"text": " project",
+					"timestamps": {
+						"from": "00:00:00,640",
+						"to": "00:00:01,290"
+					},
+					"offsets": {
+						"from": 640,
+						"to": 1290
+					},
+					"id": 1716,
+					"p": 0.978823,
+					"t_dtw": -1
+				},
+				{
+					"text": " where",
+					"timestamps": {
+						"from": "00:00:01,290",
+						"to": "00:00:01,750"
+					},
+					"offsets": {
+						"from": 1290,
+						"to": 1750
+					},
+					"id": 689,
+					"p": 0.991739,
+					"t_dtw": -1
+				},
+				{
+					"text": " lightning",
+					"timestamps": {
+						"from": "00:00:01,750",
+						"to": "00:00:02,590"
+					},
+					"offsets": {
+						"from": 1750,
+						"to": 2590
+					},
+					"id": 16589,
+					"p": 0.67686,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:02,590",
+						"to": "00:00:02,770"
+					},
+					"offsets": {
+						"from": 2590,
+						"to": 2770
+					},
+					"id": 307,
+					"p": 0.996951,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:02,770",
+						"to": "00:00:02,840"
+					},
+					"offsets": {
+						"from": 2770,
+						"to": 2840
+					},
+					"id": 322,
+					"p": 0.994782,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:03,000",
+						"to": "00:00:03,040"
+					},
+					"offsets": {
+						"from": 3000,
+						"to": 3040
+					},
+					"id": 13,
+					"p": 0.926323,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_152]",
+					"timestamps": {
+						"from": "00:00:03,040",
+						"to": "00:00:03,040"
+					},
+					"offsets": {
+						"from": 3040,
+						"to": 3040
+					},
+					"id": 50517,
+					"p": 0.0836275,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:03,040",
+				"to": "00:00:05,340"
+			},
+			"offsets": {
+				"from": 3040,
+				"to": 5340
+			},
+			"text": " The menu has a lightning entry.",
+			"tokens": [
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:03,310",
+						"to": "00:00:03,310"
+					},
+					"offsets": {
+						"from": 3310,
+						"to": 3310
+					},
+					"id": 440,
+					"p": 0.993487,
+					"t_dtw": -1
+				},
+				{
+					"text": " menu",
+					"timestamps": {
+						"from": "00:00:03,410",
+						"to": "00:00:03,670"
+					},
+					"offsets": {
+						"from": 3410,
+						"to": 3670
+					},
+					"id": 6510,
+					"p": 0.959166,
+					"t_dtw": -1
+				},
+				{
+					"text": " has",
+					"timestamps": {
+						"from": "00:00:03,670",
+						"to": "00:00:03,880"
+					},
+					"offsets": {
+						"from": 3670,
+						"to": 3880
+					},
+					"id": 575,
+					"p": 0.998203,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:04,010",
+						"to": "00:00:04,030"
+					},
+					"offsets": {
+						"from": 4010,
+						"to": 4030
+					},
+					"id": 257,
+					"p": 0.995617,
+					"t_dtw": -1
+				},
+				{
+					"text": " lightning",
+					"timestamps": {
+						"from": "00:00:04,030",
+						"to": "00:00:04,840"
+					},
+					"offsets": {
+						"from": 4030,
+						"to": 4840
+					},
+					"id": 16589,
+					"p": 0.855235,
+					"t_dtw": -1
+				},
+				{
+					"text": " entry",
+					"timestamps": {
+						"from": "00:00:04,850",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 4850,
+						"to": 5340
+					},
+					"id": 8729,
+					"p": 0.998704,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:05,340",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5340,
+						"to": 5340
+					},
+					"id": 13,
+					"p": 0.863728,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_267]",
+					"timestamps": {
+						"from": "00:00:05,340",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5340,
+						"to": 5340
+					},
+					"id": 50632,
+					"p": 0.941573,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

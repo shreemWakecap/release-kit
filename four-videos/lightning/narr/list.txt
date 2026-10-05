@@ -1,0 +1,5 @@
+file '/Users/admin/wc/weather-station/release-kit/four-videos/lightning/narr/c1.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/lightning/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/lightning/narr/c2.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/lightning/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/lightning/narr/c3.wav'

@@ -1,0 +1,5 @@
+file '/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/narr/c1.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/narr/c2.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/narr/sil.wav'
+file '/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/narr/c3.wav'

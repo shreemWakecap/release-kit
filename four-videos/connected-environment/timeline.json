@@ -1,0 +1,127 @@
+[
+ {
+  "id": "h01",
+  "start": 0.0,
+  "kind": "card"
+ },
+ {
+  "id": "u01",
+  "start": 9.38,
+  "kind": "diagram"
+ },
+ {
+  "id": "u02",
+  "start": 16.66,
+  "kind": "diagram"
+ },
+ {
+  "id": "u03",
+  "start": 22.66,
+  "kind": "diagram"
+ },
+ {
+  "id": "u04",
+  "start": 31.46,
+  "kind": "diagram"
+ },
+ {
+  "id": "o01",
+  "start": 43.28,
+  "kind": "tri"
+ },
+ {
+  "id": "o03",
+  "start": 51.03,
+  "kind": "tri"
+ },
+ {
+  "id": "c01",
+  "start": 61.0,
+  "kind": "shot"
+ },
+ {
+  "id": "c02",
+  "start": 68.42,
+  "kind": "shot"
+ },
+ {
+  "id": "c03",
+  "start": 74.98,
+  "kind": "shot"
+ },
+ {
+  "id": "l01",
+  "start": 82.62,
+  "kind": "shot"
+ },
+ {
+  "id": "g01",
+  "start": 91.76,
+  "kind": "shot"
+ },
+ {
+  "id": "g02",
+  "start": 98.92,
+  "kind": "shot"
+ },
+ {
+  "id": "k01",
+  "start": 106.36,
+  "kind": "shot"
+ },
+ {
+  "id": "k03",
+  "start": 111.74,
+  "kind": "shot"
+ },
+ {
+  "id": "k03b",
+  "start": 118.8,
+  "kind": "shot"
+ },
+ {
+  "id": "p01",
+  "start": 126.14,
+  "kind": "diagram"
+ },
+ {
+  "id": "p02",
+  "start": 133.09,
+  "kind": "diagram"
+ },
+ {
+  "id": "p03",
+  "start": 143.76,
+  "kind": "diagram"
+ },
+ {
+  "id": "p04",
+  "start": 155.29,
+  "kind": "diagram"
+ },
+ {
+  "id": "a01",
+  "start": 162.9,
+  "kind": "diagram"
+ },
+ {
+  "id": "a02",
+  "start": 171.32,
+  "kind": "diagram"
+ },
+ {
+  "id": "a03",
+  "start": 178.82,
+  "kind": "diagram"
+ },
+ {
+  "id": "a04",
+  "start": 185.29,
+  "kind": "diagram"
+ },
+ {
+  "id": "z01",
+  "start": 192.66,
+  "kind": "shot"
+ }
+]

@@ -1,0 +1,1 @@
+Products are enabled per project, in Settings, under Connected Products.

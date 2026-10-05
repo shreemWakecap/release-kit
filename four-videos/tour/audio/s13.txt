@@ -1,0 +1,1 @@
+Reports holds the Maximum Values Report. Pick a period: today, yesterday, this week, the last seven days, this month, the last thirty days, or a custom range.

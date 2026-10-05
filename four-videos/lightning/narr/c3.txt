@@ -1,0 +1,9 @@
+In the menu you can open Settings, then Lightning. It needs its own permission, apart from viewing.
+
+These are the alert distances the tile shows as rings. Two buttons: Edit alerting radii and Set location. The location is entered by hand, marked Temporary.
+
+Below that, a twenty four hour state history. Green rows, with Data unavailable rows between. The page shows the gaps instead of hiding them.
+
+New on this page: a map of the alert distances, an alarm chart and history, and Lightning settings.
+
+Back to the crew. Next step: if your project has Lightning, open it and read the banner at the top. Cabinet lights and sounder first.

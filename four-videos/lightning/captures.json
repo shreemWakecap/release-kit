@@ -1,0 +1,996 @@
+{
+ "video": "Lightning",
+ "captured_at": "Oct 4, 2026, 4:52 PM to 4:55 PM (portal header clock, Saudi time); page text says Readings as of 2026-10-04 16:52 to 16:55 (AST). Build 1.0.7.",
+ "frames": [
+  {
+   "file": "assets/l-top-b.png",
+   "page": "/lightning",
+   "what": "Lightning page top on the current build: backup banner, Readings as of, the All Clear tile with zone ring, chips and Held for, and the radii map beside it (now an Esri satellite map, blurred here).",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "All Clear (GREEN), 1 device; map shows the red and yellow radius circles around a green sensor dot (blurred); no Temporary badge or note on this page any more",
+   "visible_text": [
+    "All Clear",
+    "Safe to work",
+    "Normal operations.",
+    "RED ≤ 13km",
+    "YELLOW 13-20km",
+    "ALL-CLEAR 30min",
+    "Held for",
+    "since 2026-09-29 17:53 (AST)",
+    "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+   ],
+   "rects": {
+    "banner": [
+     294,
+     117,
+     1596,
+     26
+    ],
+    "readings_as_of": [
+     281,
+     172,
+     1622,
+     18
+    ],
+    "tile": [
+     281,
+     207,
+     534,
+     505
+    ],
+    "state_band": [
+     309,
+     267,
+     481,
+     94
+    ],
+    "zone_chips": [
+     326,
+     495,
+     447,
+     24
+    ],
+    "zone_caption": [
+     326,
+     528,
+     447,
+     35
+    ],
+    "held_for_box": [
+     326,
+     580,
+     447,
+     89
+    ],
+    "map_card": [
+     843,
+     225,
+     1042,
+     446
+    ],
+    "map_heading": [
+     843,
+     225,
+     1042,
+     28
+    ],
+    "map_canvas": [
+     843,
+     261,
+     1042,
+     384
+    ],
+    "map_legend": [
+     843,
+     653,
+     1042,
+     18
+    ],
+    "alarm_activity_title": [
+     281,
+     729,
+     1622,
+     28
+    ],
+    "alarm_activity_section": [
+     281,
+     729,
+     1622,
+     243
+    ],
+    "alarm_activity_totals": [
+     281,
+     933,
+     1622,
+     18
+    ],
+    "alarm_history_card": [
+     299,
+     1008,
+     1586,
+     164
+    ],
+    "alarm_history_title": [
+     299,
+     1012,
+     139,
+     28
+    ],
+    "export_csv_disabled": [
+     1755,
+     1008,
+     130,
+     36
+    ],
+    "history_caption": [
+     299,
+     1053,
+     1586,
+     18
+    ],
+    "empty_state": [
+     939,
+     1128,
+     305,
+     26
+    ],
+    "rail_lightning": [
+     107,
+     154,
+     68,
+     19
+    ],
+    "header_clock": [
+     1746,
+     50,
+     150,
+     22
+    ]
+   },
+   "masks_applied": [
+    "top-bar organization and project names blanked by cap_clean; the device label (site name) in the tile and the map heading masked; satellite map blurred (gaussian sigma 28) so no terrain is recognisable; avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Map heading reads 'Alarm radii' only (site label masked). The Temporary badge and the 'Set manually...' note moved to Settings > Lightning. Held for 118h and the Settings history disagree (two clocks): do not narrate it. Old visible strings no longer on the page: Readings as of 2026-10-04 15:22 (AST); 117h 29m; Temporary; Set manually until Management Maps supports lightning sensor locations.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-hist-b.png",
+   "page": "/lightning",
+   "what": "Lower Lightning page: bottom of the map card (blurred), alarm activity chart (empty) and Alarm history with the disabled Export CSV and the empty state.",
+   "window_y0": 412,
+   "viewport": "1920x1400 (window 988)",
+   "states": "All Clear; 0 alarms in the window",
+   "visible_text": [
+    "Alarm activity",
+    "Yellow: 0 · 0s total",
+    "Red: 0 · 0s total",
+    "0 alarm(s) in this window.",
+    "Alarm history",
+    "Export CSV",
+    "No alarms were raised in this window."
+   ],
+   "rects": {
+    "banner": [
+     294,
+     -295,
+     1596,
+     26
+    ],
+    "readings_as_of": [
+     281,
+     -240,
+     1622,
+     18
+    ],
+    "tile": [
+     281,
+     -205,
+     534,
+     505
+    ],
+    "state_band": [
+     309,
+     -145,
+     481,
+     94
+    ],
+    "zone_chips": [
+     326,
+     83,
+     447,
+     24
+    ],
+    "zone_caption": [
+     326,
+     116,
+     447,
+     35
+    ],
+    "held_for_box": [
+     326,
+     168,
+     447,
+     89
+    ],
+    "map_card": [
+     843,
+     -187,
+     1042,
+     446
+    ],
+    "map_heading": [
+     843,
+     -187,
+     1042,
+     28
+    ],
+    "map_canvas": [
+     843,
+     -151,
+     1042,
+     384
+    ],
+    "map_legend": [
+     843,
+     241,
+     1042,
+     18
+    ],
+    "alarm_activity_title": [
+     281,
+     317,
+     1622,
+     28
+    ],
+    "alarm_activity_section": [
+     281,
+     317,
+     1622,
+     243
+    ],
+    "alarm_activity_totals": [
+     281,
+     521,
+     1622,
+     18
+    ],
+    "alarm_history_card": [
+     299,
+     596,
+     1586,
+     164
+    ],
+    "alarm_history_title": [
+     299,
+     600,
+     139,
+     28
+    ],
+    "export_csv_disabled": [
+     1755,
+     596,
+     130,
+     36
+    ],
+    "history_caption": [
+     299,
+     641,
+     1586,
+     18
+    ],
+    "empty_state": [
+     939,
+     716,
+     305,
+     26
+    ],
+    "rail_lightning": [
+     107,
+     -258,
+     68,
+     19
+    ],
+    "header_clock": [
+     1746,
+     -362,
+     150,
+     22
+    ]
+   },
+   "masks_applied": [
+    "top-bar organization and project names blanked by cap_clean; the device label (site name) in the tile and the map heading masked; satellite map blurred (gaussian sigma 28) so no terrain is recognisable; avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-radii-map.png",
+   "page": "/lightning",
+   "what": "Window y0=150: the radii map card in full beside the tile (blurred satellite map, red and yellow circles, legend line), alarm activity heading below.",
+   "window_y0": 150,
+   "viewport": "1920x1400 (window 988)",
+   "states": "All Clear; map card with blurred satellite imagery",
+   "visible_text": [
+    "Alarm radii",
+    "Red ring: the Red radius. Yellow ring: the Yellow radius. The dot shows the sensor's current state."
+   ],
+   "rects": {
+    "banner": [
+     294,
+     -33,
+     1596,
+     26
+    ],
+    "readings_as_of": [
+     281,
+     22,
+     1622,
+     18
+    ],
+    "tile": [
+     281,
+     57,
+     534,
+     505
+    ],
+    "state_band": [
+     309,
+     117,
+     481,
+     94
+    ],
+    "zone_chips": [
+     326,
+     345,
+     447,
+     24
+    ],
+    "zone_caption": [
+     326,
+     378,
+     447,
+     35
+    ],
+    "held_for_box": [
+     326,
+     430,
+     447,
+     89
+    ],
+    "map_card": [
+     843,
+     75,
+     1042,
+     446
+    ],
+    "map_heading": [
+     843,
+     75,
+     1042,
+     28
+    ],
+    "map_canvas": [
+     843,
+     111,
+     1042,
+     384
+    ],
+    "map_legend": [
+     843,
+     503,
+     1042,
+     18
+    ],
+    "alarm_activity_title": [
+     281,
+     579,
+     1622,
+     28
+    ],
+    "alarm_activity_section": [
+     281,
+     579,
+     1622,
+     243
+    ],
+    "alarm_activity_totals": [
+     281,
+     783,
+     1622,
+     18
+    ],
+    "alarm_history_card": [
+     299,
+     858,
+     1586,
+     164
+    ],
+    "alarm_history_title": [
+     299,
+     862,
+     139,
+     28
+    ],
+    "export_csv_disabled": [
+     1755,
+     858,
+     130,
+     36
+    ],
+    "history_caption": [
+     299,
+     903,
+     1586,
+     18
+    ],
+    "empty_state": [
+     939,
+     978,
+     305,
+     26
+    ],
+    "rail_lightning": [
+     107,
+     4,
+     68,
+     19
+    ],
+    "header_clock": [
+     1746,
+     -100,
+     150,
+     22
+    ]
+   },
+   "masks_applied": [
+    "top-bar organization and project names blanked by cap_clean; the device label (site name) in the tile and the map heading masked; satellite map blurred (gaussian sigma 28) so no terrain is recognisable; avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Legend text: 'Red ring: the Red radius. Yellow ring: the Yellow radius. The dot shows the sensor's current state.' Old visible strings no longer on the page: Temporary; Set manually until Management Maps supports lightning sensor locations.; Leaflet | © OpenStreetMap contributors",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-wallboard-b.png",
+   "page": "/lightning/wallboard",
+   "what": "Lightning wallboard view: big All Clear, Safe to work, Normal operations, zone ring, chips, caption, Readings as of and the backup banner. No portal chrome.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "All Clear",
+   "visible_text": [
+    "All Clear",
+    "Safe to work",
+    "Normal operations.",
+    "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+   ],
+   "rects": {
+    "tile": [
+     17,
+     17,
+     934,
+     680
+    ],
+    "all_clear": [
+     226,
+     76,
+     555,
+     134
+    ],
+    "check_icon": [
+     58,
+     76,
+     136,
+     134
+    ],
+    "safe_to_work": [
+     55,
+     226,
+     165,
+     28
+    ],
+    "normal_operations": [
+     42,
+     280,
+     450,
+     52
+    ],
+    "zone_ring": [
+     52,
+     362,
+     250,
+     250
+    ],
+    "chips": [
+     42,
+     631,
+     334,
+     24
+    ],
+    "zone_caption": [
+     42,
+     662,
+     852,
+     18
+    ],
+    "readings_as_of": [
+     17,
+     715,
+     1886,
+     32
+    ],
+    "banner": [
+     17,
+     764,
+     1886,
+     52
+    ]
+   },
+   "masks_applied": [
+    "site label above All Clear masked with the card colour"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept from the earlier capture (layout unchanged). Old visible strings no longer on the page: Readings as of 2026-10-04 15:24 (AST)",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-mobile-b.png",
+   "page": "/lightning/mobile",
+   "what": "Lightning phone route at desktop width inside the portal chrome.",
+   "window_y0": 0,
+   "viewport": "1920x988",
+   "states": "All Clear",
+   "visible_text": [
+    "All Clear",
+    "Full state history — last 24 hours",
+    "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+   ],
+   "rects": {
+    "readings_as_of": [
+     281,
+     104,
+     1622,
+     26
+    ],
+    "tile": [
+     281,
+     146,
+     1622,
+     434
+    ],
+    "all_clear": [
+     383,
+     196,
+     200,
+     52
+    ],
+    "safe_to_work": [
+     318,
+     262,
+     134,
+     22
+    ],
+    "normal_operations": [
+     306,
+     302,
+     220,
+     28
+    ],
+    "zone_ring": [
+     312,
+     350,
+     148,
+     148
+    ],
+    "chips": [
+     306,
+     513,
+     333,
+     24
+    ],
+    "zone_caption": [
+     306,
+     546,
+     850,
+     18
+    ],
+    "history_summary": [
+     294,
+     611,
+     1596,
+     26
+    ],
+    "banner": [
+     294,
+     679,
+     1596,
+     26
+    ],
+    "nav_lightning": [
+     64,
+     141,
+     191,
+     44
+    ],
+    "nav_trends_planned": [
+     64,
+     203,
+     191,
+     42
+    ],
+    "nav_settings": [
+     64,
+     254,
+     191,
+     36
+    ],
+    "clock": [
+     1745,
+     50,
+     151,
+     22
+    ]
+   },
+   "masks_applied": [
+    "top bar names blanked; site label masked; avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept from the earlier capture (layout unchanged). Old visible strings no longer on the page: Readings as of 2026-10-04 15:23 (AST)",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-mobile-phone-b.png",
+   "page": "/lightning/mobile",
+   "what": "Lightning phone view at phone width, centred on a grey canvas.",
+   "window_y0": 0,
+   "viewport": "458x960 composite on 1920x988",
+   "states": "All Clear",
+   "visible_text": [
+    "All Clear",
+    "Safe to work",
+    "Full state history — last 24 hours",
+    "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+   ],
+   "rects": {
+    "phone_screen": [
+     745,
+     9,
+     430,
+     970
+    ],
+    "readings_as_of": [
+     873,
+     112,
+     285,
+     50
+    ],
+    "tile": [
+     873,
+     174,
+     286,
+     413
+    ],
+    "all_clear": [
+     962,
+     222,
+     160,
+     40
+    ],
+    "safe_to_work": [
+     910,
+     275,
+     125,
+     22
+    ],
+    "zone_ring": [
+     898,
+     349,
+     92,
+     92
+    ],
+    "chips": [
+     897,
+     449,
+     198,
+     50
+    ],
+    "zone_caption": [
+     897,
+     506,
+     235,
+     65
+    ],
+    "history_summary": [
+     873,
+     603,
+     286,
+     74
+    ],
+    "banner": [
+     873,
+     693,
+     286,
+     98
+    ]
+   },
+   "masks_applied": [
+    "site label and avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept from the earlier capture only if the phone column is at the same position (x 731, y 14). Old visible strings no longer on the page: Readings as of 2026-10-04 15:24 (AST)",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-mobile-hist-b.png",
+   "page": "/lightning/mobile",
+   "what": "Lightning phone route, lower window.",
+   "window_y0": 150,
+   "viewport": "1920x1400 (window 988)",
+   "states": "All Clear",
+   "visible_text": [
+    "Full state history — last 24 hours",
+    "Export CSV",
+    "Every state the device passed through, including data-unavailable gaps. All times in AST, UTC+3.",
+    "Data unavailable",
+    "stale_sweep",
+    "packet",
+    "In progress"
+   ],
+   "rects": {
+    "tile_tail": [
+     281,
+     0,
+     1622,
+     280
+    ],
+    "history_card": [
+     281,
+     298,
+     1622,
+     468
+    ],
+    "history_summary_open": [
+     294,
+     314,
+     338,
+     28
+    ],
+    "history_title": [
+     294,
+     340,
+     338,
+     28
+    ],
+    "export_csv": [
+     1760,
+     486,
+     130,
+     36
+    ],
+    "history_caption": [
+     294,
+     382,
+     1596,
+     18
+    ],
+    "history_table": [
+     294,
+     408,
+     1596,
+     345
+    ],
+    "table_header": [
+     294,
+     408,
+     1596,
+     34
+    ],
+    "banner": [
+     281,
+     784,
+     1622,
+     52
+    ]
+   },
+   "masks_applied": [
+    "top bar names blanked; site label masked; avatar masked"
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Rects kept from the earlier capture (layout unchanged).",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  },
+  {
+   "file": "assets/l-settings-b-all.png",
+   "page": "/settings/lightning",
+   "what": "Settings > Lightning: alerting radii with Edit alerting radii and Set location, the Temporary location line with its note, and the 24 hour state history table.",
+   "window_y0": 0,
+   "viewport": "1920x1400 (window 988)",
+   "states": "radii Red 13 km, Yellow 13-20 km, 30 min all-clear; location marked Temporary; state history shows GREEN rows with short Data unavailable gaps",
+   "visible_text": [
+    "Alerting radii",
+    "Red ≤ 13 km · Yellow 13-20 km · 30 min all-clear",
+    "Temporary",
+    "Set manually until Management Maps supports lightning sensor locations.",
+    "Edit alerting radii",
+    "Set location",
+    "Full state history — last 24 hours",
+    "Export CSV",
+    "Data unavailable",
+    "stale_sweep"
+   ],
+   "rects": {
+    "settings_title": [
+     276,
+     98,
+     199,
+     36
+    ],
+    "settings_menu": [
+     264,
+     86,
+     224,
+     710
+    ],
+    "radii_title": [
+     504,
+     102,
+     1400,
+     28
+    ],
+    "radii_intro": [
+     504,
+     134,
+     704,
+     40
+    ],
+    "device_card": [
+     504,
+     186,
+     1400,
+     165
+    ],
+    "radii_box": [
+     517,
+     227,
+     488,
+     61
+    ],
+    "radii_value": [
+     526,
+     256,
+     470,
+     23
+    ],
+    "location_line": [
+     517,
+     292,
+     488,
+     23
+    ],
+    "temporary_badge": [
+     753,
+     292,
+     81,
+     22
+    ],
+    "location_note": [
+     517,
+     318,
+     488,
+     20
+    ],
+    "edit_radii_button": [
+     1770,
+     233,
+     121,
+     32
+    ],
+    "set_location_button": [
+     1770,
+     273,
+     92,
+     32
+    ],
+    "history_title": [
+     504,
+     367,
+     338,
+     28
+    ],
+    "export_csv": [
+     1774,
+     363,
+     130,
+     36
+    ],
+    "history_caption": [
+     504,
+     409,
+     1400,
+     18
+    ],
+    "history_table": [
+     504,
+     435,
+     1400,
+     34
+    ],
+    "table_header": [
+     504,
+     435,
+     1400,
+     34
+    ],
+    "first_row": [
+     504,
+     470,
+     1400,
+     35
+    ],
+    "unavailable_row": [
+     504,
+     504,
+     1400,
+     35
+    ],
+    "rail_settings": [
+     107,
+     263,
+     60,
+     19
+    ]
+   },
+   "masks_applied": [
+    "top bar names blanked; site label and the coordinates masked; avatar masked",
+    "two text lines blurred by the lead (decision 9): the intro line 'These are the radii the alerting service uses...' (display-only conflict) and the note 'Set manually until Management Maps supports lightning sensor locations.' (reads as a promise). The Temporary badge stays visible."
+   ],
+   "clicks_done": [
+    "none (navigated by URL)"
+   ],
+   "notes": "Intro line on screen: 'These are the radii the alerting service uses on this project...' (research says radii are display-only in the backend: do not claim they change the alarm). Intro line and the 'Set manually...' note are blurred in this frame.",
+   "refreshed": "1.0.7 build, 4 Oct 2026, visible browser"
+  }
+ ],
+ "observations": [
+  "[live] Production already has the radii map beside the Lightning tile (Leaflet/OpenStreetMap), with the Temporary badge and the note 'Set manually until Management Maps supports lightning sensor locations.'",
+  "[code] The Esri ArcGIS replacement of the map was merged 2026-10-04 but is not what production shows yet: production still shows 'Leaflet | © OpenStreetMap contributors'.",
+  "[live] Settings > Lightning now holds the alerting radii, an admin-set location (Temporary) and the full 24 h state history table.",
+  "[live] Alarm activity chart sits below the tile row, then Alarm history with a disabled Export CSV when there are no alarms.",
+  "[live] All displayed times are AST (Saudi time), UTC+3; dates are ISO 'YYYY-MM-DD HH:mm'; the header clock uses 'Oct 4, 2026, 3:23 PM'.",
+  "[live] The 24 h history shows many short 'Data unavailable' (stale_sweep) gaps between GREEN intervals even though the state is All Clear today.",
+  "[live] The Weather Station route on the Lightning project shows 404 (not entitled).",
+  "1.0.7 REFRESH: production moved from 1.0.5 to 1.0.7 on 4 Oct 2026. Two commits only, both Lightning: the radii map now uses Esri ArcGIS with a SATELLITE basemap (replacing Leaflet/OpenStreetMap), is wide beside the tile, and the Temporary badge and 'Set manually until Management Maps supports lightning sensor locations.' note appear ONLY in Settings > Lightning. The satellite imagery shows real terrain and a town: the map is blurred in every frame. The map needs WebGL2 (a headless shell shows 'Unable to display map'); captured in a full Chromium window.",
+  "1.0.7 REFRESH: wallboard and phone views are unchanged in layout; recaptured for freshness."
+ ],
+ "not_visible": [
+  "Any lightning status indicator in the shared header on the Lightning project (the code has a site indicator on the Weather Station home, which this project does not have)",
+  "Yellow, Red, Fault, Unknown or stale states (only All Clear present, as expected)",
+  "Any alarm rows (alarm history is empty)",
+  "Held for box on the wallboard",
+  "The 'No lightning signal yet' empty dashboard (device present)"
+ ],
+ "never_clicked": [
+  "Edit alerting radii",
+  "Set location",
+  "Export CSV (three places)",
+  "Map +/- zoom buttons",
+  "Trends tab (Planned, disabled)",
+  "portal header shield icon",
+  "all switches"
+ ]
+}

@@ -1,0 +1,162 @@
+{
+ "s01": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s02": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s03": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s04": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s05": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s06": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s07": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s08": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s09": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s10": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s11": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s12": {
+  "ratio": 0.88,
+  "bad": false,
+  "diffs": [
+   "replace: script[above] heard['above]",
+   "insert: script[] heard[']"
+  ]
+ },
+ "s13": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s14": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s15": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s16": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s17": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s18": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s19": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s20": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s21": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s22": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s23": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s24": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s25": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s26": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s27": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s28": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s05b": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s06b": {
+  "ratio": 1.0,
+  "bad": false,
+  "diffs": []
+ },
+ "s20b": {
+  "ratio": 0.974,
+  "bad": false,
+  "diffs": [
+   "delete: script[and] heard[]"
+  ]
+ }
+}

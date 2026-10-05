@@ -1,0 +1,15 @@
+Connected Environment. Is it safe to work right now?
+
+Most screens give you numbers, not answers. Or a sensor stops, and old data still looks fine.
+
+Connected Environment puts the answer first, for every project, in one place.
+
+Open Weather Station and the verdict leads, with the steps to take. One station offline? The panel says so, and names it.
+
+Lightning shows each device's status and its alert zones. The alarm history lists every yellow, orange or red interval.
+
+Reports give the maximum heat index and wind speed for any period. In Settings, the stop-work limits show what they would have done over the last thirty days, and the policy keeps a change history.
+
+The answer first. Offline devices named. The safety policy, on record.
+
+Open Connected Environment in your portal.

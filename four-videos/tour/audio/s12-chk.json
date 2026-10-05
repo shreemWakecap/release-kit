@@ -1,0 +1,324 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:03,300"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 3300
+			},
+			"text": " A reading above its limit turns red and says,",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.838294,
+					"t_dtw": -1
+				},
+				{
+					"text": " A",
+					"timestamps": {
+						"from": "00:00:00,010",
+						"to": "00:00:00,080"
+					},
+					"offsets": {
+						"from": 10,
+						"to": 80
+					},
+					"id": 316,
+					"p": 0.94286,
+					"t_dtw": -1
+				},
+				{
+					"text": " reading",
+					"timestamps": {
+						"from": "00:00:00,310",
+						"to": "00:00:00,650"
+					},
+					"offsets": {
+						"from": 310,
+						"to": 650
+					},
+					"id": 3760,
+					"p": 0.996506,
+					"t_dtw": -1
+				},
+				{
+					"text": " above",
+					"timestamps": {
+						"from": "00:00:00,650",
+						"to": "00:00:01,060"
+					},
+					"offsets": {
+						"from": 650,
+						"to": 1060
+					},
+					"id": 3673,
+					"p": 0.997493,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:01,060",
+						"to": "00:00:01,240"
+					},
+					"offsets": {
+						"from": 1060,
+						"to": 1240
+					},
+					"id": 1080,
+					"p": 0.995845,
+					"t_dtw": -1
+				},
+				{
+					"text": " limit",
+					"timestamps": {
+						"from": "00:00:01,330",
+						"to": "00:00:01,730"
+					},
+					"offsets": {
+						"from": 1330,
+						"to": 1730
+					},
+					"id": 4948,
+					"p": 0.998531,
+					"t_dtw": -1
+				},
+				{
+					"text": " turns",
+					"timestamps": {
+						"from": "00:00:01,940",
+						"to": "00:00:02,290"
+					},
+					"offsets": {
+						"from": 1940,
+						"to": 2290
+					},
+					"id": 4523,
+					"p": 0.976175,
+					"t_dtw": -1
+				},
+				{
+					"text": " red",
+					"timestamps": {
+						"from": "00:00:02,300",
+						"to": "00:00:02,630"
+					},
+					"offsets": {
+						"from": 2300,
+						"to": 2630
+					},
+					"id": 2182,
+					"p": 0.998365,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:02,640",
+						"to": "00:00:02,920"
+					},
+					"offsets": {
+						"from": 2640,
+						"to": 2920
+					},
+					"id": 293,
+					"p": 0.919291,
+					"t_dtw": -1
+				},
+				{
+					"text": " says",
+					"timestamps": {
+						"from": "00:00:02,920",
+						"to": "00:00:03,290"
+					},
+					"offsets": {
+						"from": 2920,
+						"to": 3290
+					},
+					"id": 1619,
+					"p": 0.998035,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,290",
+						"to": "00:00:03,300"
+					},
+					"offsets": {
+						"from": 3290,
+						"to": 3300
+					},
+					"id": 11,
+					"p": 0.906728,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_165]",
+					"timestamps": {
+						"from": "00:00:03,300",
+						"to": "00:00:03,300"
+					},
+					"offsets": {
+						"from": 3300,
+						"to": 3300
+					},
+					"id": 50530,
+					"p": 0.691427,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:03,480",
+				"to": "00:00:05,080"
+			},
+			"offsets": {
+				"from": 3480,
+				"to": 5080
+			},
+			"text": " \"'Above safe limit.'\"",
+			"tokens": [
+				{
+					"text": " \"'",
+					"timestamps": {
+						"from": "00:00:03,480",
+						"to": "00:00:03,480"
+					},
+					"offsets": {
+						"from": 3480,
+						"to": 3480
+					},
+					"id": 24543,
+					"p": 0.586759,
+					"t_dtw": -1
+				},
+				{
+					"text": "Ab",
+					"timestamps": {
+						"from": "00:00:03,490",
+						"to": "00:00:03,630"
+					},
+					"offsets": {
+						"from": 3490,
+						"to": 3630
+					},
+					"id": 23695,
+					"p": 0.979266,
+					"t_dtw": -1
+				},
+				{
+					"text": "ove",
+					"timestamps": {
+						"from": "00:00:03,790",
+						"to": "00:00:03,880"
+					},
+					"offsets": {
+						"from": 3790,
+						"to": 3880
+					},
+					"id": 1682,
+					"p": 0.999931,
+					"t_dtw": -1
+				},
+				{
+					"text": " safe",
+					"timestamps": {
+						"from": "00:00:03,880",
+						"to": "00:00:04,210"
+					},
+					"offsets": {
+						"from": 3880,
+						"to": 4210
+					},
+					"id": 3273,
+					"p": 0.733451,
+					"t_dtw": -1
+				},
+				{
+					"text": " limit",
+					"timestamps": {
+						"from": "00:00:04,210",
+						"to": "00:00:04,610"
+					},
+					"offsets": {
+						"from": 4210,
+						"to": 4610
+					},
+					"id": 4948,
+					"p": 0.999788,
+					"t_dtw": -1
+				},
+				{
+					"text": ".'\"",
+					"timestamps": {
+						"from": "00:00:04,670",
+						"to": "00:00:05,080"
+					},
+					"offsets": {
+						"from": 4670,
+						"to": 5080
+					},
+					"id": 28763,
+					"p": 0.831882,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_254]",
+					"timestamps": {
+						"from": "00:00:05,080",
+						"to": "00:00:05,080"
+					},
+					"offsets": {
+						"from": 5080,
+						"to": 5080
+					},
+					"id": 50619,
+					"p": 0.999481,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

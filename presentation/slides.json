@@ -1,0 +1,9536 @@
+{
+ "width": 1280,
+ "height": 720,
+ "slides": [
+  {
+   "bg": "0C0C0C",
+   "notes": "Welcome. About twelve minutes, plus questions. The overview video (3:21) is optional.\nWe cover why we built Connected Environment, what is in 1.0 today, what it does not do yet, and where to watch and try it.\nThe three chips on the right are the three answers a site can get: Danger from Weather Station, All Clear from Lightning, Check from Gas. That is the whole story in one picture.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 80,
+     "y": 150,
+     "w": 64,
+     "h": 6,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 80,
+     "y": 174,
+     "w": 700,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "RELEASE · OCTOBER 2026",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 80,
+     "y": 208,
+     "w": 780,
+     "h": 136,
+     "align": "left",
+     "lineHeight": 68,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 60,
+       "spacing": 0
+      },
+      {
+       "br": true
+      },
+      {
+       "text": "1.0",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 60,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 80,
+     "y": 372,
+     "w": 700,
+     "h": 36,
+     "align": "left",
+     "lineHeight": 36,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The home for everything environmental on site.",
+       "bold": false,
+       "italic": false,
+       "color": "D0D0D0",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 80,
+     "y": 610,
+     "w": 700,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap · Internal presentation",
+       "bold": false,
+       "italic": false,
+       "color": "9A9A9A",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 900,
+     "y": 170,
+     "w": 300,
+     "h": 72,
+     "radius": 36,
+     "fill": {
+      "hex": "D64545",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 900,
+     "y": 170,
+     "w": 300,
+     "h": 72,
+     "align": "center",
+     "lineHeight": 72,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Danger",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 30,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 900,
+     "y": 250,
+     "w": 300,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather Station",
+       "bold": false,
+       "italic": false,
+       "color": "B8B8B8",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 900,
+     "y": 318,
+     "w": 300,
+     "h": 72,
+     "radius": 36,
+     "fill": {
+      "hex": "1E9E5A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 900,
+     "y": 318,
+     "w": 300,
+     "h": 72,
+     "align": "center",
+     "lineHeight": 72,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "All Clear",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 30,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 900,
+     "y": 398,
+     "w": 300,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": false,
+       "italic": false,
+       "color": "B8B8B8",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 900,
+     "y": 466,
+     "w": 300,
+     "h": 72,
+     "radius": 36,
+     "fill": {
+      "hex": "F2A33A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 900,
+     "y": 466,
+     "w": 300,
+     "h": 72,
+     "align": "center",
+     "lineHeight": 72,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Check",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 30,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 900,
+     "y": 546,
+     "w": 300,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": false,
+       "italic": false,
+       "color": "B8B8B8",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "On site the question is simple: is it safe to work right now?\nHeat says one thing. Lightning says another. Gas says a third. Three screens, three products, three places to look.\nConnected Environment puts them under one roof.\nThese tiles are live production screens from three different projects, captured on 4 October. Weather showed Danger. Lightning showed All Clear. Gas showed Check.\nPoint out that Check does not mean calm. It means one detector is not reporting, so the screen cannot confirm it is safe.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WHY ONE PLACE",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Is it safe to work right now?",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 142,
+     "w": 1100,
+     "h": 28,
+     "align": "left",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Heat says one thing. Lightning says another. Gas says a third.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 200,
+     "w": 352,
+     "h": 318,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "D64545",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Danger",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 210,
+     "y": 225,
+     "w": 190,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather Station",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/tile-weather.png",
+     "x": 81,
+     "y": 279,
+     "w": 318,
+     "h": 158
+    },
+    {
+     "type": "shape",
+     "x": 80,
+     "y": 278,
+     "w": 320,
+     "h": 160,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "E6E6E1",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 84,
+     "y": 462,
+     "w": 312,
+     "h": 23,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Danger, in words, with the steps to take.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 464,
+     "y": 200,
+     "w": 352,
+     "h": 318,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 484,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "1E9E5A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 484,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "All Clear",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 610,
+     "y": 225,
+     "w": 190,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/tile-lightning.png",
+     "x": 481,
+     "y": 279,
+     "w": 318,
+     "h": 158
+    },
+    {
+     "type": "shape",
+     "x": 480,
+     "y": 278,
+     "w": 320,
+     "h": 160,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "E6E6E1",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 484,
+     "y": 462,
+     "w": 312,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "All Clear. Only green counts as safe to work.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 864,
+     "y": 200,
+     "w": 352,
+     "h": 318,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 884,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "F2A33A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 884,
+     "y": 218,
+     "w": 112,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Check",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1010,
+     "y": 225,
+     "w": 190,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/tile-gas.png",
+     "x": 881,
+     "y": 297,
+     "w": 318,
+     "h": 121
+    },
+    {
+     "type": "shape",
+     "x": 880,
+     "y": 296,
+     "w": 320,
+     "h": 123,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "E6E6E1",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 884,
+     "y": 462,
+     "w": 312,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Check. Not confirmed safe: one detector is not reporting.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 546,
+     "w": 1152,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 96,
+     "y": 563,
+     "w": 1090,
+     "h": 42,
+     "align": "left",
+     "lineHeight": 42,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment puts them under one roof: ",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 24,
+       "spacing": 0
+      },
+      {
+       "text": "one place to look.",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 24,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 636,
+     "w": 1152,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Three projects, three screens, one portal. Live production screens, 4 October 2026. Names blurred.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Connected Environment is one umbrella in the portal.\nUnder it sit Weather Station, Lightning and Gas, each with its own screens and devices.\nThey share one platform: one backend, one menu and header. A project switches on only the products it uses.\nThe last line, new environment products go under it, is our stated direction. It is not a shipped feature, so say it as direction.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WHAT SHIPPED",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One product. Three environment products inside.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 168,
+     "w": 1152,
+     "h": 96,
+     "radius": 12,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 96,
+     "y": 184,
+     "w": 700,
+     "h": 36,
+     "align": "left",
+     "lineHeight": 36,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 30,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 96,
+     "y": 224,
+     "w": 900,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One menu and header · one backend · each project switches on only what it uses",
+       "bold": false,
+       "italic": false,
+       "color": "BDBDBD",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 1096,
+     "y": 196,
+     "w": 90,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 1096,
+     "y": 196,
+     "w": 90,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "1.0",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 18,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 290,
+     "w": 352,
+     "h": 226,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 290,
+     "w": 352,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 316,
+     "w": 304,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather Station",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 88,
+     "y": 373,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 112,
+     "y": 364,
+     "w": 280,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A verdict and the steps to take, not just a heat number.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 88,
+     "y": 431,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 112,
+     "y": 422,
+     "w": 280,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Reports, and a Site Safety Policy with a 30 day preview.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 464,
+     "y": 290,
+     "w": 352,
+     "h": 226,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 464,
+     "y": 290,
+     "w": 352,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 488,
+     "y": 316,
+     "w": 304,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 488,
+     "y": 373,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 512,
+     "y": 364,
+     "w": 280,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alert state and alert distances, on a map.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 488,
+     "y": 431,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 512,
+     "y": 422,
+     "w": 280,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alarm history. A backup to the site's own cabinet lights and sounder.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 864,
+     "y": 290,
+     "w": 352,
+     "h": 226,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 864,
+     "y": 290,
+     "w": 352,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 888,
+     "y": 316,
+     "w": 304,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 888,
+     "y": 373,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 912,
+     "y": 364,
+     "w": 280,
+     "h": 23,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Overview and detectors.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 888,
+     "y": 408,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 912,
+     "y": 399,
+     "w": 280,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alerts you can acknowledge and close, and compliance limits.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 536,
+     "w": 1152,
+     "h": 56,
+     "radius": 12,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 552,
+     "w": 1110,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One platform behind them.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Readings and status from all three sit in one place.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 610,
+     "w": 1152,
+     "h": 48,
+     "radius": 12,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "A9A9A4",
+      "a": 1,
+      "dash": true
+     }
+    },
+    {
+     "type": "shape",
+     "x": 78,
+     "y": 617,
+     "w": 110,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 79,
+     "y": 618,
+     "w": 108,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "DIRECTION",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 12,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 204,
+     "y": 623,
+     "w": 990,
+     "h": 22,
+     "align": "left",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Going forward, new environment products go under Connected Environment.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "A heat number does not tell a supervisor what to do. The strip across the top does: Danger, in words, and an instruction.\nOne: View Recommended Steps opens the actions in priority order. First, pause outdoor work and move crews to shade or rest. Then notify the site safety officer.\nTwo: the heat card carries the cycle in force. Work time, rest time, and drinking water.\nThree: station health. An offline station is named, and readiness reads Not ready.\nFour: the gear opens Select parameters. It chooses which readings are featured. Each station also has a rename pencil.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WEATHER STATION",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A heat number is not an answer",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 188,
+     "w": 358,
+     "h": 81,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A verdict, in words.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " The strip says Danger and the steps to take, in priority order.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 291,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 291,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 291,
+     "w": 358,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The cycle in force.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " The heat card shows work, rest and water for the crew.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 367,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 367,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 367,
+     "w": 358,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Station health.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " An offline station is named, and readiness reads Not ready.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 443,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 443,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 443,
+     "w": 358,
+     "h": 81,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Your readings.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " The gear, Select parameters, chooses which readings are featured.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-top.png",
+     "x": 521,
+     "y": 189,
+     "w": 694,
+     "h": 321
+    },
+    {
+     "type": "shape",
+     "x": 520,
+     "y": 188,
+     "w": 696,
+     "h": 323,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 904.21875,
+     "y": 193.234375,
+     "w": 26,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 2,
+       "r": 2,
+       "b": 2,
+       "l": 2
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 906.21875,
+     "y": 195.234375,
+     "w": 22,
+     "h": 22,
+     "align": "center",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 13,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 642.796875,
+     "y": 289.578125,
+     "w": 26,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 2,
+       "r": 2,
+       "b": 2,
+       "l": 2
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 644.796875,
+     "y": 291.578125,
+     "w": 22,
+     "h": 22,
+     "align": "center",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 13,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 1023.90625,
+     "y": 342.625,
+     "w": 26,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 2,
+       "r": 2,
+       "b": 2,
+       "l": 2
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 1025.90625,
+     "y": 344.625,
+     "w": 22,
+     "h": 22,
+     "align": "center",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 13,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 1009.46875,
+     "y": 244.171875,
+     "w": 26,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 2,
+       "r": 2,
+       "b": 2,
+       "l": 2
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 1011.46875,
+     "y": 246.171875,
+     "w": 22,
+     "h": 22,
+     "align": "center",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 13,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-steps.png",
+     "x": 891,
+     "y": 430,
+     "w": 314,
+     "h": 204
+    },
+    {
+     "type": "shape",
+     "x": 888,
+     "y": 427,
+     "w": 320,
+     "h": 210,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 3,
+       "r": 3,
+       "b": 3,
+       "l": 3
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 887,
+     "y": 426,
+     "w": 322,
+     "h": 212,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 525,
+     "w": 350,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Live production screens, 4 October 2026. Station names blurred.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 563,
+     "w": 350,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Inset: View Recommended Steps. The first action is marked Do first.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Two more places.\nReports: pick a period and see the peak heat index and peak wind speed across stations, with a daily breakdown and an Excel export.\nSettings, Weather Station holds the Site Safety Policy. Stop-work limits. For temperature and wind, a 30 day chart shows what the limit would have done. On the project in this screenshot, temperature would have stopped work on eight of the last 30 days, and wind on one. Those are values at capture time.\nBelow the limits are the heat index bands, each with work, rest and water settings, and a Change history tab.\nSay the warning out loud: the page says changing anything here changes when work stops, for everyone on the project.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WEATHER STATION · REPORTS AND SAFETY POLICY",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Look back at the heat. Check what stops work.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 172,
+     "w": 552,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "REPORTS",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 192,
+     "w": 552,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Maximum Values Report",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-reports.png",
+     "x": 65,
+     "y": 237,
+     "w": 550,
+     "h": 233
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 236,
+     "w": 552,
+     "h": 235,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 664,
+     "y": 172,
+     "w": 552,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "SETTINGS, WEATHER STATION",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 664,
+     "y": 192,
+     "w": 552,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Site Safety Policy",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-limits.png",
+     "x": 665,
+     "y": 237,
+     "w": 550,
+     "h": 233
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 236,
+     "w": 552,
+     "h": 235,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 502,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 493,
+     "w": 528,
+     "h": 23,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Pick a period, today to the last 30 days, or a custom range.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 535,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 526,
+     "w": 528,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Peak heat index and peak wind speed, a daily breakdown, and an Excel export.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 502,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 688,
+     "y": 493,
+     "w": 528,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Temperature and wind limits show what they would have done in the last 30 days.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 558,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 688,
+     "y": 549,
+     "w": 528,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Heat index bands, each with its own work, rest and water settings. A Change history tab lists changes.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 602,
+     "w": 1152,
+     "h": 52,
+     "radius": 12,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 80,
+     "y": 613,
+     "w": 104,
+     "h": 30,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 81,
+     "y": 614,
+     "w": 102,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "CAREFUL",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 200,
+     "y": 616,
+     "w": 1000,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The page warns: changing anything here changes when work stops, for everyone on the project.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "5",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Lightning is close. Who tells the crew to stop? The site&#x27;s own cabinet lights and sounder, first. This page is the backup, and its top line says so.\nOnly the green state counts as safe to work.\nThe rings are the configured alert distances. They are a zone reference, not a live strike position.\nNew here: a map of the alert distances, an alarm activity chart, and an alarm history you can export as CSV.\nThe wallboard and phone views, shown in the inset, open by web address, not from the menu.\nSettings, Lightning lets you edit the alert distances and set the location.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "LIGHTNING",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A backup, not the alarm",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 188,
+     "w": 358,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Cabinet lights and sounder first.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " The page's top line says so.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 264,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 264,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 264,
+     "w": 358,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Only green is safe to work.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " The tile reads All Clear, with a held-for timer.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 340,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 340,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 340,
+     "w": 358,
+     "h": 81,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alert distances, on a map.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " Red and yellow rings and a dot for the sensor. A zone reference, not a live strike position.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 443,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 443,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 443,
+     "w": 358,
+     "h": 81,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "History you can export.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " An alarm activity chart, and an alarm history with CSV export.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/lt-top.png",
+     "x": 521,
+     "y": 189,
+     "w": 694,
+     "h": 260
+    },
+    {
+     "type": "shape",
+     "x": 520,
+     "y": 188,
+     "w": 696,
+     "h": 262,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "image",
+     "src": "assets/lt-wall.png",
+     "x": 891,
+     "y": 413,
+     "w": 314,
+     "h": 160
+    },
+    {
+     "type": "shape",
+     "x": 888,
+     "y": 410,
+     "w": 320,
+     "h": 166,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 3,
+       "r": 3,
+       "b": 3,
+       "l": 3
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 887,
+     "y": 409,
+     "w": 322,
+     "h": 168,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 464,
+     "w": 340,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Live production screens, 4 October 2026. Map blurred.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 502,
+     "w": 340,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Inset: the wallboard view. Wallboard and phone views open by web address, not from the menu.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 604,
+     "w": 1152,
+     "h": 52,
+     "radius": 12,
+     "fill": {
+      "hex": "EAF6EF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "BFE3CE",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 80,
+     "y": 615,
+     "w": 104,
+     "h": 30,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 81,
+     "y": 616,
+     "w": 102,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "ON THE PAGE",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 200,
+     "y": 618,
+     "w": 1000,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "6",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "A quiet gas screen is not a safe gas screen.\nThe Gas dashboard opens on Overview. Five detectors, four online. Live alarms counts alerts nobody has acknowledged. Each gas card shows the worst current reading among the detectors that are reporting, with its limits.\nWhen a detector stops reporting, the page names it, and the status reads Check: not confirmed safe.\nAlerts can be acknowledged and closed, with edit access. Be explicit: that is recorded in WakeCap only. It is not sent to the gas vendor, so an alert closed here stays open in the vendor&#x27;s system.\nCompliance lists the limits. Exposure and exceedance figures say Not available yet, instead of an empty chart that reads as all clear.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "GAS",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A quiet screen is not a safe screen",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 188,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 188,
+     "w": 358,
+     "h": 69,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Overview.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Detectors, how many are online, live alarms, and the worst current reading per gas, each with its limits.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 277,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 277,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 277,
+     "w": 358,
+     "h": 69,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gaps are named.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " A detector that stops reporting shows as offline. The status reads Check: not confirmed safe.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 366,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 366,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 366,
+     "w": 358,
+     "h": 69,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alerts.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Acknowledge and close, with edit access. Recorded in WakeCap only, not sent to the gas vendor.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 455,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 455,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 455,
+     "w": 358,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Compliance.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Limits in force. Exposure and exceedance figures say Not available yet.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/gas-dash.png",
+     "x": 521,
+     "y": 189,
+     "w": 694,
+     "h": 303
+    },
+    {
+     "type": "shape",
+     "x": 520,
+     "y": 188,
+     "w": 696,
+     "h": 305,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "image",
+     "src": "assets/gas-wall.png",
+     "x": 871,
+     "y": 456,
+     "w": 334,
+     "h": 125
+    },
+    {
+     "type": "shape",
+     "x": 868,
+     "y": 453,
+     "w": 340,
+     "h": 131,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 3,
+       "r": 3,
+       "b": 3,
+       "l": 3
+      },
+      "hex": "FFFFFF",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 867,
+     "y": 452,
+     "w": 342,
+     "h": 133,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 507,
+     "w": 330,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Live production screens, 4 October 2026.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 520,
+     "y": 531,
+     "w": 330,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Inset: the wallboard view, by web address.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 604,
+     "w": 1152,
+     "h": 52,
+     "radius": 12,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 80,
+     "y": 615,
+     "w": 104,
+     "h": 30,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 81,
+     "y": 616,
+     "w": 102,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "NOTE",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 200,
+     "y": 618,
+     "w": 1000,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Acknowledge and close are recorded in WakeCap only. They are not sent to the gas vendor.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "7",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Each project switches on only what it uses.\nIn Settings, Connected Products has one Active or Inactive switch per product. The table is drawn from three real projects: Weather alone, Lightning alone, and Weather with Gas. The strip below is the live screen.\nThe menu shows what is on.\nWe did not switch anything on or off for this deck.\nIf someone asks how to enable a product: Settings, Connected Products. It changes a real project, so do it with the project owner.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "THE PLATFORM",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Each project switches on only what it uses",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 180,
+     "w": 700,
+     "h": 300,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 200,
+     "w": 220,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "PROJECT",
+       "bold": true,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 310,
+     "y": 200,
+     "w": 140,
+     "h": 17,
+     "align": "center",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WEATHER STATION",
+       "bold": true,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 450,
+     "y": 200,
+     "w": 140,
+     "h": 17,
+     "align": "center",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "LIGHTNING",
+       "bold": true,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 590,
+     "y": 200,
+     "w": 140,
+     "h": 17,
+     "align": "center",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "GAS",
+       "bold": true,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 88,
+     "y": 232,
+     "w": 652,
+     "h": 1,
+     "radius": 0,
+     "fill": {
+      "hex": "DCDCD7",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 252,
+     "w": 220,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather alone",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 357,
+     "y": 252,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "1F3A8A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 380,
+     "y": 255,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 497,
+     "y": 252,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 500,
+     "y": 255,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 637,
+     "y": 252,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 640,
+     "y": 255,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 88,
+     "y": 308,
+     "w": 652,
+     "h": 1,
+     "radius": 0,
+     "fill": {
+      "hex": "DCDCD7",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 328,
+     "w": 220,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning alone",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 357,
+     "y": 328,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 360,
+     "y": 331,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 497,
+     "y": 328,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "1F3A8A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 520,
+     "y": 331,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 637,
+     "y": 328,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 640,
+     "y": 331,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 88,
+     "y": 384,
+     "w": 652,
+     "h": 1,
+     "radius": 0,
+     "fill": {
+      "hex": "DCDCD7",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 404,
+     "w": 220,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather with Gas",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 357,
+     "y": 404,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "1F3A8A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 380,
+     "y": 407,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 497,
+     "y": 404,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 500,
+     "y": 407,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 637,
+     "y": 404,
+     "w": 46,
+     "h": 26,
+     "radius": 13,
+     "fill": {
+      "hex": "1F3A8A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 660,
+     "y": 407,
+     "w": 20,
+     "h": 20,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 440,
+     "w": 660,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Active or Inactive, one switch per product. Three real projects.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 808,
+     "y": 197,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 832,
+     "y": 188,
+     "w": 384,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Settings, then Connected Products.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " One switch per product on a project.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 808,
+     "y": 273,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 832,
+     "y": 264,
+     "w": 384,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The menu follows.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " A project's menu shows only what it has switched on.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 808,
+     "y": 349,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 832,
+     "y": 340,
+     "w": 384,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One shell.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " One menu and header across all three products.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/prod-c.png",
+     "x": 65,
+     "y": 505,
+     "w": 778,
+     "h": 100
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 504,
+     "w": 780,
+     "h": 102,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 868,
+     "y": 508,
+     "w": 348,
+     "h": 57,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Live screen: Connected Products on a project with Weather Station and Gas on. Nothing was switched for this deck.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "8",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Different roads in, one platform behind them.\nWeather stations reach WakeCap over the site&#x27;s wireless mesh, through a gateway, into the cloud, which decodes and stores the readings.\nLightning is read through a small input module and shows on the mesh as a Modbus device. Modbus is an industrial wiring and data standard many sensors speak. Anything unreadable is set aside.\nGas takes another road: the vendor&#x27;s cloud. No mesh, no Modbus. WakeCap asks that cloud on a regular timer, and each detector reports on its own schedule, so each reading shows its age.\nDo not quote polling or reporting intervals. We have not verified numbers.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "HOW READINGS ARRIVE",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Three roads in, one platform behind them",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 202,
+     "w": 128,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 202,
+     "w": 128,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Weather",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 224,
+     "y": 180,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 236,
+     "y": 209,
+     "w": 176,
+     "h": 20,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather station",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 428,
+     "y": 204,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 472,
+     "y": 180,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 484,
+     "y": 209,
+     "w": 176,
+     "h": 20,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Site wireless mesh",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 676,
+     "y": 204,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 720,
+     "y": 180,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 732,
+     "y": 209,
+     "w": 176,
+     "h": 20,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gateway",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 924,
+     "y": 204,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 968,
+     "y": 180,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 980,
+     "y": 199,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap cloud decodes and stores",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 314,
+     "w": 128,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 314,
+     "w": 128,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 224,
+     "y": 292,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 236,
+     "y": 311,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Sensor and input module",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 428,
+     "y": 316,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 472,
+     "y": 292,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 484,
+     "y": 311,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Modbus device on the mesh",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 676,
+     "y": 316,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 720,
+     "y": 292,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 732,
+     "y": 321,
+     "w": 176,
+     "h": 20,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gateway",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 924,
+     "y": 316,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 968,
+     "y": 292,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 980,
+     "y": 301,
+     "w": 176,
+     "h": 60,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap cloud, unreadable data set aside",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 426,
+     "w": 128,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 64,
+     "y": 426,
+     "w": 128,
+     "h": 34,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 224,
+     "y": 404,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 236,
+     "y": 433,
+     "w": 176,
+     "h": 20,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas detectors",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 428,
+     "y": 428,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 472,
+     "y": 404,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 484,
+     "y": 423,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Vendor's cloud, a black box to us",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 676,
+     "y": 428,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 720,
+     "y": 404,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 732,
+     "y": 423,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap asks on a regular timer",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 924,
+     "y": 428,
+     "w": 40,
+     "h": 31,
+     "align": "center",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "→",
+       "bold": true,
+       "italic": false,
+       "color": "FF8300",
+       "size": 26,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 968,
+     "y": 404,
+     "w": 200,
+     "h": 78,
+     "radius": 10,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 980,
+     "y": 423,
+     "w": 176,
+     "h": 40,
+     "align": "center",
+     "lineHeight": 20,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WakeCap stores readings and alerts",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 528,
+     "w": 1152,
+     "h": 64,
+     "radius": 12,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 96,
+     "y": 542,
+     "w": 1090,
+     "h": 36,
+     "align": "left",
+     "lineHeight": 36,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "All three reach the same portal: ",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 22,
+       "spacing": 0
+      },
+      {
+       "text": "Connected Environment.",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 22,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 610,
+     "w": 1152,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas has no mesh and no Modbus. Each detector reports on its own schedule, so each reading shows its age. Modbus is an industrial wiring and data standard many sensors speak.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "9",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Be plain about the edges.\nGas acknowledge and close are recorded in WakeCap only. Gas exposure and compliance figures say Not available yet, and some gas history is not stored yet. Trends is in the menu marked Planned.\nThe AI assistant is direction only. Building blocks exist for Weather Station only. No assistant runs on any site.\nDirection: new environment products go under Connected Environment. A future assistant could read weather readings and propose changes. A person approves, and the weather safety answer comes from fixed rules. We promise no dates.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "HONEST EDGES",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "What it does not do yet, and where it is going",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 560,
+     "h": 396,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 560,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "0C0C0C",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 92,
+     "y": 202,
+     "w": 500,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Good to know",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 261,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 252,
+     "w": 480,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas acknowledge and close",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " are recorded in WakeCap only, not sent to the gas vendor.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 333,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 324,
+     "w": 480,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas exposure and compliance figures",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " say Not available yet. Some gas history is not stored yet.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 405,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 396,
+     "w": 480,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Trends",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " sits in the menu marked Planned.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 450,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 441,
+     "w": 480,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The AI assistant",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " is direction only. Building blocks exist for Weather Station only. No assistant runs on any site.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 176,
+     "w": 552,
+     "h": 396,
+     "radius": 12,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 2,
+       "r": 2,
+       "b": 2,
+       "l": 2
+      },
+      "hex": "A9A9A4",
+      "a": 1,
+      "dash": true
+     }
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 198,
+     "w": 110,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 693,
+     "y": 199,
+     "w": 108,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "DIRECTION",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 12,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 692,
+     "y": 246,
+     "w": 496,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Direction, not a commitment",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 305,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 296,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "New environment products",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " go under Connected Environment.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 377,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 368,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A future assistant",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " could read weather readings and propose changes. A person approves.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 449,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 440,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The weather safety answer",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      },
+      {
+       "text": " comes from fixed rules. An assistant would only reword it.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 521,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 512,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "No dates are promised.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "10",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Where to watch: five short videos. Start with the overview. The setup tour shows how to enable and configure each product, read only on production.\nTo try it: open your project in the portal, then click the sun-and-cloud icon in the left rail. That is Connected Environment, if your project has it.\nRead the top line first: the Weather verdict, the Lightning banner, the Gas status.\nThen take questions. The next slides are the appendix: setup flows, what we say and do not say, and a glossary.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WATCH AND TRY",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Five short videos, and one place to start",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 664,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 200,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 200,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 188,
+     "w": 470,
+     "h": 26,
+     "align": "left",
+     "lineHeight": 26,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment overview",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 218,
+     "w": 520,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One umbrella over weather, lightning and gas.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 634,
+     "y": 197,
+     "w": 74,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 635,
+     "y": 198,
+     "w": 72,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "3:21",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 264,
+     "w": 664,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 288,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 288,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 276,
+     "w": 470,
+     "h": 26,
+     "align": "left",
+     "lineHeight": 26,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather Station",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 306,
+     "w": 520,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The verdict, steps, Reports and Site Safety Policy.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 634,
+     "y": 285,
+     "w": 74,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 635,
+     "y": 286,
+     "w": 72,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "2:18",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 352,
+     "w": 664,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 376,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 376,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 364,
+     "w": 470,
+     "h": 26,
+     "align": "left",
+     "lineHeight": 26,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 394,
+     "w": 520,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A backup alert view, alert distances and history.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 634,
+     "y": 373,
+     "w": 74,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 635,
+     "y": 374,
+     "w": 72,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "2:08",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 440,
+     "w": 664,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 464,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 464,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 452,
+     "w": 470,
+     "h": 26,
+     "align": "left",
+     "lineHeight": 26,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 482,
+     "w": 520,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Overview, Check, alerts and compliance limits.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 634,
+     "y": 461,
+     "w": 74,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 635,
+     "y": 462,
+     "w": 72,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "2:32",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 528,
+     "w": 664,
+     "h": 76,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 84,
+     "y": 552,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 84,
+     "y": 552,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "5",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 540,
+     "w": 470,
+     "h": 26,
+     "align": "left",
+     "lineHeight": 26,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Setup tour",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 20,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 128,
+     "y": 570,
+     "w": 520,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Explore, feature, enable and configure, with voice-over.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 634,
+     "y": 549,
+     "w": 74,
+     "h": 34,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 635,
+     "y": 550,
+     "w": 72,
+     "h": 32,
+     "align": "center",
+     "lineHeight": 34,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "4:33",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 768,
+     "y": 176,
+     "w": 448,
+     "h": 428,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 768,
+     "y": 176,
+     "w": 448,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 796,
+     "y": 202,
+     "w": 400,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Try it",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 796,
+     "y": 250,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 796,
+     "y": 250,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 838,
+     "y": 250,
+     "w": 350,
+     "h": 23,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Open your project",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " in the portal.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 796,
+     "y": 296,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 796,
+     "y": 296,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 838,
+     "y": 296,
+     "w": 350,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "In the left rail,",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " click the sun-and-cloud icon: Connected Environment, if your project has it.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 796,
+     "y": 360,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 796,
+     "y": 360,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 838,
+     "y": 360,
+     "w": 350,
+     "h": 46,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Read the top line first.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Weather verdict, Lightning banner, Gas status.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 796,
+     "y": 424,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 796,
+     "y": 424,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 838,
+     "y": 424,
+     "w": 350,
+     "h": 23,
+     "align": "left",
+     "lineHeight": 23,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Ask.",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " Questions now, or after.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 784,
+     "y": 476,
+     "w": 416,
+     "h": 112,
+     "radius": 12,
+     "fill": {
+      "hex": "FFF1E0",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "F3C894",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 800,
+     "y": 490,
+     "w": 104,
+     "h": 30,
+     "radius": 17,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "B85C00",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 801,
+     "y": 491,
+     "w": 102,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": true,
+     "runs": [
+      {
+       "text": "CAREFUL",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 1
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 800,
+     "y": 530,
+     "w": 384,
+     "h": 48,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Look, do not switch. Enabling a product or changing a policy changes a real project.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 624,
+     "w": 1152,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "All five videos show live production screens, read only.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "11",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Appendix: the setup flow, in order.\nChoose what to feature: the gear on the Weather Station page opens Select parameters.\nEnable: Settings, Connected Products, one switch per product.\nConfigure Weather Station: Settings, Weather Station, the Site Safety Policy.\nConfigure Lightning: Settings, Lightning. Edit alerting radii and Set location.\nGas has no settings page. Its limits are read only on the Compliance page.\nThe setup tour video walks through all of it. Remind the audience that enabling a product and changing a policy both affect a real project.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "APPENDIX · SETUP",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "How products are enabled and configured",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 272,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 82,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 82,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "1",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 120,
+     "y": 194,
+     "w": 200,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Choose what to feature",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 18,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 82,
+     "y": 252,
+     "w": 240,
+     "h": 15,
+     "align": "left",
+     "lineHeight": 15,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "WEATHER STATION PAGE, GEAR",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-gear-thumb.png",
+     "x": 83,
+     "y": 291,
+     "w": 234,
+     "h": 129
+    },
+    {
+     "type": "shape",
+     "x": 82,
+     "y": 290,
+     "w": 236,
+     "h": 131,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 82,
+     "y": 447,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 438,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Select parameters: one switch per reading.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 82,
+     "y": 493,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 106,
+     "y": 484,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Each card can also move or leave the area.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 356,
+     "y": 176,
+     "w": 272,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 374,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 374,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "2",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 412,
+     "y": 194,
+     "w": 200,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Enable products",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 18,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 374,
+     "y": 252,
+     "w": 240,
+     "h": 15,
+     "align": "left",
+     "lineHeight": 15,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "SETTINGS, CONNECTED PRODUCTS",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 380,
+     "y": 299,
+     "w": 130,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Weather Station",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 552,
+     "y": 296,
+     "w": 40,
+     "h": 22,
+     "radius": 11,
+     "fill": {
+      "hex": "1F3A8A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 572,
+     "y": 298,
+     "w": 18,
+     "h": 18,
+     "radius": 9,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 380,
+     "y": 339,
+     "w": 130,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 552,
+     "y": 336,
+     "w": 40,
+     "h": 22,
+     "radius": 11,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 554,
+     "y": 338,
+     "w": 18,
+     "h": 18,
+     "radius": 9,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 380,
+     "y": 379,
+     "w": 130,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 552,
+     "y": 376,
+     "w": 40,
+     "h": 22,
+     "radius": 11,
+     "fill": {
+      "hex": "C9C9C4",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 554,
+     "y": 378,
+     "w": 18,
+     "h": 18,
+     "radius": 9,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "shape",
+     "x": 374,
+     "y": 447,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 398,
+     "y": 438,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One Active or Inactive switch per product.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 374,
+     "y": 493,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 398,
+     "y": 484,
+     "w": 212,
+     "h": 19,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Changes a real project.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 648,
+     "y": 176,
+     "w": 272,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 666,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 666,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "3",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 704,
+     "y": 194,
+     "w": 200,
+     "h": 48,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Configure Weather Station",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 18,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 666,
+     "y": 252,
+     "w": 240,
+     "h": 15,
+     "align": "left",
+     "lineHeight": 15,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "SETTINGS, WEATHER STATION",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/ws-limits-thumb.png",
+     "x": 667,
+     "y": 292,
+     "w": 234,
+     "h": 128
+    },
+    {
+     "type": "shape",
+     "x": 666,
+     "y": 291,
+     "w": 236,
+     "h": 130,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 666,
+     "y": 447,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 690,
+     "y": 438,
+     "w": 212,
+     "h": 57,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Site Safety Policy: limits, heat index bands, method, change history.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 666,
+     "y": 512,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 690,
+     "y": 503,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Changes when work stops, for the whole project.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 940,
+     "y": 176,
+     "w": 272,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 958,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "radius": 14,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "DIV",
+     "x": 958,
+     "y": 194,
+     "w": 28,
+     "h": 28,
+     "align": "center",
+     "lineHeight": 28,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "4",
+       "bold": true,
+       "italic": false,
+       "color": "FFFFFF",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 996,
+     "y": 194,
+     "w": 200,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Configure Lightning",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 18,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 958,
+     "y": 252,
+     "w": 240,
+     "h": 15,
+     "align": "left",
+     "lineHeight": 15,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "SETTINGS, LIGHTNING",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 11,
+       "spacing": 0.5
+      }
+     ]
+    },
+    {
+     "type": "image",
+     "src": "assets/lt-settings.png",
+     "x": 959,
+     "y": 313,
+     "w": 234,
+     "h": 86
+    },
+    {
+     "type": "shape",
+     "x": 958,
+     "y": 312,
+     "w": 236,
+     "h": 88,
+     "radius": 0,
+     "fill": null,
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "C9C9C4",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 958,
+     "y": 447,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 982,
+     "y": 438,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Edit alerting radii: red, yellow, all-clear delay.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 958,
+     "y": 493,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 982,
+     "y": 484,
+     "w": 212,
+     "h": 38,
+     "align": "left",
+     "lineHeight": 19,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Set location: click the map or type coordinates.",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 14,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 580,
+     "w": 1152,
+     "h": 22,
+     "align": "left",
+     "lineHeight": 22,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 16,
+       "spacing": 0
+      },
+      {
+       "text": " has no settings page. Its limits are shown, read only, on the Compliance page. The setup tour video (4:33) walks through all of this.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 16,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "12",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Cheat sheet for questions.\nSay: it is live; Lightning is a backup; gas close is recorded in WakeCap only; the assistant is direction only; new products go under it, as direction.\nDo not say: that a site is safe; one rule set or one audit trail; a go-live date or expansion plan; that the assistant approves anything; that gas exposure or compliance figures exist today.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "APPENDIX · CAREFUL WORDING",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "What we say, and what we do not say",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 552,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 552,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "1E9E5A",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 92,
+     "y": 202,
+     "w": 500,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Say",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 263,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 254,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 is live. Weather Station, Lightning and Gas are in it today.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 333,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 324,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning is a backup. The site's cabinet lights and sounder come first.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 403,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 394,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas acknowledge and close are recorded in WakeCap only.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 473,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 464,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The AI assistant is direction only.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 92,
+     "y": 516,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 116,
+     "y": 507,
+     "w": 472,
+     "h": 54,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "New environment products go under it. (Direction, no dates.)",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 176,
+     "w": 552,
+     "h": 380,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "shape",
+     "x": 664,
+     "y": 176,
+     "w": 552,
+     "h": 6,
+     "radius": 12,
+     "fill": {
+      "hex": "D64545",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 692,
+     "y": 202,
+     "w": 500,
+     "h": 31,
+     "align": "left",
+     "lineHeight": 31,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Do not say",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 25,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 263,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 254,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "That a site is safe.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 306,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 297,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "One rule set, or one audit trail.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 349,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 340,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A go-live date, or any expansion plan.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 392,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 383,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "That the assistant approves or runs anything.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 692,
+     "y": 435,
+     "w": 10,
+     "h": 10,
+     "radius": 5,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 716,
+     "y": 426,
+     "w": 472,
+     "h": 27,
+     "align": "left",
+     "lineHeight": 27,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "That gas exposure or compliance figures exist today.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "13",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "bg": "F5F5F2",
+   "notes": "Glossary, for reference. Nothing here needs to be read out.",
+   "items": [
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 52,
+     "w": 40,
+     "h": 5,
+     "radius": 0,
+     "fill": {
+      "hex": "FF8300",
+      "a": 1
+     },
+     "border": null
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 68,
+     "w": 1000,
+     "h": 17,
+     "align": "left",
+     "lineHeight": 17,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "APPENDIX · GLOSSARY",
+       "bold": true,
+       "italic": false,
+       "color": "B85C00",
+       "size": 13,
+       "spacing": 1.5
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "H1",
+     "x": 64,
+     "y": 92,
+     "w": 1152,
+     "h": 44,
+     "align": "left",
+     "lineHeight": 44,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Terms used in the videos and on the screens",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 38,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 176,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 190,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Verdict strip",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 220,
+     "w": 520,
+     "h": 42,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The bar across the top of Weather Station: the state in words, and the steps to take.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 648,
+     "y": 176,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 190,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Heat index",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 220,
+     "w": 520,
+     "h": 21,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "The heat number the policy uses, with a band such as Danger.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 288,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 302,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Readiness",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 332,
+     "w": 520,
+     "h": 42,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Whether the stations or detectors can be relied on. Not ready lists what needs attention, such as an offline station.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 648,
+     "y": 288,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 302,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Alert distances",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 332,
+     "w": 520,
+     "h": 21,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Lightning reference rings, red and yellow. A zone, not a live strike position.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 400,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 414,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Held for",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 444,
+     "w": 520,
+     "h": 21,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "How long the current Lightning state has lasted.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 648,
+     "y": 400,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 414,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Wallboard view",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 444,
+     "w": 520,
+     "h": 21,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "A large-type page for a site screen. Opens by web address.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 64,
+     "y": 512,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 526,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Live alarms / Acknowledged",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 88,
+     "y": 556,
+     "w": 520,
+     "h": 42,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Gas: alerts nobody has acknowledged, and open alerts that are being handled.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "shape",
+     "x": 648,
+     "y": 512,
+     "w": 568,
+     "h": 98,
+     "radius": 12,
+     "fill": {
+      "hex": "FFFFFF",
+      "a": 1
+     },
+     "border": {
+      "w": {
+       "t": 1,
+       "r": 1,
+       "b": 1,
+       "l": 1
+      },
+      "hex": "DCDCD7",
+      "a": 1,
+      "dash": false
+     }
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 526,
+     "w": 520,
+     "h": 24,
+     "align": "left",
+     "lineHeight": 24,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Modbus",
+       "bold": true,
+       "italic": false,
+       "color": "0C0C0C",
+       "size": 19,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 672,
+     "y": 556,
+     "w": 520,
+     "h": 21,
+     "align": "left",
+     "lineHeight": 21,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "An industrial wiring and data standard many sensors speak.",
+       "bold": false,
+       "italic": false,
+       "color": "2B2B2B",
+       "size": 15,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 64,
+     "y": 682,
+     "w": 600,
+     "h": 16,
+     "align": "left",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "Connected Environment 1.0 · Internal",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "tag": "P",
+     "x": 1116,
+     "y": 682,
+     "w": 100,
+     "h": 16,
+     "align": "right",
+     "lineHeight": 16,
+     "nowrap": false,
+     "runs": [
+      {
+       "text": "14",
+       "bold": false,
+       "italic": false,
+       "color": "6B6B6B",
+       "size": 12,
+       "spacing": 0
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+(()=>{const f=window.__f;return JSON.stringify({
+settings_title:f.leaf("Settings",{minX:270}),
+settings_menu:f.box(["Connected Products","Weather Station","Lightning"],{minX:262,maxX:300,maxW:260,minH:100}),
+radii_title:f.leaf("Alerting radii",{minX:480}),
+radii_intro:f.box(["These are the radii the alerting service uses"],{maxH:60}),
+device_card:f.box(["ALERTING RADII","Location:"],{minW:900}),
+radii_box:f.box(["ALERTING RADII","30 min all-clear"],{maxH:70}),
+radii_value:f.box(["Red ≤ 13 km","30 min all-clear"],{maxH:30}),
+location_line:f.box(["Location:","Temporary"],{maxH:30}),
+temporary_badge:f.leaf("Temporary"),
+location_note:f.box(["Set manually until Management Maps"],{maxH:30}),
+edit_radii_button:f.box(["Edit alerting radii"],{maxH:50,maxW:200}),
+set_location_button:f.box(["Set location"],{maxH:50,maxW:200}),
+history_title:f.box(["Full state history"],{maxH:40,minX:480}),
+export_csv:f.box(["Export CSV"],{maxW:200,maxH:60}),
+history_caption:f.box(["Every state the device passed through"],{maxH:30}),
+history_table:f.box(["Start","End","Duration","State","Source"],{minW:1200,minX:480}),
+table_header:f.box(["Start","End","Duration","State","Source"],{minW:1200,maxH:50,minX:480}),
+first_row:f.box(["In progress","GREEN","packet"],{maxH:50,minX:480}),
+unavailable_row:f.box(["Data unavailable","stale_sweep"],{maxH:50,minX:480}),
+rail_settings:f.box(["Settings"],{maxW:220,maxH:60,minX:60,maxX:300,minY:240})
+})})()

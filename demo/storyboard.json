@@ -1,0 +1,240 @@
+{
+  "feature_name": "Connected Environment",
+  "value_prop": "Is it safe to work right now? The answer comes first.",
+  "target_length_s": 56,
+  "brand": {
+    "primary": "#FF6B00",
+    "secondary": "#000000",
+    "font": "IBM Plex Sans",
+    "wordmark": ""
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "kind": "title",
+      "duration_s": 4,
+      "data_start_s": 0,
+      "text": [
+        "Connected Environment",
+        "Is it safe to work right now?"
+      ],
+      "narration": "Connected Environment. Is it safe to work right now?",
+      "motion": "typewriter",
+      "eyebrow": "WakeCap"
+    },
+    {
+      "id": "problem",
+      "kind": "title",
+      "duration_s": 7,
+      "data_start_s": 4,
+      "text": [
+        "Numbers are not answers."
+      ],
+      "narration": "Most screens give you numbers, not answers. Or a sensor stops, and old data still looks fine.",
+      "motion": "fade",
+      "background": "grid",
+      "eyebrow": "The problem",
+      "pain_list": [
+        "A grid of readings, no verdict",
+        "A stopped sensor, old data that still looks fine"
+      ]
+    },
+    {
+      "id": "reveal",
+      "kind": "title",
+      "duration_s": 6,
+      "data_start_s": 11,
+      "text": [
+        "Introducing Connected Environment"
+      ],
+      "narration": "Connected Environment puts the answer first, for every project, in one place.",
+      "motion": "fade",
+      "background": "dark",
+      "eyebrow": "One area per project",
+      "subtitle": "Weather Station \u00b7 Lightning \u00b7 Reports \u00b7 Settings"
+    },
+    {
+      "id": "demo_a",
+      "kind": "demo",
+      "duration_s": 9,
+      "data_start_s": 17,
+      "motion": "crossfade_steps",
+      "text": [
+        "Weather Station: the verdict comes first"
+      ],
+      "narration": "Open Weather Station and the verdict leads, with the steps to take. One station offline? The panel says so, and names it.",
+      "steps": [
+        {
+          "asset": "assets/demo_weather_station/00-orientation.png",
+          "hold_s": 3,
+          "narration": null,
+          "annotation": null
+        },
+        {
+          "asset": "assets/demo_weather_station/01-post.png",
+          "hold_s": 2,
+          "narration": null,
+          "annotation": {
+            "kind": "callout",
+            "rect": [
+              1500,
+              154,
+              410,
+              105
+            ],
+            "label": "The steps to take"
+          }
+        },
+        {
+          "asset": "assets/demo_weather_station/02-post.png",
+          "hold_s": 4,
+          "narration": null,
+          "annotation": {
+            "kind": "callout",
+            "rect": [
+              1488,
+              292,
+              420,
+              358
+            ],
+            "label": "One station offline, named"
+          }
+        }
+      ],
+      "eyebrow": "Weather Station"
+    },
+    {
+      "id": "demo_b",
+      "kind": "demo",
+      "duration_s": 9,
+      "data_start_s": 26,
+      "motion": "crossfade_steps",
+      "text": [
+        "Lightning: status and alarm history"
+      ],
+      "narration": "Lightning shows each device's status and its alert zones. The alarm history lists every yellow, orange or red interval.",
+      "steps": [
+        {
+          "asset": "assets/demo_lightning/00-orientation.png",
+          "hold_s": 4,
+          "narration": null,
+          "annotation": null
+        },
+        {
+          "asset": "assets/demo_lightning/01-post.png",
+          "hold_s": 5,
+          "narration": null,
+          "annotation": {
+            "kind": "callout",
+            "rect": [
+              232,
+              525,
+              1671,
+              211
+            ],
+            "label": "Every alarm interval, on record"
+          }
+        }
+      ],
+      "eyebrow": "Lightning"
+    },
+    {
+      "id": "demo_c",
+      "kind": "demo",
+      "duration_s": 12,
+      "data_start_s": 35,
+      "motion": "crossfade_steps",
+      "text": [
+        "Reports, and a Safety Policy with history"
+      ],
+      "narration": "Reports give the maximum heat index and wind speed for any period. In Settings, the stop-work limits show what they would have done over the last thirty days, and the policy keeps a change history.",
+      "steps": [
+        {
+          "asset": "assets/demo_reports_settings/00-orientation.png",
+          "hold_s": 4.5,
+          "narration": null,
+          "annotation": null
+        },
+        {
+          "asset": "assets/demo_reports_settings/01-post.png",
+          "hold_s": 4.8,
+          "narration": null,
+          "annotation": {
+            "kind": "callout",
+            "rect": [
+              606,
+              523,
+              1153,
+              224
+            ],
+            "label": "What each limit would have done"
+          }
+        },
+        {
+          "asset": "assets/demo_reports_settings/02-post.png",
+          "hold_s": 2.7,
+          "narration": null,
+          "annotation": {
+            "kind": "callout",
+            "rect": [
+              606,
+              534,
+              1154,
+              150
+            ],
+            "label": "Change history"
+          }
+        }
+      ],
+      "eyebrow": "Reports and Settings"
+    },
+    {
+      "id": "outcome",
+      "kind": "title",
+      "duration_s": 5,
+      "data_start_s": 47,
+      "text": [
+        "One verdict. One place."
+      ],
+      "narration": "The answer first. Offline devices named. The safety policy, on record.",
+      "motion": "fade",
+      "background": "grid",
+      "eyebrow": "What you get",
+      "cards": [
+        {
+          "title": "Answer first",
+          "subtitle": "The verdict and the next step lead the page"
+        },
+        {
+          "title": "Nothing hidden",
+          "subtitle": "Offline stations are named, not silent"
+        },
+        {
+          "title": "On record",
+          "subtitle": "The Safety Policy keeps a change history"
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "kind": "outro",
+      "duration_s": 4,
+      "data_start_s": 52,
+      "text": [
+        "Open Connected Environment in the portal"
+      ],
+      "narration": "Open Connected Environment in your portal.",
+      "motion": "static",
+      "background": "brand"
+    }
+  ],
+  "audio": {
+    "vo": "narration.m4a",
+    "captions": true,
+    "music": null
+  },
+  "cta": {
+    "text": "Open Connected Environment in the portal",
+    "url": null
+  }
+}

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1920, height=1080"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--o:#FF8300}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000;color:#fff;font-family:"Inter",-apple-system,system-ui,sans-serif}
+.clip{position:absolute;inset:0;opacity:0}
+.grid{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.card{display:flex;flex-direction:column;justify-content:center;padding:0 150px;background-color:#000}
+.eyebrow{align-self:flex-start;font-size:22px;letter-spacing:.24em;text-transform:uppercase;color:var(--o);border:2px solid var(--o);padding:8px 18px;margin-bottom:36px;font-weight:600}
+.card h1{font-size:112px;line-height:1.03;font-weight:800;letter-spacing:-.025em;max-width:1560px}
+.card h1 em,.ln em{font-style:normal;color:var(--o)}
+.card .sub{margin-top:36px;font-size:40px;line-height:1.38;color:rgba(255,255,255,.76);max-width:1320px}
+.card .rule{margin-top:44px;height:6px;width:0;background:var(--o)}
+.lines{display:flex;flex-direction:column;gap:22px}
+.ln{font-size:92px;line-height:1.05;font-weight:800;letter-spacing:-.02em;opacity:0}
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.items.two{grid-template-columns:repeat(2,1fr)}
+.it{position:relative;background:#0c0c0c;border:1px solid #2b2b2b;padding:34px 34px 34px 42px;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);opacity:0}
+.it::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--o)}
+.it b{display:block;font-size:40px;font-weight:700;margin-bottom:12px}
+.it span{font-size:28px;line-height:1.4;color:rgba(255,255,255,.72)}
+.top{position:absolute;left:0;right:0;top:0;height:56px;background:#000;border-bottom:2px solid var(--o);display:flex;align-items:center;justify-content:space-between;padding:0 96px}
+.top .ch{font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.top .ch b{color:var(--o);margin-right:14px}
+.top .path{font-size:22px;color:rgba(255,255,255,.78)}
+.top .path i{font-style:normal;color:var(--o);margin-right:10px;letter-spacing:.14em;font-size:18px;font-weight:700}
+.stage{position:absolute;left:96px;top:56px;width:1728px;height:889px;overflow:hidden;border:1px solid #2b2b2b;background:#fff}
+.zw{position:absolute;left:0;top:0;width:1728px;height:889px;transform-origin:0 0}
+.zw img{width:1728px;height:889px;display:block}
+.co{position:absolute;border:5px solid var(--o);opacity:0}
+.co.spot{box-shadow:0 0 0 2600px rgba(0,0,0,.42)}
+.lab{position:absolute;opacity:0;transform-origin:0 0;display:flex;align-items:center;gap:12px;background:#000;color:#fff;font-size:26px;font-weight:700;padding:6px 16px 6px 6px;border-left:6px solid var(--o);white-space:nowrap}
+.lab .n{background:var(--o);color:#000;min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.cur{position:absolute;left:0;top:0;width:44px;height:44px;opacity:0;z-index:5}
+.rip{position:absolute;width:70px;height:70px;border:4px solid var(--o);border-radius:50%;opacity:0;margin:-35px 0 0 -35px}
+.cap{position:absolute;left:96px;right:96px;top:962px;height:72px;display:flex;align-items:center;gap:18px;padding-left:22px;border-left:6px solid var(--o);font-size:38px;font-weight:600;opacity:0}
+.cap .bd{font-size:20px;font-weight:800;letter-spacing:.14em;color:#000;background:var(--o);padding:6px 14px;white-space:nowrap}
+.live{position:absolute;right:96px;top:968px;font-size:18px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:10px}
+.live::before{content:"";width:12px;height:12px;border-radius:50%;background:#ff3b30}
+.pips{position:absolute;left:96px;right:96px;top:1056px;height:8px;display:flex;gap:10px}
+.pip{flex:1;background:#2b2b2b}.pip.done{background:rgba(255,131,0,.45)}.pip.on{background:var(--o)}
+.tri{position:absolute;left:96px;top:96px;width:1728px;display:grid;gap:26px}
+.tri.n3{grid-template-columns:repeat(3,1fr)}.tri.n2{grid-template-columns:repeat(2,1fr)}
+.tri .pn{position:relative;opacity:0}
+.tri .pn .im{width:100%;background-repeat:no-repeat;border:1px solid #2b2b2b;background-color:#fff}
+.tri .pn .tt{margin-top:18px;font-size:34px;font-weight:800;border-left:6px solid var(--o);padding-left:16px}
+.ribbon{position:absolute;right:96px;top:70px;font-size:22px;font-weight:800;letter-spacing:.16em;color:#000;background:var(--o);padding:10px 22px}
+/* diagrams */
+.dg{position:absolute;inset:0}
+.st{position:absolute;opacity:0}
+.dgx{position:absolute;left:96px;top:56px;font-size:22px;font-weight:700;letter-spacing:.2em;color:var(--o)}
+.pcard{background:#0c0c0c;border:2px solid #2b2b2b;padding:20px 22px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)}
+.pcard b{display:block;font-size:32px;font-weight:800}
+.pcard span{display:block;margin-top:6px;font-size:22px;color:rgba(255,255,255,.7);line-height:1.3}
+.pcard.o{border-color:var(--o)}
+.chip{display:inline-block;border:2px solid var(--o);color:#fff;font-size:22px;font-weight:700;padding:8px 16px;margin:0 8px 8px 0;background:#000}
+.bar{background:#0c0c0c;border:2px solid var(--o)}
+.bar .bt{font-size:24px;font-weight:800;letter-spacing:.2em;color:var(--o);padding:12px 22px 0}
+.dline{position:absolute;background:var(--o);transform-origin:50% 0}
+.dash{border:3px dashed var(--o);background:#0c0c0c}
+.pill{position:absolute;background:var(--o);color:#000;font-size:20px;font-weight:800;letter-spacing:.08em;padding:6px 14px;white-space:nowrap}
+.arrow{position:absolute;color:var(--o);font-size:44px;font-weight:800}
+.lane{position:absolute;left:96px;right:96px;height:190px}
+.lane .dev{position:absolute;left:0;top:0;width:330px;height:190px}
+.lane .stp{position:absolute;top:30px;height:130px;width:215px;background:#0c0c0c;border:2px solid #2b2b2b;padding:18px 16px;font-size:23px;font-weight:700;line-height:1.25}
+.lane .stp small{display:block;margin-top:8px;font-size:18px;font-weight:500;color:rgba(255,255,255,.62)}
+.lane .bdg{position:absolute;left:0;top:-30px}
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="127.96" data-width="1920" data-height="1080">
+<audio id="narration" class="clip" src="narration.m4a" data-start="0" data-duration="127.96" data-track-index="0"></audio>
+<div id="s0" class="clip card grid" data-start="0.00" data-duration="7.28" data-track-index="1">
+<span class="eyebrow" id="s0_e">LIGHTNING · CONNECTED ENVIRONMENT</span>
+<div class="lines"><div class="ln" id="s0_l0">Lightning is close.</div><div class="ln" id="s0_l1">Who tells the crew to <em>stop?</em></div><div class="ln" id="s0_l2">The cabinet lights and sounder. <em>First.</em></div><div class="ln" id="s0_l3">This page is the <em>backup.</em></div></div>
+</div>
+<div id="s1" class="clip" data-start="7.28" data-duration="24.87" data-track-index="1">
+<div class="top"><div class="ch"><b>01</b>The page</div><div class="path"><i>OPEN</i>Connected Environment › Lightning</div></div>
+<div class="stage"><div class="zw" id="s1_zw"><img src="assets/l-top-b.png" alt="">
+<div class="co spot" id="s1_b0_c0" style="left:252.9px;top:94.5px;width:747.0px;height:45.0px"></div>
+<div class="lab" id="s1_b0_c0_l" style="left:252.9px;top:48.5px"><span class="n">1</span>Backup</div>
+<div class="co spot" id="s1_b1_c0" style="left:278.1px;top:240.3px;width:432.9px;height:84.6px"></div>
+<div class="lab" id="s1_b1_c0_l" style="left:721.0px;top:261.6px"><span class="n">1</span>All Clear</div>
+<div class="co" id="s1_b2_c0" style="left:296.1px;top:342.9px;width:93.6px;height:93.6px"></div>
+<div class="lab" id="s1_b2_c0_l" style="left:399.7px;top:368.7px"><span class="n">1</span>Rings</div>
+<div class="co" id="s1_b2_c1" style="left:289.8px;top:441.9px;width:409.5px;height:28.8px"></div>
+<div class="lab" id="s1_b2_c1_l" style="left:709.3px;top:435.3px"><span class="n">2</span>Alert distances</div>
+<div class="co" id="s1_b2_c2" style="left:286.2px;top:471.6px;width:413.1px;height:41.4px"></div>
+<div class="lab" id="s1_b2_c2_l" style="left:709.3px;top:471.3px"><span class="n">3</span>Reference only</div>
+</div></div>
+<div class="cap" id="s1_cap0"><span>A backup. Cabinet lights and sounder come first.</span></div>
+<div class="cap" id="s1_cap1"><span>WakeCap treats only the green state as safe to work</span></div>
+<div class="cap" id="s1_cap2"><span>Rings are alert distances, not a strike position</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s2" class="clip" data-start="32.15" data-duration="8.22" data-track-index="1">
+<div class="top"><div class="ch"><b>02</b>New on the page</div><div class="path"><i>OPEN</i>Connected Environment › Lightning</div></div>
+<div class="stage"><div class="zw" id="s2_zw"><img src="assets/l-radii-map.png" alt="">
+<div class="co" id="s2_b0_c0" style="left:758.7px;top:99.9px;width:937.8px;height:345.6px"></div>
+<div class="lab" id="s2_b0_c0_l" style="left:1413.5px;top:251.7px"><span class="n">1</span>Radii map</div>
+<div class="co" id="s2_b0_c1" style="left:754.2px;top:448.2px;width:498.6px;height:27.0px"></div>
+<div class="lab" id="s2_b0_c1_l" style="left:754.2px;top:483.2px"><span class="n">2</span>Legend</div>
+</div></div>
+<div class="cap" id="s2_cap0"><span>New: radii map. Map blurred.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s3" class="clip" data-start="40.37" data-duration="13.19" data-track-index="1">
+<div class="top"><div class="ch"><b>02</b>New on the page</div><div class="path"><i>OPEN</i>Connected Environment › Lightning</div></div>
+<div class="stage"><div class="zw" id="s3_zw"><img src="assets/l-hist-b.png" alt="">
+<div class="co" id="s3_b0_c0" style="left:248.4px;top:280.8px;width:145.8px;height:34.2px"></div>
+<div class="lab" id="s3_b0_c0_l" style="left:404.2px;top:276.9px"><span class="n">1</span>New chart</div>
+<div class="co" id="s3_b0_c1" style="left:247.5px;top:466.2px;width:205.2px;height:41.4px"></div>
+<div class="lab" id="s3_b0_c1_l" style="left:462.7px;top:465.9px"><span class="n">2</span>Zero, zero</div>
+<div class="co" id="s3_b1_c0" style="left:837.0px;top:615.6px;width:292.5px;height:54.0px"></div>
+<div class="lab" id="s3_b1_c0_l" style="left:837.0px;top:677.6px"><span class="n">1</span>Nothing raised</div>
+<div class="co" id="s3_b1_c1" style="left:1579.5px;top:536.4px;width:117.0px;height:32.4px"></div>
+<div class="lab" id="s3_b1_c1_l" style="left:1341.5px;top:531.6px"><span class="n">2</span>Greyed out</div>
+<div class="co" id="s3_b1_c2" style="left:977.4px;top:573.3px;width:142.2px;height:23.4px"></div>
+<div class="lab" id="s3_b1_c2_l" style="left:977.4px;top:527.3px"><span class="n">3</span>Saudi time</div>
+</div></div>
+<div class="cap" id="s3_cap0"><span>Alarm activity: zero yellow, zero red in this window</span></div>
+<div class="cap" id="s3_cap1"><span>No alarms in this window. Export greyed out. Saudi time.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s4" class="clip" data-start="53.56" data-duration="6.22" data-track-index="1">
+<div class="top"><div class="ch"><b>03</b>Wallboard and phone</div><div class="path"><i>OPEN</i>By address</div></div>
+<div class="stage"><div class="zw" id="s4_zw"><img src="assets/l-wallboard-b.png" alt="">
+<div class="co" id="s4_b0_c0" style="left:203.4px;top:68.4px;width:499.5px;height:120.6px"></div>
+<div class="lab" id="s4_b0_c0_l" style="left:712.9px;top:107.7px"><span class="n">1</span>All Clear</div>
+<div class="co" id="s4_b0_c1" style="left:15.3px;top:687.6px;width:747.0px;height:46.8px"></div>
+<div class="lab" id="s4_b0_c1_l" style="left:772.3px;top:690.0px"><span class="n">2</span>Backup line</div>
+</div></div>
+<div class="cap" id="s4_cap0"><span>Wallboard view for a site screen</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="s5" class="clip" data-start="59.78" data-duration="5.76" data-track-index="1">
+<div class="top"><div class="ch"><b>03</b>Wallboard and phone</div><div class="path"><i>OPEN</i>By address</div></div>
+<div class="stage"><div class="zw" id="s5_zw"><img src="assets/l-mobile-phone-b.png" alt="">
+<div class="co" id="s5_b0_c0" style="left:772.2px;top:139.5px;width:282.6px;height:365.4px"></div>
+<div class="lab" id="s5_b0_c0_l" style="left:1064.8px;top:301.2px"><span class="n">1</span>Same state</div>
+<div class="co" id="s5_b0_c1" style="left:772.2px;top:580.5px;width:282.6px;height:88.2px"></div>
+<div class="lab" id="s5_b0_c1_l" style="left:1064.8px;top:603.6px"><span class="n">2</span>Backup line</div>
+</div></div>
+<div class="cap" id="s5_cap0"><span>Phone width view. Opens by address, not the menu.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="s6" class="clip grid" data-start="65.54" data-duration="18.98" data-track-index="1"><div class="dg">
+<div class="st" id="s6_p_x" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="dgx">HOW LIGHTNING REACHES THE PAGE</div></div>
+<div class="st" id="s6_p_l0" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="lane" style="top:440px"><div class="pill bdg">WIRELESS MESH + MODBUS INPUT</div><div class="pcard o dev" style="display:flex;flex-direction:column;justify-content:center"><div style="margin-bottom:6px"><svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="30" width="36" height="24" rx="2"/><path d="M32 30V12M22 18c6-8 14-8 20 0M26 24c4-4 8-4 12 0"/></svg></div><b style="font-size:28px">Lightning sensor</b></div><div class="stp" style="left:380px">Input module<small>Modbus device on mesh</small></div><div class="arrow" style="left:599px;top:62px">›</div><div class="stp" style="left:642px">Mesh gateway<small>wireless mesh to cloud</small></div><div class="arrow" style="left:861px;top:62px">›</div><div class="stp" style="left:904px">Cloud queue<small>unreadable set aside</small></div><div class="arrow" style="left:1123px;top:62px">›</div><div class="stp" style="left:1166px">Lightning<small>state and history</small></div><div class="arrow" style="left:1385px;top:62px">›</div></div></div>
+<div class="st" id="s6_p_sink" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="bar" style="left:1500px;top:330px;width:324px;height:230px;position:absolute;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><div style="font-size:30px;font-weight:800;letter-spacing:.14em;color:#FF8300">WAKECAP PORTAL</div><div style="font-size:26px;margin-top:14px;color:rgba(255,255,255,.82);padding:0 18px">the page you just saw</div></div></div>
+</div>
+<div class="cap" id="s6_cap0"><span>Input module reads the sensor, a Modbus device on the mesh</span></div>
+<div class="cap" id="s6_cap1"><span>Anything unreadable is set aside</span></div>
+</div>
+<div id="s7" class="clip" data-start="84.52" data-duration="27.04" data-track-index="1">
+<div class="top"><div class="ch"><b>04</b>Settings</div><div class="path"><i>OPEN</i>Connected Environment › Settings › Lightning</div></div>
+<div class="stage"><div class="zw" id="s7_zw"><img src="assets/l-settings-b-all.png" alt="">
+<div class="co" id="s7_b0_c0" style="left:57.6px;top:225.0px;width:171.9px;height:39.6px"></div>
+<div class="lab" id="s7_b0_c0_l" style="left:57.6px;top:272.6px"><span class="n">1</span>Settings</div>
+<svg class="cur" id="s7_b0_c0_cur" viewBox="0 0 24 24"><path d="M3 2l7 19 3-8 8-3z" fill="#fff" stroke="#000" stroke-width="1.5"/></svg><div class="rip" id="s7_b0_c0_rip" style="left:143.55px;top:244.8px"></div>
+<div class="co" id="s7_b0_c1" style="left:248.4px;top:203.4px;width:179.1px;height:36.0px"></div>
+<div class="lab" id="s7_b0_c1_l" style="left:248.4px;top:247.4px"><span class="n">2</span>Lightning</div>
+<svg class="cur" id="s7_b0_c1_cur" viewBox="0 0 24 24"><path d="M3 2l7 19 3-8 8-3z" fill="#fff" stroke="#000" stroke-width="1.5"/></svg><div class="rip" id="s7_b0_c1_rip" style="left:337.95px;top:221.4px"></div>
+<div class="co" id="s7_b1_c0" style="left:465.3px;top:204.3px;width:439.2px;height:54.9px"></div>
+<div class="lab" id="s7_b1_c0_l" style="left:914.5px;top:210.8px"><span class="n">1</span>Alert distances</div>
+<div class="co" id="s7_b1_c1" style="left:1593.0px;top:209.7px;width:108.9px;height:64.8px"></div>
+<div class="lab" id="s7_b1_c1_l" style="left:1481px;top:282.5px"><span class="n">2</span>Two buttons</div>
+<div class="co" id="s7_b1_c2" style="left:461.7px;top:260.1px;width:446.4px;height:26.1px"></div>
+<div class="lab" id="s7_b1_c2_l" style="left:918.1px;top:252.2px"><span class="n">3</span>Marked Temporary</div>
+<div class="co" id="s7_b2_c0" style="left:1246.5px;top:458.1px;width:99.0px;height:21.6px"></div>
+<div class="lab" id="s7_b2_c0_l" style="left:1355.5px;top:447.9px"><span class="n">1</span>Data unavailable</div>
+<div class="co" id="s7_b2_c1" style="left:1246.5px;top:520.2px;width:99.0px;height:21.6px"></div>
+<div class="lab" id="s7_b2_c1_l" style="left:1355.5px;top:510.0px"><span class="n">2</span>Another gap</div>
+</div></div>
+<div class="cap" id="s7_cap0"><span>Settings, then Lightning: its own permission</span></div>
+<div class="cap" id="s7_cap1"><span>Alert distances, two buttons, location marked Temporary</span></div>
+<div class="cap" id="s7_cap2"><span>24 hour state history keeps the gaps visible</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span></div>
+</div>
+<div id="s8" class="clip card grid" data-start="111.56" data-duration="6.54" data-track-index="1">
+<span class="eyebrow" id="s8_e">NEW ON LIGHTNING</span>
+<h1 id="s8_h" style="font-size:80px">What is <em>new</em></h1>
+<div class="items"><div class="it" id="s8_i0"><b>Radii map</b><span>Beside the state tile</span></div><div class="it" id="s8_i1"><b>Alarm activity and history</b><span>Chart, table, export button</span></div><div class="it" id="s8_i2"><b>Lightning settings</b><span>Radii, location, 24 hour history</span></div></div>
+</div>
+<div id="s9" class="clip card grid" data-start="118.10" data-duration="9.86" data-track-index="1">
+<span class="eyebrow" id="s9_e">NEXT STEP</span>
+<h1 id="s9_h">Read the <em>banner</em></h1>
+<p class="sub" id="s9_s">Open Lightning and read the line at the top. Cabinet lights and sounder first. If your project has Lightning, it is in the menu.</p>
+<div class="rule" id="s9_r"></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+tl.fromTo("#s0_e",{opacity:0,y:20},{opacity:1,y:0,duration:0.5,ease:"power2.out"},0.15);
+tl.fromTo("#s0_l0",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},0.60);
+tl.fromTo("#s0_l1",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},2.02);
+tl.to("#s0_l0",{opacity:0.3,duration:0.5},2.02);
+tl.fromTo("#s0_l2",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},3.44);
+tl.to("#s0_l1",{opacity:0.3,duration:0.5},3.44);
+tl.fromTo("#s0_l3",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},4.86);
+tl.to("#s0_l2",{opacity:0.3,duration:0.5},4.86);
+tl.to("#s0",{opacity:1,duration:0.35},0.00);
+tl.to("#s0",{opacity:0,duration:0.25},7.03);
+tl.to("#s1_zw",{x:-339.8,y:0,scale:1.9,duration:1.0,ease:"power2.inOut"},7.53);
+tl.set("#s1_b0_c0",{opacity:0},7.28);
+tl.set("#s1_b0_c0_l",{opacity:0},7.28);
+tl.set("#s1_b0_c0_l",{scale:0.526},7.28);
+tl.fromTo("#s1_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},7.88);
+tl.to("#s1_b0_c0_l",{opacity:1,duration:0.3},7.96);
+tl.to("#s1_b0_c0",{opacity:0,duration:0.2},15.47);
+tl.to("#s1_b0_c0_l",{opacity:0,duration:0.2},15.47);
+tl.to("#s1_zw",{x:-122.4,y:-122.5,scale:2.0,duration:1.0,ease:"power2.inOut"},15.97);
+tl.set("#s1_b1_c0",{opacity:0},7.28);
+tl.set("#s1_b1_c0_l",{opacity:0},7.28);
+tl.set("#s1_b1_c0_l",{scale:0.5},15.72);
+tl.fromTo("#s1_b1_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},16.32);
+tl.to("#s1_b1_c0_l",{opacity:1,duration:0.3},16.40);
+tl.to("#s1_b1_c0",{opacity:0,duration:0.2},22.65);
+tl.to("#s1_b1_c0_l",{opacity:0,duration:0.2},22.65);
+tl.to("#s1_zw",{x:-122.4,y:-145.9,scale:2.0,duration:1.0,ease:"power2.inOut"},23.15);
+tl.set("#s1_b2_c0",{opacity:0},7.28);
+tl.set("#s1_b2_c0_l",{opacity:0},7.28);
+tl.set("#s1_b2_c0_l",{scale:0.5},22.90);
+tl.fromTo("#s1_b2_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},23.50);
+tl.to("#s1_b2_c0_l",{opacity:1,duration:0.3},23.58);
+tl.to("#s1_b2_c0",{opacity:0,duration:0.2},31.90);
+tl.to("#s1_b2_c0_l",{opacity:0,duration:0.2},31.90);
+tl.set("#s1_b2_c1",{opacity:0},7.28);
+tl.set("#s1_b2_c1_l",{opacity:0},7.28);
+tl.set("#s1_b2_c1_l",{scale:0.5},22.90);
+tl.fromTo("#s1_b2_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},24.30);
+tl.to("#s1_b2_c1_l",{opacity:1,duration:0.3},24.38);
+tl.to("#s1_b2_c1",{opacity:0,duration:0.2},31.90);
+tl.to("#s1_b2_c1_l",{opacity:0,duration:0.2},31.90);
+tl.set("#s1_b2_c2",{opacity:0},7.28);
+tl.set("#s1_b2_c2_l",{opacity:0},7.28);
+tl.set("#s1_b2_c2_l",{scale:0.5},22.90);
+tl.fromTo("#s1_b2_c2",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},25.10);
+tl.to("#s1_b2_c2_l",{opacity:1,duration:0.3},25.18);
+tl.to("#s1_b2_c2",{opacity:0,duration:0.2},31.90);
+tl.to("#s1_b2_c2_l",{opacity:0,duration:0.2},31.90);
+tl.set("#s1_cap0",{opacity:0},7.28);
+tl.to("#s1_cap0",{opacity:1,duration:0.3},7.38);
+tl.to("#s1_cap0",{opacity:0,duration:0.2},15.47);
+tl.set("#s1_cap1",{opacity:0},7.28);
+tl.to("#s1_cap1",{opacity:1,duration:0.3},15.82);
+tl.to("#s1_cap1",{opacity:0,duration:0.2},22.65);
+tl.set("#s1_cap2",{opacity:0},7.28);
+tl.to("#s1_cap2",{opacity:1,duration:0.3},23.00);
+tl.to("#s1_cap2",{opacity:0,duration:0.2},31.90);
+tl.to("#s1",{opacity:1,duration:0.3},7.28);
+tl.to("#s1",{opacity:0,duration:0.25},31.90);
+tl.to("#s2_zw",{x:-1284.3,y:-24.8,scale:1.75,duration:1.0,ease:"power2.inOut"},32.40);
+tl.set("#s2_b0_c0",{opacity:0},32.15);
+tl.set("#s2_b0_c0_l",{opacity:0},32.15);
+tl.set("#s2_b0_c0_l",{scale:0.571},32.15);
+tl.fromTo("#s2_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},32.75);
+tl.to("#s2_b0_c0_l",{opacity:1,duration:0.3},32.83);
+tl.to("#s2_b0_c0",{opacity:0,duration:0.2},40.12);
+tl.to("#s2_b0_c0_l",{opacity:0,duration:0.2},40.12);
+tl.set("#s2_b0_c1",{opacity:0},32.15);
+tl.set("#s2_b0_c1_l",{opacity:0},32.15);
+tl.set("#s2_b0_c1_l",{scale:0.571},32.15);
+tl.fromTo("#s2_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},33.55);
+tl.to("#s2_b0_c1_l",{opacity:1,duration:0.3},33.63);
+tl.to("#s2_b0_c1",{opacity:0,duration:0.2},40.12);
+tl.to("#s2_b0_c1_l",{opacity:0,duration:0.2},40.12);
+tl.set("#s2_cap0",{opacity:0},32.15);
+tl.to("#s2_cap0",{opacity:1,duration:0.3},32.25);
+tl.to("#s2_cap0",{opacity:0,duration:0.2},40.12);
+tl.to("#s2",{opacity:1,duration:0.3},32.15);
+tl.to("#s2",{opacity:0,duration:0.25},40.12);
+tl.to("#s3_zw",{x:-621.9,y:-610.8,scale:2.6,duration:1.0,ease:"power2.inOut"},40.62);
+tl.set("#s3_b0_c0",{opacity:0},40.37);
+tl.set("#s3_b0_c0_l",{opacity:0},40.37);
+tl.set("#s3_b0_c0_l",{scale:0.385},40.37);
+tl.fromTo("#s3_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},40.97);
+tl.to("#s3_b0_c0_l",{opacity:1,duration:0.3},41.05);
+tl.to("#s3_b0_c0",{opacity:0,duration:0.2},47.11);
+tl.to("#s3_b0_c0_l",{opacity:0,duration:0.2},47.11);
+tl.set("#s3_b0_c1",{opacity:0},40.37);
+tl.set("#s3_b0_c1_l",{opacity:0},40.37);
+tl.set("#s3_b0_c1_l",{scale:0.385},40.37);
+tl.fromTo("#s3_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},41.77);
+tl.to("#s3_b0_c1_l",{opacity:1,duration:0.3},41.85);
+tl.to("#s3_b0_c1",{opacity:0,duration:0.2},47.11);
+tl.to("#s3_b0_c1_l",{opacity:0,duration:0.2},47.11);
+tl.to("#s3_zw",{x:-659.3,y:-355.6,scale:1.4,duration:1.0,ease:"power2.inOut"},47.61);
+tl.set("#s3_b1_c0",{opacity:0},40.37);
+tl.set("#s3_b1_c0_l",{opacity:0},40.37);
+tl.set("#s3_b1_c0_l",{scale:0.714},47.36);
+tl.fromTo("#s3_b1_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},47.96);
+tl.to("#s3_b1_c0_l",{opacity:1,duration:0.3},48.04);
+tl.to("#s3_b1_c0",{opacity:0,duration:0.2},53.31);
+tl.to("#s3_b1_c0_l",{opacity:0,duration:0.2},53.31);
+tl.set("#s3_b1_c1",{opacity:0},40.37);
+tl.set("#s3_b1_c1_l",{opacity:0},40.37);
+tl.set("#s3_b1_c1_l",{scale:0.714},47.36);
+tl.fromTo("#s3_b1_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},48.76);
+tl.to("#s3_b1_c1_l",{opacity:1,duration:0.3},48.84);
+tl.to("#s3_b1_c1",{opacity:0,duration:0.2},53.31);
+tl.to("#s3_b1_c1_l",{opacity:0,duration:0.2},53.31);
+tl.set("#s3_b1_c2",{opacity:0},40.37);
+tl.set("#s3_b1_c2_l",{opacity:0},40.37);
+tl.set("#s3_b1_c2_l",{scale:0.714},47.36);
+tl.fromTo("#s3_b1_c2",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},49.56);
+tl.to("#s3_b1_c2_l",{opacity:1,duration:0.3},49.64);
+tl.to("#s3_b1_c2",{opacity:0,duration:0.2},53.31);
+tl.to("#s3_b1_c2_l",{opacity:0,duration:0.2},53.31);
+tl.set("#s3_cap0",{opacity:0},40.37);
+tl.to("#s3_cap0",{opacity:1,duration:0.3},40.47);
+tl.to("#s3_cap0",{opacity:0,duration:0.2},47.11);
+tl.set("#s3_cap1",{opacity:0},40.37);
+tl.to("#s3_cap1",{opacity:1,duration:0.3},47.46);
+tl.to("#s3_cap1",{opacity:0,duration:0.2},53.31);
+tl.to("#s3",{opacity:1,duration:0.3},40.37);
+tl.to("#s3",{opacity:0,duration:0.25},53.31);
+tl.to("#s4_zw",{x:0,y:0,scale:1.15,duration:1.0,ease:"power2.inOut"},53.81);
+tl.set("#s4_b0_c0",{opacity:0},53.56);
+tl.set("#s4_b0_c0_l",{opacity:0},53.56);
+tl.set("#s4_b0_c0_l",{scale:0.87},53.56);
+tl.fromTo("#s4_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},54.16);
+tl.to("#s4_b0_c0_l",{opacity:1,duration:0.3},54.24);
+tl.to("#s4_b0_c0",{opacity:0,duration:0.2},59.53);
+tl.to("#s4_b0_c0_l",{opacity:0,duration:0.2},59.53);
+tl.set("#s4_b0_c1",{opacity:0},53.56);
+tl.set("#s4_b0_c1_l",{opacity:0},53.56);
+tl.set("#s4_b0_c1_l",{scale:0.87},53.56);
+tl.fromTo("#s4_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},54.96);
+tl.to("#s4_b0_c1_l",{opacity:1,duration:0.3},55.04);
+tl.to("#s4_b0_c1",{opacity:0,duration:0.2},59.53);
+tl.to("#s4_b0_c1_l",{opacity:0,duration:0.2},59.53);
+tl.set("#s4_cap0",{opacity:0},53.56);
+tl.to("#s4_cap0",{opacity:1,duration:0.3},53.66);
+tl.to("#s4_cap0",{opacity:0,duration:0.2},59.53);
+tl.to("#s4",{opacity:1,duration:0.3},53.56);
+tl.to("#s4",{opacity:0,duration:0.25},59.53);
+tl.to("#s5_zw",{x:-551.9,y:-190.2,scale:1.55,duration:1.0,ease:"power2.inOut"},60.03);
+tl.set("#s5_b0_c0",{opacity:0},59.78);
+tl.set("#s5_b0_c0_l",{opacity:0},59.78);
+tl.set("#s5_b0_c0_l",{scale:0.645},59.78);
+tl.fromTo("#s5_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},60.38);
+tl.to("#s5_b0_c0_l",{opacity:1,duration:0.3},60.46);
+tl.to("#s5_b0_c0",{opacity:0,duration:0.2},65.29);
+tl.to("#s5_b0_c0_l",{opacity:0,duration:0.2},65.29);
+tl.set("#s5_b0_c1",{opacity:0},59.78);
+tl.set("#s5_b0_c1_l",{opacity:0},59.78);
+tl.set("#s5_b0_c1_l",{scale:0.645},59.78);
+tl.fromTo("#s5_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},61.18);
+tl.to("#s5_b0_c1_l",{opacity:1,duration:0.3},61.26);
+tl.to("#s5_b0_c1",{opacity:0,duration:0.2},65.29);
+tl.to("#s5_b0_c1_l",{opacity:0,duration:0.2},65.29);
+tl.set("#s5_cap0",{opacity:0},59.78);
+tl.to("#s5_cap0",{opacity:1,duration:0.3},59.88);
+tl.to("#s5_cap0",{opacity:0,duration:0.2},65.29);
+tl.to("#s5",{opacity:1,duration:0.3},59.78);
+tl.to("#s5",{opacity:0,duration:0.25},65.29);
+tl.set("#s6_cap0",{opacity:0},65.54);
+tl.to("#s6_cap0",{opacity:1,duration:0.3},65.64);
+tl.to("#s6_cap0",{opacity:0,duration:0.2},77.73);
+tl.set("#s6_cap1",{opacity:0},65.54);
+tl.to("#s6_cap1",{opacity:1,duration:0.3},78.08);
+tl.to("#s6_cap1",{opacity:0,duration:0.2},84.27);
+tl.set("#s6_p_x",{opacity:0},65.54);
+tl.to("#s6_p_x",{opacity:1,duration:0.3},65.79);
+tl.set("#s6_p_l0",{opacity:0},65.54);
+tl.fromTo("#s6_p_l0",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},65.79);
+tl.set("#s6_p_sink",{opacity:0},65.54);
+tl.fromTo("#s6_p_sink",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},78.23);
+tl.to("#s6",{opacity:1,duration:0.3},65.54);
+tl.to("#s6",{opacity:0,duration:0.25},84.27);
+tl.to("#s7_zw",{x:0,y:-14.5,scale:2.0,duration:1.0,ease:"power2.inOut"},84.77);
+tl.set("#s7_b0_c0",{opacity:0},84.52);
+tl.set("#s7_b0_c0_l",{opacity:0},84.52);
+tl.set("#s7_b0_c0_l",{scale:0.5},84.52);
+tl.fromTo("#s7_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},85.12);
+tl.to("#s7_b0_c0_l",{opacity:1,duration:0.3},85.20);
+tl.to("#s7_b0_c0",{opacity:0,duration:0.2},90.75);
+tl.to("#s7_b0_c0_l",{opacity:0,duration:0.2},90.75);
+tl.set("#s7_b0_c0_cur",{x:443.55,y:504.8,opacity:0},84.52);
+tl.to("#s7_b0_c0_cur",{x:143.55,y:244.8,opacity:1,duration:0.7,ease:"power2.inOut"},84.82);
+tl.fromTo("#s7_b0_c0_rip",{opacity:1,scale:.3},{opacity:0,scale:1.6,duration:0.5,ease:"power1.out"},85.67);
+tl.to("#s7_b0_c0_cur",{opacity:0,duration:0.2},90.60);
+tl.set("#s7_b0_c1",{opacity:0},84.52);
+tl.set("#s7_b0_c1_l",{opacity:0},84.52);
+tl.set("#s7_b0_c1_l",{scale:0.5},84.52);
+tl.fromTo("#s7_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},85.92);
+tl.to("#s7_b0_c1_l",{opacity:1,duration:0.3},86.00);
+tl.to("#s7_b0_c1",{opacity:0,duration:0.2},90.75);
+tl.to("#s7_b0_c1_l",{opacity:0,duration:0.2},90.75);
+tl.set("#s7_b0_c1_cur",{x:637.95,y:481.4,opacity:0},84.52);
+tl.to("#s7_b0_c1_cur",{x:337.95,y:221.4,opacity:1,duration:0.7,ease:"power2.inOut"},85.62);
+tl.fromTo("#s7_b0_c1_rip",{opacity:1,scale:.3},{opacity:0,scale:1.6,duration:0.5,ease:"power1.out"},86.47);
+tl.to("#s7_b0_c1_cur",{opacity:0,duration:0.2},90.60);
+tl.to("#s7_zw",{x:-598.9,y:0,scale:1.35,duration:1.0,ease:"power2.inOut"},91.25);
+tl.set("#s7_b1_c0",{opacity:0},84.52);
+tl.set("#s7_b1_c0_l",{opacity:0},84.52);
+tl.set("#s7_b1_c0_l",{scale:0.741},91.00);
+tl.fromTo("#s7_b1_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},91.60);
+tl.to("#s7_b1_c0_l",{opacity:1,duration:0.3},91.68);
+tl.to("#s7_b1_c0",{opacity:0,duration:0.2},101.79);
+tl.to("#s7_b1_c0_l",{opacity:0,duration:0.2},101.79);
+tl.set("#s7_b1_c1",{opacity:0},84.52);
+tl.set("#s7_b1_c1_l",{opacity:0},84.52);
+tl.set("#s7_b1_c1_l",{scale:0.741},91.00);
+tl.fromTo("#s7_b1_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},92.40);
+tl.to("#s7_b1_c1_l",{opacity:1,duration:0.3},92.48);
+tl.to("#s7_b1_c1",{opacity:0,duration:0.2},101.79);
+tl.to("#s7_b1_c1_l",{opacity:0,duration:0.2},101.79);
+tl.set("#s7_b1_c2",{opacity:0},84.52);
+tl.set("#s7_b1_c2_l",{opacity:0},84.52);
+tl.set("#s7_b1_c2_l",{scale:0.741},91.00);
+tl.fromTo("#s7_b1_c2",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},93.20);
+tl.to("#s7_b1_c2_l",{opacity:1,duration:0.3},93.28);
+tl.to("#s7_b1_c2",{opacity:0,duration:0.2},101.79);
+tl.to("#s7_b1_c2_l",{opacity:0,duration:0.2},101.79);
+tl.to("#s7_zw",{x:-704.0,y:-489.0,scale:1.55,duration:1.0,ease:"power2.inOut"},102.29);
+tl.set("#s7_b2_c0",{opacity:0},84.52);
+tl.set("#s7_b2_c0_l",{opacity:0},84.52);
+tl.set("#s7_b2_c0_l",{scale:0.645},102.04);
+tl.fromTo("#s7_b2_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},102.64);
+tl.to("#s7_b2_c0_l",{opacity:1,duration:0.3},102.72);
+tl.to("#s7_b2_c0",{opacity:0,duration:0.2},111.31);
+tl.to("#s7_b2_c0_l",{opacity:0,duration:0.2},111.31);
+tl.set("#s7_b2_c1",{opacity:0},84.52);
+tl.set("#s7_b2_c1_l",{opacity:0},84.52);
+tl.set("#s7_b2_c1_l",{scale:0.645},102.04);
+tl.fromTo("#s7_b2_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},103.44);
+tl.to("#s7_b2_c1_l",{opacity:1,duration:0.3},103.52);
+tl.to("#s7_b2_c1",{opacity:0,duration:0.2},111.31);
+tl.to("#s7_b2_c1_l",{opacity:0,duration:0.2},111.31);
+tl.set("#s7_cap0",{opacity:0},84.52);
+tl.to("#s7_cap0",{opacity:1,duration:0.3},84.62);
+tl.to("#s7_cap0",{opacity:0,duration:0.2},90.75);
+tl.set("#s7_cap1",{opacity:0},84.52);
+tl.to("#s7_cap1",{opacity:1,duration:0.3},91.10);
+tl.to("#s7_cap1",{opacity:0,duration:0.2},101.79);
+tl.set("#s7_cap2",{opacity:0},84.52);
+tl.to("#s7_cap2",{opacity:1,duration:0.3},102.14);
+tl.to("#s7_cap2",{opacity:0,duration:0.2},111.31);
+tl.to("#s7",{opacity:1,duration:0.3},84.52);
+tl.to("#s7",{opacity:0,duration:0.25},111.31);
+tl.fromTo("#s8_e",{opacity:0,y:20},{opacity:1,y:0,duration:0.5,ease:"power2.out"},111.71);
+tl.fromTo("#s8_h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7,ease:"power3.out"},111.86);
+tl.fromTo("#s8_i0",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},112.66);
+tl.fromTo("#s8_i1",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},114.10);
+tl.fromTo("#s8_i2",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},115.55);
+tl.to("#s8",{opacity:1,duration:0.35},111.56);
+tl.to("#s8",{opacity:0,duration:0.25},117.85);
+tl.fromTo("#s9_e",{opacity:0,y:20},{opacity:1,y:0,duration:0.5,ease:"power2.out"},118.25);
+tl.fromTo("#s9_h",{opacity:0,y:50},{opacity:1,y:0,duration:0.8,ease:"power3.out"},118.45);
+tl.fromTo("#s9_s",{opacity:0,y:24},{opacity:1,y:0,duration:0.7,ease:"power2.out"},119.05);
+tl.to("#s9_r",{width:260,duration:0.9,ease:"power2.out"},118.70);
+tl.to("#s9",{opacity:1,duration:0.35},118.10);
+tl.to("#s9",{opacity:0,duration:0.25},127.71);
+</script></body></html>

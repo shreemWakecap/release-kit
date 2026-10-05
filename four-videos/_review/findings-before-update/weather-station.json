@@ -1,0 +1,366 @@
+{
+ "video": "weather-station",
+ "remaining_findings_all_severities": [
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w08 (also transient flashes in w02, w03, w05, w07)",
+   "severity": "blocker",
+   "issue": "Unchanged from pass 2 and still unresolved: station display names 'SCC Weather Station' and 'Main Plant Weather Station' are readable in the two report tiles for the whole of w08 (about 8.6 s). Hard rule: no customer, site or person names in customer-facing visuals. 'SCC' may be a customer abbreviation. Pass 3 also confirmed the Stations list with both names flashes during the camera glide at the start of w02, w03 and w07 (about 0.15 to 0.6 s), and in w05 the two name rows sit directly under the 'Offline, Not ready' label at about 0.8 s. The reviser's own unresolved list admits the blocker; nothing in the spec can fix it.",
+   "evidence_checked": "Dry-render frames: .work/verify-claims/p3/w08_b.png (names in tiles); p3/g/w02_tile, w03_tile, w05_tile, w07_tile (0 to 1.3 s of each beat); captures/w-reports-7d-a.txt ('02 Oct, 2026 \u00b7 02:04 PM \u00b7 SCC Weather Station', '29 Sep, 2026 \u00b7 01:56 PM \u00b7 Main Plant Weather Station'); beatsheet 'OPEN FOR THE LEAD'.",
+   "suggested_fix": "Lead decision before release: confirm in writing that these are generic device labels cleared for external video, or add a blur or mask to vbuild, or recapture after renaming the stations. If kept, also accept or remove the glide flash (start those scenes already zoomed)."
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w02, w03, w05, w07 (green last-reading line, beatsheet claim)",
+   "severity": "minor",
+   "issue": "Beatsheet 'Left out' says the green 'Last reading was N minute(s) ago' line under the offline headline is 'framed out of w02, w02b, w05 and w07'. True for steady state only. The line is visible at small size for about 0.5 s at the start of w02, w03, w05 and w07 during the glide (w03 uses w-steps-a, which carries the same list and is not listed at all). The brief allows 'do not dwell on it', so not a breach, but the written claim is inaccurate.",
+   "evidence_checked": "p3/g/w02_tile.png, w03_tile.png, w05_tile.png frames 1 to 3 (green line and both station rows readable at thumbnail size); w07_tile.png.",
+   "suggested_fix": "Reword the beatsheet to 'out of view after the first half second' and add w03. The same fix as the blocker removes it."
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w05",
+   "severity": "minor",
+   "issue": "'Now what sits behind it.' (it = the Danger strip). In Project A the Danger verdict comes from the heat index band and the dust reading (page text: 'Heat Index ... Band: Danger', 'Dust Particles ... Threshold: Danger'), not from the offline station. 'Behind it' next to 'The page names the offline station' can be read as the station causing Danger. The rest of the narration (Not ready, lists why) is accurate.",
+   "evidence_checked": "captures/w-top-a.txt (reasons list and 'What needs attention 1 station offline'); w05_b.png.",
+   "suggested_fix": "'Next, station health. The page names the offline station. Readiness reads Not ready, and lists why.'"
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w09",
+   "severity": "minor",
+   "issue": "Narration 'alters when work stops, for everyone' and callout 'Changes affect everyone' drop the page's qualifier. The page says 'for everyone on the project'. 'Everyone' alone reads wider than the page.",
+   "evidence_checked": "captures/w-policy-a-top.txt; w09_b.png.",
+   "suggested_fix": "Narration '... for everyone on the project.' (trim 'now' elsewhere in the beat to stay at 340 words). Callout 'Affects the whole project'."
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w15",
+   "severity": "minor",
+   "issue": "Card 'WHAT IS NEW / Four things to open' and narration 'So, what is new?' read as the full list of what is new. changes.json also marks the verdict button with Recommended Steps (ws-verdict-cta, first_tag_old_line null) and the inline station readiness as new against the stated baseline, and Connected Products shipped about three weeks before Reports. The reference point for 'new' is never stated. Not false: each of the four items is new per changes (gear, Reports, policy rebuild and Settings, Connected Products; all live_in_1_0_5 yes).",
+   "evidence_checked": "changes.json items ws-gear-popup, reports-max-values, ws-policy-redesign, ws-policy-in-settings, settings-area, ws-verdict-cta; baseline field.",
+   "suggested_fix": "Optional: 'Four things to open next.' so it does not claim to be the full list. Or accept."
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w11",
+   "severity": "minor",
+   "issue": "'The page offers draggable boundaries' and callout 'Draggable boundaries' rest on the page's instruction text 'Drag a boundary, or focus it and use the arrow keys'. Whether a view-only user can drag was never exercised (edit path not captured; a separate Settings grant guards editing). Hedged by 'the page offers', so acceptable.",
+   "evidence_checked": "captures/w-policy-a-bands.txt; changes#ws-policy-publish capture_note (edit/publish path NOT exercised live); integration-and-devices#X02.",
+   "suggested_fix": "None required; do not add permission or publish claims."
+  },
+  {
+   "lens": "CLAIMS versus EVIDENCE (adversarial), pass3",
+   "beat": "w08",
+   "severity": "minor",
+   "issue": "'You can export an Excel file' and the click callout on Export .xlsx: the button is on the page, but the download result was never exercised (changes#reports-max-values capture_note). Phrased as a capability, no export is shown, so it complies with guardrail 9.",
+   "evidence_checked": "captures/w-reports-7d-a.txt ('Export .xlsx'); changes#reports-max-values.",
+   "suggested_fix": "None required."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w08 (and 0.5 to 1 s glide openings of w02, w05, w07)",
+   "severity": "blocker",
+   "issue": "Station display names 'SCC Weather Station' and 'Main Plant Weather Station' are still readable in the two Reports tiles for the whole of w08 (about 8.6 s, no zoom or mask hides them). The same names flash in the Stations list during the first ~0.7 s of w02, w05 and w07 while the camera glides from the full frame (w05 and w07 also briefly show the green 'Last reading was 1 minute(s) ago.' line under the offline headline). 'SCC' reads like a customer or site abbreviation and 'Main Plant' like a site label; the hard rule bars customer, site and person names in customer-facing visuals. Unchanged since pass 2. The reviser's rejection (no zoom can hide them, vbuild has no mask, glide is tool behaviour) is correct, so this still needs a lead decision.",
+   "evidence_checked": "assets/w-reports-7d-a.png, w-top-a.png and w-gear-a.png viewed in full; dry-render frames at 0.1/0.35/0.7/2.0/end of every beat (.work/verify-hygiene/p3/sheet_w02, w05, w07, w08); no research or spec file says SCC is a generic label; vbuild.py has no mask/blur option; SPEC.md line 55 confirms the glide.",
+   "suggested_fix": "Lead decides: (a) confirm in writing that these are generic device labels cleared for external video, (b) add a blur/mask option to vbuild and mask the tile sub-lines plus the Stations list, or (c) recapture w-reports-7d-a, w-top-a and w-gear-a after renaming the stations. No spec-only change hides SCC."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w04",
+   "severity": "minor",
+   "issue": "'in Saudi time' is narrated but the page prints no zone label. Allowed by the brief and evidence (commits f3e49a1, 8dfbae9, Los Angeles clock test, integration-and-devices#N04 live_today yes), kept in the beat evidence. Not visible from the frame.",
+   "evidence_checked": "spec.json w04 evidence; w-details-a.png ('Last updated 04 Oct, 2026 03:22 PM'); integration-and-devices#N04.",
+   "suggested_fix": "Keep, or drop the clause if the lead wants no time-zone claim."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w11, w12, w02/w09",
+   "severity": "minor",
+   "issue": "Numeric heat-band edges (<25, 25-30, 30-39, 39-52, >=52 C) and the 'Danger 18 days / Extreme Danger 12 days' chips are readable in w11 and w12; heat index shows 49.5 (w02 to w05) and 50.1 (w09, w11). None is narrated or captioned and the dashboard 39-51 scale is not on screen anywhere in the video, so no visible disagreement. Rejection accepted.",
+   "evidence_checked": "w-policy-a-bands.png, w-policy-a-cards.png, w-policy-a-top.png, w-top-a.png; dry frames w11 and w12; spec narration and captions contain no band edges.",
+   "suggested_fix": "None."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w07",
+   "severity": "minor",
+   "issue": "The Select parameters popup lists CO2, H2S and CO toggles (all off). Not narrated; they are the page's own weather-parameter list. The click cursor lands on a frame with the popup already open, worded as a demonstration ('Click the gear'), not as a performed action.",
+   "evidence_checked": "w-gear-a.png; dry frames w07; captures.json clicks_done.",
+   "suggested_fix": "None."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w06",
+   "severity": "minor",
+   "issue": "For about 0.3 s at the start of w06 the full frame shows the top-bar 'Gas CHECK ... 4 of 5 detectors reporting' banner and the Gas row in the rail (Project C). It claims nothing safe and is out of view after the glide; w06 narration does not mention gas.",
+   "evidence_checked": "w-reasons-c.png; sheet_w06 frames 1 and 2.",
+   "suggested_fix": "None."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass3)",
+   "beat": "w16, w17",
+   "severity": "minor",
+   "issue": "Builder layout: single lane left-aligned (SPEC.md says centred), dangling chevron after WakeCap, upper half of stage empty. Diagram text is clean: no Modbus, no gas, no forbidden strings, supported by integration-and-devices W01/W03/W04. Tool note, no spec change.",
+   "evidence_checked": "sheet_w16, sheet_w17; spec.json diagrams.paths; integration-and-devices#W01, W03, W04.",
+   "suggested_fix": "Report to the vbuild owner."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w08",
+   "severity": "blocker",
+   "issue": "Still unresolved: station display names 'SCC Weather Station' and 'Main Plant Weather Station' are readable in the two report tiles for the whole beat (8.6 s). The tiles are the subject, so no zoom hides them and vbuild has no mask. 'SCC' may be a customer abbreviation. Needs a lead decision.",
+   "evidence_checked": "p3_w08_a.png and p3_w08_b.png at 1280x720; ov3_w08.png (tile sub-lines '02 Oct, 2026 . 02:04 PM . SCC Weather Station', '29 Sep, 2026 . 01:56 PM . Main Plant Weather Station'); beatsheet.md line 7.",
+   "suggested_fix": "Lead decides: accept as generic labels in writing, add a blur/mask option to vbuild, or recapture after renaming the stations."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w02, w05, w07 (glide start)",
+   "severity": "major",
+   "issue": "Each of these shots opens with about 0.5 to 0.8 s of the near-full frame while the camera glides. The Stations list ('Main Plant Weather Station', 'SCC Weather Station') and the green 'Last reading was 1 minute(s) ago.' line are readable at 640 px in that flash. In w05 at +0.8 s the names still sit under the callout card. Steady state from +1.6 s is clean. The reviser's rejection is accurate about the cause (tool behaviour), but the content still goes out.",
+   "evidence_checked": "g3_w02/w05/w07 at +0.1, +0.4, +0.8 s (tile3.png); p3_*_a and p3_*_b steady frames show no names.",
+   "suggested_fix": "Same lead decision as w08. If names are masked or accepted, this is covered. Otherwise ask the tool owner for an option to start a shot already zoomed."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w06",
+   "severity": "minor",
+   "issue": "Labels 'Ready' (about 100 px from its box) and 'Reasons' (about 115 px from its box, floating in the empty 'No parameters featured' pane) read as detached. Reviser's rejection is valid: pos 'a' covered text, and the zoom cannot shift further right because it clamps at the frame edge.",
+   "evidence_checked": "p3_w06_a.png, p3_w06_b.png, ov3_w06.png.",
+   "suggested_fix": "Optional: shorten the Reasons rect so a pos 'r' or 'b' label fits, or accept."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w10",
+   "severity": "minor",
+   "issue": "Callout label '2  1 of 30 days' slightly overlaps the chart axis text 'scale 15-35 km/h' (the first label also touches 'scale 37-51 C'). Nothing essential is lost.",
+   "evidence_checked": "p3_w10_a.png and a 700x180 crop of the dry render at 82 s (w10crop.png).",
+   "suggested_fix": "Move both labels to pos 'l' or shift the callout rects up by about 6 px; or accept."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "whole video (length)",
+   "severity": "minor",
+   "issue": "340 words and 148.9 s sit at the top of the brief's 260 to 340 words and 1:50 to 2:30. The estimate uses about 2.28 words per second. A slower real voice (about 2.2) would land near 2:34 to 2:35, a few seconds over. Not a 20 percent miss.",
+   "evidence_checked": "timeline.json (last start 139.72, end 148.9), spec.json word counts (all beats 15 to 25 words), ffprobe 148.917 s.",
+   "suggested_fix": "Trim about 10 to 15 words for headroom (for example one clause in w10 or w11), or accept and re-check after real TTS."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w07",
+   "severity": "minor",
+   "issue": "'a new gear opens Select parameters' calls the gear new; the new thing is the Select parameters popup. The 'Click the gear' cursor animates to the gear while the popup is already open (demonstration, acceptable). CO2, H2S and CO toggles are visible in the list but unnarrated.",
+   "evidence_checked": "p3_w07_a.png, ov3_w07.png, spec narration.",
+   "suggested_fix": "'Back in the first project, the gear now opens Select parameters.'"
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w16, w17",
+   "severity": "minor",
+   "issue": "Single-lane paths diagram is left-aligned, the chevron after WakeCap points at empty space in w16, the sink box sits flush against the last chevron and higher than the lane, and the top half of the stage is empty. Both beats are near-static (8.2 s and 9.2 s). Text is clean, nothing clipped. Builder layout, not a spec choice.",
+   "evidence_checked": "p3_w16_a/b.png, p3_w17_a/b.png; the sink appears only at the w17 start (frames at 138.0 to 140.3 s).",
+   "suggested_fix": "Report to the vbuild owner; no spec change."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "arc",
+   "severity": "minor",
+   "issue": "The brief names w-policy-a-method for the NOAA tab; the video boxes the NOAA row inside w-policy-a-cards instead, and the optional heat card colour with work, rest and water cycle beat on the dashboard is skipped (the cycle shows unnarrated behind w07). Reviser's rejection is reasonable (a new beat would exceed 18 beats and 340 words). Otherwise the arc follows the brief order through to the one-lane diagram and the next step.",
+   "evidence_checked": "spec.json beat list, p3_w12_a.png, p3_w12_b.png.",
+   "suggested_fix": "Accept."
+  },
+  {
+   "lens": "VISUAL, TIMING and CRAFT (pass3)",
+   "beat": "w02, w09, w11",
+   "severity": "minor",
+   "issue": "Polish: w02 and w09 zoom windows clip the page heading at the left ('ment', 'eather Station') and the date at the right ('3:25 P'); w11 opens on a cropped half row ('In force: 100 ppm'); w11 narration 'with a marker for now' is slightly awkward. Numeric heat-band edges (w11 ribbon, w12 cards) and two heat index values (49.5 and 50.1) remain on screen but are unnarrated; the w12 NOAA row bottom border touches the stage edge. All accepted in earlier passes.",
+   "evidence_checked": "p3_w02_a, p3_w09_a, p3_w11_a, p3_w12_a.",
+   "suggested_fix": "Optional: w11 'with a marker showing where the project is now.'"
+  }
+ ],
+ "last_reviser_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/final-dry.mp4",
+  "changed_beats": [
+   "w02b (evidence wording)",
+   "w03",
+   "w05",
+   "w06 (zoom/callouts re-tried, reverted to original)",
+   "w07",
+   "w09",
+   "w10",
+   "w11",
+   "w12",
+   "w13 (trimmed wording)",
+   "w14",
+   "w15",
+   "w17"
+  ],
+  "resolved": [
+   "w10 blocker/major: narration and caption now say only Temperature and Wind Speed show the 30-day what-if; matches the page sentence.",
+   "Project cue major: 'Back in the first project' moved to w07 (first Project A beat after w06); w14 now says 'In this project'.",
+   "w05: 'Now what sits behind it' replaces the trust framing; callout label moved to pos b, directly attached to the card (verified in frame).",
+   "w11: removed the permission and 'nothing applies until published' claims; narration now rests on the on-screen drag text ('Moving a boundary changes both bands that meet at it').",
+   "w12: callout relabelled 'Danger band' and rect set to the card (8..328); zoom now starts at the top so the Danger card header is visible; NOAA row text and callout still visible.",
+   "Evidence wording: 'nothing was clicked' replaced by 'drawer and popup were opened and closed in capture; nothing saved, switched, exported or dragged' in w02b, w07 and the beatsheet.",
+   "w14 caption and w15 card: 'Each project turns on its own products'.",
+   "w03 ends 'prioritised them'; w09 rewritten without repeated 'changes'; w17 'open that page' gives the closing instruction an object.",
+   "Length: 340 words, 18 beats, 148.9 s, inside the brief."
+  ],
+  "rejected": [
+   {
+    "finding": "w11/w12 and others: numeric heat-band edges readable in ribbon and cards; 49.5 vs 50.1 heat index values",
+    "why": "They are pixels of the required frames and cannot be edited. They are never narrated or captioned, and the dashboard scale (39 to 51) is on screen nowhere in this video, so no disagreement is visible. All three verifiers agreed no spec change is needed. Documented in beatsheet 'Left out' and assumptions."
+   },
+   {
+    "finding": "w07: CO2/CO toggles beside Gas; 'Click the gear' cursor lands on a frame where the popup is already open",
+    "why": "The toggles are the page's own weather-parameter list (Temperature to CO) and are not narrated. The click is supported: capture opened the popup via the gear (clicks_done 'opened Dashboard settings gear, then Escape'). Verifiers said accept."
+   },
+   {
+    "finding": "w04: 'in Saudi time' not printed on the page",
+    "why": "Allowed by the brief: evidence is commits f3e49a1 and 8dfbae9 plus the Los Angeles clock test (integration-and-devices#N04, live_today yes). Kept, with the evidence in the beat. Lead can delete the clause."
+   },
+   {
+    "finding": "w06 label placement (Ready, Reasons detached) and shifting the zoom left",
+    "why": "Tried pos 'a' for both: Ready then covered the 'All 1 station reporting' headline and Reasons covered the last-seen text, worse than the original. Reverted to pos 'l'. Zoom cannot centre the right column because the window clamps at the frame edge."
+   },
+   {
+    "finding": "w02, w05, w07, w06: first 0.5 s of each shot shows the full or previous frame during the camera glide (including the Stations list)",
+    "why": "This is vbuild's glide behaviour; no spec field starts a shot already zoomed. Reported as a tool note rather than a spec fix."
+   },
+   {
+    "finding": "w16/w17 diagram layout (left-aligned lane, chevron to empty space, upper-half placement); missing clamp on explicit zoom scale; source upscaling softness; header 'CLICK Left rail' chip on in-page beats",
+    "why": "Builder layout and design (vbuild.py), not spec choices. Reported in unresolved and the beatsheet; vbuild.py not edited."
+   },
+   {
+    "finding": "w11 longest shot beat 11.6 s on one view",
+    "why": "Narration now 25 words (about 10.6 s) with two callouts; the permission sentence that lacked a visual was removed, which resolves the cause."
+   },
+   {
+    "finding": "Use w-policy-a-method for the NOAA tab (brief) and the dashboard heat-card work/rest/water beat",
+    "why": "A separate beat would push to 19 beats and over 340 words. The NOAA row is visible and boxed in w-policy-a-cards (w12). Brief says 'only if the frame you use shows it', and the dashboard cycle stays visible but unnarrated."
+   }
+  ],
+  "unresolved": [
+   "BLOCKER needing a lead decision: w08 (Reports, about 8.6 s) prints 'SCC Weather Station' and 'Main Plant Weather Station' in the two tiles. They are display names, not serials; 'SCC' might be a customer abbreviation. The tiles are the subject so no zoom can hide them (spotlight dim is only 42 percent; the names would still read), and vbuild has no mask or blur. Options: accept as generic labels, add a mask option to vbuild, or recapture after a rename. The same names flash for about 0.5 s in the full-frame glide at the start of w02, w05 and w07.",
+   "Heat-band edges in w11 and w12 and two heat index values (49.5, 50.1) remain readable on screen; unnarrated (see rejected).",
+   "w12: the NOAA row's bottom border is clipped by about 3 frame pixels at the window edge; text and callout are fully visible.",
+   "vbuild.py issues for the tool owner: single-lane paths diagram is left-aligned (SPEC.md says centred) with a dangling chevron in stage 1; explicit zoom scale 's' not clamped; no way to start a shot already zoomed; hyperframes lint reports 19 structural warnings on generated output.",
+   "Real TTS pace may add a few seconds over 2:29; word count 340 is at the brief's upper end."
+  ],
+  "check_clean": true,
+  "dry_render": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/final-dry.mp4 (148.9s, silent, 16 scenes, 18 beats, 340 words; timeline.json updated)",
+  "frames_inspected": 19
+ },
+ "director_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/final-dry.mp4",
+  "spec_path": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/spec.json",
+  "beatsheet_path": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/beatsheet.md",
+  "beats": 17,
+  "words": 341,
+  "est_seconds": 149,
+  "check_clean": true,
+  "dry_render": "/Users/admin/wc/weather-station/release-kit/four-videos/weather-station/final-dry.mp4 (149.3s, silent, 16 scenes)",
+  "frames_inspected": 32,
+  "open_issues": [
+   "Length is at the upper limit: 341 words, estimated 2:29 (brief says up to 2:30, about 340 words). Real TTS pace may push it a few seconds over.",
+   "The green 'Last reading was 1 minute(s) ago.' line is out of view in the offline beat (w05) but remains visible, small and not narrated, in the full-width verdict-strip view (w02) and, dimmed, behind the gear popup (w07), because the whole page is shown there. No frame lets me hide it without cropping away the strip.",
+   "Numeric heat-band edges are printed inside the w-policy-a-bands and w-policy-a-cards frames (and the Danger band label). They are never narrated or captioned, but a viewer can read them; the dashboard and the policy page disagree by one degree.",
+   "w04 says 'in Saudi time' on the evidence given in the brief (commits f3e49a1 and 8dfbae9 plus the Los Angeles clock test); the page itself prints no zone label. Delete that phrase if the lead wants no time-zone claim.",
+   "The gear popup frame lists CO2 and CO switches; nothing is said about them (they are weather-station sensors, not the removed gas ones), but a reviewer may want to confirm that is intended.",
+   "The one-lane paths diagram renders an arrow after the fourth step in stage 1 pointing at an empty area before the sink appears in stage 2. This is the builder's layout, not a spec choice. The diagram also sits in the upper half of the frame.",
+   "hyperframes lint reports 19 structural warnings (nested_structure_needs_subcomposition, composition too large) on the generated project; these come from vbuild's output and are not spec problems.",
+   "No tri beat and no DIRECTION badge: this video has no cross-product moment (Connected Products is the only touch) and no non-live claim.",
+   "w-reports-a, w-top-c, w-menu-a and w-policy-a-method are unused (w-top-c is identical to w-reasons-c; the NOAA row is visible in w-policy-a-cards). The dashboard heat card work, rest and water cycle is not narrated on the dashboard; it appears only on screen and in the band-card beat."
+  ],
+  "assumptions": [
+   "Saudi time is stated plainly in w04 using the evidence from the brief (commits f3e49a1 and 8dfbae9, Los Angeles browser clock test); Weather Station pages print no zone label.",
+   "'Data confidence gauge' describes the three-bar icon only; the page does not explain the bars, so the narration claims no more than that Details shows how far to trust the answer.",
+   "Project C (w06) is called only 'another project'; it is a different project with different products on, never presented as the same site.",
+   "Click callouts (View Recommended Steps, gear, Export .xlsx) are demonstrations with 'you can' wording; nothing was clicked, exported, dragged, saved or switched in capture. The gear click callout sits on a frame where the popup is already open.",
+   "The 30-day what-if figures (temperature would have stopped work on eight days, wind on one) are on screen and narrated as 'would have', never as real stoppages.",
+   "Diagram lane text (mesh, gateway, cloud, WakeCap reads and serves) rests on integration-and-devices W01, W03, W04 (live_today yes); Modbus is not mentioned, so no explanation was needed.",
+   "Reports beat uses the Last 7 Days frame because all rows fit one screen; no report values are narrated.",
+   "Words per second 2.35 is an estimate from vbuild; the real run decides the final length."
+  ]
+ },
+ "cross_video_contradictions_mentioning_this_video": [
+  {
+   "videos": "weather-station (w02, w05, w07 openings; w08) vs connected-environment (all tri/crop choices) vs guardrails 7 and the no-names rule",
+   "issue": "The two videos treat the same frames in opposite ways. The umbrella rebuilt scenes as tri crops so that station names and the green 'Last reading was 1 minute(s) ago' line under the offline headline never appear. The Weather video shows both. In the dry render, w02, w05 and w07 each open on the whole page for about half a second, with the Stations list ('Main Plant Weather Station', 'SCC Weather Station') and the green line under the offline station. w08 holds the report tiles with those names ('SCC Weather Station', 'Main Plant Weather Station') for the entire beat. The Weather beatsheet claims these are 'framed out'. The umbrella decided names must be hidden. Weather leaves it as an open question.",
+   "fix": "Decide once for all four. If the names are generic device labels, say so and relax the umbrella. Otherwise mask or crop w08. Start w02, w05 and w07 already zoomed, or from a frame without the Stations list, so the contradicting green line never shows."
+  },
+  {
+   "videos": "weather-station (w11, w12), connected-environment (k01 context)",
+   "issue": "Guardrail 7 says to avoid numeric heat-band edges because the dashboard and policy page disagree by one degree. w11 and w12 carry the numbers on screen: ribbon labels '<25', '25-30', '30-39', 'Danger 39-52', '>=52', and the Danger card header. The w11 callout box encloses them. They are not narrated, but they are readable and larger than the callout labels. The dashboard scale (39-51) is not shown, so the disagreement is hidden from viewers but the numbers are still on screen.",
+   "fix": "Zoom w11 and w12 so the band labels are out of view, or accept the unnarrated edges and record it explicitly in the lead's review."
+  },
+  {
+   "videos": "connected-environment (chapter 2 'NEVER FALSELY SAFE', s01 'never safe') vs weather and lightning videos",
+   "issue": "The chapter bar 'Never falsely safe' is a blanket claim over Weather, Lightning and Gas. The research supports it for Gas (CHECK never SAFE on stale data, G11, live_today unknown) and for Lightning (only green counts, stale is not safe, L05). Weather has no safe state, and the Weather video never makes this claim. The umbrella's own note says the captured gas frame does not carry the safe-wording, yet the gas video has the exact page quote 'Not confirmed safe: 1 detector not reporting' in the wallboard and phone frames. The umbrella could quote the page instead of 'never safe'.",
+   "fix": "Rename the chapter (for example 'What the page will not confirm'). In s01 use the page's own words 'Not confirmed safe' from the gas wallboard crop, or say 'reads Check' without 'never safe'."
+  }
+ ],
+ "wording_inconsistencies": [
+  "Navigation path wording differs. Weather: 'Left rail > Weather Station', 'Left rail > Reports', 'Left rail > Settings > Weather Station'. Lightning: 'Left rail > Lightning'. Gas: 'Left rail > Connected Environment > Gas > Dashboard'. Umbrella: 'Portal left rail > Connected Environment'. 'Left rail' means the portal icon rail in the gas and umbrella videos and the micro-app's own menu in weather and lightning. The captures show weather and gas items inside the Connected Environment menu.",
+  "Umbrella chapter bars 'Connected Environment > Weather Station, Lightning, Gas' (chapters 2 and 3) read as one menu holding all three. No frame has all three. Projects A, B and C each hold different products, and the umbrella itself says 'Switched on per project'.",
+  "Every spec has the same title 'Connected Environment'. The eyebrows differ: Weather 'WEATHER STATION', Lightning 'LIGHTNING . CONNECTED ENVIRONMENT', Gas 'GAS . CONNECTED ENVIRONMENT'. Weather alone drops the umbrella tag.",
+  "Weather lane is labelled three ways. Umbrella: 'WIRELESS MESH . MODBUS STYLE FRAMES', steps 'on-site radio network / decoded and stored / Weather Station readings and status'. Weather video: 'ON-SITE MESH', steps 'on the site / decode and store / WakeCap reads and serves'. Lightning video: 'WIRELESS MESH' with no Modbus. Lightning sensor path wording also differs: umbrella 'A small input module on a mesh node reads Lightning'; lightning video 'A radio node reads the sensor through an input module'. Umbrella uses 'Cloud queues' (plural) and the lightning video 'Cloud queue'.",
+  "Modbus appears only in the umbrella (p01 label, narration, caption, 'no Modbus' for gas). The weather and lightning videos never mention it, and the lightning video's diagram says 'WIRELESS MESH' only. The Modbus explanation is on first use in the umbrella as required and word for word as the guardrail has it. The product videos carry no Modbus line, so a viewer of the Lightning video alone gets no sign of the Modbus framing.",
+  "Gas cadence is hedged differently. Umbrella states it plainly in narration and the diagram: 'detectors report ... about every half hour', 'WakeCap checks it about every minute'. Gas video softens it: 'every minute or so', 'often half an hour apart'. The gas diagram omits the half hour figure that the umbrella diagram has. G03 is live_today unknown. Pick one hedge.",
+  "'Blackline' is first named in the umbrella k04 as page text with no gloss, before the paths section introduces 'vendor'. The gas video glosses it once ('the gas vendor', g11) before the paths diagram. Umbrella viewers meet the name unexplained.",
+  "The acknowledge and close statement is hedged differently. Umbrella k04: 'the page says acknowledging or closing is recorded here, with who and when'. Gas g11 states it plainly. Gas g12 then says the timeline and assignee are not available. Use the same attribution to the page, since the frame shows no who or when column.",
+  "'Here is the answer, in one strip.' is reused almost verbatim in weather w02 and umbrella c01. 'The page names the offline station. Readiness reads Not ready, and lists why' (weather w05), 'One detector is offline, and the page says so. Readiness reads Not ready, and the list names it' (gas g05) and umbrella s01 are three near copies of one sentence. 'You and your team stay in control' (umbrella z01) repeats a04 'People stay in control'.",
+  "Opening hooks all use the same template: a scene, then a question ('Is it safe ...? Where do you look first?', 'The supervisor asks, so what now?', 'What warns the crew first?', 'How would you know?'). Closings all use 'Your next step' (lightning, gas) or 'Next time ... open' (weather) and a 'What is new' list card in three of four. Four videos in a row sound alike.",
+  "DIRECTION framing is consistent in the umbrella (badge, ribbon 'DIRECTION . NOT LIVE TODAY', 'could one day', 'The direction:', 'meant to come from'). The captions of a02 and a04 are in present tense ('An assistant proposes. A person approves.'; 'People stay in control') and the diagram guard bar says 'People stay in control: an assistant proposes, a person approves'. Only the ribbon marks them as direction. a01 and a03 captions begin 'Direction:'. a02 and a04 captions do not.",
+  "Peak value wording varies for the same report: umbrella 'peak heat index and peak wind speed' and 'peaks, day by day'; weather 'highest heat index and wind speed'; page 'Maximum'. 'Vendor' (videos) vs 'manufacturer' (research safe phrases) vs 'Blackline' (page quote).",
+  "'New' is applied unevenly. The umbrella calls the gas status line new (o02). The gas video's own g02 on the same status line is not marked new. The Detectors page (changes: gas-detectors-page, live yes) is not marked new in gas g08. Lightning marks the alarm activity chart 'New' while showing an empty chart.",
+  "Wallboard and phone pages: lightning says 'Neither has a menu link. Both open by address.' Gas says nothing about how to reach them, although the research says the gas pages are also not linked from the rail. The two videos describe the same situation differently.",
+  "Times: weather w04 says 'Saudi time' plainly on commit evidence (the page prints no zone). Lightning says 'Saudi time' with the page's own 'AST, UTC+3'. Gas shows clock times in frames and says nothing. The two on-screen clocks agree (15:22 on both products), which supports the claim, but the evidence basis differs between the two videos.",
+  "Heat index values differ across videos and are all on screen unspoken: 49.5 (weather, umbrella tri), 49.7 (umbrella c01), 50.1 (weather policy), 50.2 (umbrella k01), 41.5 (Project C). The green line 'Last reading was 0 minute(s) ago' next to an online station in the umbrella o02 and 'Last reading was 1 minute(s) ago' in weather w06 are consistent with their frames.",
+  "Weather w07 puts a click callout and cursor on the gear while the Select parameters popup is already open, so the 'click' demonstration and the frame disagree. The chapter bar shows 'Weather Station > gear icon' (a click path) over a page the viewer is told only 'you can' use."
+ ],
+ "coverage_of_user_brief": [
+  {
+   "requirement": "Umbrella over all environment products (Weather Station, Lightning, Gas under one product)",
+   "status": "covered",
+   "where": "connected-environment u01 to u03, o01 to o03, p04 and the umbrella diagram",
+   "note": "Strong animated canopy, three product cards, four honest chips and a three-project tri. The chips are scoped as the guardrail allows (one backend, one menu and header, same view permission, switched on per project). No frame shows all three in one portal, so the 'one place' idea rests on the diagram and the tri. The chapter bars imply one menu with all three, which is a weak spot. 'One platform' is a loose label that research X01 approves, but it needs the chips next to it each time."
+  },
+  {
+   "requirement": "Manage plus a detailed eye on the site",
+   "status": "covered",
+   "where": "connected-environment o01 (Connected Products), o02, c01, g01, c02, k01; chapters 'A detailed eye' and 'Control'",
+   "note": "'Manage' is shown through Connected Products and the Safety Policy. 'Eye' is shown by the answer strip, steps, gas overview and max report. The details drawer, gas detectors, wallboard and phone, and the Lightning alarm history were cut for length, so the 'detailed' part is thin. All three products are not shown as equals: Weather gets two chapters, Lightning one beat (s03), Gas two."
+  },
+  {
+   "requirement": "Control what happens when something happens",
+   "status": "weak",
+   "where": "connected-environment u04, k01, k04",
+   "note": "Honestly scoped but narrow. Control is the weather stop-work limits plus recommended steps, and gas Close recorded in WakeCap only (which ends the Control chapter on a limit). Lightning has no control beat (the cabinet lights come first), and gas limits are read-only. A viewer can read 'Set limits' on the team card as covering all three products although the narration says weather. Nothing shows a response to an event across products. Possibly acceptable given what is true. Say so explicitly in the narration if kept ('control today is weather limits and recorded actions')."
+  },
+  {
+   "requirement": "Feeds a future AI agent, honestly framed",
+   "status": "covered",
+   "where": "connected-environment a01 to a04 and the agent diagram, DIRECTION badge and ribbon",
+   "note": "Framing follows guardrail 4 well: 'could one day', 'Building blocks exist for Weather Station only, not Lightning or Gas', 'No assistant runs on any site today', 'A person approves each proposal', 'Safety answers are meant to come from fixed rules'. No tool count, no agent screens, no claim of control. Fixes needed: a01 'Everything lands in one platform' and the column items 'Gas readings', 'Alerts and history' (see contradictions). a02 and a04 captions are in present tense with only the ribbon marking them as direction. About 28 seconds of text-only diagrams at the end. The brief's 'control everything' is correctly not claimed."
+  },
+  {
+   "requirement": "Multiple integration paths: Modbus-style mesh and the vendor-cloud black box for gas",
+   "status": "covered",
+   "where": "connected-environment p01 to p04 (paths diagram, three lanes); gas g14, g15; lightning l12, l13; weather w16, w17",
+   "note": "Umbrella explains Modbus on first use in the required wording, shows the Lightning input module and separate queue, and names gas as 'a black box to us. No mesh, no Modbus.' The gas video repeats the black-box path with 'vendor cloud only'. Cadence is stated plainly in the umbrella (G03 unknown live). Weather and lightning videos do not mention Modbus at all, so the umbrella alone carries that requirement. The lightning lane label drops 'Modbus style'. The gas video does not say 'no mesh, no Modbus' although a director note claims it."
+  },
+  {
+   "requirement": "Screens have new changes: each video shows its new screens",
+   "status": "weak",
+   "where": "weather: gear, Reports, Safety Policy, Connected Products (w07 to w14). lightning: radii map, alarm activity, settings, wallboard and phone (l05 to l11). gas: overview, status line, wallboard, phone, detectors, alerts (g02 to g12). umbrella: o01, o02, g01, c02, k01, k04",
+   "note": "Weather, Lightning and Gas each show most of their new screens, with 'New' captions and a list card. Gaps: (1) the umbrella shows no new Lightning screen at all and its 'What is new' list has no Lightning item, although the Lightning assets exist in the lightning folder. (2) The umbrella and gas videos do not show the gas wallboard, phone or Detectors page as new. (3) The new Lightning radii map is blurred so heavily the rings are not visible, so l05 and l06 show a white void and a blur. (4) 'New' is applied inconsistently across videos (see wording). (5) The lightning refreshed tile is never labelled."
+  },
+  {
+   "requirement": "Videos are stronger than before: story, visuals and voice",
+   "status": "weak",
+   "where": "all four, mostly weather w09 to w13, gas g08 to g13, lightning l05 to l11, umbrella tri scenes and diagrams",
+   "note": "Story is clearly stronger. Each has a concrete hook and one thesis ('A heat number is not an answer', 'what warns the crew first', 'silence is not calm', 'where do you look first'). Spec check passes and lengths are 2:22 to 3:21 at the tool's pace, with the umbrella and weather at the upper limit. Visuals are improved with zooms, spotlight callouts and diagrams, but still weak in places. Tri scenes (umbrella o03, s01, c02; lightning l11) leave the lower half black. Path diagrams (weather w16 to w17, lightning l12 to l13, gas g14 to g15) are a thin strip in a large empty frame. Weather has four consecutive dense Settings pages (about 40 s), gas has six table-heavy beats, the lightning map beats show a blur. The four openings and closings share one template, so the set sounds samey. Voice cannot be judged without the real run, and word counts are at the 2.5 minute ceiling so real pace may overrun."
+  }
+ ]
+}

@@ -1,0 +1,406 @@
+{
+ "video": "lightning",
+ "remaining_findings_all_severities": [
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l09a, l09b, l06",
+   "severity": "minor",
+   "issue": "For about 13 s the screen shows the page's own sentence 'These are the radii the alerting service uses on this project. A change applies to one device only, and takes effect on its next reading.', plus the heading 'Alerting radii' and the button 'Edit alerting radii'. The narration says 'Read it as a reference' (l06) and 'buttons to edit them' (l09b). Research L10 says the backend treats radii as display-only, and its open question 3 (product owner picks one story) is unresolved. The viewer hears 'reference' and reads 'alerting service uses'. The video's own words are clean: no 'alerting' in narration, caption or callouts.",
+   "evidence_checked": "Rendered frames q2-l09ae.png and q2-l09be.png; l-settings-b-all.txt; integration-and-devices#L10 caveat and open_questions[2].",
+   "suggested_fix": "Start the l09b zoom below the intro sentence (y about 222) and keep the l09a zoom on the left nav so the sentence is not legible. Or accept it as verbatim page text and escalate L10 to the product owner before the real run."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l13",
+   "severity": "minor",
+   "issue": "'The gateway sends each message to the cloud.' is an absolute. W10 says tags with no registered handler are acknowledged and dropped. L08 says packets from an unassigned lightning device are kept as audit only with no status. 'Each message' also sits beside 'Frames that cannot be read' without defining frames, so the noun changes mid-beat.",
+   "evidence_checked": "spec l13 narration; integration-and-devices#L02, L08, W10.",
+   "suggested_fix": "'The gateway sends its messages on to the cloud. Readable ones go to a Lightning queue. Messages that cannot be read are set aside separately.' Keep one noun throughout."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l13",
+   "severity": "minor",
+   "issue": "The evidence line says L02 live_today yes but omits L02's caveat that queue and rule existence were not verified live (open question 8). The narration states queue routing plainly. The brief allows 'set aside in a separate queue' and the narration avoids 'never lost', so the wording is acceptable. The evidence entry should still carry the caveat for the lead.",
+   "evidence_checked": "spec l13 evidence; integration-and-devices#L02 caveats; open_questions[7].",
+   "suggested_fix": "Add 'queue existence not verified live; wording is the design, not a live check' to the evidence entry."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l14",
+   "severity": "minor",
+   "issue": "The 'What is new' card lists the 24 hour state history (under Lightning settings) and the wallboard and phone view as new. changes.json shows the 24 h history existed on the main screen from the first Lightning tag and was moved to Settings (N02 says 'moved'). The wallboard and phone view date from the first Lightning tag (2026-09-03) and were redesigned later. 'New' holds only against the assumed 9 Aug baseline (changes open question 1). 'Refreshed' has no before-frame; the reviser acknowledged this and kept it.",
+   "evidence_checked": "changes#lt-settings, lt-wallboard-mobile, lt-screen; N02; changes baseline and open_questions[0].",
+   "suggested_fix": "Item 3 sub: 'Radii, location line, state history moved here'. Lead to confirm the baseline of 'new'."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l07",
+   "severity": "minor",
+   "issue": "The Alarm history caption 'Every YELLOW, ORANGE or RED interval in this window' is legible on screen in l07, at both start and end. The beatsheet says ORANGE is out of shot because the l08 zoom starts to its right, which is true for l08 only. L05 says do not show or talk about an orange state.",
+   "evidence_checked": "q2-l07e.png, s2-l07-2.png, s2-l07-10.png; beatsheet 'Left out on purpose'; integration-and-devices#L05 caveat.",
+   "suggested_fix": "Move the l07 zoom up so the history card is out of shot (chart and summary only), or correct the beatsheet note."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l02, l05, l07",
+   "severity": "minor",
+   "issue": "The Held for box (117h 29m since 2026-09-29) is legible for about the first second of l02 (full frame during the glide in), l05 and l07. It is never narrated and every held zoom excludes it, so this is brief. Guardrails 6 and 10 treat the figure as a stale value that contradicts the 7h 36m GREEN row. The beatsheet already admits it can 'flash past'.",
+   "evidence_checked": "s2-l02-2.png, s2-l05-2.png, s2-l07-2.png (0.2 s after beat start); s2-l02-10.png, s2-l05-10.png, s2-l07-10.png (1.0 s, gone).",
+   "suggested_fix": "Optional: start each of these beats on a tight rect so the full frame never shows."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l06",
+   "severity": "minor",
+   "issue": "'Read it as a reference' is the video's own advice for the map. It rests on L10 and the tile caption 'Zone reference only'. The map card prints no such line, and the Settings page says the opposite (see first finding). It works as a hedge, but nothing on screen supports it.",
+   "evidence_checked": "l-radii-map.txt; integration-and-devices#L10.",
+   "suggested_fix": "Replace with 'The page marks it Temporary.' Or keep it and resolve L10 first."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l09b",
+   "severity": "minor",
+   "issue": "'buttons ... to set the sensor's location' presents Set location as a working control. L11 is live_today unknown (backend location write merged 4 Oct, deploy state unknown). Mitigation: the capture shows a Location line and a rendered map, so a location exists, and nothing is claimed to be clicked.",
+   "evidence_checked": "spec l09b evidence; integration-and-devices#L11 caveats; changes open_questions[4]; l-settings-b-all.txt.",
+   "suggested_fix": "'...with two buttons: Edit alerting radii and Set location.' This names them and claims no outcome. Or leave as is."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l05",
+   "severity": "minor",
+   "issue": "The caption and narration say 'beside the tile', but the zoom shows only the map card on a white field, so the viewer cannot verify 'beside'. The rings are not visible in the blurred map; the narration correctly points at the legend. The claim is supported by the full frame and changes#lt-radii-map.",
+   "evidence_checked": "q2-l05e.png, s2-l05-10.png; l-radii-map.png; changes#lt-radii-map.",
+   "suggested_fix": "Optional: begin l05 on the wider frame for a second, or drop 'beside the tile' from the caption."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l15",
+   "severity": "minor",
+   "issue": "The h1 'Find it in Settings' has no antecedent for 'it' on the closing card. The sub-line gives the route. The step itself is supported (N03, settings-area).",
+   "evidence_checked": "spec l15; changes#settings-area visible_when.",
+   "suggested_fix": "'Open Settings, then <em>Lightning</em>'."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l09a",
+   "severity": "minor",
+   "issue": "The evidence cites weatherstation:manage-lightning-settings (research N03, L09, settings-area). The weather-station CLAUDE.md, verified 2026-09-15, says the Lightning write needs weatherstation:edit or project_builder:manage and that no per-product scope exists. Either reading supports the narrated claim 'its own permission, separate from viewing', so the narration is safe. The permission string must not appear in any customer-facing text.",
+   "evidence_checked": "spec l09a narration and evidence; integration-and-devices#X02, N03, L09; /Users/admin/wc/weather-station/CLAUDE.md permission bullets.",
+   "suggested_fix": "No change to the script. The lead may confirm the current grant name before any written companion text."
+  },
+  {
+   "lens": "claims-vs-evidence (pass2)",
+   "beat": "l10",
+   "severity": "minor",
+   "issue": "The callout labels 'A gap' and 'Gap' are redundant and mark only two of four Data unavailable rows. 'Data unavailable' is not explained (the device stopped checking in). It stays honest: the narration says only that gaps stay visible and never says the data is continuous.",
+   "evidence_checked": "q2-l10e.png; l-settings-b-all.txt; observations.md surprises; integration-and-devices#L06 safe_phrase.",
+   "suggested_fix": "Label 1 'Data unavailable', label 2 'Another gap'. Optionally add 'the device stopped reporting for a while' to the narration."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass2)",
+   "beat": "l02, l05, l07",
+   "severity": "minor",
+   "issue": "The Held for box (117h 29m since 2026-09-29) still shows for roughly 0.5 to 1 s while the camera glides in from the title card (l02), from the tile to the map (l05) and from the map to the chart (l07). It is never narrated or called out, and every held zoom excludes it, so this is a flash only. Guardrail 6 treats the number as unreliable.",
+   "evidence_checked": "Frames cut at +0.05, +0.25, +0.5, +0.8 and +1.2 s after each beat start (glide.png in .work/verify-hygiene); spec zoom rects; l-top-b y626-715.",
+   "suggested_fix": "Optional. Accept it, or have the lead supply a masked copy of the frame. No spec change is needed."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass2)",
+   "beat": "l09a, l09b, l10",
+   "severity": "minor",
+   "issue": "On-screen page text still carries the L10 conflict. The heading 'Alerting radii', the sentence 'These are the radii the alerting service uses on this project. A change applies to one device only, and takes effect on its next reading.' and the button 'Edit alerting radii' are visible in the l09a and l09b frames. Narration and captions no longer say 'alerting', so the earlier finding is resolved there. This is the page's own text, not an invented claim.",
+   "evidence_checked": "p-l09a and p-l09b preview frames; l-settings-b-all.png; integration-and-devices#L10 (display-only, open question 3).",
+   "suggested_fix": "Accept it, or start the l09b zoom lower (about y 215) so the sentence is out of shot. Keep the narration as is."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass2)",
+   "beat": "l11",
+   "severity": "minor",
+   "issue": "The wallboard tile crop cuts the page caption at the right edge mid-word ('nothi'), and the phone tile crop ends inside the chips. This is style only. No name, map or forbidden text is exposed.",
+   "evidence_checked": "p-l11c.png; spec crop [10,10,840,889].",
+   "suggested_fix": "Widen the wallboard crop to about x 10-900, or crop above the caption line, and keep the same aspect."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass2)",
+   "beat": "l03 to l08",
+   "severity": "minor",
+   "issue": "The scene header prints 'CLICK Left rail > Lightning' on every shot beat, including l03 to l08 where nothing is clicked. It reads as a navigation hint, so it does not breach guardrail 9. l09a is the only real demonstration, and its narration says 'You can open'. On a read-only capture the word CLICK could still be misread as an instruction.",
+   "evidence_checked": "Header strip of every preview frame; SPEC.md chapters paragraph.",
+   "suggested_fix": "None required, since this is vbuild.py behaviour. Optionally drop CLICK from the chapter path if the builder allows."
+  },
+  {
+   "lens": "HYGIENE, SAFETY and HONESTY (pass2)",
+   "beat": "l14",
+   "severity": "minor",
+   "issue": "'Refreshed' wallboard and phone view, and the 'new' baseline, rest on commit text only (changes#lt-wallboard-mobile live_in_1_0_5 yes). There is no before-frame, and changes open question 1 on the baseline is unresolved. The item sub-line 'CSV export' names a button that is greyed out in the capture.",
+   "evidence_checked": "spec l14 narration and items; changes.json lt-wallboard-mobile and lt-settings; l-hist-b Export CSV greyed.",
+   "suggested_fix": "Optional. Say 'Open the wallboard and phone view' and change the item sub-line to 'Table and CSV button'."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l08",
+   "severity": "minor",
+   "issue": "Callout order does not follow the narration. The voice says 'no alarms were raised' first, then Export CSV, then Saudi time, but callouts are numbered 1 Greyed out, 2 Saudi time, 3 Nothing raised, so the empty-state message is the last to appear. The crop also cuts off the 'Alarm history' heading.",
+   "evidence_checked": "v2-l08a.png and v2-l08e.png frames, spec l08 callout order, box-l08.png drawbox overlay (all three rects are on the right elements)",
+   "suggested_fix": "Make Nothing raised callout 1, then Greyed out, then Saudi time. Widen the zoom left to about x 700 so the Alarm history heading is in shot."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l12, l13",
+   "severity": "minor",
+   "issue": "About 20 s of near-static diagram. l12 shows the whole lane at once, including 'Cloud queue / unreadable set aside', while the voice is on the input module. A trailing arrow after Lightning points at empty space until l13 adds the sink. The 'set aside separately' idea is only a subtitle, not a visible branch. Large empty areas. This is a vbuild layout property, as the reviser said, and the caption now helps muted viewers.",
+   "evidence_checked": "v2-l12a/e and v2-l13a/e frames; timeline l12 97.94, l13 108.26, l14 118.57",
+   "suggested_fix": "Accept. Optionally trim a few words from l12 and l13, or note it as a vbuild improvement (reveal per step, no trailing arrow before the sink)."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l05, l06",
+   "severity": "minor",
+   "issue": "About 60 percent of the stage is blank white for 19 s because the map card sits at the far right edge. The reviser's rejection is correct: the camera clamps, and a wider shot would show the Held for box. The l05 narration and caption say 'beside the tile', but the tile is not in shot. The Legend label sits over the lower-left of the blurred map, and the callout border crosses the first line of the legend text.",
+   "evidence_checked": "v2-l05a/e, v2-l06a/e frames; box-l05.png (map and legend rects land correctly)",
+   "suggested_fix": "Accept the white area. Reword to 'New: a radii map' or 'to the right of the tile'. Move the Legend label to pos r or b, or nudge its rect down 2 px."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l02, l05, l07",
+   "severity": "minor",
+   "issue": "The Held for box (117h 29m, since 2026-09-29) shows for about 1 s at the start of l02 (full l-top-b frame before the zoom settles) and during the l05 to l07 camera glide. All held zooms exclude it and it is not narrated, so this is a glimpse, not a claim. The reviser's unresolved note is accurate.",
+   "evidence_checked": "glide1.png and glide2.png strips (frames at 7.4 to 8.4 s and 30.7 to 50.4 s)",
+   "suggested_fix": "Accept, or ask the lead for masked frames."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l07",
+   "severity": "minor",
+   "issue": "The visible Alarm history caption still reads 'YELLOW, ORANGE or RED' in l07 and the glides. ORANGE is a state the video otherwise avoids. It is small text and not narrated.",
+   "evidence_checked": "v2-l07a.png, v2-l07e.png",
+   "suggested_fix": "Optionally tighten the l07 zoom so the caption line falls outside the stage, or accept."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l09a, l09b, l10",
+   "severity": "minor",
+   "issue": "Small cropping blemishes. In l09a the cursor covers the last letters of 'Settings' and clips 'Lightning', and two cursors show at the start. In l09b an orange nav sliver sits at the left edge and a black header band runs across the top. In l10 the 'Set location' and 'Export C' buttons are cut at the top-right edge. Nothing essential is hidden and all callouts are on the right elements.",
+   "evidence_checked": "v2-l09aa/ae, v2-l09ba/be, v2-l10a/e, box-l09a.png",
+   "suggested_fix": "Optionally shift the l09b zoom x right by about 40 px and the l10 zoom x left by about 30 px."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l02 to l10",
+   "severity": "minor",
+   "issue": "Nine consecutive screenshot beats (about 76 s) on three images, with small camera moves, for example l03 to l04 and l05 to l06 are near-identical framings. Every beat has its own callouts or shift, and there are never more than 2 consecutive no-movement beats, but the stretch reads as monotone.",
+   "evidence_checked": "timeline.json and all beat-start+1.6s frames",
+   "suggested_fix": "Optionally add a bigger zoom change between l03 and l04, or place a short card or the tri scene between l08 and l09a."
+  },
+  {
+   "lens": "visual-timing-craft (pass2)",
+   "beat": "l11",
+   "severity": "minor",
+   "issue": "The tri scene is top-heavy, with about 170 px of black below the tiles. Wallboard tile text is tiny, and only one tile shows for the first ~3 s. Labels do not collide and All Clear is whole in all three tiles. The reviser's rejection is sound.",
+   "evidence_checked": "v2-l11a.png, v2-l11e.png",
+   "suggested_fix": "Accept."
+  }
+ ],
+ "last_reviser_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/lightning/final-dry.mp4",
+  "changed_beats": [
+   "l01 (narration and card h1 changed to 'what warns the crew first')",
+   "l02 (zoom to the banner text, callout on the banner, label above)",
+   "l03 (WakeCap treats only green as safe; All Clear is what the page showed)",
+   "l04 (rings called configured thresholds; distance numbers left on the chips only)",
+   "l05 (map card zoom, Radii map and Legend callouts, narration points at the legend)",
+   "l06 (no promise about Management Maps; position entered by hand; reference)",
+   "l07 (counts yellow and red alarms; camera moved right of the Held for box)",
+   "l08 (callout renamed Nothing raised, shorter caption, tighter zoom that excludes ORANGE and Held for)",
+   "l09 split into l09a (click Settings then Lightning, own permission) and l09b (radii and the two buttons, no 'alerting')",
+   "l10 (Also in Settings opener, whole table headings, tighter callout labels)",
+   "l11 (neither has a menu link, open by address; wallboard crop no longer clips All Clear)",
+   "l12 (shorter, Modbus dropped, caption added, title HOW LIGHTNING REACHES THE PAGE)",
+   "l13 (gateway sends to the cloud; readable go to a Lightning queue; unreadable set aside separately; caption added)",
+   "l14 (verbs through-line, eyebrow NEW AROUND LIGHTNING, item subs corrected)",
+   "l15 (next step is open Settings then Lightning with the settings permission; no 'check radii')"
+  ],
+  "resolved": [
+   "claims l15 major: next step no longer says check radii against the site; now 'Find it in Settings' with the settings permission caveat",
+   "claims l09 minor: 'alerting' dropped from narration, caption and callout; split into two beats",
+   "claims l04 minor: rings described as configured thresholds, numbers not read aloud",
+   "claims l06 minor: Management Maps sentence left on screen only; 'Read it as a reference' kept (L10)",
+   "claims l13 minor: gateway to cloud, readable to Lightning queue, unreadable set aside separately",
+   "claims l12 minor: title and narration reworded (radio node reads the sensor through an input module)",
+   "claims l14 minor: eyebrow, item 3 and 4 subs fixed",
+   "claims l03 minor: 'WakeCap treats only the green state as safe to work'",
+   "claims l05 minor and visual l05 major: narration says the legend names the rings; zoom is on the map card with Radii map and Legend callouts; tile and Held for out of shot",
+   "claims l07 minor: 'counts yellow and red alarms. In this window, the count is zero'",
+   "claims l08 and hygiene l08 minor: callout Nothing raised; caption shortened so it no longer collides with the capture label; ORANGE text cropped out",
+   "claims l11 minor: 'Neither has a menu link. Both open by address'; 'phone width view'",
+   "claims l01 minor: 'What warns the crew first?'",
+   "hygiene l10 minor: 'Also in Settings, a twenty four hour state history'",
+   "hygiene held-for and visual l07/l08: all zooms framed to keep the Held for box out of shot",
+   "visual l10 major: zoom shows the full heading, all five columns and whole timestamps",
+   "visual l12 major: narration trimmed to 24 words, Modbus dropped, caption added",
+   "visual l02 minor: zoom on the banner, label no longer covers Readings as of, no right-edge bleed",
+   "visual l09 minor: split into two beats with their own camera moves",
+   "visual l11 minor: wallboard crop fixed, aspect kept equal",
+   "visual l14 minor: verb through-line instead of the noun list",
+   "visual l12 minor: Modbus no longer used before it is defined (removed)",
+   "visual length minor: 322 words, 141 s, down from 339 words and 148.5 s"
+  ],
+  "rejected": [
+   {
+    "finding": "visual l06 minor: landscape rect so the map card is centred and no empty white area is left of it",
+    "why": "The map card sits at the far right edge of the page (x 1456 to 1902). The camera clamps at the frame edge, so the card cannot be centred. Showing the tile instead would bring the Held for box into shot. Left white area accepted and logged as an assumption."
+   },
+   {
+    "finding": "visual l11 minor: taller tile crops so the tri tiles fill the stage",
+    "why": "The main-page crop cannot grow taller without including the Held for box (y 626 onward). All three crops must share one aspect, so the black space under the tiles is a layout property; the wallboard crop was fixed instead."
+   },
+   {
+    "finding": "visual vbuild: zoom s override looks clamped, wide rects give no camera movement",
+    "why": "Not a spec defect. The s override is applied as given in camera(); the wide-rect effect was avoided by using tighter rects and explicit s values."
+   },
+   {
+    "finding": "visual l12 suggestion: move the Modbus definition into a lane badge or caption",
+    "why": "Modbus was removed from the narration and diagram instead, so nothing needs defining. The shared mesh transport detail is not needed for the story."
+   },
+   {
+    "finding": "claims l14 item 1: 'refreshed' wallboard has no before-frame",
+    "why": "Partly kept: changes#lt-wallboard-mobile (live_in_1_0_5 yes) documents the redesign, so 'refreshed' stays in the narration. The card item now says only 'Opened by address'."
+   }
+  ],
+  "unresolved": [
+   "The Held for box (117h 29m) is still visible in the l-top-b full frame during camera glides and no masked frame exists; every held zoom excludes it.",
+   "The map is blurred so heavily that the rings are not visible in it. Narration points to the legend text and the caption says Map blurred. A frame with rings over a fully masked base map would make l05 and l06 stronger.",
+   "l05 and l06 show a large white area left of the map card (page layout, tile must stay out of shot).",
+   "Diagram beats l12 and l13 leave large empty areas and l12 shows a trailing arrow after Lightning until l13; both are vbuild.py layout properties, not spec issues.",
+   "tri scene l11 leaves black space under the tiles (layout property of vbuild.py).",
+   "Real voice may run slower than 2.35 words per second; at 322 words there is about 10 seconds of margin before 2:30. First cut candidates: the permission sentence in l09a and the l14 narration.",
+   "Open research questions worked around: what the radii control (L10), whether the location write is deployed (L11), staleness 3x vs 4x, queue and dead-letter queue existence not verified live. No vbuild.py bug found."
+  ],
+  "check_clean": true,
+  "dry_render": "Rendered with --dry --render: final-dry.mp4, 141.2 s, 9 scenes, 0 lint errors (11 benign hyperframes structure warnings). --check prints beats=16 words=322 estimated ~140 s with no warnings or errors.",
+  "frames_inspected": 40
+ },
+ "director_report": {
+  "video": "/Users/admin/wc/weather-station/release-kit/four-videos/lightning/final-dry.mp4",
+  "spec_path": "/Users/admin/wc/weather-station/release-kit/four-videos/lightning/spec.json",
+  "beatsheet_path": "/Users/admin/wc/weather-station/release-kit/four-videos/lightning/beatsheet.md",
+  "beats": 15,
+  "words": 339,
+  "est_seconds": 148,
+  "check_clean": true,
+  "dry_render": "Rendered with --dry --render: final-dry.mp4, 148.5 s, 9 scenes, 0 lint errors (11 benign hyperframes structure warnings: single-file composition, nested timeline elements). --check prints no warnings or errors.",
+  "frames_inspected": 32,
+  "open_issues": [
+   "The Held for box (117h 29m) is on screen in l-top-b, l-radii-map and l-hist-b frames, so it is visible in beats l05, l07 and l08 as part of the full page. It is never narrated, called out or zoomed on, and the l02 to l04 zooms are framed to exclude it. If the reviewer wants it gone entirely, a masked version of those frames is needed (not edited here).",
+   "The map is blurred so heavily that the red and yellow rings are not visible in it. Narration points to the legend text instead and the caption says Map blurred. A frame with rings visible over a fully masked base map would make beats l05 and l06 stronger, but none exists.",
+   "The tri scene (l11) leaves the lower half of the screen black because the tri layout is top-aligned. Crops were enlarged to a portrait ratio to reduce this; the remaining empty space is a layout property of vbuild.py, not a spec issue.",
+   "Single-lane paths diagram (l12, l13) also leaves large empty areas by design; stage 1 shows the whole lane at once, so the narration for the lane is carried by l12 and l13 over a static lane (stage 2 only adds the sink).",
+   "Total is 339 words, estimated 2:28 (dry render 148.5 s): at the top of the 1:50 to 2:30 range. If the real voice runs slower than 2.35 words per second it may pass 2:30; the first cuts to make would be the 'It needs its own permission' sentence in l09 and the Modbus explanation sentence in l12 (the latter is required by the Modbus first-use rule).",
+   "Open research questions that the spec works around rather than resolves: (a) what the lightning radii really control (narration says 'radii shown here' and 'reference'); (b) whether the backend location write is deployed (Set location is named, never claimed to work); (c) staleness multiplier 3x vs 4x (never mentioned); (d) queue and dead-letter queue existence not verified live (narration says 'set aside separately', never 'never lost').",
+   "No vbuild.py bug found. Note for the lead: label_xy estimates label width at 15 px per character, so pos l/r labels float further from a rect than the real label width suggests; short labels were used to compensate."
+  ],
+  "assumptions": [
+   "Wallboard and phone view are described only as opening by address (capture navigated by URL; changes.json says neither is linked from the rail). No menu link is claimed.",
+   "Only the green state means safe to work is stated as the page's own rule; All Clear is described as what this page showed when captured. The video never says a site is safe.",
+   "Settings > Lightning needing its own permission, separate from viewing, rests on changes#settings-area and integration-and-devices#N03 and #X02.",
+   "Export CSV is only called greyed out (frame shows it disabled with no rows); no claim about when it becomes enabled.",
+   "Set location is named but never claimed to work, because the backend location write may not be deployed.",
+   "Saudi time is used in narration; the page text AST, UTC+3 is the evidence. Click callout on Settings > Lightning is a demonstration; nothing was clicked in capture.",
+   "Modbus style frames, the input module on a mesh node, the gateway and the separate queue for unreadable frames come from integration-and-devices#L01, #L02, #L03 and #W10 (live_today yes); Modbus is explained once in the standard wording. ADAM is not named; it is called an input module.",
+   "The 24 hour history is described as showing gaps as gaps; the narration never says the data is continuous, since many short Data unavailable rows appear even at All Clear.",
+   "No beat carries the DIRECTION badge because nothing in this video is a direction item.",
+   "The what-is-new list includes the wallboard and phone view as refreshed (redesigned to match the new tile, changes#lt-wallboard-mobile live yes), not as brand new screens."
+  ]
+ },
+ "cross_video_contradictions_mentioning_this_video": [
+  {
+   "videos": "connected-environment (s03) vs lightning (l03)",
+   "issue": "Umbrella s03 says 'The page says only green means safe to work' (caption: 'only green means safe to work'). Lightning l03 says 'WakeCap treats only the green state as safe to work' and its own notes say the rule is not printed on the page (research L05). The page only prints 'Safe to work' on the All Clear badge. Same fact, opposite attribution.",
+   "fix": "Use the Lightning wording in the umbrella: 'WakeCap treats only the green state as safe to work. The page showed All Clear when captured.' Change the s03 caption to match."
+  },
+  {
+   "videos": "lightning (l09a, l09b, l10) internal, vs l04 and research L10",
+   "issue": "The Lightning video says the rings and radii are 'reference only'. The l09b zoom puts the Settings page heading on screen: 'Alerting radii. These are the radii the alerting service uses on this project. A change applies to one device only, and takes effect on its next reading.' Callouts say 'Radii' and 'Two buttons', and narration says buttons 'to edit them'. Research L10 says the backend treats radii as display-only. The screen therefore contradicts the narration and the l04 'reference only' message.",
+   "fix": "Crop l09b to the value box and buttons so the 'alerting service uses' sentence is off screen. Or leave the settings radii beat out. Keep 'radii' and 'reference' wording."
+  },
+  {
+   "videos": "lightning (l06 callout, l09b, l10 frames) vs the brief's no-expansion rule",
+   "issue": "The beatsheet says 'Set manually until Management Maps supports lightning sensor locations' stays on screen but is not read aloud, because read aloud it sounds like a promise. In l06 the callout 'Entered by hand' puts a spotlight box around exactly that sentence. The sentence is also readable in l09b and l10. It implies a future capability.",
+   "fix": "Put the l06 callout only on the 'Temporary' badge, and crop l09b and l10 below the sentence. Or accept it as page text in the lead's decision and record that."
+  },
+  {
+   "videos": "lightning (l02, l03 openings, settled l05/l07 frames) and connected-environment (s03 opening)",
+   "issue": "The 'Held for' box (guardrail 6: two clocks disagree, do not narrate) is visible. It flashes during the camera glide at the start of l02, l03 and l05, and again at the start of the umbrella's s03. The two videos show different values: lightning 117h 29m and umbrella 117h 31m. The umbrella assumptions say the box is never on screen except for the one second glide. It is also in the lightning wallboard, tri and history frames.",
+   "fix": "Start scenes already zoomed past the box, or use masked or cropped copies of the frames. Do not rely on 'nothing narrated' when the box appears twice with two numbers."
+  },
+  {
+   "videos": "connected-environment (chapter 2 'NEVER FALSELY SAFE', s01 'never safe') vs weather and lightning videos",
+   "issue": "The chapter bar 'Never falsely safe' is a blanket claim over Weather, Lightning and Gas. The research supports it for Gas (CHECK never SAFE on stale data, G11, live_today unknown) and for Lightning (only green counts, stale is not safe, L05). Weather has no safe state, and the Weather video never makes this claim. The umbrella's own note says the captured gas frame does not carry the safe-wording, yet the gas video has the exact page quote 'Not confirmed safe: 1 detector not reporting' in the wallboard and phone frames. The umbrella could quote the page instead of 'never safe'.",
+   "fix": "Rename the chapter (for example 'What the page will not confirm'). In s01 use the page's own words 'Not confirmed safe' from the gas wallboard crop, or say 'reads Check' without 'never safe'."
+  }
+ ],
+ "wording_inconsistencies": [
+  "Navigation path wording differs. Weather: 'Left rail > Weather Station', 'Left rail > Reports', 'Left rail > Settings > Weather Station'. Lightning: 'Left rail > Lightning'. Gas: 'Left rail > Connected Environment > Gas > Dashboard'. Umbrella: 'Portal left rail > Connected Environment'. 'Left rail' means the portal icon rail in the gas and umbrella videos and the micro-app's own menu in weather and lightning. The captures show weather and gas items inside the Connected Environment menu.",
+  "Umbrella chapter bars 'Connected Environment > Weather Station, Lightning, Gas' (chapters 2 and 3) read as one menu holding all three. No frame has all three. Projects A, B and C each hold different products, and the umbrella itself says 'Switched on per project'.",
+  "Every spec has the same title 'Connected Environment'. The eyebrows differ: Weather 'WEATHER STATION', Lightning 'LIGHTNING . CONNECTED ENVIRONMENT', Gas 'GAS . CONNECTED ENVIRONMENT'. Weather alone drops the umbrella tag.",
+  "Weather lane is labelled three ways. Umbrella: 'WIRELESS MESH . MODBUS STYLE FRAMES', steps 'on-site radio network / decoded and stored / Weather Station readings and status'. Weather video: 'ON-SITE MESH', steps 'on the site / decode and store / WakeCap reads and serves'. Lightning video: 'WIRELESS MESH' with no Modbus. Lightning sensor path wording also differs: umbrella 'A small input module on a mesh node reads Lightning'; lightning video 'A radio node reads the sensor through an input module'. Umbrella uses 'Cloud queues' (plural) and the lightning video 'Cloud queue'.",
+  "Modbus appears only in the umbrella (p01 label, narration, caption, 'no Modbus' for gas). The weather and lightning videos never mention it, and the lightning video's diagram says 'WIRELESS MESH' only. The Modbus explanation is on first use in the umbrella as required and word for word as the guardrail has it. The product videos carry no Modbus line, so a viewer of the Lightning video alone gets no sign of the Modbus framing.",
+  "Gas cadence is hedged differently. Umbrella states it plainly in narration and the diagram: 'detectors report ... about every half hour', 'WakeCap checks it about every minute'. Gas video softens it: 'every minute or so', 'often half an hour apart'. The gas diagram omits the half hour figure that the umbrella diagram has. G03 is live_today unknown. Pick one hedge.",
+  "'Blackline' is first named in the umbrella k04 as page text with no gloss, before the paths section introduces 'vendor'. The gas video glosses it once ('the gas vendor', g11) before the paths diagram. Umbrella viewers meet the name unexplained.",
+  "The acknowledge and close statement is hedged differently. Umbrella k04: 'the page says acknowledging or closing is recorded here, with who and when'. Gas g11 states it plainly. Gas g12 then says the timeline and assignee are not available. Use the same attribution to the page, since the frame shows no who or when column.",
+  "'Here is the answer, in one strip.' is reused almost verbatim in weather w02 and umbrella c01. 'The page names the offline station. Readiness reads Not ready, and lists why' (weather w05), 'One detector is offline, and the page says so. Readiness reads Not ready, and the list names it' (gas g05) and umbrella s01 are three near copies of one sentence. 'You and your team stay in control' (umbrella z01) repeats a04 'People stay in control'.",
+  "Opening hooks all use the same template: a scene, then a question ('Is it safe ...? Where do you look first?', 'The supervisor asks, so what now?', 'What warns the crew first?', 'How would you know?'). Closings all use 'Your next step' (lightning, gas) or 'Next time ... open' (weather) and a 'What is new' list card in three of four. Four videos in a row sound alike.",
+  "DIRECTION framing is consistent in the umbrella (badge, ribbon 'DIRECTION . NOT LIVE TODAY', 'could one day', 'The direction:', 'meant to come from'). The captions of a02 and a04 are in present tense ('An assistant proposes. A person approves.'; 'People stay in control') and the diagram guard bar says 'People stay in control: an assistant proposes, a person approves'. Only the ribbon marks them as direction. a01 and a03 captions begin 'Direction:'. a02 and a04 captions do not.",
+  "Peak value wording varies for the same report: umbrella 'peak heat index and peak wind speed' and 'peaks, day by day'; weather 'highest heat index and wind speed'; page 'Maximum'. 'Vendor' (videos) vs 'manufacturer' (research safe phrases) vs 'Blackline' (page quote).",
+  "'New' is applied unevenly. The umbrella calls the gas status line new (o02). The gas video's own g02 on the same status line is not marked new. The Detectors page (changes: gas-detectors-page, live yes) is not marked new in gas g08. Lightning marks the alarm activity chart 'New' while showing an empty chart.",
+  "Wallboard and phone pages: lightning says 'Neither has a menu link. Both open by address.' Gas says nothing about how to reach them, although the research says the gas pages are also not linked from the rail. The two videos describe the same situation differently.",
+  "Times: weather w04 says 'Saudi time' plainly on commit evidence (the page prints no zone). Lightning says 'Saudi time' with the page's own 'AST, UTC+3'. Gas shows clock times in frames and says nothing. The two on-screen clocks agree (15:22 on both products), which supports the claim, but the evidence basis differs between the two videos.",
+  "Heat index values differ across videos and are all on screen unspoken: 49.5 (weather, umbrella tri), 49.7 (umbrella c01), 50.1 (weather policy), 50.2 (umbrella k01), 41.5 (Project C). The green line 'Last reading was 0 minute(s) ago' next to an online station in the umbrella o02 and 'Last reading was 1 minute(s) ago' in weather w06 are consistent with their frames.",
+  "Weather w07 puts a click callout and cursor on the gear while the Select parameters popup is already open, so the 'click' demonstration and the frame disagree. The chapter bar shows 'Weather Station > gear icon' (a click path) over a page the viewer is told only 'you can' use."
+ ],
+ "coverage_of_user_brief": [
+  {
+   "requirement": "Umbrella over all environment products (Weather Station, Lightning, Gas under one product)",
+   "status": "covered",
+   "where": "connected-environment u01 to u03, o01 to o03, p04 and the umbrella diagram",
+   "note": "Strong animated canopy, three product cards, four honest chips and a three-project tri. The chips are scoped as the guardrail allows (one backend, one menu and header, same view permission, switched on per project). No frame shows all three in one portal, so the 'one place' idea rests on the diagram and the tri. The chapter bars imply one menu with all three, which is a weak spot. 'One platform' is a loose label that research X01 approves, but it needs the chips next to it each time."
+  },
+  {
+   "requirement": "Manage plus a detailed eye on the site",
+   "status": "covered",
+   "where": "connected-environment o01 (Connected Products), o02, c01, g01, c02, k01; chapters 'A detailed eye' and 'Control'",
+   "note": "'Manage' is shown through Connected Products and the Safety Policy. 'Eye' is shown by the answer strip, steps, gas overview and max report. The details drawer, gas detectors, wallboard and phone, and the Lightning alarm history were cut for length, so the 'detailed' part is thin. All three products are not shown as equals: Weather gets two chapters, Lightning one beat (s03), Gas two."
+  },
+  {
+   "requirement": "Control what happens when something happens",
+   "status": "weak",
+   "where": "connected-environment u04, k01, k04",
+   "note": "Honestly scoped but narrow. Control is the weather stop-work limits plus recommended steps, and gas Close recorded in WakeCap only (which ends the Control chapter on a limit). Lightning has no control beat (the cabinet lights come first), and gas limits are read-only. A viewer can read 'Set limits' on the team card as covering all three products although the narration says weather. Nothing shows a response to an event across products. Possibly acceptable given what is true. Say so explicitly in the narration if kept ('control today is weather limits and recorded actions')."
+  },
+  {
+   "requirement": "Feeds a future AI agent, honestly framed",
+   "status": "covered",
+   "where": "connected-environment a01 to a04 and the agent diagram, DIRECTION badge and ribbon",
+   "note": "Framing follows guardrail 4 well: 'could one day', 'Building blocks exist for Weather Station only, not Lightning or Gas', 'No assistant runs on any site today', 'A person approves each proposal', 'Safety answers are meant to come from fixed rules'. No tool count, no agent screens, no claim of control. Fixes needed: a01 'Everything lands in one platform' and the column items 'Gas readings', 'Alerts and history' (see contradictions). a02 and a04 captions are in present tense with only the ribbon marking them as direction. About 28 seconds of text-only diagrams at the end. The brief's 'control everything' is correctly not claimed."
+  },
+  {
+   "requirement": "Multiple integration paths: Modbus-style mesh and the vendor-cloud black box for gas",
+   "status": "covered",
+   "where": "connected-environment p01 to p04 (paths diagram, three lanes); gas g14, g15; lightning l12, l13; weather w16, w17",
+   "note": "Umbrella explains Modbus on first use in the required wording, shows the Lightning input module and separate queue, and names gas as 'a black box to us. No mesh, no Modbus.' The gas video repeats the black-box path with 'vendor cloud only'. Cadence is stated plainly in the umbrella (G03 unknown live). Weather and lightning videos do not mention Modbus at all, so the umbrella alone carries that requirement. The lightning lane label drops 'Modbus style'. The gas video does not say 'no mesh, no Modbus' although a director note claims it."
+  },
+  {
+   "requirement": "Screens have new changes: each video shows its new screens",
+   "status": "weak",
+   "where": "weather: gear, Reports, Safety Policy, Connected Products (w07 to w14). lightning: radii map, alarm activity, settings, wallboard and phone (l05 to l11). gas: overview, status line, wallboard, phone, detectors, alerts (g02 to g12). umbrella: o01, o02, g01, c02, k01, k04",
+   "note": "Weather, Lightning and Gas each show most of their new screens, with 'New' captions and a list card. Gaps: (1) the umbrella shows no new Lightning screen at all and its 'What is new' list has no Lightning item, although the Lightning assets exist in the lightning folder. (2) The umbrella and gas videos do not show the gas wallboard, phone or Detectors page as new. (3) The new Lightning radii map is blurred so heavily the rings are not visible, so l05 and l06 show a white void and a blur. (4) 'New' is applied inconsistently across videos (see wording). (5) The lightning refreshed tile is never labelled."
+  },
+  {
+   "requirement": "Videos are stronger than before: story, visuals and voice",
+   "status": "weak",
+   "where": "all four, mostly weather w09 to w13, gas g08 to g13, lightning l05 to l11, umbrella tri scenes and diagrams",
+   "note": "Story is clearly stronger. Each has a concrete hook and one thesis ('A heat number is not an answer', 'what warns the crew first', 'silence is not calm', 'where do you look first'). Spec check passes and lengths are 2:22 to 3:21 at the tool's pace, with the umbrella and weather at the upper limit. Visuals are improved with zooms, spotlight callouts and diagrams, but still weak in places. Tri scenes (umbrella o03, s01, c02; lightning l11) leave the lower half black. Path diagrams (weather w16 to w17, lightning l12 to l13, gas g14 to g15) are a thin strip in a large empty frame. Weather has four consecutive dense Settings pages (about 40 s), gas has six table-heavy beats, the lightning map beats show a blur. The four openings and closings share one template, so the set sounds samey. Voice cannot be judged without the real run, and word counts are at the 2.5 minute ceiling so real pace may overrun."
+  }
+ ]
+}

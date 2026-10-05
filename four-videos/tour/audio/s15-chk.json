@@ -1,0 +1,269 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:05,080"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 5080
+			},
+			"text": " Products are enabled per project, in Settings, under Connected Products.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.792859,
+					"t_dtw": -1
+				},
+				{
+					"text": " Products",
+					"timestamps": {
+						"from": "00:00:00,330",
+						"to": "00:00:00,610"
+					},
+					"offsets": {
+						"from": 330,
+						"to": 610
+					},
+					"id": 47699,
+					"p": 0.978288,
+					"t_dtw": -1
+				},
+				{
+					"text": " are",
+					"timestamps": {
+						"from": "00:00:00,670",
+						"to": "00:00:00,920"
+					},
+					"offsets": {
+						"from": 670,
+						"to": 920
+					},
+					"id": 366,
+					"p": 0.999317,
+					"t_dtw": -1
+				},
+				{
+					"text": " enabled",
+					"timestamps": {
+						"from": "00:00:00,920",
+						"to": "00:00:01,410"
+					},
+					"offsets": {
+						"from": 920,
+						"to": 1410
+					},
+					"id": 15172,
+					"p": 0.997898,
+					"t_dtw": -1
+				},
+				{
+					"text": " per",
+					"timestamps": {
+						"from": "00:00:01,540",
+						"to": "00:00:01,760"
+					},
+					"offsets": {
+						"from": 1540,
+						"to": 1760
+					},
+					"id": 680,
+					"p": 0.997267,
+					"t_dtw": -1
+				},
+				{
+					"text": " project",
+					"timestamps": {
+						"from": "00:00:01,760",
+						"to": "00:00:02,260"
+					},
+					"offsets": {
+						"from": 1760,
+						"to": 2260
+					},
+					"id": 1716,
+					"p": 0.983719,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:02,410",
+						"to": "00:00:02,470"
+					},
+					"offsets": {
+						"from": 2410,
+						"to": 2470
+					},
+					"id": 11,
+					"p": 0.68686,
+					"t_dtw": -1
+				},
+				{
+					"text": " in",
+					"timestamps": {
+						"from": "00:00:02,660",
+						"to": "00:00:02,660"
+					},
+					"offsets": {
+						"from": 2660,
+						"to": 2660
+					},
+					"id": 294,
+					"p": 0.927615,
+					"t_dtw": -1
+				},
+				{
+					"text": " Settings",
+					"timestamps": {
+						"from": "00:00:02,710",
+						"to": "00:00:03,240"
+					},
+					"offsets": {
+						"from": 2710,
+						"to": 3240
+					},
+					"id": 27286,
+					"p": 0.724285,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,240",
+						"to": "00:00:03,360"
+					},
+					"offsets": {
+						"from": 3240,
+						"to": 3360
+					},
+					"id": 11,
+					"p": 0.966256,
+					"t_dtw": -1
+				},
+				{
+					"text": " under",
+					"timestamps": {
+						"from": "00:00:03,720",
+						"to": "00:00:03,730"
+					},
+					"offsets": {
+						"from": 3720,
+						"to": 3730
+					},
+					"id": 833,
+					"p": 0.981886,
+					"t_dtw": -1
+				},
+				{
+					"text": " Connect",
+					"timestamps": {
+						"from": "00:00:03,730",
+						"to": "00:00:04,200"
+					},
+					"offsets": {
+						"from": 3730,
+						"to": 4200
+					},
+					"id": 11653,
+					"p": 0.991227,
+					"t_dtw": -1
+				},
+				{
+					"text": "ed",
+					"timestamps": {
+						"from": "00:00:04,200",
+						"to": "00:00:04,330"
+					},
+					"offsets": {
+						"from": 4200,
+						"to": 4330
+					},
+					"id": 292,
+					"p": 0.999918,
+					"t_dtw": -1
+				},
+				{
+					"text": " Products",
+					"timestamps": {
+						"from": "00:00:04,330",
+						"to": "00:00:04,840"
+					},
+					"offsets": {
+						"from": 4330,
+						"to": 4840
+					},
+					"id": 47699,
+					"p": 0.913003,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:04,860",
+						"to": "00:00:05,060"
+					},
+					"offsets": {
+						"from": 4860,
+						"to": 5060
+					},
+					"id": 13,
+					"p": 0.977467,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_254]",
+					"timestamps": {
+						"from": "00:00:05,080",
+						"to": "00:00:05,080"
+					},
+					"offsets": {
+						"from": 5080,
+						"to": 5080
+					},
+					"id": 50619,
+					"p": 0.257199,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

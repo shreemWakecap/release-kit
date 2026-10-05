@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1920, height=1080"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{--o:#FF8300}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#000;color:#fff;font-family:"Inter",-apple-system,system-ui,sans-serif}
+.clip{position:absolute;inset:0;opacity:0}
+.grid{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.card{display:flex;flex-direction:column;justify-content:center;padding:0 150px;background-color:#000}
+.eyebrow{align-self:flex-start;font-size:22px;letter-spacing:.24em;text-transform:uppercase;color:var(--o);border:2px solid var(--o);padding:8px 18px;margin-bottom:36px;font-weight:600}
+.card h1{font-size:112px;line-height:1.03;font-weight:800;letter-spacing:-.025em;max-width:1560px}
+.card h1 em,.ln em{font-style:normal;color:var(--o)}
+.card .sub{margin-top:36px;font-size:40px;line-height:1.38;color:rgba(255,255,255,.76);max-width:1320px}
+.card .rule{margin-top:44px;height:6px;width:0;background:var(--o)}
+.lines{display:flex;flex-direction:column;gap:22px}
+.ln{font-size:92px;line-height:1.05;font-weight:800;letter-spacing:-.02em;opacity:0}
+.items{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px}
+.items.two{grid-template-columns:repeat(2,1fr)}
+.it{position:relative;background:#0c0c0c;border:1px solid #2b2b2b;padding:34px 34px 34px 42px;clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%);opacity:0}
+.it::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--o)}
+.it b{display:block;font-size:40px;font-weight:700;margin-bottom:12px}
+.it span{font-size:28px;line-height:1.4;color:rgba(255,255,255,.72)}
+.top{position:absolute;left:0;right:0;top:0;height:56px;background:#000;border-bottom:2px solid var(--o);display:flex;align-items:center;justify-content:space-between;padding:0 96px}
+.top .ch{font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.top .ch b{color:var(--o);margin-right:14px}
+.top .path{font-size:22px;color:rgba(255,255,255,.78)}
+.top .path i{font-style:normal;color:var(--o);margin-right:10px;letter-spacing:.14em;font-size:18px;font-weight:700}
+.stage{position:absolute;left:96px;top:56px;width:1728px;height:889px;overflow:hidden;border:1px solid #2b2b2b;background:#fff}
+.zw{position:absolute;left:0;top:0;width:1728px;height:889px;transform-origin:0 0}
+.zw img{width:1728px;height:889px;display:block}
+.co{position:absolute;border:5px solid var(--o);opacity:0}
+.co.spot{box-shadow:0 0 0 2600px rgba(0,0,0,.42)}
+.lab{position:absolute;opacity:0;transform-origin:0 0;display:flex;align-items:center;gap:12px;background:#000;color:#fff;font-size:26px;font-weight:700;padding:6px 16px 6px 6px;border-left:6px solid var(--o);white-space:nowrap}
+.lab .n{background:var(--o);color:#000;min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800}
+.cur{position:absolute;left:0;top:0;width:44px;height:44px;opacity:0;z-index:5}
+.rip{position:absolute;width:70px;height:70px;border:4px solid var(--o);border-radius:50%;opacity:0;margin:-35px 0 0 -35px}
+.cap{position:absolute;left:96px;right:96px;top:962px;height:72px;display:flex;align-items:center;gap:18px;padding-left:22px;border-left:6px solid var(--o);font-size:38px;font-weight:600;opacity:0}
+.cap .bd{font-size:20px;font-weight:800;letter-spacing:.14em;color:#000;background:var(--o);padding:6px 14px;white-space:nowrap}
+.live{position:absolute;right:96px;top:968px;font-size:18px;font-weight:700;letter-spacing:.14em;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:10px}
+.live::before{content:"";width:12px;height:12px;border-radius:50%;background:#ff3b30}
+.pips{position:absolute;left:96px;right:96px;top:1056px;height:8px;display:flex;gap:10px}
+.pip{flex:1;background:#2b2b2b}.pip.done{background:rgba(255,131,0,.45)}.pip.on{background:var(--o)}
+.tri{position:absolute;left:96px;top:96px;width:1728px;display:grid;gap:26px}
+.tri.n3{grid-template-columns:repeat(3,1fr)}.tri.n2{grid-template-columns:repeat(2,1fr)}
+.tri .pn{position:relative;opacity:0}
+.tri .pn .im{width:100%;background-repeat:no-repeat;border:1px solid #2b2b2b;background-color:#fff}
+.tri .pn .tt{margin-top:18px;font-size:34px;font-weight:800;border-left:6px solid var(--o);padding-left:16px}
+.ribbon{position:absolute;right:96px;top:70px;font-size:22px;font-weight:800;letter-spacing:.16em;color:#000;background:var(--o);padding:10px 22px}
+/* diagrams */
+.dg{position:absolute;inset:0}
+.st{position:absolute;opacity:0}
+.dgx{position:absolute;left:96px;top:56px;font-size:22px;font-weight:700;letter-spacing:.2em;color:var(--o)}
+.pcard{background:#0c0c0c;border:2px solid #2b2b2b;padding:20px 22px;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)}
+.pcard b{display:block;font-size:32px;font-weight:800}
+.pcard span{display:block;margin-top:6px;font-size:22px;color:rgba(255,255,255,.7);line-height:1.3}
+.pcard.o{border-color:var(--o)}
+.chip{display:inline-block;border:2px solid var(--o);color:#fff;font-size:22px;font-weight:700;padding:8px 16px;margin:0 8px 8px 0;background:#000}
+.bar{background:#0c0c0c;border:2px solid var(--o)}
+.bar .bt{font-size:24px;font-weight:800;letter-spacing:.2em;color:var(--o);padding:12px 22px 0}
+.dline{position:absolute;background:var(--o);transform-origin:50% 0}
+.dash{border:3px dashed var(--o);background:#0c0c0c}
+.pill{position:absolute;background:var(--o);color:#000;font-size:20px;font-weight:800;letter-spacing:.08em;padding:6px 14px;white-space:nowrap}
+.arrow{position:absolute;color:var(--o);font-size:44px;font-weight:800}
+.lane{position:absolute;left:96px;right:96px;height:190px}
+.lane .dev{position:absolute;left:0;top:0;width:330px;height:190px}
+.lane .stp{position:absolute;top:30px;height:130px;width:215px;background:#0c0c0c;border:2px solid #2b2b2b;padding:18px 16px;font-size:23px;font-weight:700;line-height:1.25}
+.lane .stp small{display:block;margin-top:8px;font-size:18px;font-weight:500;color:rgba(255,255,255,.62)}
+.lane .bdg{position:absolute;left:0;top:-30px}
+</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="152.12" data-width="1920" data-height="1080">
+<audio id="narration" class="clip" src="narration.m4a" data-start="0" data-duration="152.12" data-track-index="0"></audio>
+<div id="s0" class="clip card grid" data-start="0.00" data-duration="9.18" data-track-index="1">
+<span class="eyebrow" id="s0_e">GAS · CONNECTED ENVIRONMENT</span>
+<div class="lines"><div class="ln" id="s0_l0">No alarm on the screen.</div><div class="ln" id="s0_l1">Calm?</div><div class="ln" id="s0_l2">Or a detector that <em>went quiet</em>?</div></div>
+</div>
+<div id="s1" class="clip" data-start="9.18" data-duration="8.54" data-track-index="1">
+<div class="top"><div class="ch"><b>01</b>Overview</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Dashboard</div></div>
+<div class="stage"><div class="zw" id="s1_zw"><img src="assets/g-header-c.png" alt="">
+<div class="co spot" id="s1_b0_c0" style="left:99.0px;top:41.4px;width:455.4px;height:27.0px"></div>
+<div class="lab" id="s1_b0_c0_l" style="left:99.0px;top:76.4px"><span class="n">1</span>Status line</div>
+</div></div>
+<div class="cap" id="s1_cap0"><span>Top line: Check, newest reading age, 4 of 5 reporting.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s2" class="clip" data-start="17.72" data-duration="44.90" data-track-index="1">
+<div class="top"><div class="ch"><b>01</b>Overview</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Dashboard</div></div>
+<div class="stage"><div class="zw" id="s2_zw"><img src="assets/g-dashboard-c.png" alt="">
+<div class="co" id="s2_b0_c0" style="left:259.2px;top:124.2px;width:353.7px;height:115.2px"></div>
+<div class="lab" id="s2_b0_c0_l" style="left:259.2px;top:78.2px"><span class="n">1</span>Detectors</div>
+<div class="co" id="s2_b0_c1" style="left:623.7px;top:124.2px;width:353.7px;height:115.2px"></div>
+<div class="lab" id="s2_b0_c1_l" style="left:623.7px;top:78.2px"><span class="n">2</span>Online</div>
+<div class="co" id="s2_b0_c2" style="left:988.2px;top:124.2px;width:353.7px;height:115.2px"></div>
+<div class="lab" id="s2_b0_c2_l" style="left:988.2px;top:78.2px"><span class="n">3</span>Live alarms</div>
+<div class="co" id="s2_b0_c3" style="left:1352.7px;top:124.2px;width:353.7px;height:115.2px"></div>
+<div class="lab" id="s2_b0_c3_l" style="left:1352.7px;top:78.2px"><span class="n">4</span>Acknowledged</div>
+<div class="co" id="s2_b1_c0" style="left:259.2px;top:286.2px;width:374.4px;height:190.8px"></div>
+<div class="lab" id="s2_b1_c0_l" style="left:259.2px;top:485.0px"><span class="n">1</span>H₂S</div>
+<div class="co" id="s2_b1_c1" style="left:644.4px;top:286.2px;width:374.4px;height:190.8px"></div>
+<div class="lab" id="s2_b1_c1_l" style="left:644.4px;top:485.0px"><span class="n">2</span>Oxygen</div>
+<div class="co" id="s2_b1_c2" style="left:1029.6px;top:286.2px;width:374.4px;height:190.8px"></div>
+<div class="lab" id="s2_b1_c2_l" style="left:1029.6px;top:485.0px"><span class="n">3</span>LEL</div>
+<div class="co spot" id="s2_b2_c0" style="left:655.2px;top:406.8px;width:355.5px;height:59.4px"></div>
+<div class="lab" id="s2_b2_c0_l" style="left:655.2px;top:474.2px"><span class="n">1</span>Not raised yet</div>
+<div class="co spot" id="s2_b3_c0" style="left:1418.4px;top:253.8px;width:288.0px;height:171.9px"></div>
+<div class="lab" id="s2_b3_c0_l" style="left:1376px;top:433.7px"><span class="n">1</span>Offline, Not ready</div>
+</div></div>
+<div class="cap" id="s2_cap0"><span>Overview: detectors, online, live alarms, acknowledged.</span></div>
+<div class="cap" id="s2_cap1"><span>H₂S, oxygen, LEL. Limits shown on each card.</span></div>
+<div class="cap" id="s2_cap2"><span>Oxygen: low limit 19.5, low alarm not raised yet.</span></div>
+<div class="cap" id="s2_cap3"><span>Fifth detector named as offline. Readiness: Not ready.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s3" class="clip" data-start="62.62" data-duration="10.36" data-track-index="1">
+<div class="top"><div class="ch"><b>02</b>Wallboard and phone</div><div class="path"><i>OPEN</i>By address</div></div>
+<div class="stage"><div class="zw" id="s3_zw"><img src="assets/g-wallboard-c.png" alt="">
+<div class="co" id="s3_b0_c0" style="left:30.6px;top:77.4px;width:652.5px;height:121.5px"></div>
+<div class="lab" id="s3_b0_c0_l" style="left:30.6px;top:206.9px"><span class="n">1</span>Check</div>
+<div class="co" id="s3_b0_c1" style="left:848.7px;top:15.3px;width:864.0px;height:49.5px"></div>
+<div class="lab" id="s3_b0_c1_l" style="left:520.7px;top:19.0px"><span class="n">2</span>Page&#x27;s own words</div>
+</div></div>
+<div class="cap" id="s3_cap0"><span>Wallboard, by address: Check. Not confirmed safe.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s4" class="clip" data-start="72.98" data-duration="4.78" data-track-index="1">
+<div class="top"><div class="ch"><b>02</b>Wallboard and phone</div><div class="path"><i>OPEN</i>By address</div></div>
+<div class="stage"><div class="zw" id="s4_zw"><img src="assets/g-mobile-c.png" alt="">
+<div class="co" id="s4_b0_c0" style="left:768.6px;top:189.0px;width:289.8px;height:214.2px"></div>
+<div class="lab" id="s4_b0_c0_l" style="left:1068.4px;top:275.1px"><span class="n">1</span>Same words</div>
+<div class="co" id="s4_b0_c1" style="left:768.6px;top:442.8px;width:289.8px;height:68.4px"></div>
+<div class="lab" id="s4_b0_c1_l" style="left:1068.4px;top:456.0px"><span class="n">2</span>Same list</div>
+</div></div>
+<div class="cap" id="s4_cap0"><span>Phone view: same words, same list.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s5" class="clip" data-start="77.76" data-duration="9.12" data-track-index="1">
+<div class="top"><div class="ch"><b>03</b>Detectors</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Detectors</div></div>
+<div class="stage"><div class="zw" id="s5_zw"><img src="assets/g-detectors-c.png" alt="">
+<div class="co" id="s5_b0_c0" style="left:1541.7px;top:455.4px;width:74.7px;height:25.2px"></div>
+<div class="lab" id="s5_b0_c0_l" style="left:1288.7px;top:447.0px"><span class="n">1</span>Show detail</div>
+<svg class="cur" id="s5_b0_c0_cur" viewBox="0 0 24 24"><path d="M3 2l7 19 3-8 8-3z" fill="#fff" stroke="#000" stroke-width="1.5"/></svg><div class="rip" id="s5_b0_c0_rip" style="left:1579.05px;top:468.0px"></div>
+<div class="co" id="s5_b0_c1" style="left:260.1px;top:444.6px;width:1445.4px;height:58.5px"></div>
+<div class="lab" id="s5_b0_c1_l" style="left:260.1px;top:511.1px"><span class="n">2</span>No current reading</div>
+</div></div>
+<div class="cap" id="s5_cap0"><span>Detectors: offline row shows last known values, not current.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div>
+</div>
+<div id="s6" class="clip" data-start="86.88" data-duration="25.22" data-track-index="1">
+<div class="top"><div class="ch"><b>04</b>Alerts</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Alerts</div></div>
+<div class="stage"><div class="zw" id="s6_zw"><img src="assets/g-alerts-c.png" alt="">
+<div class="co" id="s6_b0_c0" style="left:1420.2px;top:351.0px;width:179.1px;height:133.2px"></div>
+<div class="lab" id="s6_b0_c0_l" style="left:1242.2px;top:396.6px"><span class="n">1</span>Closed</div>
+<div class="co" id="s6_b0_c1" style="left:1613.7px;top:494.1px;width:45.0px;height:25.2px"></div>
+<div class="lab" id="s6_b0_c1_l" style="left:1571px;top:527.3px"><span class="n">2</span>Close</div>
+<svg class="cur" id="s6_b0_c1_cur" viewBox="0 0 24 24"><path d="M3 2l7 19 3-8 8-3z" fill="#fff" stroke="#000" stroke-width="1.5"/></svg><div class="rip" id="s6_b0_c1_rip" style="left:1636.2px;top:506.7px"></div>
+<div class="co spot" id="s6_b1_c0" style="left:259.2px;top:182.7px;width:353.7px;height:118.8px"></div>
+<div class="lab" id="s6_b1_c0_l" style="left:259.2px;top:309.5px"><span class="n">1</span>Open alerts</div>
+<div class="co spot" id="s6_b2_c0" style="left:250.2px;top:118.8px;width:451.8px;height:59.4px"></div>
+<div class="lab" id="s6_b2_c0_l" style="left:712.0px;top:127.5px"><span class="n">1</span>Not sent to Blackline</div>
+</div></div>
+<div class="cap" id="s6_cap0"><span>Closed rows: no button. With edit access you can Close.</span></div>
+<div class="cap" id="s6_cap1"><span>Open alerts: not yet closed. Twelve, the same as Acknowledged.</span></div>
+<div class="cap" id="s6_cap2"><span>Recorded in WakeCap. Not sent to Blackline.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="s7" class="clip" data-start="112.10" data-duration="6.90" data-track-index="1">
+<div class="top"><div class="ch"><b>04</b>Alerts</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Alerts</div></div>
+<div class="stage"><div class="zw" id="s7_zw"><img src="assets/g-alerts-bottom-c.png" alt="">
+<div class="co spot" id="s7_b0_c0" style="left:259.2px;top:566.1px;width:1447.2px;height:234.9px"></div>
+<div class="lab" id="s7_b0_c0_l" style="left:259.2px;top:809.0px"><span class="n">1</span>Not available yet</div>
+</div></div>
+<div class="cap" id="s7_cap0"><span>Timeline, assignee, closed count: not available yet.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span><span class="pip"></span></div>
+</div>
+<div id="s8" class="clip" data-start="119.00" data-duration="8.97" data-track-index="1">
+<div class="top"><div class="ch"><b>05</b>Compliance</div><div class="path"><i>OPEN</i>Connected Environment › Gas › Compliance</div></div>
+<div class="stage"><div class="zw" id="s8_zw"><img src="assets/g-compliance-c.png" alt="">
+<div class="co" id="s8_b0_c0" style="left:260.1px;top:198.9px;width:1446.3px;height:170.1px"></div>
+<div class="lab" id="s8_b0_c0_l" style="left:260.1px;top:377.0px"><span class="n">1</span>Limits in force</div>
+<div class="co" id="s8_b0_c1" style="left:260.1px;top:383.4px;width:1446.3px;height:195.3px"></div>
+<div class="lab" id="s8_b0_c1_l" style="left:260.1px;top:586.7px"><span class="n">2</span>Not available yet</div>
+</div></div>
+<div class="cap" id="s8_cap0"><span>Limits listed. Exposure and exceedances: not available yet.</span></div>
+<div class="live">LIVE CAPTURE · 4 OCT 2026 · READ-ONLY</div>
+<div class="pips"><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip done"></span><span class="pip on"></span></div>
+</div>
+<div id="s9" class="clip grid" data-start="127.97" data-duration="14.91" data-track-index="1"><div class="dg">
+<div class="st" id="s9_p_x" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="dgx">HOW GAS READINGS REACH WAKECAP</div></div>
+<div class="st" id="s9_p_l0" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="lane" style="top:440px"><div class="pill bdg">VENDOR CLOUD</div><div class="pcard o dev" style="display:flex;flex-direction:column;justify-content:center"><div style="margin-bottom:6px"><svg width="56" height="56" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"><rect x="18" y="8" width="28" height="48" rx="6"/><circle cx="32" cy="24" r="6"/><path d="M24 38h16M24 46h16"/></svg></div><b style="font-size:28px">Gas detectors</b></div><div class="stp" style="left:380px">Vendor cloud<small>a black box to us</small></div><div class="arrow" style="left:599px;top:62px">›</div><div class="stp" style="left:642px">WakeCap asks<small>on a regular timer</small></div><div class="arrow" style="left:861px;top:62px">›</div><div class="stp" style="left:904px">WakeCap store<small>readings and alerts</small></div><div class="arrow" style="left:1123px;top:62px">›</div><div class="stp" style="left:1166px">Gas screens<small>each reading shows its age</small></div><div class="arrow" style="left:1385px;top:62px">›</div></div></div>
+<div class="st" id="s9_p_sink" style="left:0;top:0;width:1920px;height:1080px;pointer-events:none"><div class="bar" style="left:1500px;top:330px;width:324px;height:230px;position:absolute;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><div style="font-size:30px;font-weight:800;letter-spacing:.14em;color:#FF8300">ON SCREEN</div><div style="font-size:26px;margin-top:14px;color:rgba(255,255,255,.82);padding:0 18px">Reading age. Offline reads Check</div></div></div>
+</div>
+<div class="cap" id="s9_cap0"><span>Gas reaches WakeCap through the vendor&#x27;s cloud only.</span></div>
+<div class="cap" id="s9_cap1"><span>Each reading shows its age. An offline detector reads Check.</span></div>
+</div>
+<div id="s10" class="clip card grid" data-start="142.88" data-duration="9.24" data-track-index="1">
+<span class="eyebrow" id="s10_e">GAS TODAY · IF YOUR PROJECT HAS IT, READ THE TOP LINE</span>
+<h1 id="s10_h" style="font-size:80px">Gas, <em>screen by screen</em></h1>
+<div class="items two"><div class="it" id="s10_i0"><b>Overview</b><span>Detectors, online, live alarms, acknowledged</span></div><div class="it" id="s10_i1"><b>Detectors</b><span>Last report; last known values marked not current</span></div><div class="it" id="s10_i2"><b>Alerts</b><span>Edit access: acknowledge and close, kept in WakeCap only</span></div><div class="it" id="s10_i3"><b>Compliance</b><span>Limits listed; gaps say Not available yet</span></div></div>
+</div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+tl.fromTo("#s0_e",{opacity:0,y:20},{opacity:1,y:0,duration:0.5,ease:"power2.out"},0.15);
+tl.fromTo("#s0_l0",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},0.60);
+tl.fromTo("#s0_l1",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},3.12);
+tl.to("#s0_l0",{opacity:0.3,duration:0.5},3.12);
+tl.fromTo("#s0_l2",{opacity:0,y:36},{opacity:1,y:0,duration:0.6,ease:"power3.out"},5.65);
+tl.to("#s0_l1",{opacity:0.3,duration:0.5},5.65);
+tl.to("#s0",{opacity:1,duration:0.35},0.00);
+tl.to("#s0",{opacity:0,duration:0.25},8.93);
+tl.to("#s1_zw",{x:0,y:0,scale:1.9,duration:1.0,ease:"power2.inOut"},9.43);
+tl.set("#s1_b0_c0",{opacity:0},9.18);
+tl.set("#s1_b0_c0_l",{opacity:0},9.18);
+tl.set("#s1_b0_c0_l",{scale:0.526},9.18);
+tl.fromTo("#s1_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},9.78);
+tl.to("#s1_b0_c0_l",{opacity:1,duration:0.3},9.86);
+tl.to("#s1_b0_c0",{opacity:0,duration:0.2},17.47);
+tl.to("#s1_b0_c0_l",{opacity:0,duration:0.2},17.47);
+tl.set("#s1_cap0",{opacity:0},9.18);
+tl.to("#s1_cap0",{opacity:1,duration:0.3},9.28);
+tl.to("#s1_cap0",{opacity:0,duration:0.2},17.47);
+tl.to("#s1",{opacity:1,duration:0.3},9.18);
+tl.to("#s1",{opacity:0,duration:0.25},17.47);
+tl.to("#s2_zw",{x:0.0,y:0.0,scale:1.0,duration:1.0,ease:"power2.inOut"},17.97);
+tl.set("#s2_b0_c0",{opacity:0},17.72);
+tl.set("#s2_b0_c0_l",{opacity:0},17.72);
+tl.set("#s2_b0_c0_l",{scale:1.0},17.72);
+tl.fromTo("#s2_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},18.32);
+tl.to("#s2_b0_c0_l",{opacity:1,duration:0.3},18.40);
+tl.to("#s2_b0_c0",{opacity:0,duration:0.2},32.21);
+tl.to("#s2_b0_c0_l",{opacity:0,duration:0.2},32.21);
+tl.set("#s2_b0_c1",{opacity:0},17.72);
+tl.set("#s2_b0_c1_l",{opacity:0},17.72);
+tl.set("#s2_b0_c1_l",{scale:1.0},17.72);
+tl.fromTo("#s2_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},19.12);
+tl.to("#s2_b0_c1_l",{opacity:1,duration:0.3},19.20);
+tl.to("#s2_b0_c1",{opacity:0,duration:0.2},32.21);
+tl.to("#s2_b0_c1_l",{opacity:0,duration:0.2},32.21);
+tl.set("#s2_b0_c2",{opacity:0},17.72);
+tl.set("#s2_b0_c2_l",{opacity:0},17.72);
+tl.set("#s2_b0_c2_l",{scale:1.0},17.72);
+tl.fromTo("#s2_b0_c2",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},19.92);
+tl.to("#s2_b0_c2_l",{opacity:1,duration:0.3},20.00);
+tl.to("#s2_b0_c2",{opacity:0,duration:0.2},32.21);
+tl.to("#s2_b0_c2_l",{opacity:0,duration:0.2},32.21);
+tl.set("#s2_b0_c3",{opacity:0},17.72);
+tl.set("#s2_b0_c3_l",{opacity:0},17.72);
+tl.set("#s2_b0_c3_l",{scale:1.0},17.72);
+tl.fromTo("#s2_b0_c3",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},20.72);
+tl.to("#s2_b0_c3_l",{opacity:1,duration:0.3},20.80);
+tl.to("#s2_b0_c3",{opacity:0,duration:0.2},32.21);
+tl.to("#s2_b0_c3_l",{opacity:0,duration:0.2},32.21);
+tl.to("#s2_zw",{x:0,y:-46.9,scale:1.2,duration:1.0,ease:"power2.inOut"},32.71);
+tl.set("#s2_b1_c0",{opacity:0},17.72);
+tl.set("#s2_b1_c0_l",{opacity:0},17.72);
+tl.set("#s2_b1_c0_l",{scale:0.833},32.46);
+tl.fromTo("#s2_b1_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},33.06);
+tl.to("#s2_b1_c0_l",{opacity:1,duration:0.3},33.14);
+tl.to("#s2_b1_c0",{opacity:0,duration:0.2},43.64);
+tl.to("#s2_b1_c0_l",{opacity:0,duration:0.2},43.64);
+tl.set("#s2_b1_c1",{opacity:0},17.72);
+tl.set("#s2_b1_c1_l",{opacity:0},17.72);
+tl.set("#s2_b1_c1_l",{scale:0.833},32.46);
+tl.fromTo("#s2_b1_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},33.86);
+tl.to("#s2_b1_c1_l",{opacity:1,duration:0.3},33.94);
+tl.to("#s2_b1_c1",{opacity:0,duration:0.2},43.64);
+tl.to("#s2_b1_c1_l",{opacity:0,duration:0.2},43.64);
+tl.set("#s2_b1_c2",{opacity:0},17.72);
+tl.set("#s2_b1_c2_l",{opacity:0},17.72);
+tl.set("#s2_b1_c2_l",{scale:0.833},32.46);
+tl.fromTo("#s2_b1_c2",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},34.66);
+tl.to("#s2_b1_c2_l",{opacity:1,duration:0.3},34.74);
+tl.to("#s2_b1_c2",{opacity:0,duration:0.2},43.64);
+tl.to("#s2_b1_c2_l",{opacity:0,duration:0.2},43.64);
+tl.to("#s2_zw",{x:-549.7,y:-204.2,scale:1.7,duration:1.0,ease:"power2.inOut"},44.14);
+tl.set("#s2_b2_c0",{opacity:0},17.72);
+tl.set("#s2_b2_c0_l",{opacity:0},17.72);
+tl.set("#s2_b2_c0_l",{scale:0.588},43.89);
+tl.fromTo("#s2_b2_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},44.49);
+tl.to("#s2_b2_c0_l",{opacity:1,duration:0.3},44.57);
+tl.to("#s2_b2_c0",{opacity:0,duration:0.2},54.06);
+tl.to("#s2_b2_c0_l",{opacity:0,duration:0.2},54.06);
+tl.to("#s2_zw",{x:-989.8,y:-319.2,scale:1.573,duration:1.0,ease:"power2.inOut"},54.56);
+tl.set("#s2_b3_c0",{opacity:0},17.72);
+tl.set("#s2_b3_c0_l",{opacity:0},17.72);
+tl.set("#s2_b3_c0_l",{scale:0.636},54.31);
+tl.fromTo("#s2_b3_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},54.91);
+tl.to("#s2_b3_c0_l",{opacity:1,duration:0.3},54.99);
+tl.to("#s2_b3_c0",{opacity:0,duration:0.2},62.37);
+tl.to("#s2_b3_c0_l",{opacity:0,duration:0.2},62.37);
+tl.set("#s2_cap0",{opacity:0},17.72);
+tl.to("#s2_cap0",{opacity:1,duration:0.3},17.82);
+tl.to("#s2_cap0",{opacity:0,duration:0.2},32.21);
+tl.set("#s2_cap1",{opacity:0},17.72);
+tl.to("#s2_cap1",{opacity:1,duration:0.3},32.56);
+tl.to("#s2_cap1",{opacity:0,duration:0.2},43.64);
+tl.set("#s2_cap2",{opacity:0},17.72);
+tl.to("#s2_cap2",{opacity:1,duration:0.3},43.99);
+tl.to("#s2_cap2",{opacity:0,duration:0.2},54.06);
+tl.set("#s2_cap3",{opacity:0},17.72);
+tl.to("#s2_cap3",{opacity:1,duration:0.3},54.41);
+tl.to("#s2_cap3",{opacity:0,duration:0.2},62.37);
+tl.to("#s2",{opacity:1,duration:0.3},17.72);
+tl.to("#s2",{opacity:0,duration:0.25},62.37);
+tl.to("#s3_zw",{x:0.0,y:0.0,scale:1.0,duration:1.0,ease:"power2.inOut"},62.87);
+tl.set("#s3_b0_c0",{opacity:0},62.62);
+tl.set("#s3_b0_c0_l",{opacity:0},62.62);
+tl.set("#s3_b0_c0_l",{scale:1.0},62.62);
+tl.fromTo("#s3_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},63.22);
+tl.to("#s3_b0_c0_l",{opacity:1,duration:0.3},63.30);
+tl.to("#s3_b0_c0",{opacity:0,duration:0.2},72.73);
+tl.to("#s3_b0_c0_l",{opacity:0,duration:0.2},72.73);
+tl.set("#s3_b0_c1",{opacity:0},62.62);
+tl.set("#s3_b0_c1_l",{opacity:0},62.62);
+tl.set("#s3_b0_c1_l",{scale:1.0},62.62);
+tl.fromTo("#s3_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},64.02);
+tl.to("#s3_b0_c1_l",{opacity:1,duration:0.3},64.10);
+tl.to("#s3_b0_c1",{opacity:0,duration:0.2},72.73);
+tl.to("#s3_b0_c1_l",{opacity:0,duration:0.2},72.73);
+tl.set("#s3_cap0",{opacity:0},62.62);
+tl.to("#s3_cap0",{opacity:1,duration:0.3},62.72);
+tl.to("#s3_cap0",{opacity:0,duration:0.2},72.73);
+tl.to("#s3",{opacity:1,duration:0.3},62.62);
+tl.to("#s3",{opacity:0,duration:0.25},72.73);
+tl.to("#s4_zw",{x:-778.5,y:-325.0,scale:1.9,duration:1.0,ease:"power2.inOut"},73.23);
+tl.set("#s4_b0_c0",{opacity:0},72.98);
+tl.set("#s4_b0_c0_l",{opacity:0},72.98);
+tl.set("#s4_b0_c0_l",{scale:0.526},72.98);
+tl.fromTo("#s4_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},73.58);
+tl.to("#s4_b0_c0_l",{opacity:1,duration:0.3},73.66);
+tl.to("#s4_b0_c0",{opacity:0,duration:0.2},77.51);
+tl.to("#s4_b0_c0_l",{opacity:0,duration:0.2},77.51);
+tl.set("#s4_b0_c1",{opacity:0},72.98);
+tl.set("#s4_b0_c1_l",{opacity:0},72.98);
+tl.set("#s4_b0_c1_l",{scale:0.526},72.98);
+tl.fromTo("#s4_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},74.38);
+tl.to("#s4_b0_c1_l",{opacity:1,duration:0.3},74.46);
+tl.to("#s4_b0_c1",{opacity:0,duration:0.2},77.51);
+tl.to("#s4_b0_c1_l",{opacity:0,duration:0.2},77.51);
+tl.set("#s4_cap0",{opacity:0},72.98);
+tl.to("#s4_cap0",{opacity:1,duration:0.3},73.08);
+tl.to("#s4_cap0",{opacity:0,duration:0.2},77.51);
+tl.to("#s4",{opacity:1,duration:0.3},72.98);
+tl.to("#s4",{opacity:0,duration:0.25},77.51);
+tl.to("#s5_zw",{x:-315.4,y:-125.7,scale:1.2,duration:1.0,ease:"power2.inOut"},78.01);
+tl.set("#s5_b0_c0",{opacity:0},77.76);
+tl.set("#s5_b0_c0_l",{opacity:0},77.76);
+tl.set("#s5_b0_c0_l",{scale:0.833},77.76);
+tl.fromTo("#s5_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},78.36);
+tl.to("#s5_b0_c0_l",{opacity:1,duration:0.3},78.44);
+tl.to("#s5_b0_c0",{opacity:0,duration:0.2},86.63);
+tl.to("#s5_b0_c0_l",{opacity:0,duration:0.2},86.63);
+tl.set("#s5_b0_c0_cur",{x:1879.05,y:728.0,opacity:0},77.76);
+tl.to("#s5_b0_c0_cur",{x:1579.05,y:468.0,opacity:1,duration:0.7,ease:"power2.inOut"},78.06);
+tl.fromTo("#s5_b0_c0_rip",{opacity:1,scale:.3},{opacity:0,scale:1.6,duration:0.5,ease:"power1.out"},78.91);
+tl.to("#s5_b0_c0_cur",{opacity:0,duration:0.2},86.48);
+tl.set("#s5_b0_c1",{opacity:0},77.76);
+tl.set("#s5_b0_c1_l",{opacity:0},77.76);
+tl.set("#s5_b0_c1_l",{scale:0.833},77.76);
+tl.fromTo("#s5_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},79.16);
+tl.to("#s5_b0_c1_l",{opacity:1,duration:0.3},79.24);
+tl.to("#s5_b0_c1",{opacity:0,duration:0.2},86.63);
+tl.to("#s5_b0_c1_l",{opacity:0,duration:0.2},86.63);
+tl.set("#s5_cap0",{opacity:0},77.76);
+tl.to("#s5_cap0",{opacity:1,duration:0.3},77.86);
+tl.to("#s5_cap0",{opacity:0,duration:0.2},86.63);
+tl.to("#s5",{opacity:1,duration:0.3},77.76);
+tl.to("#s5",{opacity:0,duration:0.25},86.63);
+tl.to("#s6_zw",{x:-259.2,y:-83.3,scale:1.15,duration:1.0,ease:"power2.inOut"},87.13);
+tl.set("#s6_b0_c0",{opacity:0},86.88);
+tl.set("#s6_b0_c0_l",{opacity:0},86.88);
+tl.set("#s6_b0_c0_l",{scale:0.87},86.88);
+tl.fromTo("#s6_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},87.48);
+tl.to("#s6_b0_c0_l",{opacity:1,duration:0.3},87.56);
+tl.to("#s6_b0_c0",{opacity:0,duration:0.2},93.69);
+tl.to("#s6_b0_c0_l",{opacity:0,duration:0.2},93.69);
+tl.set("#s6_b0_c1",{opacity:0},86.88);
+tl.set("#s6_b0_c1_l",{opacity:0},86.88);
+tl.set("#s6_b0_c1_l",{scale:0.87},86.88);
+tl.fromTo("#s6_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},88.28);
+tl.to("#s6_b0_c1_l",{opacity:1,duration:0.3},88.36);
+tl.to("#s6_b0_c1",{opacity:0,duration:0.2},93.69);
+tl.to("#s6_b0_c1_l",{opacity:0,duration:0.2},93.69);
+tl.set("#s6_b0_c1_cur",{x:1936.2,y:766.7,opacity:0},86.88);
+tl.to("#s6_b0_c1_cur",{x:1636.2,y:506.7,opacity:1,duration:0.7,ease:"power2.inOut"},87.98);
+tl.fromTo("#s6_b0_c1_rip",{opacity:1,scale:.3},{opacity:0,scale:1.6,duration:0.5,ease:"power1.out"},88.83);
+tl.to("#s6_b0_c1_cur",{opacity:0,duration:0.2},93.54);
+tl.to("#s6_zw",{x:-95.3,y:-88.1,scale:2.2,duration:1.0,ease:"power2.inOut"},94.19);
+tl.set("#s6_b1_c0",{opacity:0},86.88);
+tl.set("#s6_b1_c0_l",{opacity:0},86.88);
+tl.set("#s6_b1_c0_l",{scale:0.455},93.94);
+tl.fromTo("#s6_b1_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},94.54);
+tl.to("#s6_b1_c0_l",{opacity:1,duration:0.3},94.62);
+tl.to("#s6_b1_c0",{opacity:0,duration:0.2},102.43);
+tl.to("#s6_b1_c0_l",{opacity:0,duration:0.2},102.43);
+tl.to("#s6_zw",{x:-461.2,y:0,scale:1.9,duration:1.0,ease:"power2.inOut"},102.93);
+tl.set("#s6_b2_c0",{opacity:0},86.88);
+tl.set("#s6_b2_c0_l",{opacity:0},86.88);
+tl.set("#s6_b2_c0_l",{scale:0.526},102.68);
+tl.fromTo("#s6_b2_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},103.28);
+tl.to("#s6_b2_c0_l",{opacity:1,duration:0.3},103.36);
+tl.to("#s6_b2_c0",{opacity:0,duration:0.2},111.85);
+tl.to("#s6_b2_c0_l",{opacity:0,duration:0.2},111.85);
+tl.set("#s6_cap0",{opacity:0},86.88);
+tl.to("#s6_cap0",{opacity:1,duration:0.3},86.98);
+tl.to("#s6_cap0",{opacity:0,duration:0.2},93.69);
+tl.set("#s6_cap1",{opacity:0},86.88);
+tl.to("#s6_cap1",{opacity:1,duration:0.3},94.04);
+tl.to("#s6_cap1",{opacity:0,duration:0.2},102.43);
+tl.set("#s6_cap2",{opacity:0},86.88);
+tl.to("#s6_cap2",{opacity:1,duration:0.3},102.78);
+tl.to("#s6_cap2",{opacity:0,duration:0.2},111.85);
+tl.to("#s6",{opacity:1,duration:0.3},86.88);
+tl.to("#s6",{opacity:0,duration:0.25},111.85);
+tl.to("#s7_zw",{x:-259.2,y:-133.3,scale:1.15,duration:1.0,ease:"power2.inOut"},112.35);
+tl.set("#s7_b0_c0",{opacity:0},112.10);
+tl.set("#s7_b0_c0_l",{opacity:0},112.10);
+tl.set("#s7_b0_c0_l",{scale:0.87},112.10);
+tl.fromTo("#s7_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},112.70);
+tl.to("#s7_b0_c0_l",{opacity:1,duration:0.3},112.78);
+tl.to("#s7_b0_c0",{opacity:0,duration:0.2},118.75);
+tl.to("#s7_b0_c0_l",{opacity:0,duration:0.2},118.75);
+tl.set("#s7_cap0",{opacity:0},112.10);
+tl.to("#s7_cap0",{opacity:1,duration:0.3},112.20);
+tl.to("#s7_cap0",{opacity:0,duration:0.2},118.75);
+tl.to("#s7",{opacity:1,duration:0.3},112.10);
+tl.to("#s7",{opacity:0,duration:0.25},118.75);
+tl.to("#s8_zw",{x:-259.2,y:0,scale:1.15,duration:1.0,ease:"power2.inOut"},119.25);
+tl.set("#s8_b0_c0",{opacity:0},119.00);
+tl.set("#s8_b0_c0_l",{opacity:0},119.00);
+tl.set("#s8_b0_c0_l",{scale:0.87},119.00);
+tl.fromTo("#s8_b0_c0",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},119.60);
+tl.to("#s8_b0_c0_l",{opacity:1,duration:0.3},119.68);
+tl.to("#s8_b0_c0",{opacity:0,duration:0.2},127.72);
+tl.to("#s8_b0_c0_l",{opacity:0,duration:0.2},127.72);
+tl.set("#s8_b0_c1",{opacity:0},119.00);
+tl.set("#s8_b0_c1_l",{opacity:0},119.00);
+tl.set("#s8_b0_c1_l",{scale:0.87},119.00);
+tl.fromTo("#s8_b0_c1",{opacity:0,scale:1.04,transformOrigin:'50% 50%'},{opacity:1,scale:1,duration:0.35,ease:"power2.out"},120.40);
+tl.to("#s8_b0_c1_l",{opacity:1,duration:0.3},120.48);
+tl.to("#s8_b0_c1",{opacity:0,duration:0.2},127.72);
+tl.to("#s8_b0_c1_l",{opacity:0,duration:0.2},127.72);
+tl.set("#s8_cap0",{opacity:0},119.00);
+tl.to("#s8_cap0",{opacity:1,duration:0.3},119.10);
+tl.to("#s8_cap0",{opacity:0,duration:0.2},127.72);
+tl.to("#s8",{opacity:1,duration:0.3},119.00);
+tl.to("#s8",{opacity:0,duration:0.25},127.72);
+tl.set("#s9_cap0",{opacity:0},127.97);
+tl.to("#s9_cap0",{opacity:1,duration:0.3},128.07);
+tl.to("#s9_cap0",{opacity:0,duration:0.2},134.95);
+tl.set("#s9_cap1",{opacity:0},127.97);
+tl.to("#s9_cap1",{opacity:1,duration:0.3},135.30);
+tl.to("#s9_cap1",{opacity:0,duration:0.2},142.63);
+tl.set("#s9_p_x",{opacity:0},127.97);
+tl.to("#s9_p_x",{opacity:1,duration:0.3},128.22);
+tl.set("#s9_p_l0",{opacity:0},127.97);
+tl.fromTo("#s9_p_l0",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},128.22);
+tl.set("#s9_p_sink",{opacity:0},127.97);
+tl.fromTo("#s9_p_sink",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},135.45);
+tl.to("#s9",{opacity:1,duration:0.3},127.97);
+tl.to("#s9",{opacity:0,duration:0.25},142.63);
+tl.fromTo("#s10_e",{opacity:0,y:20},{opacity:1,y:0,duration:0.5,ease:"power2.out"},143.03);
+tl.fromTo("#s10_h",{opacity:0,y:40},{opacity:1,y:0,duration:0.7,ease:"power3.out"},143.18);
+tl.fromTo("#s10_i0",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},143.98);
+tl.fromTo("#s10_i1",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},145.74);
+tl.fromTo("#s10_i2",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},147.50);
+tl.fromTo("#s10_i3",{opacity:0,y:34},{opacity:1,y:0,duration:0.6,ease:"power2.out"},149.26);
+tl.to("#s10",{opacity:1,duration:0.35},142.88);
+tl.to("#s10",{opacity:0,duration:0.25},151.87);
+</script></body></html>

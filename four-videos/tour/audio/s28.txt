@@ -1,0 +1,1 @@
+That is the setup: explore the stations, choose what to feature, enable products per project, and configure each one in Settings.

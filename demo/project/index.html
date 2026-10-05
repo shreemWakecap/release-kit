@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      margin: 0; width: 1920px; height: 1080px;
+      overflow: hidden; background: #000;
+      font-family: "IBM Plex Sans", -apple-system, system-ui, sans-serif;
+      color: #fff;
+    }
+    :root {
+      --brand: #FF6B00;
+      --green: #2ecc71;
+      --dim: rgba(255,255,255,0.74);
+    }
+    .clip { position: absolute; inset: 0; opacity: 0; }
+
+    .scene {
+      display: flex; flex-direction: column;
+      justify-content: center; padding: 0 140px;
+    }
+    .scene .eyebrow {
+      display: inline-block; align-self: flex-start;
+      font-size: 22px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--brand);
+      font-weight: 600; padding: 8px 18px;
+      border: 2px solid var(--brand);
+      margin-bottom: 36px;
+    }
+    .scene h1 {
+      font-size: 132px; line-height: 1.0; font-weight: 700;
+      letter-spacing: -0.025em; max-width: 1700px;
+    }
+    .scene p.lead {
+      font-size: 56px; line-height: 1.18; font-weight: 400;
+      color: var(--dim); max-width: 1680px;
+      margin-top: 28px;
+    }
+    .scene p.subtitle {
+      font-size: 40px; color: var(--dim); margin-top: 20px;
+    }
+
+    .scene-brand { background: var(--brand); }
+    .scene-brand .eyebrow { color: #000; border-color: #000; }
+    .scene-brand h1, .scene-brand p { color: #000; }
+
+    .scene-dark { background: #000; }
+    .scene-grid {
+      background: #050505;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Pain list (problem scene) */
+    .pain-list {
+      list-style: none; display: flex; flex-direction: column; gap: 28px;
+      margin: 24px 0;
+    }
+    .pain-list li {
+      font-size: 56px; font-weight: 500; line-height: 1.15;
+      display: flex; align-items: center; gap: 24px;
+    }
+    .pain-list .x {
+      flex: 0 0 auto; width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,131,0,0.18); color: var(--brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; font-weight: 700;
+    }
+
+    /* Story quote (problem scene alternative) */
+    .story-quote {
+      font-size: 80px; line-height: 1.12; font-weight: 500;
+      max-width: 1680px; font-style: normal;
+      border-left: 8px solid var(--brand); padding-left: 40px;
+      margin-bottom: 32px;
+    }
+    .story-quote cite {
+      display: block; font-size: 28px; color: var(--dim);
+      margin-top: 24px; font-style: normal; letter-spacing: 0.04em;
+    }
+
+    /* Acronym block (reveal scene) */
+    .acronym-block {
+      display: flex; align-items: baseline; gap: 40px; margin-bottom: 32px;
+    }
+    .acronym-short {
+      font-size: 220px; font-weight: 800; color: var(--brand);
+      line-height: 0.9; letter-spacing: -0.04em;
+    }
+    .acronym-expansion {
+      font-size: 40px; font-weight: 400; color: var(--dim);
+      max-width: 1100px; line-height: 1.2;
+    }
+
+    /* Cards (outcome scene) */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 24px; margin-top: 40px; max-width: 1700px;
+    }
+    .ticket-card {
+      padding: 32px; border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+    }
+    .ticket-id {
+      font-family: ui-monospace, "SF Mono", monospace;
+      font-size: 26px; color: var(--brand); font-weight: 700;
+      margin-bottom: 14px; letter-spacing: 0.04em;
+    }
+    .ticket-title {
+      font-size: 30px; font-weight: 600; color: #fff;
+      line-height: 1.2; margin-bottom: 12px;
+    }
+    .ticket-subtitle {
+      font-size: 20px; color: var(--dim); margin-bottom: 12px;
+    }
+    .ticket-status {
+      font-size: 22px; color: var(--green); font-weight: 700;
+      letter-spacing: 0.06em; display: flex; align-items: center; gap: 10px;
+    }
+    .ticket-status::before {
+      content: ""; display: inline-block; width: 14px; height: 14px;
+      background: var(--green);
+    }
+
+    /* Demo scene */
+    .scene-demo { background: #000; }
+    .scene-demo .bg {
+      /* All bg layers stack at the same offset; GSAP fades each in/out
+         as the storyboard step advances. opacity:0 starts means only the
+         active step's bg is visible at any time. */
+      position: absolute; left: 0; top: 46px;
+      width: 1920px; height: 988px;
+      opacity: 0;
+    }
+    .scene-demo .bg img {
+      width: 1920px; height: 988px; display: block;
+      object-fit: cover; object-position: top left;
+    }
+    .scene-demo .scrim {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.82) 100%);
+    }
+    .scene-demo .demo-title-chip {
+      position: absolute; left: 80px; top: 70px;
+      font-size: 32px; font-weight: 600; color: #fff;
+      background: rgba(0,0,0,0.82); padding: 14px 28px;
+      border-left: 6px solid var(--brand); opacity: 0;
+    }
+    .scene-demo .demo-caption {
+      position: absolute; left: 80px; right: 80px; bottom: 70px;
+      text-align: center;
+      font-size: 44px; line-height: 1.2; font-weight: 600;
+      color: #fff; background: rgba(0,0,0,0.82);
+      padding: 20px 36px;
+      border-bottom: 6px solid var(--brand); opacity: 0;
+    }
+    .overlay { position: absolute; inset: 0; pointer-events: none; }
+    .overlay svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .annotation-step { opacity: 0; }
+    .annotation-step .pulse {
+      fill: none; stroke: var(--brand); stroke-width: 6;
+    }
+    .annotation-step .callout-box {
+      filter: drop-shadow(0 0 18px rgba(255,107,0,0.32));
+    }
+  </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="56"
+      data-width="1920"
+      data-height="1080"
+    >
+      <audio id="narration" class="clip" src="narration.m4a" data-start="0" data-duration="56" data-track-index="0"></audio>
+
+      <!-- hook · 0-4s -->
+      <div id="hook" class="clip scene scene-brand" data-start="0" data-duration="4" data-track-index="1">
+        <span class="eyebrow">WakeCap</span>
+        
+        
+        
+        <h1>Connected Environment</h1>
+        <p class="lead">Is it safe to work right now?</p>
+        
+        
+      </div>
+
+      <!-- problem · 4-11s -->
+      <div id="problem" class="clip scene scene-grid" data-start="4" data-duration="7" data-track-index="1">
+        <span class="eyebrow">The problem</span>
+        
+        
+        
+        <ul class="pain-list">
+          <li><span class="x">×</span>A grid of readings, no verdict</li>
+          <li><span class="x">×</span>A stopped sensor, old data that still looks fine</li>
+        </ul>
+        <h1>Numbers are not answers.</h1>
+        
+        
+        
+      </div>
+
+      <!-- reveal · 11-17s -->
+      <div id="reveal" class="clip scene scene-dark" data-start="11" data-duration="6" data-track-index="1">
+        <span class="eyebrow">One area per project</span>
+        
+        
+        
+        <h1>Introducing Connected Environment</h1>
+        
+        <p class="subtitle">Weather Station · Lightning · Reports · Settings</p>
+        
+      </div>
+
+      <!-- demo_a · 17-26s · demo -->
+      <div id="demo_a" class="clip scene-demo" data-start="17" data-duration="9" data-track-index="1">
+        <div class="bg" id="demo_a_bg0"><img src="assets/demo_weather_station/00-orientation.png" alt="demo_a step 0" /></div>
+        <div class="bg" id="demo_a_bg1"><img src="assets/demo_weather_station/01-post.png" alt="demo_a step 1" /></div>
+        <div class="bg" id="demo_a_bg2"><img src="assets/demo_weather_station/02-post.png" alt="demo_a step 2" /></div>
+        <div class="scrim"></div>
+        <div class="demo-title-chip" id="demo_a_chip">Weather Station</div>
+        
+        <div class="overlay annotation-step annotation" id="demo_a_step1">
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            
+            
+            <rect class="callout-box" x="1484" y="138" width="442" height="137" rx="18" fill="#FF6B00" fill-opacity="0.08" stroke="#FF6B00" stroke-width="5" stroke-dasharray="14 10" />
+            
+            <rect x="1440" y="349" width="360" height="56" rx="6" fill="#FF6B00" />
+          <text x="1458" y="385" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="600" fill="#000">The steps to take</text>
+          </svg>
+        </div>
+        <div class="overlay annotation-step annotation" id="demo_a_step2">
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            
+            
+            <rect class="callout-box" x="1472" y="276" width="452" height="390" rx="18" fill="#FF6B00" fill-opacity="0.08" stroke="#FF6B00" stroke-width="5" stroke-dasharray="14 10" />
+            
+            <rect x="1352" y="740" width="508" height="56" rx="6" fill="#FF6B00" />
+          <text x="1370" y="776" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="600" fill="#000">One station offline, named</text>
+          </svg>
+        </div>
+        <div class="demo-caption" id="demo_a_cap">Weather Station: the verdict comes first</div>
+      </div>
+
+      <!-- demo_b · 26-35s · demo -->
+      <div id="demo_b" class="clip scene-demo" data-start="26" data-duration="9" data-track-index="1">
+        <div class="bg" id="demo_b_bg0"><img src="assets/demo_lightning/00-orientation.png" alt="demo_b step 0" /></div>
+        <div class="bg" id="demo_b_bg1"><img src="assets/demo_lightning/01-post.png" alt="demo_b step 1" /></div>
+        <div class="scrim"></div>
+        <div class="demo-title-chip" id="demo_b_chip">Lightning</div>
+        
+        <div class="overlay annotation-step annotation" id="demo_b_step1">
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            
+            
+            <rect class="callout-box" x="216" y="509" width="1703" height="243" rx="18" fill="#FF6B00" fill-opacity="0.08" stroke="#FF6B00" stroke-width="5" stroke-dasharray="14 10" />
+            
+            <rect x="172" y="826" width="598" height="56" rx="6" fill="#FF6B00" />
+          <text x="190" y="862" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="600" fill="#000">Every alarm interval, on record</text>
+          </svg>
+        </div>
+        <div class="demo-caption" id="demo_b_cap">Lightning: status and alarm history</div>
+      </div>
+
+      <!-- demo_c · 35-47s · demo -->
+      <div id="demo_c" class="clip scene-demo" data-start="35" data-duration="12" data-track-index="1">
+        <div class="bg" id="demo_c_bg0"><img src="assets/demo_reports_settings/00-orientation.png" alt="demo_c step 0" /></div>
+        <div class="bg" id="demo_c_bg1"><img src="assets/demo_reports_settings/01-post.png" alt="demo_c step 1" /></div>
+        <div class="bg" id="demo_c_bg2"><img src="assets/demo_reports_settings/02-post.png" alt="demo_c step 2" /></div>
+        <div class="scrim"></div>
+        <div class="demo-title-chip" id="demo_c_chip">Reports and Settings</div>
+        
+        <div class="overlay annotation-step annotation" id="demo_c_step1">
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            
+            
+            <rect class="callout-box" x="590" y="507" width="1185" height="256" rx="18" fill="#FF6B00" fill-opacity="0.08" stroke="#FF6B00" stroke-width="5" stroke-dasharray="14 10" />
+            
+            <rect x="546" y="837" width="598" height="56" rx="6" fill="#FF6B00" />
+          <text x="564" y="873" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="600" fill="#000">What each limit would have done</text>
+          </svg>
+        </div>
+        <div class="overlay annotation-step annotation" id="demo_c_step2">
+          <svg viewBox="0 0 1920 1080" preserveAspectRatio="none">
+            
+            
+            <rect class="callout-box" x="590" y="518" width="1186" height="182" rx="18" fill="#FF6B00" fill-opacity="0.08" stroke="#FF6B00" stroke-width="5" stroke-dasharray="14 10" />
+            
+            <rect x="546" y="774" width="360" height="56" rx="6" fill="#FF6B00" />
+          <text x="564" y="810" font-family="IBM Plex Sans, sans-serif" font-size="32" font-weight="600" fill="#000">Change history</text>
+          </svg>
+        </div>
+        <div class="demo-caption" id="demo_c_cap">Reports, and a Safety Policy with history</div>
+      </div>
+
+      <!-- outcome · 47-52s -->
+      <div id="outcome" class="clip scene scene-grid" data-start="47" data-duration="5" data-track-index="1">
+        <span class="eyebrow">What you get</span>
+        
+        
+        
+        <h1>One verdict. One place.</h1>
+        
+        
+        
+        <div class="cards-grid">
+          
+            <div class="ticket-card" id="outcome_card0">
+              
+              <div class="ticket-title">Answer first</div>
+              <div class="ticket-subtitle">The verdict and the next step lead the page</div>
+              
+            </div>
+            <div class="ticket-card" id="outcome_card1">
+              
+              <div class="ticket-title">Nothing hidden</div>
+              <div class="ticket-subtitle">Offline stations are named, not silent</div>
+              
+            </div>
+            <div class="ticket-card" id="outcome_card2">
+              
+              <div class="ticket-title">On record</div>
+              <div class="ticket-subtitle">The Safety Policy keeps a change history</div>
+              
+            </div>
+        </div>
+      </div>
+
+      <!-- cta · 52-56s -->
+      <div id="cta" class="clip scene scene-brand" data-start="52" data-duration="4" data-track-index="1">
+        <span class="eyebrow">Try it now</span>
+        
+        
+        
+        <h1>Open Connected Environment in the portal</h1>
+        
+        
+        
+      </div>
+    </div>
+
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+
+      // hook · 0s–4s
+      tl.to("#hook", { opacity: 1, duration: 0.4 }, 0);
+      tl.to("#hook", { opacity: 0, duration: 0.3 }, 3.70);
+      tl.set("#hook", { opacity: 0 }, 4);
+
+      // problem · 4s–11s
+      tl.to("#problem", { opacity: 1, duration: 0.4 }, 4);
+      tl.to("#problem", { opacity: 0, duration: 0.3 }, 10.70);
+      tl.set("#problem", { opacity: 0 }, 11);
+
+      // reveal · 11s–17s
+      tl.to("#reveal", { opacity: 1, duration: 0.4 }, 11);
+      tl.to("#reveal", { opacity: 0, duration: 0.3 }, 16.70);
+      tl.set("#reveal", { opacity: 0 }, 17);
+
+      // demo_a · 17s–26s
+      tl.to("#demo_a", { opacity: 1, duration: 0.4 }, 17);
+      tl.set("#demo_a_bg0", { opacity: 0 }, 17);
+      tl.set("#demo_a_bg1", { opacity: 0 }, 17);
+      tl.set("#demo_a_bg2", { opacity: 0 }, 17);
+      tl.to("#demo_a_bg0", { opacity: 1, duration: 0.4 }, 17);
+      tl.to("#demo_a_bg1", { opacity: 1, duration: 0.25 }, 20);
+      tl.to("#demo_a_bg0", { opacity: 0, duration: 0.25 }, 20);
+      tl.set("#demo_a_bg0", { opacity: 0 }, 20.25);
+      tl.set("#demo_a_step1", { opacity: 0 }, 17);
+      tl.to("#demo_a_step1", { opacity: 1, duration: 0.4 }, 20);
+      tl.to("#demo_a_step1", { opacity: 0, duration: 0.3 }, 21.7);
+      tl.set("#demo_a_step1", { opacity: 0 }, 22);
+      tl.to("#demo_a_bg2", { opacity: 1, duration: 0.25 }, 22);
+      tl.to("#demo_a_bg1", { opacity: 0, duration: 0.25 }, 22);
+      tl.set("#demo_a_bg1", { opacity: 0 }, 22.25);
+      tl.set("#demo_a_step2", { opacity: 0 }, 17);
+      tl.to("#demo_a_step2", { opacity: 1, duration: 0.4 }, 22);
+      tl.to("#demo_a_step2", { opacity: 0, duration: 0.3 }, 25.7);
+      tl.set("#demo_a_step2", { opacity: 0 }, 26);
+      tl.set("#demo_a_cap", { opacity: 0 }, 17);
+      tl.to("#demo_a_cap", { opacity: 1, duration: 0.4 }, 22.5);
+      tl.set("#demo_a_chip", { opacity: 0 }, 17);
+      tl.to("#demo_a_chip", { opacity: 1, duration: 0.3 }, 17.3);
+      tl.to("#demo_a", { opacity: 0, duration: 0.3 }, 25.70);
+      tl.set("#demo_a", { opacity: 0 }, 26);
+
+      // demo_b · 26s–35s
+      tl.to("#demo_b", { opacity: 1, duration: 0.4 }, 26);
+      tl.set("#demo_b_bg0", { opacity: 0 }, 26);
+      tl.set("#demo_b_bg1", { opacity: 0 }, 26);
+      tl.to("#demo_b_bg0", { opacity: 1, duration: 0.4 }, 26);
+      tl.to("#demo_b_bg1", { opacity: 1, duration: 0.25 }, 30);
+      tl.to("#demo_b_bg0", { opacity: 0, duration: 0.25 }, 30);
+      tl.set("#demo_b_bg0", { opacity: 0 }, 30.25);
+      tl.set("#demo_b_step1", { opacity: 0 }, 26);
+      tl.to("#demo_b_step1", { opacity: 1, duration: 0.4 }, 30);
+      tl.to("#demo_b_step1", { opacity: 0, duration: 0.3 }, 34.7);
+      tl.set("#demo_b_step1", { opacity: 0 }, 35);
+      tl.set("#demo_b_cap", { opacity: 0 }, 26);
+      tl.to("#demo_b_cap", { opacity: 1, duration: 0.4 }, 31.5);
+      tl.set("#demo_b_chip", { opacity: 0 }, 26);
+      tl.to("#demo_b_chip", { opacity: 1, duration: 0.3 }, 26.3);
+      tl.to("#demo_b", { opacity: 0, duration: 0.3 }, 34.70);
+      tl.set("#demo_b", { opacity: 0 }, 35);
+
+      // demo_c · 35s–47s
+      tl.to("#demo_c", { opacity: 1, duration: 0.4 }, 35);
+      tl.set("#demo_c_bg0", { opacity: 0 }, 35);
+      tl.set("#demo_c_bg1", { opacity: 0 }, 35);
+      tl.set("#demo_c_bg2", { opacity: 0 }, 35);
+      tl.to("#demo_c_bg0", { opacity: 1, duration: 0.4 }, 35);
+      tl.to("#demo_c_bg1", { opacity: 1, duration: 0.25 }, 39.5);
+      tl.to("#demo_c_bg0", { opacity: 0, duration: 0.25 }, 39.5);
+      tl.set("#demo_c_bg0", { opacity: 0 }, 39.75);
+      tl.set("#demo_c_step1", { opacity: 0 }, 35);
+      tl.to("#demo_c_step1", { opacity: 1, duration: 0.4 }, 39.5);
+      tl.to("#demo_c_step1", { opacity: 0, duration: 0.3 }, 44);
+      tl.set("#demo_c_step1", { opacity: 0 }, 44.3);
+      tl.to("#demo_c_bg2", { opacity: 1, duration: 0.25 }, 44.3);
+      tl.to("#demo_c_bg1", { opacity: 0, duration: 0.25 }, 44.3);
+      tl.set("#demo_c_bg1", { opacity: 0 }, 44.55);
+      tl.set("#demo_c_step2", { opacity: 0 }, 35);
+      tl.to("#demo_c_step2", { opacity: 1, duration: 0.4 }, 44.3);
+      tl.to("#demo_c_step2", { opacity: 0, duration: 0.3 }, 46.7);
+      tl.set("#demo_c_step2", { opacity: 0 }, 47);
+      tl.set("#demo_c_cap", { opacity: 0 }, 35);
+      tl.to("#demo_c_cap", { opacity: 1, duration: 0.4 }, 43.5);
+      tl.set("#demo_c_chip", { opacity: 0 }, 35);
+      tl.to("#demo_c_chip", { opacity: 1, duration: 0.3 }, 35.3);
+      tl.to("#demo_c", { opacity: 0, duration: 0.3 }, 46.70);
+      tl.set("#demo_c", { opacity: 0 }, 47);
+
+      // outcome · 47s–52s
+      tl.to("#outcome", { opacity: 1, duration: 0.4 }, 47);
+      tl.set("#outcome_card0", { opacity: 0, y: 24 }, 47);
+      tl.to("#outcome_card0", { opacity: 1, y: 0, duration: 0.5 }, 47.80);
+      tl.set("#outcome_card1", { opacity: 0, y: 24 }, 47);
+      tl.to("#outcome_card1", { opacity: 1, y: 0, duration: 0.5 }, 48.97);
+      tl.set("#outcome_card2", { opacity: 0, y: 24 }, 47);
+      tl.to("#outcome_card2", { opacity: 1, y: 0, duration: 0.5 }, 50.13);
+      tl.to("#outcome", { opacity: 0, duration: 0.3 }, 51.70);
+      tl.set("#outcome", { opacity: 0 }, 52);
+
+      // cta · 52s–56s
+      tl.to("#cta", { opacity: 1, duration: 0.4 }, 52);
+
+    </script>
+  </body>
+</html>

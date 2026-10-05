@@ -1,0 +1,367 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:06,420"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 6420
+			},
+			"text": " You get the peak heat index and the peak wind speed, a daily table, and an Excel export.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.843312,
+					"t_dtw": -1
+				},
+				{
+					"text": " You",
+					"timestamps": {
+						"from": "00:00:00,270",
+						"to": "00:00:00,270"
+					},
+					"offsets": {
+						"from": 270,
+						"to": 270
+					},
+					"id": 509,
+					"p": 0.758084,
+					"t_dtw": -1
+				},
+				{
+					"text": " get",
+					"timestamps": {
+						"from": "00:00:00,280",
+						"to": "00:00:00,540"
+					},
+					"offsets": {
+						"from": 280,
+						"to": 540
+					},
+					"id": 483,
+					"p": 0.994309,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:00,540",
+						"to": "00:00:00,800"
+					},
+					"offsets": {
+						"from": 540,
+						"to": 800
+					},
+					"id": 264,
+					"p": 0.993765,
+					"t_dtw": -1
+				},
+				{
+					"text": " peak",
+					"timestamps": {
+						"from": "00:00:00,800",
+						"to": "00:00:01,130"
+					},
+					"offsets": {
+						"from": 800,
+						"to": 1130
+					},
+					"id": 10651,
+					"p": 0.795597,
+					"t_dtw": -1
+				},
+				{
+					"text": " heat",
+					"timestamps": {
+						"from": "00:00:01,200",
+						"to": "00:00:01,490"
+					},
+					"offsets": {
+						"from": 1200,
+						"to": 1490
+					},
+					"id": 3738,
+					"p": 0.950267,
+					"t_dtw": -1
+				},
+				{
+					"text": " index",
+					"timestamps": {
+						"from": "00:00:01,550",
+						"to": "00:00:01,970"
+					},
+					"offsets": {
+						"from": 1550,
+						"to": 1970
+					},
+					"id": 8186,
+					"p": 0.993864,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:02,070",
+						"to": "00:00:02,250"
+					},
+					"offsets": {
+						"from": 2070,
+						"to": 2250
+					},
+					"id": 293,
+					"p": 0.929626,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:02,250",
+						"to": "00:00:02,470"
+					},
+					"offsets": {
+						"from": 2250,
+						"to": 2470
+					},
+					"id": 264,
+					"p": 0.954995,
+					"t_dtw": -1
+				},
+				{
+					"text": " peak",
+					"timestamps": {
+						"from": "00:00:02,650",
+						"to": "00:00:02,720"
+					},
+					"offsets": {
+						"from": 2650,
+						"to": 2720
+					},
+					"id": 10651,
+					"p": 0.997582,
+					"t_dtw": -1
+				},
+				{
+					"text": " wind",
+					"timestamps": {
+						"from": "00:00:02,840",
+						"to": "00:00:03,080"
+					},
+					"offsets": {
+						"from": 2840,
+						"to": 3080
+					},
+					"id": 2468,
+					"p": 0.967493,
+					"t_dtw": -1
+				},
+				{
+					"text": " speed",
+					"timestamps": {
+						"from": "00:00:03,150",
+						"to": "00:00:03,450"
+					},
+					"offsets": {
+						"from": 3150,
+						"to": 3450
+					},
+					"id": 3073,
+					"p": 0.952476,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:03,480",
+						"to": "00:00:03,650"
+					},
+					"offsets": {
+						"from": 3480,
+						"to": 3650
+					},
+					"id": 11,
+					"p": 0.946774,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:03,740",
+						"to": "00:00:03,740"
+					},
+					"offsets": {
+						"from": 3740,
+						"to": 3740
+					},
+					"id": 257,
+					"p": 0.715948,
+					"t_dtw": -1
+				},
+				{
+					"text": " daily",
+					"timestamps": {
+						"from": "00:00:03,810",
+						"to": "00:00:04,170"
+					},
+					"offsets": {
+						"from": 3810,
+						"to": 4170
+					},
+					"id": 5212,
+					"p": 0.93504,
+					"t_dtw": -1
+				},
+				{
+					"text": " table",
+					"timestamps": {
+						"from": "00:00:04,170",
+						"to": "00:00:04,600"
+					},
+					"offsets": {
+						"from": 4170,
+						"to": 4600
+					},
+					"id": 3199,
+					"p": 0.993161,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,600",
+						"to": "00:00:04,690"
+					},
+					"offsets": {
+						"from": 4600,
+						"to": 4690
+					},
+					"id": 11,
+					"p": 0.629451,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:04,870",
+						"to": "00:00:05,100"
+					},
+					"offsets": {
+						"from": 4870,
+						"to": 5100
+					},
+					"id": 293,
+					"p": 0.98362,
+					"t_dtw": -1
+				},
+				{
+					"text": " an",
+					"timestamps": {
+						"from": "00:00:05,100",
+						"to": "00:00:05,300"
+					},
+					"offsets": {
+						"from": 5100,
+						"to": 5300
+					},
+					"id": 364,
+					"p": 0.995137,
+					"t_dtw": -1
+				},
+				{
+					"text": " Excel",
+					"timestamps": {
+						"from": "00:00:05,300",
+						"to": "00:00:05,750"
+					},
+					"offsets": {
+						"from": 5300,
+						"to": 5750
+					},
+					"id": 19060,
+					"p": 0.927389,
+					"t_dtw": -1
+				},
+				{
+					"text": " export",
+					"timestamps": {
+						"from": "00:00:05,810",
+						"to": "00:00:06,050"
+					},
+					"offsets": {
+						"from": 5810,
+						"to": 6050
+					},
+					"id": 10725,
+					"p": 0.964027,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:06,410",
+						"to": "00:00:06,420"
+					},
+					"offsets": {
+						"from": 6410,
+						"to": 6420
+					},
+					"id": 13,
+					"p": 0.964374,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_321]",
+					"timestamps": {
+						"from": "00:00:06,420",
+						"to": "00:00:06,420"
+					},
+					"offsets": {
+						"from": 6420,
+						"to": 6420
+					},
+					"id": 50686,
+					"p": 0.670148,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

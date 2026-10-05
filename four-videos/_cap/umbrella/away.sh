@@ -1,0 +1,1 @@
+away(){ "$B" js 'document.body.setAttribute("data-away","1");(()=>{const e=document.querySelector("h1,h2,h3,p,span");if(e)e.setAttribute("data-away2","1")})()' >/dev/null 2>&1; "$B" hover '[data-away="1"]' >/dev/null 2>&1; sleep 2; }

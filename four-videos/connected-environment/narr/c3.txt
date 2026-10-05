@@ -1,0 +1,11 @@
+In weather, a thirty day preview shows how often a limit would have stopped work.
+
+Closing an alert here is recorded in WakeCap only. The page note says it is not sent to the gas vendor.
+
+The newest rows read Closed. With edit access, older Acknowledged rows show a Close button.
+
+Weather stations reach WakeCap over the site's wireless mesh, through a gateway, into the cloud.
+
+Lightning is read through a small input module, and shows on the mesh as a Modbus device. Modbus is an industrial wiring and data standard many sensors speak.
+
+Gas takes another road: the vendor's cloud. No mesh, no Modbus. WakeCap asks that cloud on a regular timer, and each detector reports on its own schedule.

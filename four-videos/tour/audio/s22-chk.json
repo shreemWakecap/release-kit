@@ -1,0 +1,353 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:06,320"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 6320
+			},
+			"text": " Below, the heat index bands. Each band has its own work, rest, and water cycle.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.886226,
+					"t_dtw": -1
+				},
+				{
+					"text": " Below",
+					"timestamps": {
+						"from": "00:00:00,350",
+						"to": "00:00:00,440"
+					},
+					"offsets": {
+						"from": 350,
+						"to": 440
+					},
+					"id": 36261,
+					"p": 0.982051,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:00,440",
+						"to": "00:00:00,610"
+					},
+					"offsets": {
+						"from": 440,
+						"to": 610
+					},
+					"id": 11,
+					"p": 0.928391,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:00,610",
+						"to": "00:00:00,860"
+					},
+					"offsets": {
+						"from": 610,
+						"to": 860
+					},
+					"id": 264,
+					"p": 0.997544,
+					"t_dtw": -1
+				},
+				{
+					"text": " heat",
+					"timestamps": {
+						"from": "00:00:00,860",
+						"to": "00:00:01,220"
+					},
+					"offsets": {
+						"from": 860,
+						"to": 1220
+					},
+					"id": 3738,
+					"p": 0.824708,
+					"t_dtw": -1
+				},
+				{
+					"text": " index",
+					"timestamps": {
+						"from": "00:00:01,220",
+						"to": "00:00:01,660"
+					},
+					"offsets": {
+						"from": 1220,
+						"to": 1660
+					},
+					"id": 8186,
+					"p": 0.988257,
+					"t_dtw": -1
+				},
+				{
+					"text": " bands",
+					"timestamps": {
+						"from": "00:00:01,660",
+						"to": "00:00:02,100"
+					},
+					"offsets": {
+						"from": 1660,
+						"to": 2100
+					},
+					"id": 13543,
+					"p": 0.994442,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:02,100",
+						"to": "00:00:02,400"
+					},
+					"offsets": {
+						"from": 2100,
+						"to": 2400
+					},
+					"id": 13,
+					"p": 0.966063,
+					"t_dtw": -1
+				},
+				{
+					"text": " Each",
+					"timestamps": {
+						"from": "00:00:02,400",
+						"to": "00:00:02,460"
+					},
+					"offsets": {
+						"from": 2400,
+						"to": 2460
+					},
+					"id": 6947,
+					"p": 0.579996,
+					"t_dtw": -1
+				},
+				{
+					"text": " band",
+					"timestamps": {
+						"from": "00:00:02,950",
+						"to": "00:00:03,070"
+					},
+					"offsets": {
+						"from": 2950,
+						"to": 3070
+					},
+					"id": 4116,
+					"p": 0.999277,
+					"t_dtw": -1
+				},
+				{
+					"text": " has",
+					"timestamps": {
+						"from": "00:00:03,150",
+						"to": "00:00:03,340"
+					},
+					"offsets": {
+						"from": 3150,
+						"to": 3340
+					},
+					"id": 575,
+					"p": 0.998673,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:03,340",
+						"to": "00:00:03,590"
+					},
+					"offsets": {
+						"from": 3340,
+						"to": 3590
+					},
+					"id": 1080,
+					"p": 0.994981,
+					"t_dtw": -1
+				},
+				{
+					"text": " own",
+					"timestamps": {
+						"from": "00:00:03,590",
+						"to": "00:00:03,860"
+					},
+					"offsets": {
+						"from": 3590,
+						"to": 3860
+					},
+					"id": 1065,
+					"p": 0.999289,
+					"t_dtw": -1
+				},
+				{
+					"text": " work",
+					"timestamps": {
+						"from": "00:00:04,030",
+						"to": "00:00:04,200"
+					},
+					"offsets": {
+						"from": 4030,
+						"to": 4200
+					},
+					"id": 589,
+					"p": 0.996358,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,200",
+						"to": "00:00:04,350"
+					},
+					"offsets": {
+						"from": 4200,
+						"to": 4350
+					},
+					"id": 11,
+					"p": 0.990539,
+					"t_dtw": -1
+				},
+				{
+					"text": " rest",
+					"timestamps": {
+						"from": "00:00:04,350",
+						"to": "00:00:04,620"
+					},
+					"offsets": {
+						"from": 4350,
+						"to": 4620
+					},
+					"id": 1472,
+					"p": 0.998525,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:04,730",
+						"to": "00:00:04,810"
+					},
+					"offsets": {
+						"from": 4730,
+						"to": 4810
+					},
+					"id": 11,
+					"p": 0.848854,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:04,990",
+						"to": "00:00:05,140"
+					},
+					"offsets": {
+						"from": 4990,
+						"to": 5140
+					},
+					"id": 293,
+					"p": 0.999094,
+					"t_dtw": -1
+				},
+				{
+					"text": " water",
+					"timestamps": {
+						"from": "00:00:05,140",
+						"to": "00:00:05,570"
+					},
+					"offsets": {
+						"from": 5140,
+						"to": 5570
+					},
+					"id": 1281,
+					"p": 0.999569,
+					"t_dtw": -1
+				},
+				{
+					"text": " cycle",
+					"timestamps": {
+						"from": "00:00:05,570",
+						"to": "00:00:06,000"
+					},
+					"offsets": {
+						"from": 5570,
+						"to": 6000
+					},
+					"id": 6586,
+					"p": 0.99899,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:06,000",
+						"to": "00:00:06,320"
+					},
+					"offsets": {
+						"from": 6000,
+						"to": 6320
+					},
+					"id": 13,
+					"p": 0.994328,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_316]",
+					"timestamps": {
+						"from": "00:00:06,320",
+						"to": "00:00:06,320"
+					},
+					"offsets": {
+						"from": 6320,
+						"to": 6320
+					},
+					"id": 50681,
+					"p": 0.394785,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

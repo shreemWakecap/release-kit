@@ -1,0 +1,1520 @@
+{
+  "topic": "Connected Environment: control paths and the building blocks for a future AI agent",
+  "summary": "Connected Environment's backend already contains the building blocks for a future AI agent, all Weather Station scoped: a secured MCP endpoint inside the backend with 33 permission-gated tools (26 read, 4 propose, 3 observer bookkeeping), a deterministic safety verdict with an advisory work decision and an optional, fallback-protected AI wording layer, five agent-monitoring evidence reads, an observer control plane where agents draft and only people decide, zero-write observation previews with approval-gated send, and a propose-then-second-person-approves change spine. The human-approval invariant is enforced by a separate approval scope, a self-approval refusal, diff echo, and IL-walking tests that prove no MCP code reaches approval, direct writes or the review operations. On 2026-10-04 the production gateway serves the MCP discovery document and a 401 challenge, and the observer, agent-observation, approval, audit, safety-policy and gas-acknowledge routes all exist in production, but no running agent, no connected client and no approver token is evidenced, the Observation Manager link is built for Weather and Lightning only (Gas is NOT built, a Todo created today), Lightning email/SMS was removed, and the portal's agent composition and observation drawer are shipped but flag-gated default OFF with unknown production state. Of the 'one language' claims: one backend is confirmed, one permission family is confirmed for reads (writes differ), one rule set is refuted, and one audit trail is refuted (audit covers weather policy only). Control is real but not a two-person chokepoint: a manage-weather-settings holder publishes policy directly with version check, loosening acknowledgement and audit.",
+  "mcp_tools": [
+    {
+      "name": "get_indicators",
+      "kind": "read",
+      "what_it_does_plain": "Current live sensor readings for a project (temperature, humidity, heat index, wind, gases and the rest), as the dashboard shows them; optionally one station. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardTools.cs:24",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_graphs",
+      "kind": "read",
+      "what_it_does_plain": "Which time-series graphs a project has, with names, units and current summaries. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardTools.cs:47",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_graph_hour",
+      "kind": "read",
+      "what_it_does_plain": "One hour of one graph (temperature or wind speed only) for today. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardTools.cs:63",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "Server time zone applies, no explicit conversion: wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardTools.cs:70-73"
+      ]
+    },
+    {
+      "name": "get_historical",
+      "kind": "read",
+      "what_it_does_plain": "Averaged readings over a time range, for trends. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardTools.cs:101",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_thresholds",
+      "kind": "read",
+      "what_it_does_plain": "The project's configured alert limits, read uncached so an agent never acts on a limit a safety officer already changed. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ConfigurationTools.cs:23",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ConfigurationTools.cs:41-45 (skipCache: true). Side effect: on a project with none, the read creates default thresholds (wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ConfigurationTools.cs:32-33)."
+      ]
+    },
+    {
+      "name": "get_project_settings",
+      "kind": "read",
+      "what_it_does_plain": "Unit system, heat-index calculation method and per-sensor online flags. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ConfigurationTools.cs:48",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_heat_index_bands",
+      "kind": "read",
+      "what_it_does_plain": "The project's resolved heat-index risk bands (label, colour, range, project override or platform default). Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ConfigurationTools.cs:69",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_station_health",
+      "kind": "read",
+      "what_it_does_plain": "Backend-computed health of the station(s): live, stale, dark, suspect or unknown, with anomaly kinds (stuck, missing, sentinel, impossible). Adds no classification of its own. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/StationTools.cs:25",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_agent_summary",
+      "kind": "read",
+      "what_it_does_plain": "The full deterministic safety summary: verdict, reasons, recommended actions, station health, priority cards, work decision, dashboard recommendations. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/StationTools.cs:51",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpAgentSummaryPassThroughTests.cs:58 (work decision passes through unchanged)"
+      ]
+    },
+    {
+      "name": "get_weather_stations_status",
+      "kind": "read",
+      "what_it_does_plain": "Registration and connectivity of every weather station in a project (online, stale, suspect, dark, offline, unregistered). Vocabulary differs from get_station_health on purpose. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/StationTools.cs:77",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_weather_stations_summary",
+      "kind": "read",
+      "what_it_does_plain": "Project roll-up of station readiness with per-state counts and reasons. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/StationTools.cs:98",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_weather_station_insight",
+      "kind": "read",
+      "what_it_does_plain": "One station's insight view: header state plus the reading collections behind it. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/StationTools.cs:113",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_project_monitoring_snapshot",
+      "kind": "read",
+      "what_it_does_plain": "One bounded poll that composes readings, station health, safety verdict, thresholds and settings with per-source success or failure, so one failed source is never mistaken for a dark project. MCP only: no REST route serves it. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/MonitoringSnapshotTools.cs:20",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_dashboard_layout",
+      "kind": "read",
+      "what_it_does_plain": "A user's saved dashboard layout (featured cards, order, dismissed recommendations). Per user per project, not a project setting. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardLayoutTools.cs:30",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "validate_dashboard_layout",
+      "kind": "read",
+      "what_it_does_plain": "Checks a proposed layout against the card catalogue and reports every rule broken; saves nothing. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/DashboardLayoutTools.cs:61",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_station_reading_window",
+      "kind": "read",
+      "what_it_does_plain": "Individual sensor readings for one station in a UTC window (max 7 days, newest N per sensor, default 500), each with its quality; suspect readings carry no value. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentEvidenceTools.cs:24",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_station_capabilities",
+      "kind": "read",
+      "what_it_does_plain": "What one station is expected to measure (sensors, units). Sample cadence is null: not modelled anywhere. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentEvidenceTools.cs:75",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_project_operating_context",
+      "kind": "read",
+      "what_it_does_plain": "Unit system and heat-index method needed to interpret readings; time zone, operating hours and policy version are omitted because no data exists for them. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentEvidenceTools.cs:96",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_station_maintenance_state",
+      "kind": "read",
+      "what_it_does_plain": "Whether a station is in a planned maintenance window. Always reports not_tracked today (no table exists), which means unknown, not 'no maintenance'. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentEvidenceTools.cs:118",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentMonitoringController.cs:136-138"
+      ]
+    },
+    {
+      "name": "get_weather_service_health",
+      "kind": "read",
+      "what_it_does_plain": "Readiness of the weather API and its dependencies, to tell an infrastructure fault from every station genuinely going dark. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentEvidenceTools.cs:139",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_change_audit_history",
+      "kind": "read",
+      "what_it_does_plain": "The append-only safety-configuration change trail, newest first, including conflicted, rejected and failed attempts, keyset-paged. Note: the MCP tool needs only the read pair while the REST audit route needs the manage-weather-settings permission (deliberate, McpToolPermissions.cs:20-25). Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeAuditTools.cs:22",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "get_change_request",
+      "kind": "read",
+      "what_it_does_plain": "One change request and its status (pending, approved, applied, rejected, expired, stale, failed), scoped to the project. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeAuditTools.cs:62",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "list_pending_change_requests",
+      "kind": "read",
+      "what_it_does_plain": "Change requests still waiting for a human to approve. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeAuditTools.cs:93",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "preview_agent_observation",
+      "kind": "read",
+      "what_it_does_plain": "Lists every observation the platform could report about one station right now, built from the same evaluation as the dashboard; writes, proposes and sends nothing. Marks each as 'sent automatically' or 'needs approval'. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentObservationTools.cs:35",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "Zero-write proof: wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentObservationsController.cs:7-18"
+      ]
+    },
+    {
+      "name": "get_observer_checkpoint",
+      "kind": "read",
+      "what_it_does_plain": "The observer's durable cursor (where its last completed cycle got to) for one named observer. Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ObserverTools.cs:37",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "list_open_findings",
+      "kind": "read",
+      "what_it_does_plain": "Findings the agent has drafted that a human has not resolved (open, acknowledged, snoozed). Needs read access to Weather Station (view) or project manage.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ObserverTools.cs:94",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "propose_set_threshold",
+      "kind": "write",
+      "what_it_does_plain": "Creates a PENDING proposal to change the alert limits (complete state, range-checked). Applies nothing; a human with approval permission must approve out of band. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeProposalTools.cs:37",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpToolSurfaceTests.cs:232-237 (proposal tools state plainly nothing is applied)"
+      ]
+    },
+    {
+      "name": "propose_update_settings",
+      "kind": "write",
+      "what_it_does_plain": "Creates a PENDING proposal to change project settings (unit, heat-index method). Cannot change a sensor's online flag. Applies nothing. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeProposalTools.cs:92",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "propose_set_indicator_enabled",
+      "kind": "write",
+      "what_it_does_plain": "Creates a PENDING proposal to set one sensor online or offline (absolute state, not a toggle). Applies nothing. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeProposalTools.cs:148",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "propose_agent_observation",
+      "kind": "write",
+      "what_it_does_plain": "Creates a PENDING proposal to report an observation to the Observation Manager; only 'station not reporting' and 'frozen sensor' can be proposed; the backend rebuilds all wording and numbers, the agent supplies identifiers only. Sends nothing until a second person approves; proposal lapses after 24 hours. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentObservationTools.cs:67",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeProposalService.cs:67 (ProposalTtlHours = 24)"
+      ]
+    },
+    {
+      "name": "set_observer_checkpoint",
+      "kind": "write",
+      "what_it_does_plain": "Advances the observer's own cursor by compare-and-swap. The agent's own bookkeeping, not a proposal: changes no weather data, threshold or setting. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ObserverTools.cs:62",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    },
+    {
+      "name": "create_finding_draft",
+      "kind": "write",
+      "what_it_does_plain": "Drafts a finding for a human to review, or appends evidence if that condition already has one (deduplicated by a database index). The agent drafts; it cannot acknowledge, snooze or resolve. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ObserverTools.cs:121",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Observer/ObserverSchema.cs:37-45"
+      ]
+    },
+    {
+      "name": "update_finding_evidence",
+      "kind": "write",
+      "what_it_does_plain": "Appends a newer evidence sample to an unresolved finding without changing its status. Needs edit or project manage; this is permission to propose or keep notes, never to approve.",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ObserverTools.cs:166",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs:54-98 (permission table entry)"
+      ]
+    }
+  ],
+  "agent_blocks": [
+    {
+      "name": "MCP endpoint inside the backend",
+      "what_plain": "A secured interface (path /mcp) on the same service as the portal's own API, so an AI agent can call the same functions under the same sign-in and permissions. Not a separate service.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs:25-58 (registration), :68-74 (MapMcp + RequireAuthorization)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Program.cs:49 (AddWeatherStationMcp), :71 (MapWeatherStationMcp)",
+        "[live 2026-10-04] unauthenticated POST https://services.wakecap.com/weather-station/mcp -> HTTP 401 with WWW-Authenticate: Bearer resource_metadata=\"https://services.wakecap.com/weather-station/.well-known/oauth-protected-resource/mcp\"; GET -> 405 allow: POST",
+        "[live 2026-10-04] GET .../weather-station/.well-known/oauth-protected-resource/mcp -> 200, resource=https://services.wakecap.com/weather-station/mcp"
+      ]
+    },
+    {
+      "name": "33-tool MCP surface (26 read, 7 write)",
+      "what_plain": "26 tools that only read, 4 that only raise pending proposals, 3 that keep the agent's own notes. None approves anything and none writes safety settings directly. Weather Station data only: there are no Lightning or Gas tools.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpToolSurfaceTests.cs:49-95 (exact expected list of 33)",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpWritePathBoundaryTests.cs:165-190 (write-shaped tools are exactly 4 propose + 3 observer)",
+        "wakecap-weather-station/README.md:424-426 ('33 tools: 26 read, 4 propose, 3 observer writes')",
+        "Tool list itself needs a bearer token so was not enumerated live. The observer controller from the same commit as the 5 observer tools answers 401 in production (route exists), so the 33-tool build is very likely deployed; not proven."
+      ]
+    },
+    {
+      "name": "OAuth discovery for MCP clients (RFC 9728)",
+      "what_plain": "A public document that tells an agent client where to sign in. It advertises the authorization server and the scopes.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpProtectedResourceMetadata.cs:33 (Mcp:PublicOrigin), :35 (IdentityService:Authority), :42 (scopes openid, profile, MainApp), :111-117",
+        "[live 2026-10-04] production document advertises authorization_servers [\"http://identity-service.prod.svc.cluster.local:4009\"], a cluster-internal address an outside client cannot reach. INTERNAL DEFECT CANDIDATE, see open_questions."
+      ]
+    },
+    {
+      "name": "Agent summary (deterministic verdict + work decision)",
+      "what_plain": "One read that returns the site's safety verdict, reasons, recommended actions, station health and a work decision (safe to work, controlled work, stop work, safety unknown), all from fixed rules.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentSummaryController.cs:23-42",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs:60-66",
+        "[live 2026-10-04] GET .../api/project/{id}/AgentSummary unauthenticated -> 401 (route exists; a non-existent route returned 404)"
+      ]
+    },
+    {
+      "name": "Optional AI wording layer (narrator) with deterministic fallback",
+      "what_plain": "An optional pass that lets Claude reword the human-facing text only. If it is off, has no key, times out or fails, the plain deterministic text is returned unchanged. It cannot change status, numbers, thresholds or actions.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/AgentNarrator.cs:39-54 (disabled / no key -> unchanged), :102-107 (any failure -> unchanged), :116-127 (authoritative fields carried over)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/ClaudeAgentOptions.cs:21-24, :44",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentNarratorFallbackTests.cs:51,90,111,135",
+        "release-deck/ws-release-2026-08.html:337 ('Claude narration dark in prod' as of the August deck; no later evidence found)"
+      ]
+    },
+    {
+      "name": "Five permission-gated agent-monitoring reads",
+      "what_plain": "Five read-only evidence reads an agent reasons over: a station's reading window, its capabilities, the project operating context, maintenance state and weather-service health.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentMonitoringController.cs:38-39, :89-90, :116-117, :142-143, :168-169",
+        "[live 2026-10-04] GET .../api/project/{id}/stations/1/readings unauthenticated -> 401 (route exists)",
+        "Three of the five return stubs by design: capability cadence null, operating-context time zone/hours/policy version null, maintenance state always not_tracked (AgentMonitoringController.cs:85-95, :108-112, :136-138)."
+      ]
+    },
+    {
+      "name": "Project monitoring snapshot",
+      "what_plain": "One bounded read that gathers readings, health, verdict, limits and settings, each tagged ok or failed.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/MonitoringSnapshotTools.cs:20-53",
+        "Reachable only through MCP; no REST controller uses IProjectMonitoringSnapshotService (grep of Web.API)."
+      ]
+    },
+    {
+      "name": "Change proposal endpoint",
+      "what_plain": "Lets an agent or a person with edit rights raise a pending change request that applies nothing. Must carry the complete target state. Expires after 24 hours.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeProposalController.cs:52-53",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeProposalService.cs:67",
+        "[live 2026-10-04] GET .../ChangeProposal -> 405 allow: POST (route exists)"
+      ]
+    },
+    {
+      "name": "Change approval endpoint (human-only)",
+      "what_plain": "The only door that applies an approved change. Needs a separate approval permission on the person's token, a second person (not the proposer), the exact stored change echoed back, and a written reason.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeApprovalController.cs:58-65",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeApprovalService.cs:62-71, :121-129, :132-142",
+        "[live 2026-10-04] route exists (405 allow: POST on GET)",
+        "Whether any production token actually carries the approval scope is unknown."
+      ]
+    },
+    {
+      "name": "Observer control plane (agent drafts, human decides)",
+      "what_plain": "A separate area with its own tables where an agent can keep a cursor, draft findings and add evidence, and where only a person can acknowledge, snooze or resolve a finding.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Observer/ObserverSchema.cs:22-28",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Observer/Controllers/ObserverFindingsController.cs:83-181",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ObserverBoundaryTests.cs:266,327,349,377,435",
+        "[live 2026-10-04] GET .../ObserverFindings unauthenticated -> 401 (route exists)",
+        "Merged 2026-10-01 (commit 41b20bf). Known gap in commit message: its Postgres suite ObserverFindingWritePathTests is not yet in the CI database job."
+      ]
+    },
+    {
+      "name": "Agent observations (zero-write preview, approval-gated send)",
+      "what_plain": "An engineer or agent can preview what could be reported about a station. Two kinds (station not reporting, frozen sensor) can be sent to the Observation Manager, but only after a second person approves.",
+      "exists_in_code": true,
+      "live_in_production": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentObservationsController.cs:25-31",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentObservationTools.cs:35-55, :67-92",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentObservationApprovalPathTests.cs:344,414,428,440",
+        "[live 2026-10-04] POST route .../AgentObservations/preview exists (405 allow: POST on GET)",
+        "Whether the Observation Manager notifies anyone for these types depends on routing outside this repo."
+      ]
+    },
+    {
+      "name": "Observation outbox and dispatcher (Weather Station)",
+      "what_plain": "Safety breaches are written once per episode into a queue and delivered to the Observation Manager with retries; a second delivery of the same episode is refused.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Observation/ObservationDispatch.cs:53-58 (no on/off switch)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs:110-111",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/SafetyPolicy/EpisodeFolder.cs:34-48 (episode key)",
+        "Runs whenever the app runs; sink URL and Observation Manager acceptance in production were not verified. History: dispatch was switched off by hotfix 5869f6d (404 storm) then made unconditional by 0349c35."
+      ]
+    },
+    {
+      "name": "Observation outbox and dispatcher (Lightning)",
+      "what_plain": "When a lightning device enters Red, Fault or Offline, an observation row is saved with the state change and delivered to the Observation Manager with retries.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs:34-35, :61-87",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs:88-102",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStalenessSweepRunner.cs:80-90",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationDispatch.cs:37-40, :103-133",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Hosting/LightningQueueConsumerBackgroundService.cs:44-55 (consumer idles when no queue URL is configured)",
+        "[live 2026-10-04] route .../lightning-sensor/Devices/observations exists (401). Whether the production queues are configured and a device is feeding is unknown."
+      ]
+    },
+    {
+      "name": "Dashboard composition recommendations (layout mode, promoted cards, dynamic charts)",
+      "what_plain": "The safety service recommends what the dashboard should foreground and which up-to-three charts explain the decision. A recommendation only: the saved layout wins and the engineer accepts or dismisses.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Contracts/Products/WeatherStation/DTO/Agent/AgentUiResponse.cs (LayoutMode, PromotedCards, DynamicCharts)",
+        "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/hooks/useAgentDashboardComposition.ts:12-13, :33 (only an explicit true turns it on)",
+        "[live-bundle 2026-10-04] production bundle 1.0.5 contains the code and the flag name; the flag's value in production is not readable without the flag service."
+      ]
+    },
+    {
+      "name": "Observation drawer in the portal (request approval / approve)",
+      "what_plain": "Inside the dashboard, a person can see what could be reported, ask a second person to approve it, and an approver can approve it with a written reason. Shown only when the composition flag is on.",
+      "exists_in_code": true,
+      "live_in_production": "unknown",
+      "evidence": [
+        "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/hooks/useObservationMutations.ts:17-80",
+        "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/components/ObservationRailEntry.tsx:10-60",
+        "frontend-2.0-weather-station/src/app/features/WeatherStation/components/LiveDashboard.tsx:308-311 (enabled={isAgentComposition})",
+        "[live-bundle] production bundle 1.0.5 contains the drawer strings ('Nothing is sent until they approve, and the request lapses after 24 hours')."
+      ]
+    },
+    {
+      "name": "A running AI agent that polls sites and proposes actions",
+      "what_plain": "An agent that actually runs against sites. No such runner exists in any repo; the building blocks above are what it would use.",
+      "exists_in_code": false,
+      "live_in_production": "no",
+      "evidence": [
+        "No agent loop or scheduler in the backend: grep for hosted/background services named agent or observer in Core returned nothing; 'dark-station-watch' appears only as a doc example in ObserverTools.cs:41 and ObserverCheckpoint.cs:26.",
+        "release-deck/ws-release-2026-08.html:336-343 ('Direction - not built yet')"
+      ]
+    }
+  ],
+  "control_paths": [
+    {
+      "what": "Publish the site safety policy (limits, per-sensor Counted switch, heat-index bands) in one act",
+      "how_plain": "A person with the weather-policy management permission edits and publishes the whole policy together, all or nothing. It is refused if someone else changed it first (version check), refused if it loosens any limit unless the person explicitly acknowledges the loosening, and every change is written to the audit trail. When a policy is published, open alert episodes are closed against the new policy so alerts restart under the new rules.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/SafetyPolicyController.cs:38-77",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/SafetyPolicyPublishService.cs:111-127 (version conflict), :161-185 (loosening gate), :203-206, :241-267 (audit ids, close episodes)",
+        "[live 2026-10-04] PUT .../SafetyPolicy route exists (405 allow: PUT on GET)",
+        "Direct publish is NOT second-person approval. See must_not_claim."
+      ]
+    },
+    {
+      "what": "Direct threshold, settings, heat-index-band and sensor-online writes",
+      "how_plain": "The same management permission can still write each resource directly, version-checked where a version is supplied and audited. These direct writes do not go through the second-person approval route.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/ThresholdController.cs:83-85",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/ProjectSettingsController.cs:25-26, :81-82",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/HeatIndexBandsController.cs:45-46, :68-69",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeProposalController.cs:20-31 (states approval is 'not an enforced chokepoint')",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/ThresholdController.cs:75-76 (RowVersion optional for backward compatibility)"
+      ]
+    },
+    {
+      "what": "Propose a change, a second person approves (out-of-band approval)",
+      "how_plain": "Anyone with edit rights, or an agent, raises a pending change request with the complete new state. Another person holding the separate approval permission approves it by echoing the exact stored change and giving a reason. If the target moved meanwhile, the approval is refused and the request goes stale. Requests expire after 24 hours.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeProposalController.cs:52-53",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeApprovalController.cs:58-75",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeApprovalService.cs:121-129, :132-142, :156-171",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ChangeApprovalServiceTests.cs:74,96,119,156 (diff mismatch, self-approval, cross-project, second approval refused)",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ChangeProposalServiceTests.cs:100,135,397",
+        "Whether any production user token carries the approval scope is unknown (identity-owner gate G16 in the Zero-Open plan, line 169)."
+      ]
+    },
+    {
+      "what": "Change audit and history reads",
+      "how_plain": "The Settings screen can read the append-only change trail (who, when, what changed, including refused and failed attempts), a single change request, the pending list, a table stating which kinds of change are audited and which are not, and an export with a checksum.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeAuditController.cs:30-31, :89-90, :108-109, :132-134, :173-175",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs:136-200 (six categories)",
+        "frontend-2.0-weather-station/src/app/features/WeatherStation/policy/changeHistoryFlag.ts:31 (history tab on unless flag explicitly false)",
+        "[live 2026-10-04] GET .../ChangeAudit -> 401 (route exists)",
+        "Export is behind a feature switch: ChangeAuditController.cs:200 (ChangeAuditExportFeature.IsEnabled); state in production unknown."
+      ]
+    },
+    {
+      "what": "Safety observations delivered to the Observation Manager automatically (Weather Station)",
+      "how_plain": "When a reading breaches a limit or enters a heat-index band, the episode is recorded once and sent to the Observation Manager with retries, without anyone approving it. Clearing is recorded too.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/SafetyPolicy/ObservationEvaluator.cs:28-40",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Entity/WeatherObservation.cs:104-127 (policy kinds threshold, heat_index_band)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Observation/ObservationManagerSink.cs:59-92",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/ObservationController.cs:15 (old GET Process returns 410 Gone)"
+      ]
+    },
+    {
+      "what": "Lightning state-entry observations",
+      "how_plain": "When a lightning device newly enters Red, Fault or Offline, an observation is saved with the state change and sent to the Observation Manager. Orange and Yellow do not raise one. 'Sent' means the Observation Manager accepted it, not that a person was alerted.",
+      "products": [
+        "lightning"
+      ],
+      "live_today": "unknown",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs:34-35",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs:88-102 (only on a changed state from a live packet)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs:113-121 (send status: Sent, Pending, Retrying, Failed; 'Sent means accepted, not that a person has been alerted')",
+        "No portal screen lists lightning observations: no 'observations' reference under frontend LightningSensor feature."
+      ]
+    },
+    {
+      "what": "Lightning email/SMS notifications (REMOVED)",
+      "how_plain": "The platform's own lightning email, SMS and portal notification engine, alert-routing and alerts endpoints were deleted; alerting is owned by the Observation Manager. State, staleness and history are unchanged.",
+      "products": [
+        "lightning"
+      ],
+      "live_today": "no",
+      "evidence": [
+        "wakecap-weather-station commit 367bf43 (2026-09-24) 'TAN-1901: remove lightning notifications (Observation Manager owns alerting)'",
+        "grep of Core/Products/LightningSensor and Web.API/Products/LightningSensor for sms|email|notification finds no live notification code",
+        "[live-bundle] production FE bundle 1.0.5 does not contain 'Alerts sent to the alarming service' (0 hits); FE commit 51b74dd removed that panel"
+      ]
+    },
+    {
+      "what": "Lightning alarm distances and all-clear delay",
+      "how_plain": "A person with the lightning-management permission sets the red and yellow alarm radii (km) and the all-clear delay (minutes) per device in Settings. Not version-checked or audited.",
+      "products": [
+        "lightning"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs:195-217 (PUT settings, ManageLightningSettings)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs:243-252 (lightning writes 'off the TAN-2020 version and audit spine entirely')",
+        "[live-bundle] 'manage-lightning-settings' present in production bundle 1.0.5"
+      ]
+    },
+    {
+      "what": "Gas alert acknowledge and close",
+      "how_plain": "A person with edit or manage rights can acknowledge an alert (seen it) or close it. Who and when are recorded on the alert from the sign-in, never typed. Two people acting at once cannot overwrite each other. Nothing is sent back to the vendor's own system: an alert closed here stays open there. If the gas is still over its limit, the next reading raises a new alert.",
+      "products": [
+        "gas"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs:49-87",
+        "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasAlertHandlingService.cs:12-25, :71-95 (guarded UPDATE)",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs:265-281 (not in the change audit; the alert row itself carries who/when)",
+        "[live 2026-10-04] POST .../gas-detector/Alerts/{id}/acknowledge route exists (405 allow: POST on GET)",
+        "[live-bundle] 'Acknowledge' and 'Close alert' strings present in production bundle 1.0.5 (FE commit 7f5eef0)"
+      ]
+    },
+    {
+      "what": "Gas alarm points",
+      "how_plain": "Read-only today: the portal can show which limits each gas is judged against, but there is no write route for gas limits.",
+      "products": [
+        "gas"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/ThresholdsController.cs:9-18 ('Read only')",
+        "Every gas controller method is a GET except zone assignment (DevicesController.cs:106-107), acknowledge and close (AlertsController.cs:50,70) and the vendor push receiver (GasPushController.cs:41,58)."
+      ]
+    },
+    {
+      "what": "Gas alert to Observation Manager hand-off",
+      "how_plain": "NOT BUILT. A gas alarm exists only on the Gas screens and in the platform's own alert table; nothing is sent to the Observation Manager or to anyone it notifies.",
+      "products": [
+        "gas"
+      ],
+      "live_today": "no",
+      "evidence": [
+        "grep -i observation over Core/Products/GasDetector, Web.API/Products/GasDetector, Domain/Products/GasDetector, Contracts/Products/GasDetector returns nothing",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Entity/WeatherObservation.cs:96-101 (ObservationSource.Gas constant exists; grep shows nothing ever writes it)",
+        "Linear TAN-2943 (created 2026-10-04, status Todo): 'checked on master, 2026-10-04: no Gas code references it'; earlier plan TAN-2447 archived 2026-10-01",
+        "[live-bundle] the only 'Observation Manager' strings in production bundle 1.0.5 belong to the weather observation drawer"
+      ]
+    },
+    {
+      "what": "Observer finding review (acknowledge, snooze, resolve) by a person",
+      "how_plain": "Only a person with the separate review permission can mark a drafted finding as seen, hold it for up to seven days with a reason, or close it with a written resolution; each action records who, when and why in the finding's own history.",
+      "products": [
+        "weather"
+      ],
+      "live_today": "yes",
+      "evidence": [
+        "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Observer/Controllers/ObserverFindingsController.cs:83-181",
+        "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs:300-322",
+        "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ObserverFindingsControllerTests.cs:80,102,174",
+        "No portal screen for observer findings: 0 hits for ObserverFindings in production bundle 1.0.5 and no FE feature references it. REST only."
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "MCP is a second transport inside the existing backend host, not a separate service; stateless streamable HTTP at /mcp, authenticated by the same JWT bearer as the REST API.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 11,
+          "quote": "The server runs inside this ASP.NET Core application rather than beside it."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 39,
+          "quote": ".WithHttpTransport(transport => transport.Stateless = true)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 72,
+          "quote": "app.MapMcp(McpProtectedResourceMetadata.McpPath)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/WeatherStationMcpExtensions.cs",
+          "line": 73,
+          "quote": ".RequireAuthorization();"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The platform has a secured interface built for AI agents. It sits on the same service and uses the same sign-in as the portal.",
+      "caveats": "Live: production /mcp answers 401 with a discovery hint (2026-10-04). Do not say any agent is using it."
+    },
+    {
+      "id": "C02",
+      "claim": "33 MCP tools: 26 read-only, 4 propose-only, 3 observer bookkeeping writes. All Weather Station scoped; no Lightning or Gas tool exists.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpToolSurfaceTests.cs",
+          "line": 49,
+          "quote": "private static readonly string[] ExpectedToolNames ="
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpWritePathBoundaryTests.cs",
+          "line": 166,
+          "quote": "public void EveryWriteShapedTool_IsAProposal_OrTheObserversOwnBookkeeping()"
+        },
+        {
+          "file": "wakecap-weather-station/README.md",
+          "line": 424,
+          "quote": "`propose_set_threshold`, `propose_update_settings`, `propose_set_indicator_enabled`, `propose_agent_observation`"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "An agent can read the site's weather readings, limits, safety verdict and change history, and can only suggest changes.",
+      "caveats": "Do not state a tool count in a video. The August deck's '16 tools (13 read + 3 write)' is superseded by 33. Weather only: do not imply an agent can read Lightning or Gas through this interface today."
+    },
+    {
+      "id": "C03",
+      "claim": "Every tool is permission-gated on the same permission constants as the matching REST endpoint, fail-closed (a tool with no entry is unreachable), and tools/list shows a caller only the tools they may call.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolPermissions.cs",
+          "line": 16,
+          "quote": "Fail closed. McpToolAuthorizationFilter refuses any tool name absent from this map."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolAuthorizer.cs",
+          "line": 43,
+          "quote": "if (!McpToolPermissions.Required.TryGetValue(toolName, out var permissions))"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolListFilter.cs",
+          "line": 55,
+          "quote": "result.Tools = [.. result.Tools.Where(tool => allowed.Contains(tool.Name))];"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpTransportTests.cs",
+          "line": 172,
+          "quote": "ToolCall_ByACallerThePermissionServiceRefuses_IsRejected"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "An agent sees and can use only what the person it acts for is allowed to see and do.",
+      "caveats": "Authorization is evaluated per tenant and permission through the admin permission service; the project id is a tool argument and is not passed to that check (McpToolAuthorizer.cs:321-328). Do not claim project-level isolation for MCP without confirming it matches REST."
+    },
+    {
+      "id": "C04",
+      "claim": "The human-approval invariant: an agent may propose, never approve. No MCP tool reaches the approval route, a direct write, the store or the observation outbox; proven against compiled IL, plus REST scope gates.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeProposalTools.cs",
+          "line": 14,
+          "quote": "the only write path this transport has, and it does not write."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/ChangeProposalTools.cs",
+          "line": 19,
+          "quote": "this transport exposes no tool that reaches that route and no tool that reaches the direct threshold, settings or indicator PUTs."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpWritePathBoundaryTests.cs",
+          "line": 85,
+          "quote": "NoMcpCode_ReachesApprovalADirectWriteOrPersistence"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpWritePathBoundaryTests.cs",
+          "line": 361,
+          "quote": "OnlyTheApprovalService_CanReachTheObservationApplier"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ObserverBoundaryTests.cs",
+          "line": 266,
+          "quote": "NoMcpCode_ReachesTheHumanOnlyReviewOperations"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ObserverBoundaryTests.cs",
+          "line": 349,
+          "quote": "TheScopeGate_IsCalledByExactlyTheApprovalAndReviewControllers"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentObservationApprovalPathTests.cs",
+          "line": 414,
+          "quote": "AnIdentityWithoutTheApprovalScope_IsRefusedAtTheRoute_AndTheObservationStaysPending"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentObservationApprovalPathTests.cs",
+          "line": 428,
+          "quote": "TheProposersOwnToken_EvenWithTheApprovalScope_CannotApproveItsOwnObservation"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ChangeApprovalServiceTests.cs",
+          "line": 96,
+          "quote": "AC4_02_SelfApproval_Refused_And_MutationNotExecuted"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The agent can suggest. Only a person can approve, and the platform enforces that, not just the policy.",
+      "caveats": "Enforced in code and tests [code]. Live: the approval route exists in production. Not verified: that production approver tokens exist or that the approval scope is issued. A person who holds the separate management permission can still write policy directly (see C13)."
+    },
+    {
+      "id": "C05",
+      "claim": "Approval needs: the weather.change.approve scope on the token, a second party (proposer subject must differ), the stored diff echoed byte-for-byte, and a reviewer note; approval is recorded before the change is applied; a target that moved makes the request stale instead of overwriting.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeApprovalController.cs",
+          "line": 58,
+          "quote": "if (!HttpContext.HasScope(Permissions.ChangeApprove.Scope))"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeApprovalService.cs",
+          "line": 121,
+          "quote": "if (string.Equals(request.ProposedBy, approverSubject, StringComparison.Ordinal))"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeApprovalService.cs",
+          "line": 132,
+          "quote": "if (!string.Equals(dto.DiffPayload, request.DiffPayload, StringComparison.Ordinal))"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeApprovalService.cs",
+          "line": 170,
+          "quote": "ExpectedVersion = request.TargetRowVersion,"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "A suggested change is shown to a second person exactly as proposed. They approve it with a written reason, and the change is refused if the setting has moved since.",
+      "caveats": "Proposals lapse after 24 hours (ChangeProposalService.cs:67)."
+    },
+    {
+      "id": "C06",
+      "claim": "The agent summary's every safety-bearing field comes from deterministic rules; an optional Claude pass may reword human-facing text only and falls back to the deterministic text on any failure, no key, or switch off.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentSummaryController.cs",
+          "line": 11,
+          "quote": "Every safety-bearing field — status, severity, confidence, numbers, thresholds and the recommended actions themselves — is produced by deterministic rules."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/AgentNarrator.cs",
+          "line": 39,
+          "quote": "if (!options.Enabled)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/AgentNarrator.cs",
+          "line": 102,
+          "quote": "catch (Exception ex)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentNarratorFallbackTests.cs",
+          "line": 51,
+          "quote": "EnrichAsync_NoApiKey_ReturnsInputUnchanged_AndDoesNotThrow"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "The safety verdict comes from fixed rules, never from an AI model. Any AI wording is optional, and the plain text is used if it is unavailable.",
+      "caveats": "Whether wording enrichment is switched on in production is unknown; the August deck says it was dark then (release-deck:337). Do not claim the portal shows AI-written text."
+    },
+    {
+      "id": "C07",
+      "claim": "workDecision (safe_to_work, controlled_work, stop_work, safety_unknown) is a total fixed projection of the verdict status (danger->stop_work, caution->controlled_work, safe->safe_to_work, anything else->safety_unknown); advisory, so it can never disagree with the verdict.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs",
+          "line": 60,
+          "quote": "public static string MapDecision(string? verdictStatus) => verdictStatus switch"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs",
+          "line": 65,
+          "quote": "_ => WorkDecision.SafetyUnknown,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentWorkDecisionTests.cs",
+          "line": 118,
+          "quote": "Mapping_CoversEverySafetyVerdictStatus_AndEveryWorkDecision"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The platform turns each safety verdict into plain guidance: safe to work, work with controls, stop work, or safety unknown.",
+      "caveats": "workDecision is NOT read by the current portal front end (no 'workDecision' in frontend src); it exists for agents and API consumers. Do not say the portal displays a 'work decision' field."
+    },
+    {
+      "id": "C08",
+      "claim": "criteriaVersion identifies the heat-index criteria applied (band name, bounds, work/rest/water cadence, no-work flag; 'hi=none' if none), NOT the whole policy: editing a gas or dust limit leaves it unchanged.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs",
+          "line": 75,
+          "quote": "It does NOT cover the configured indicator thresholds (CO, H2S, PM10, ...)."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs",
+          "line": 89,
+          "quote": "internal static string ComposeCriteriaVersion(HeatIndexStatus? band)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Every decision records which heat rules it was made under.",
+      "caveats": "Never describe it as a version of the whole safety policy."
+    },
+    {
+      "id": "C09",
+      "claim": "The five agent-monitoring reads exist and are permission-gated; three return honest stubs: capability cadence null, operating context omits time zone/hours/policy version, maintenance state always 'not_tracked'.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentMonitoringController.cs",
+          "line": 39,
+          "quote": "[HttpGet(\"stations/{stationId:int}/readings\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentMonitoringController.cs",
+          "line": 136,
+          "quote": "NEEDS DATA MODEL: No maintenance-state table exists. Always returns trackingState=\"not_tracked\""
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentMonitoringController.cs",
+          "line": 169,
+          "quote": "[HttpGet(\"weather-service-health\")]"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The platform exposes the evidence an agent needs: recent readings, what each station should measure, site context and service health.",
+      "caveats": "Do not claim planned-maintenance awareness; it is not tracked."
+    },
+    {
+      "id": "C10",
+      "claim": "Observer control plane: four observer_* tables in the same backend, a compare-and-swap cursor, findings deduplicated by a unique database index, five agent tools, and acknowledge/snooze/resolve reachable only by a person with the weather.observer.review scope.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Observer/ObserverSchema.cs",
+          "line": 22,
+          "quote": "public const string CheckpointTable = \"observer_checkpoint\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Observer/ObserverSchema.cs",
+          "line": 37,
+          "quote": "public const string OpenFindingUniqueIndex = \"UX_observer_finding_open_condition\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Observer/Controllers/ObserverFindingsController.cs",
+          "line": 181,
+          "quote": "private bool HasReviewScope() => HttpContext.HasScope(Permissions.ObserverReview.Scope);"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ObserverBoundaryTests.cs",
+          "line": 435,
+          "quote": "NoWeatherDomainCode_ReachesTheObserverModule"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "An agent can keep notes and draft findings for people to review. Only a person can mark a finding as seen, hold it, or close it.",
+      "caveats": "Merged 2026-10-01; route live. No portal screen shows findings today. Its Postgres test suite is not yet in the CI database job."
+    },
+    {
+      "id": "C11",
+      "claim": "Agent observations: preview is zero-write; only 'station not reporting' and 'frozen sensor' can be proposed; stop-work, threshold breach and heat-index guidance are refused because the outbox already sends them; the backend rebuilds all wording; send happens only after a second person approves.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentObservationTools.cs",
+          "line": 74,
+          "quote": "ONLY TWO KINDS CAN BE PROPOSED:"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/Tools/AgentObservationTools.cs",
+          "line": 78,
+          "quote": "stop_work, threshold_breach and heat_index_guidance are refused"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/AgentObservationsController.cs",
+          "line": 15,
+          "quote": "It sends nothing and proposes nothing."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/AgentObservationApprovalPathTests.cs",
+          "line": 293,
+          "quote": "WhatTheSiteReceives_IsWhatTheApproverRead"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "A person can see what could be reported about a station. Nothing is sent to the site's observation system until a second person approves it.",
+      "caveats": "Approving queues the report; delivery is not confirmed in the UI. Whether the Observation Manager notifies anyone is configured outside this repo."
+    },
+    {
+      "id": "C12",
+      "claim": "The change-proposal endpoint requires edit/manage (deliberately not the approval scope), requires the complete target state, rejects out-of-range values and a settings payload naming sensor flags, and stamps a server-side 24-hour expiry and the target's row version.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeProposalController.cs",
+          "line": 14,
+          "quote": "Do not add the scope gate here."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/ChangeProposalService.cs",
+          "line": 67,
+          "quote": "public const int ProposalTtlHours = 24;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/ChangeProposalServiceTests.cs",
+          "line": 193,
+          "quote": "CP09_Create_PartialThresholdDiff_IsRefused_NamingMissingField_AndPersistsNothing"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Suggested changes must state the complete new setting, and they expire if nobody reviews them.",
+      "caveats": "Creating a proposal on a brand-new project can create default limits (ChangeProposalController.cs:33-42)."
+    },
+    {
+      "id": "C13",
+      "claim": "Safety-policy publish is a direct, permission-gated (manage-weather-settings only), all-or-nothing, version-checked, audited write with a loosening acknowledgement; it is not second-person approval.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/WeatherStation/Controllers/SafetyPolicyController.cs",
+          "line": 38,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageWeatherSettings)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/SafetyPolicyPublishService.cs",
+          "line": 172,
+          "quote": "if (loosenings.Count > 0 && !request.AcknowledgedLoosening)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/SafetyPolicyPublishService.cs",
+          "line": 125,
+          "quote": "return Error(ErrorCodes.RowVersionConflict,"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeProposalController.cs",
+          "line": 28,
+          "quote": "A token holding the management permission still writes the threshold directly without approval."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Changes to the site safety policy are published in one step, checked against edits made by someone else, flagged if they loosen a limit, and recorded in a change history.",
+      "caveats": "Say 'recorded' and 'checked', never 'every change needs a second approver'."
+    },
+    {
+      "id": "C14",
+      "claim": "Change-audit reads exist (history, one request, pending list, coverage table, export with checksum) behind manage-weather-settings; the coverage table states which categories are NOT audited.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeAuditController.cs",
+          "line": 31,
+          "quote": "[HttpGet]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Shared/Controllers/ChangeAuditController.cs",
+          "line": 133,
+          "quote": "[HttpGet(\"Coverage\")]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs",
+          "line": 136,
+          "quote": "public static IReadOnlyList<ChangeAuditCoverageDto> Categories { get; } ="
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Every policy change is recorded with who made it and when, and the history can be reviewed in Settings.",
+      "caveats": "Audit covers weather policy only (thresholds, settings, sensor online flags, heat-index bands). Refused attempts are recorded best-effort and can be absent (ChangeAuditCoverage.cs:96-102). Creation is recorded only from 2026-08-19 12:58 UTC."
+    },
+    {
+      "id": "C15",
+      "claim": "Weather Station breaches are written once per episode to an outbox (idempotent on an episode key) and dispatched to the Observation Manager with backoff and dead-lettering; dispatchers run unconditionally (no off switch).",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Observation/ObservationDispatch.cs",
+          "line": 53,
+          "quote": "There is no on/off switch (TAN-2807)."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 111,
+          "quote": "services.AddHostedService<ObservationDispatchBackgroundService>();"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Observation/ObservationManagerSink.cs",
+          "line": 33,
+          "quote": "The entry's ExternalId is the row's episode_key"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "Serious readings are sent to the site's observation system automatically, once per episode.",
+      "caveats": "Production delivery was not verified. History: delivery was switched off by hotfix in September (404 storm) and re-enabled; do not claim a track record."
+    },
+    {
+      "id": "C16",
+      "claim": "Lightning raises an Observation Manager observation only on entry to RED, FAULT or OFFLINE (state change on a live packet, or the staleness sweep marking a device offline); it uses its own lightning_observation table, not the weather outbox.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs",
+          "line": 34,
+          "quote": "state is LightningState.Red or LightningState.Fault or LightningState.Offline;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningIngestService.cs",
+          "line": 91,
+          "quote": "if (advanced.CurrentStateChanged)"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningStalenessSweepRunner.cs",
+          "line": 82,
+          "quote": "if (current.EffectiveState != LightningState.Offline)"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "When a lightning sensor goes to red, faults, or drops offline, the platform raises an alert to the site's observation system.",
+      "caveats": "Production depends on queue configuration and a feeding device, both unverified. Do not name a site or a go-live date."
+    },
+    {
+      "id": "C17",
+      "claim": "Lightning's own email, SMS and portal notification engine and alert-routing were removed; the Observation Manager owns alerting.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station git commit 367bf43 (2026-09-24)",
+          "line": 1,
+          "quote": "TAN-1901: remove lightning notifications (Observation Manager owns alerting) ... Deletes the notification engine, email/SMS/portal channels, alert-routing and alerts endpoints"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/LightningSensor/Services/LightningObservationRecorder.cs",
+          "line": 51,
+          "quote": "[WakeCap Lightning] RED at {site} ... stop outdoor work and move to shelter now."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Lightning alerts go through the site's observation system rather than separate email or text channels from this product.",
+      "caveats": "Never say 'we email or text lightning alerts'. The Observation Manager may itself notify people by its own configuration; that is outside this repo."
+    },
+    {
+      "id": "C18",
+      "claim": "Gas to Observation Manager is NOT built: no gas code references observations; ObservationSource.Gas is an unused vocabulary constant; the prototype HTML's 'Observation Manager' tab is a mock; the work is a Todo ticket created 2026-10-04.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/WeatherStation/Entity/WeatherObservation.cs",
+          "line": 100,
+          "quote": "public const string Gas = \"gas\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 171,
+          "quote": "services.AddHostedService<LightningObservationDispatchBackgroundService>();"
+        },
+        {
+          "file": "gas-detector-monitoring-standalone.html",
+          "line": 342,
+          "quote": "observations: ['Observation Manager', 'Resolved alerts awaiting close-out review']"
+        }
+      ],
+      "live_today": "no",
+      "safe_phrase": "Gas alerts appear on the Gas screens in the portal.",
+      "caveats": "Gas to Observation Manager is DIRECTION only: decision recorded 2026-10-04, first send would be a new critical alarm only."
+    },
+    {
+      "id": "C19",
+      "claim": "Gas acknowledge and close exist; they record who and when from the token on the alert row, are guarded against concurrent edits, and send nothing to the vendor system; a closed alert stays open there and re-raises if gas is still over the limit.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 56,
+          "quote": "Nothing is sent to Blackline: an alert acknowledged here stays open in Blackline Live."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 76,
+          "quote": "If the gas is still over its alarm point the next reading raises a new alert."
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasAlertHandlingService.cs",
+          "line": 12,
+          "quote": "Nothing is sent to Blackline"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "On the Gas alerts screen a person can mark an alert as seen or close it, and the platform records who did it and when.",
+      "caveats": "Say nothing about syncing back to the detector vendor's system. Whether the Gas UI is switched on for a project is a separate switch."
+    },
+    {
+      "id": "C20",
+      "claim": "Lightning alarm radii and all-clear delay are writable via PUT settings under the manage-lightning-settings permission; the write is not audited and not version-checked.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 216,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.ManageLightningSettings)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs",
+          "line": 247,
+          "quote": "the Lightning Sensor module is off the TAN-2020 version and audit spine entirely"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Lightning alarm distances are set by authorised administrators in Settings.",
+      "caveats": "Do not claim the lightning settings have a change history."
+    },
+    {
+      "id": "C21",
+      "claim": "In the front end the agent-dashboard composition (recommended cards, dynamic charts, observation drawer) is behind a flag that defaults OFF (only an explicit true enables it); the answer-first dashboard (verdict hero and agent insight panel) is ON unless its flag is explicitly false.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/hooks/useAgentDashboardComposition.ts",
+          "line": 33,
+          "quote": "return flags[AGENT_DASHBOARD_COMPOSITION_FLAG] === true;"
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/components/LiveDashboard.tsx",
+          "line": 51,
+          "quote": "flags[\"weather-station-answer-first-dashboard\"] !== false;"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "The dashboard leads with a clear answer on whether work is safe, with the reasons behind it.",
+      "caveats": "Composition is DIRECTION until confirmed on live: production bundle 1.0.5 contains the code but the flag value could not be read. Do not show or describe recommended cards, dynamic charts or the observation drawer as live without a screen capture."
+    },
+    {
+      "id": "C22",
+      "claim": "The portal has a human flow for agent observations: preview, ask a second person to approve (request lapses after 24 hours), approve with a written reason; it says delivery is not confirmed.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/hooks/useObservationMutations.ts",
+          "line": 36,
+          "quote": "Put one observation forward for approval (TAN-2124). Creates a PENDING change request and sends nothing."
+        },
+        {
+          "file": "frontend-2.0-weather-station/src/app/features/WeatherStation/agent-dashboard/components/PendingObservationCard.tsx",
+          "line": 21,
+          "quote": "The backend ALSO needs an approval scope this screen cannot see"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "A person can ask a colleague to approve a report before anything is sent to the site's observation system.",
+      "caveats": "Flag-gated (C21). Do not use unless captured live."
+    },
+    {
+      "id": "C23",
+      "claim": "One backend: confirmed. One ASP.NET host serves Weather Station, Lightning Sensor and Gas Detector (separate product folders), one WeatherStation DbContext holds all three products' tables, one JWT identity, one /mcp.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Program.cs",
+          "line": 49,
+          "quote": "builder.Services.AddWeatherStationMcp(); one host, Products/WeatherStation, Products/LightningSensor, Products/GasDetector controllers side by side"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Infrastructure/InfrastructureServiceRegistry.cs",
+          "line": 52,
+          "quote": "services.AddDbContext<WeatherStationDBContext>(options =>"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/CoreServiceRegistry.cs",
+          "line": 110,
+          "quote": "hosted services for weather (110-111), gas (134), lightning (171-175) in one registry"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Weather, lightning and gas run on one platform and one back end.",
+      "caveats": "Weather readings still arrive through a separate older ingestion service (sensors-service); the claim is about the product back end."
+    },
+    {
+      "id": "C24",
+      "claim": "One permission scope: confirmed for reads (all three products' reads use weatherstation:view OR project_builder:manage; one permission category 'weatherstation'); NOT identical for writes: weather policy needs manage-weather-settings, lightning settings need manage-lightning-settings, gas writes need edit or manage.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 11,
+          "quote": "public const string Prefix = \"weatherstation\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Constants/Permissions.cs",
+          "line": 42,
+          "quote": "public const string ManageLightningSettings = $\"{Prefix}:manage-lightning-settings\";"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/GasDetector/Controllers/AlertsController.cs",
+          "line": 24,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Products/LightningSensor/Controllers/DevicesController.cs",
+          "line": 32,
+          "quote": "[OneOfPermissionAuthorize(Permissions.WeatherStation.View, Permissions.ProjectBuilder.Manage)]"
+        },
+        {
+          "file": "CLAUDE.md",
+          "line": 69,
+          "quote": "The backend has one permission scope for the whole Weather Station module, Lightning Sensor included."
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "One set of access rules covers all three products: whoever can view the site environment can see weather, lightning and gas.",
+      "caveats": "Safe to say for viewing. Do not say 'one permission for everything': managing weather policy and lightning settings are separate grants. The Gas vendor push receiver is deliberately unauthenticated (GasPushController.cs:41)."
+    },
+    {
+      "id": "C25",
+      "claim": "One rule set across the three products: REFUTED. Weather uses thresholds plus heat-index bands in a verdict service; Lightning uses a fixed state table (only GREEN is safe; unknown or stale is never safe); Gas judges readings against its own threshold profiles. A shared principle (unknown never reads as safe) exists; a shared rule engine does not.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Products/LightningSensor/Constants/LightningStateRules.cs",
+          "line": 12,
+          "quote": "public static bool IsSafe(LightningState state) => state == LightningState.Green;"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/WeatherStation/Services/Agent/WorkSafetyDecisionService.cs",
+          "line": 60,
+          "quote": "public static string MapDecision(string? verdictStatus) => verdictStatus switch"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Core/Products/GasDetector/Services/GasThresholdResolution.cs",
+          "line": 20,
+          "quote": "public static class GasThresholdResolution"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Each product applies its own safety rules, and all of them treat 'unknown' as not safe.",
+      "caveats": "Do not say 'one rule set'. Say 'one safety principle'. Check the 'unknown is never safe' wording against the Gas screen before using it for Gas."
+    },
+    {
+      "id": "C26",
+      "claim": "One audit trail across the three products: REFUTED. The safety-config audit trail covers weather policy only. Lightning settings and gas zone assignment write no audit row; gas acknowledge/close record who/when on the alert row; observer findings have their own event table; the product on/off entitlement is not audited.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs",
+          "line": 243,
+          "quote": "[\"PUT api/project/{projectId}/lightning-sensor/Devices/{sourceAddress}/settings\"] ="
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs",
+          "line": 254,
+          "quote": "[\"PUT api/project/{projectId}/gas-detector/Devices/{id}/zone\"] ="
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Domain/Shared/Entity/ChangeAuditCoverage.cs",
+          "line": 283,
+          "quote": "[\"PUT api/project/{projectId}/ProjectProduct\"] ="
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "Weather policy changes are recorded with who and when. Gas alert actions also record who and when.",
+      "caveats": "Do not say one audit trail for all three products."
+    },
+    {
+      "id": "C27",
+      "claim": "MCP is reachable in production: the discovery document and the 401 challenge are served at the production gateway, and Mcp:PublicOrigin resolves to the gateway URL. The advertised authorization server is a cluster-internal address.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/README.md",
+          "line": 629,
+          "quote": "| prod | `https://services.wakecap.com/weather-station` |"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpProtectedResourceMetadata.cs",
+          "line": 33,
+          "quote": "private const string PublicOriginKey = \"Mcp:PublicOrigin\";"
+        },
+        {
+          "file": "[live 2026-10-04] https://services.wakecap.com/weather-station/.well-known/oauth-protected-resource/mcp",
+          "line": 0,
+          "quote": "{\"resource\":\"https://services.wakecap.com/weather-station/mcp\",\"authorization_servers\":[\"http://identity-service.prod.svc.cluster.local:4009\"],\"scopes_supported\":[\"openid\",\"profile\",\"MainApp\"],\"bearer_methods_supported\":[\"header\"]}"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "The interface is deployed and protected by sign-in.",
+      "caveats": "Reachable is not the same as used. No evidence that any agent or client has ever connected."
+    },
+    {
+      "id": "C28",
+      "claim": "Production front end 1.0.5 (fetched from the CDN 2026-10-04) contains: agent-dashboard composition code and flag name, observation drawer strings, gas acknowledge/close, lightning radii map and set-sensor-location, Saudi-time strings, the Settings change history; it does NOT contain the Esri map (that commit is later) or the removed 'Alerts sent to the alarming service' panel.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "https://cdn.wakecap.com/1.0.5-ConnectedEnvironmentApp/wakecap-fe-connected-environment-app.js",
+          "line": 0,
+          "quote": "string counts: weather-station-agent-dashboard-composition=1, 'Nothing is sent until they approve'=1, 'Set sensor location'=1, 'Close alert'=1, 'Asia/Riyadh'=1, ArcGIS=0, 'Alerts sent'=0"
+        },
+        {
+          "file": "frontend-2.0-weather-station git log",
+          "line": 0,
+          "quote": "bundle strings match master through 95e1650 (#209) and exclude e1faf00 (Esri map, #210)"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "(internal only: do not put build facts in videos)",
+      "caveats": "Evidence is the served JavaScript, not a rendered screen. This tells you what code shipped, not what is toggled on for a given user or project."
+    },
+    {
+      "id": "C29",
+      "claim": "Documentation drift: the August release deck says the MCP layer was '16 tools (13 read + 3 write)'; code today has 33 (26 read + 7 write). WEATHER_STATION.md and README agree with the code.",
+      "kind": "doc",
+      "evidence": [
+        {
+          "file": "release-deck/ws-release-2026-08.html",
+          "line": 336,
+          "quote": "2026-08-10: MCP tool layer delivered — 16 tools (13 read + 3 write)."
+        },
+        {
+          "file": "wakecap-weather-station/WEATHER_STATION.md",
+          "line": 84,
+          "quote": "Tools:** 33 — 26 read, 4 `propose_*`, 3 observer writes"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.Web.API/Mcp/McpToolNames.cs",
+          "line": 14,
+          "quote": "public const string GetIndicators = \"get_indicators\";"
+        }
+      ],
+      "live_today": "yes",
+      "safe_phrase": "(internal only)",
+      "caveats": "The standalone Python MCP service (24 tools at the TAN-2136 move) was retired (commit 45fb0cc, 2026-08-11); the 16-tool number predates it."
+    },
+    {
+      "id": "C30",
+      "claim": "The future-AI-agent story, stated honestly: the building blocks that let an agent read everything about a weather station and propose changes exist and are deployed at the interface level; a running agent, Lightning and Gas coverage for agents, and enabled narration are not shown to exist.",
+      "kind": "code",
+      "evidence": [
+        {
+          "file": "wakecap-weather-station/README.md",
+          "line": 359,
+          "quote": "## MCP Endpoint"
+        },
+        {
+          "file": "release-deck/ws-release-2026-08.html",
+          "line": 336,
+          "quote": "Agent Intelligence unblocked"
+        },
+        {
+          "file": "wakecap-weather-station/Wakecap.WeatherStation.IntegrationTests/McpToolSurfaceTests.cs",
+          "line": 49,
+          "quote": "ExpectedToolNames (weather only)"
+        }
+      ],
+      "live_today": "unknown",
+      "safe_phrase": "The platform is being built so that an AI assistant can read what is happening on site and suggest actions, with people always approving. This is where we are heading; it is not running on your site today.",
+      "caveats": "Must be labelled DIRECTION. Use only the sentence above or a stricter one."
+    }
+  ],
+  "direction_only": [
+    "A running AI agent that watches sites, drafts findings and proposes actions. No runner exists in any repo; the interface and the tools it would use do.",
+    "AI agent access to Lightning or Gas data. The MCP tools are Weather Station only.",
+    "Gas alarms flowing to the Observation Manager (planned; ticket created 2026-10-04; nothing built).",
+    "Notifying people about gas alerts through the platform (planned, not built).",
+    "Pushing a gas acknowledge/close back to the detector vendor's own system (planned, not built).",
+    "AI-reworded safety text in the portal: code exists with fallback, production state unknown, August deck says dark.",
+    "Agent dashboard composition (recommended cards, risk-focused layout, dynamic charts) and the observation approval drawer: shipped in the served bundle but flag-gated, default OFF, state unknown.",
+    "Planned-maintenance awareness (not tracked: always 'not_tracked').",
+    "Forecasting, per-worker suggestions, 'suggestions with memory', messaging-bot status push, actionable recommendations (the August deck's own Direction slide, release-deck:350-358). Never present as live.",
+    "Any claim that an agent has actually connected to production MCP, or that production tokens carry the approval scope."
+  ],
+  "must_not_claim": [
+    "Gas alerts are sent to the Observation Manager (not built; Gas has no outbox, no dispatcher, no sink; the standalone prototype HTML's Observation Manager tab is a mock; ObservationSource.Gas is an unused constant).",
+    "Anyone is notified of a gas alert by the platform. No gas notification path exists.",
+    "Lightning sends email or SMS (removed 2026-09-24; the Observation Manager owns alerting).",
+    "An observation 'sent' means a person was alerted (it means the Observation Manager accepted it).",
+    "Lightning Orange or Yellow raises an Observation Manager alert (only Red, Fault, Offline do).",
+    "An AI agent is running, monitoring, or acting on any site today.",
+    "An AI agent can read Lightning or Gas data (the 33 tools are Weather Station only).",
+    "The agent can change settings or approve its own proposals (it cannot: no approval tool, IL-walked tests, scope gate, self-approval refused).",
+    "Every safety change needs a second person's approval (false: a person with the manage-weather-settings permission publishes policy and writes thresholds, settings, bands and sensor flags directly; approval is the route for proposals, not a chokepoint).",
+    "One audit trail across weather, lightning and gas (false: audit covers weather policy only; lightning settings and gas zone changes have no trail).",
+    "One rule set across the three products (false: three separate rule implementations).",
+    "One permission for everything (reads share one gate; policy, lightning settings and gas writes use different grants; the gas vendor push receiver is unauthenticated by decision).",
+    "The AI writes or decides the safety verdict (verdict, numbers, actions are deterministic; AI may only reword and may be off).",
+    "The portal shows AI-written text, recommended cards, dynamic charts or the observation drawer as a normal feature (flag default off, production value unknown, August deck: narration dark).",
+    "The portal shows a 'work decision' field (the front end does not read workDecision).",
+    "criteriaVersion represents the whole policy (heat-index criteria only).",
+    "An MCP tool count in a video (16 in the August deck is stale, 33 in code today; counts drift).",
+    "Planned-maintenance windows are respected by the agent (not tracked).",
+    "Gas acknowledge or close updates the detector vendor's system (it does not; the vendor alert stays open).",
+    "Gas alarm limits can be edited in the portal (read-only).",
+    "A proposal is permanent (it lapses after 24 hours) or that proposing is risk-free on a new project (the first proposal can create default limits).",
+    "External AI clients can already sign in through standard discovery (production discovery advertises a cluster-internal authority; see open questions).",
+    "Observer findings can be reviewed in the portal (REST only; no screen).",
+    "Any customer, site, ticket id, build number or flag name in on-screen or narrated text.",
+    "A lightning site go-live date (unknown; never state one)."
+  ],
+  "open_questions": [
+    "Production MCP discovery advertises authorization_servers = a cluster-internal URL (http://identity-service.prod.svc.cluster.local:4009). An external MCP client cannot reach that. Is IdentityService:Authority meant to be internal for token validation with a separate public issuer for discovery? Also the Zero-Open plan names an IdentityServer 'WakecapMCP' allowed-scope gate (G16, line 169), while the metadata advertises scope 'MainApp'. Needs the identity owner.",
+    "Does any production token (human or service) carry weather.change.approve or weather.observer.review? Without them the approval flow and the finding review exist but cannot be used. Not readable from the repos.",
+    "Is weather-station-agent-dashboard-composition ON for any production user? Flag service not readable here. Needs a screen capture from a signed-in production session before any video shows composition or the observation drawer.",
+    "Is the Claude narration key/enable switch set in production? August deck says dark; no newer evidence. Check live: AgentSummary incidentSummary on a danger verdict.",
+    "Is the Observation Manager sink URL healthy in production and does the Observation Manager route weather and lightning types to anyone? Dispatch was disabled by hotfix in September then re-enabled; no delivery evidence found.",
+    "Are the lightning queue URLs configured in production and is any device feeding? The consumer idles when no queue URL is set (LightningQueueConsumerBackgroundService.cs:44-55).",
+    "Does the MCP permission check scope to the project? McpToolAuthorizer asks the admin service by tenant and permission only (McpToolAuthorizer.cs:321-328) and projectId is a tool argument; confirm REST does the same and that an agent token cannot read a project it has no rights on.",
+    "ChangeAuditController.Export is behind a feature switch (ChangeAuditExportFeature); production value unknown.",
+    "The observer's Postgres suite (ObserverFindingWritePathTests) was not in the CI database job when merged on 2026-10-01 (commit message); confirm it was added.",
+    "FE bundle 1.0.5 is production per the task; the repo has no tag for it and the audit ledger's '1.0.5' was a testing build on 2026-08-27. The mapping used here (bundle strings match FE master through 95e1650) is inferred from served-bundle content, not from a release record.",
+    "BE branch at research time was TAN-2895-drop-testing-comment, one gas-options commit (5cd5335) ahead of master (352195f); none of the cited files differ from master. Production BE commit not verifiable; route probes show it includes the 2026-10-01 observer and agent-observation work and gas acknowledge.",
+    "Committed secret check: none seen in files read. Per CLAUDE.md no appsettings or .env were opened. Note for the owner: the pasted Gemini key in the request text should be treated as exposed in chat and was not used."
+  ]
+}

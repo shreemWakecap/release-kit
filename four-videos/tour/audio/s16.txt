@@ -1,0 +1,1 @@
+Each product has a switch. In this project Weather Station is on. Gas and Lightning are off.

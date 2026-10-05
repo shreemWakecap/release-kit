@@ -1,0 +1,1 @@
+Details opens the full verdict, with the data confidence and the time of the last update.

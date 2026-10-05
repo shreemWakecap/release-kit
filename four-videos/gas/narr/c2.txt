@@ -1,0 +1,11 @@
+The page names the fifth as offline. Readiness reads Not ready, and a list says what needs attention.
+
+Wallboard and phone views open by web address, not from the menu. The answer is big: Check, Not confirmed safe, one detector not reporting.
+
+The phone view carries the same words, and the same list of what needs attention.
+
+This page lists each detector. The fifth reads Check: last known values, not current. Show detail opens its readings.
+
+The newest three read Closed, no button. On an acknowledged row, with edit access, this is where you close it.
+
+Open alerts counts everything not yet closed. Twelve, all acknowledged, so Live alarms on the Overview reads zero.

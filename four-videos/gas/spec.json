@@ -1,0 +1,659 @@
+{
+  "id": "gas",
+  "title": "Connected Environment",
+  "capture_label": "LIVE CAPTURE · 4 OCT 2026 · READ-ONLY",
+  "chapters": [
+    {
+      "name": "Overview",
+      "path": "Connected Environment › Gas › Dashboard"
+    },
+    {
+      "name": "Wallboard and phone",
+      "path": "By address"
+    },
+    {
+      "name": "Detectors",
+      "path": "Connected Environment › Gas › Detectors"
+    },
+    {
+      "name": "Alerts",
+      "path": "Connected Environment › Gas › Alerts"
+    },
+    {
+      "name": "Compliance",
+      "path": "Connected Environment › Gas › Compliance"
+    }
+  ],
+  "diagrams": {
+    "paths": {
+      "title": "HOW GAS READINGS REACH WAKECAP",
+      "lanes": [
+        {
+          "badge": "VENDOR CLOUD",
+          "product": "Gas",
+          "device": "Gas detectors",
+          "icon": "detector",
+          "steps": [
+            [
+              "Vendor cloud",
+              "a black box to us"
+            ],
+            [
+              "WakeCap asks",
+              "on a regular timer"
+            ],
+            [
+              "WakeCap store",
+              "readings and alerts"
+            ],
+            [
+              "Gas screens",
+              "each reading shows its age"
+            ]
+          ]
+        }
+      ],
+      "sink": {
+        "t": "ON SCREEN",
+        "s": "Reading age. Offline reads Check"
+      }
+    }
+  },
+  "beats": [
+    {
+      "id": "g01",
+      "kind": "card",
+      "card": "lines",
+      "eyebrow": "GAS · CONNECTED ENVIRONMENT",
+      "lines": [
+        "No alarm on the screen.",
+        "Calm?",
+        "Or a detector that <em>went quiet</em>?"
+      ],
+      "narration": "A gas screen, no alarm showing. Calm? Or a detector gone quiet? A good screen says which.",
+      "evidence": [
+        "g-dashboard-c: '3589602346 is offline' and 'Offline. Last reading 3 h 27 min ago.' (the situation the hook sets up)",
+        "g-dashboard-c: 'Live alarms 0 None waiting for a person' (no alarm on the screen)"
+      ]
+    },
+    {
+      "id": "g02",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/g-header-c.png",
+      "narration": "Start with the top line. Check, the newest reading's age, and four of five detectors reporting.",
+      "caption": "Top line: Check, newest reading age, 4 of 5 reporting.",
+      "zoom": {
+        "r": [
+          100,
+          40,
+          560,
+          50
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            110,
+            46,
+            506,
+            30
+          ],
+          "l": "Status line",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-header-c: 'Gas CHECK Last reading 19 min ago · 4 of 5 detectors reporting'",
+        "changes#gas-live-glance (live_in_1_0_5 yes): header line Gas SAFE/CHECK/ALERT with last reading and detectors reporting"
+      ]
+    },
+    {
+      "id": "g03",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/g-dashboard-c.png",
+      "narration": "The Gas dashboard opens on Overview. Five detectors, four online. Live alarms counts alerts nobody has acknowledged. Acknowledged counts open alerts that are being handled.",
+      "caption": "Overview: detectors, online, live alarms, acknowledged.",
+      "callouts": [
+        {
+          "r": [
+            288,
+            138,
+            393,
+            128
+          ],
+          "l": "Detectors",
+          "pos": "a"
+        },
+        {
+          "r": [
+            693,
+            138,
+            393,
+            128
+          ],
+          "l": "Online",
+          "pos": "a"
+        },
+        {
+          "r": [
+            1098,
+            138,
+            393,
+            128
+          ],
+          "l": "Live alarms",
+          "pos": "a"
+        },
+        {
+          "r": [
+            1503,
+            138,
+            393,
+            128
+          ],
+          "l": "Acknowledged",
+          "pos": "a"
+        }
+      ],
+      "evidence": [
+        "g-dashboard-c: 'Detectors 5 Registered on this project', 'Online 4 1 offline'",
+        "g-dashboard-c: 'Live alarms 0 None waiting for a person', 'Acknowledged 12 Open, being handled' (acknowledged and not yet closed; closing removes an alert from both counts, per the Overview strip's own logic)",
+        "g-alerts-c: 'Open alerts 12', 'Acknowledged 12' (acknowledged alerts stay open until closed; Closed rows are separate)",
+        "changes#gas-overview (live_in_1_0_5 yes)",
+        "g-dashboard-c: page heading 'Overview'; Gas menu item 'Dashboard' (lead decision G: say once the dashboard opens on Overview, then use Overview)"
+      ]
+    },
+    {
+      "id": "g04",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/g-dashboard-c.png",
+      "narration": "Three gases, limits on each card. H two S alarms above ten parts per million. Combustible gas alarms above twenty percent L E L.",
+      "caption": "H₂S, oxygen, LEL. Limits shown on each card.",
+      "zoom": {
+        "r": [
+          0,
+          340,
+          1600,
+          230
+        ],
+        "s": 1.2
+      },
+      "callouts": [
+        {
+          "r": [
+            288,
+            318,
+            416,
+            212
+          ],
+          "l": "H₂S",
+          "pos": "b"
+        },
+        {
+          "r": [
+            716,
+            318,
+            416,
+            212
+          ],
+          "l": "Oxygen",
+          "pos": "b"
+        },
+        {
+          "r": [
+            1144,
+            318,
+            416,
+            212
+          ],
+          "l": "LEL",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-dashboard-c: 'H₂S Hydrogen sulphide Within limits 0 ppm Warning from 5 · alarm above 10 ppm · TWA 10 · STEL 15' (each card prints its own limits line)",
+        "g-dashboard-c: 'LEL Combustible gas Within limits 0 %LEL Warning from 10 · alarm above 20 %LEL'",
+        "changes#gas-no-co: only H2S, O2 and LEL shown (CO and CO2 removed)"
+      ]
+    },
+    {
+      "id": "g05",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/g-dashboard-c.png",
+      "narration": "Oxygen has a low limit, nineteen point five. The page says its alarm is not raised yet. Cards show the worst of four reporting.",
+      "caption": "Oxygen: low limit 19.5, low alarm not raised yet.",
+      "zoom": {
+        "r": [
+          716,
+          318,
+          416,
+          212
+        ],
+        "s": 1.7
+      },
+      "callouts": [
+        {
+          "r": [
+            728,
+            452,
+            395,
+            66
+          ],
+          "l": "Not raised yet",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-dashboard-c: 'Safe 19.5 to 23.5 %VOL · alarm above 23.5 · low-oxygen alarm is not raised yet'",
+        "g-compliance-c: 'O₂ ... below 19.5 (not alarmed yet)'",
+        "refresh lead decision 8",
+        "g-dashboard-c: 'Worst of 4 reporting: 3589602345' (each card speaks for the reporting detectors)"
+      ]
+    },
+    {
+      "id": "g06",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/g-dashboard-c.png",
+      "narration": "The page names the fifth as offline. Readiness reads Not ready, and a list says what needs attention.",
+      "caption": "Fifth detector named as offline. Readiness: Not ready.",
+      "zoom": {
+        "r": [
+          1576,
+          282,
+          320,
+          515
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            1576,
+            282,
+            320,
+            191
+          ],
+          "l": "Offline, Not ready",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-dashboard-c: 'Worst of 4 reporting: 3589602342'",
+        "g-dashboard-c: '3589602346 is offline Readiness Not ready Total detectors: 5'",
+        "g-dashboard-c: '1. 3589602346 CHECK Offline. Last reading 3 h 27 min ago.'",
+        "g-dashboard-c: 'What needs attention' list with '1. 3589602346 CHECK Offline.'"
+      ]
+    },
+    {
+      "id": "g07",
+      "kind": "shot",
+      "img": "assets/g-wallboard-c.png",
+      "narration": "Wallboard and phone views open by web address, not from the menu. The answer is big: Check, Not confirmed safe, one detector not reporting.",
+      "caption": "Wallboard, by address: Check. Not confirmed safe.",
+      "callouts": [
+        {
+          "r": [
+            34,
+            86,
+            725,
+            135
+          ],
+          "l": "Check",
+          "pos": "b"
+        },
+        {
+          "r": [
+            943,
+            17,
+            960,
+            55
+          ],
+          "l": "Page's own words",
+          "pos": "l"
+        }
+      ],
+      "evidence": [
+        "g-wallboard-c: 'CHECK' and 'Not confirmed safe: 1 detector not reporting.' and 'Resolve the items listed before relying on this reading.'",
+        "changes#gas-wall-phone (live_in_1_0_5 yes)",
+        "research: wallboard and phone views are reached by address only, with no menu link (lead decision E); chapter bar reads 'Wallboard and phone' / 'By address'"
+      ],
+      "chapter": 2
+    },
+    {
+      "id": "g08",
+      "kind": "shot",
+      "img": "assets/g-mobile-c.png",
+      "narration": "The phone view carries the same words, and the same list of what needs attention.",
+      "caption": "Phone view: same words, same list.",
+      "zoom": {
+        "r": [
+          731,
+          250,
+          459,
+          400
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            854,
+            210,
+            322,
+            238
+          ],
+          "l": "Same words",
+          "pos": "r"
+        },
+        {
+          "r": [
+            854,
+            492,
+            322,
+            76
+          ],
+          "l": "Same list",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "g-mobile-c: 'Not confirmed safe: 1 detector not reporting.'",
+        "g-mobile-c: 'What needs attention 3589602346 CHECK Offline. Last reading 3 h 29 min ago.'",
+        "same by-address chapter as the wallboard (lead decision E)"
+      ],
+      "chapter": 2
+    },
+    {
+      "id": "g09",
+      "kind": "shot",
+      "chapter": 3,
+      "img": "assets/g-detectors-c.png",
+      "narration": "This page lists each detector. The fifth reads Check: last known values, not current. Show detail opens its readings.",
+      "caption": "Detectors: offline row shows last known values, not current.",
+      "callouts": [
+        {
+          "r": [
+            1713,
+            506,
+            83,
+            28
+          ],
+          "l": "Show detail",
+          "pos": "l",
+          "click": true
+        },
+        {
+          "r": [
+            289,
+            494,
+            1606,
+            65
+          ],
+          "l": "No current reading",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-detectors-c: '3589602346 exo_mk2 CHECK 2026-10-04 13:21 40% No current reading. Last known values, not current:'",
+        "g-detectors-c: 'Show detail for a row to see its readings and limits' (click is a demonstration on the offline row's button; nothing clicked in capture)",
+        "changes#gas-detectors-page (live_in_1_0_5 yes)"
+      ],
+      "zoom": {
+        "r": [
+          289,
+          488,
+          1606,
+          80
+        ],
+        "s": 1.2
+      }
+    },
+    {
+      "id": "g10",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/g-alerts-c.png",
+      "narration": "The newest three read Closed, no button. On an acknowledged row, with edit access, this is where you close it.",
+      "caption": "Closed rows: no button. With edit access you can Close.",
+      "zoom": {
+        "r": [
+          289,
+          380,
+          1606,
+          260
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            1578,
+            390,
+            199,
+            148
+          ],
+          "l": "Closed",
+          "pos": "l"
+        },
+        {
+          "r": [
+            1793,
+            549,
+            50,
+            28
+          ],
+          "l": "Close",
+          "pos": "b",
+          "click": true
+        }
+      ],
+      "evidence": [
+        "g-alerts-c: three newest rows 2026-10-04 13:11 read 'Closed' with no button; older rows read 'Acknowledged' with a 'Close' button",
+        "changes#gas-ack-close (live yes): Close shown with edit access; 'You can read alerts here. Acknowledging or closing one needs edit access on this project.'",
+        "demonstration only: nothing was clicked in capture; who closed the three rows, and when, is not shown and not stated"
+      ]
+    },
+    {
+      "id": "g11",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/g-alerts-c.png",
+      "narration": "Open alerts counts everything not yet closed. Twelve, all acknowledged, so Live alarms on the Overview reads zero.",
+      "caption": "Open alerts: not yet closed. Twelve, the same as Acknowledged.",
+      "zoom": {
+        "r": [
+          288,
+          203,
+          393,
+          132
+        ],
+        "s": 2.2
+      },
+      "callouts": [
+        {
+          "r": [
+            288,
+            203,
+            393,
+            132
+          ],
+          "l": "Open alerts",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-alerts-c: 'Open alerts 12 Live count from the Summary read'; every row reads Closed or Acknowledged",
+        "g-dashboard-c: 'Acknowledged 12', 'Live alarms 0 None waiting for a person' (shown on the Overview; narration says 'on the Overview')",
+        "refresh note: Open alerts counts alerts not yet closed; Live alarms counts alerts nobody has acknowledged. The zoom is centred on the Open alerts tile; only that tile is lit. 'All acknowledged' is carried from the Overview beat (Acknowledged 12 equals Open alerts 12); the caption states the tie"
+      ]
+    },
+    {
+      "id": "g12",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/g-alerts-c.png",
+      "narration": "Closing is recorded here. It is not sent to Blackline: an alert closed here stays open in Blackline Live. Blackline is the gas vendor.",
+      "caption": "Recorded in WakeCap. Not sent to Blackline.",
+      "zoom": {
+        "r": [
+          285,
+          138,
+          980,
+          53
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            278,
+            132,
+            502,
+            66
+          ],
+          "l": "Not sent to Blackline",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "g-alerts-c: 'Acknowledging or closing an alert is recorded here with who did it and when. It is not sent to Blackline: an alert closed here stays open in Blackline Live.'",
+        "integration-and-devices#G06 (live_today no for write-back): never imply the vendor is told",
+        "lead decision K: the page sentence is quoted in the same words as the umbrella, with one gloss that Blackline is the gas vendor; no who or when is claimed"
+      ]
+    },
+    {
+      "id": "g13",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/g-alerts-bottom-c.png",
+      "narration": "The page also names what is missing: no alert timeline, no assignee, no closed count.",
+      "caption": "Timeline, assignee, closed count: not available yet.",
+      "zoom": {
+        "r": [
+          288,
+          629,
+          1608,
+          261
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            288,
+            629,
+            1608,
+            261
+          ],
+          "l": "Not available yet",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-alerts-bottom-c: 'The alert timeline and assignee are not available yet. There is no timeline or assignee to show for an alert, and no count of closed alerts.'"
+      ]
+    },
+    {
+      "id": "g14",
+      "kind": "shot",
+      "chapter": 5,
+      "img": "assets/g-compliance-c.png",
+      "narration": "Compliance lists the limits. Exposure and exceedances say Not available yet, not an empty chart that reads as all clear.",
+      "caption": "Limits listed. Exposure and exceedances: not available yet.",
+      "zoom": {
+        "r": [
+          289,
+          180,
+          1607,
+          470
+        ]
+      },
+      "callouts": [
+        {
+          "r": [
+            289,
+            221,
+            1607,
+            189
+          ],
+          "l": "Limits in force",
+          "pos": "b"
+        },
+        {
+          "r": [
+            289,
+            426,
+            1607,
+            217
+          ],
+          "l": "Not available yet",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "g-compliance-c: 'Limits in force ... Low alarm High alarm ... below 19.5 (not alarmed yet)'",
+        "g-compliance-c: 'Exposure against TWA and STEL, and a compliance percentage ... Not available yet'; 'Exceedances per gas over time ... no trend is drawn rather than an empty chart that reads as all clear.'",
+        "integration-and-devices#G13 (live_today no): no compliance numbers",
+        "whole width in view so the Exposure card reads in full; the green 'Now' chips are page content (within limits for the reporting detectors, same as the Overview cards) and are never narrated or called out"
+      ]
+    },
+    {
+      "id": "g15",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 1,
+      "narration": "Detectors report to the vendor's cloud, a black box to us. WakeCap asks that cloud for readings on a timer.",
+      "caption": "Gas reaches WakeCap through the vendor's cloud only.",
+      "evidence": [
+        "integration-and-devices#G03: WakeCap polls the manufacturer's cloud on a timer; no interval is spoken or drawn (not live-verified, lead decision D)",
+        "integration-and-devices#G02: vendor cloud is effectively a black box; integration-and-devices#G12: no mesh or Modbus path for gas (lane label 'Vendor cloud', lead decision C)",
+        "integration-and-devices#G07 (live yes): readings and alerts stored in WakeCap's own tables"
+      ]
+    },
+    {
+      "id": "g16",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 2,
+      "narration": "Each detector reports on its own schedule, so each reading shows its age. An offline detector reads Check, like the fifth.",
+      "caption": "Each reading shows its age. An offline detector reads Check.",
+      "evidence": [
+        "g-dashboard-c: 'Detectors reporting 4 of 5 Reading newer than 60 min'",
+        "g-dashboard-c: '3589602346 CHECK Offline. Last reading 3 h 27 min ago.'; g-detectors-c: offline row shows its last reading time 2026-10-04 13:21",
+        "lead decision D: no polling or reporting numbers are spoken; no 'quiet for over an hour reads Check' claim; only what is on screen"
+      ]
+    },
+    {
+      "id": "g17",
+      "kind": "card",
+      "card": "list",
+      "eyebrow": "GAS TODAY · IF YOUR PROJECT HAS IT, READ THE TOP LINE",
+      "h1": "Gas, <em>screen by screen</em>",
+      "items": [
+        {
+          "t": "Overview",
+          "s": "Detectors, online, live alarms, acknowledged"
+        },
+        {
+          "t": "Detectors",
+          "s": "Last report; last known values marked not current"
+        },
+        {
+          "t": "Alerts",
+          "s": "Edit access: acknowledge and close, kept in WakeCap only"
+        },
+        {
+          "t": "Compliance",
+          "s": "Limits listed; gaps say Not available yet"
+        }
+      ],
+      "narration": "A quiet screen is not an answer, so Gas shows its gaps. If your project has it, open it and read the top line.",
+      "evidence": [
+        "g-header-c: 'Gas CHECK Last reading ... · 4 of 5 detectors reporting'",
+        "changes#gas-overview, gas-detectors-page, gas-ack-close (all live_in_1_0_5 yes); g-compliance-c: 'Not available yet'",
+        "changes shell-rail visible_when: Gas appears only when the project has it switched on"
+      ]
+    }
+  ]
+}

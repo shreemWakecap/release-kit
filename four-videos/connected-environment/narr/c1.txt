@@ -1,0 +1,11 @@
+Is it safe to work right now? Heat says one thing. Lightning says another. Gas says a third. You need one place to look.
+
+That place is Connected Environment. One umbrella over weather, lightning and gas, in the portal.
+
+Under it sit Weather Station, Lightning and Gas, each with its own screens and devices.
+
+They share one platform: one backend, one menu and header, the same view permission. Projects switch on what they use.
+
+Your site team watches and decides. Control is narrower. Weather limits decide when work stops. A Gas alert can be acknowledged or closed, recorded in WakeCap only.
+
+Connected Products lists what each project has switched on. Weather alone, Lightning alone, Weather with Gas.

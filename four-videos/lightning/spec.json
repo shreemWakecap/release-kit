@@ -1,0 +1,631 @@
+{
+  "id": "lightning",
+  "title": "Connected Environment",
+  "capture_label": "LIVE CAPTURE · 4 OCT 2026 · READ-ONLY",
+  "chapters": [
+    {
+      "name": "The page",
+      "path": "Connected Environment › Lightning"
+    },
+    {
+      "name": "New on the page",
+      "path": "Connected Environment › Lightning"
+    },
+    {
+      "name": "Wallboard and phone",
+      "path": "By address"
+    },
+    {
+      "name": "Settings",
+      "path": "Connected Environment › Settings › Lightning"
+    }
+  ],
+  "diagrams": {
+    "paths": {
+      "title": "HOW LIGHTNING REACHES THE PAGE",
+      "lanes": [
+        {
+          "badge": "WIRELESS MESH + MODBUS INPUT",
+          "product": "Lightning",
+          "device": "Lightning sensor",
+          "icon": "sensor",
+          "steps": [
+            [
+              "Input module",
+              "Modbus device on mesh"
+            ],
+            [
+              "Mesh gateway",
+              "wireless mesh to cloud"
+            ],
+            [
+              "Cloud queue",
+              "unreadable set aside"
+            ],
+            [
+              "Lightning",
+              "state and history"
+            ]
+          ]
+        }
+      ],
+      "sink": {
+        "t": "WAKECAP PORTAL",
+        "s": "the page you just saw"
+      }
+    }
+  },
+  "beats": [
+    {
+      "id": "l01",
+      "kind": "card",
+      "card": "lines",
+      "eyebrow": "LIGHTNING · CONNECTED ENVIRONMENT",
+      "lines": [
+        "Lightning is close.",
+        "Who tells the crew to <em>stop?</em>",
+        "The cabinet lights and sounder. <em>First.</em>",
+        "This page is the <em>backup.</em>"
+      ],
+      "narration": "Lightning is close. Who tells the crew to stop? The cabinet lights and sounder, first. This page is the backup.",
+      "evidence": [
+        "l-top-b: \"WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.\"",
+        "integration-and-devices#L12 (approved wording, live_today yes: the cabinet lights and sounder are the primary alerting system)"
+      ]
+    },
+    {
+      "id": "l02",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/l-top-b.png",
+      "narration": "The top line says it too. WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.",
+      "caption": "A backup. Cabinet lights and sounder come first.",
+      "zoom": {
+        "r": [
+          294,
+          100,
+          820,
+          60
+        ],
+        "s": 1.9
+      },
+      "callouts": [
+        {
+          "r": [
+            281,
+            105,
+            830,
+            50
+          ],
+          "l": "Backup",
+          "pos": "a"
+        }
+      ],
+      "evidence": [
+        "l-top-b: \"WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.\"",
+        "integration-and-devices#L12"
+      ]
+    },
+    {
+      "id": "l03",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/l-top-b.png",
+      "narration": "The state tile read All Clear when we captured this. WakeCap treats only the green state as safe to work.",
+      "caption": "WakeCap treats only the green state as safe to work",
+      "zoom": {
+        "r": [
+          281,
+          235,
+          534,
+          160
+        ],
+        "s": 2.0
+      },
+      "callouts": [
+        {
+          "r": [
+            309,
+            267,
+            481,
+            94
+          ],
+          "l": "All Clear",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-top-b: \"All Clear\" \"Safe to work\" \"Normal operations.\" (what the page showed when captured; the narration never says a site is safe)",
+        "integration-and-devices#L05 (live_today yes: only Green is safe; unknown, fault, offline or out of date are treated as not safe; a rule in the product, not page text, so the narration says WakeCap treats it that way)"
+      ]
+    },
+    {
+      "id": "l04",
+      "kind": "shot",
+      "chapter": 1,
+      "img": "assets/l-top-b.png",
+      "narration": "The rings and chips are the configured alert distances. The page says so plainly: zone reference only, not a live strike position.",
+      "caption": "Rings are alert distances, not a strike position",
+      "zoom": {
+        "r": [
+          281,
+          276,
+          534,
+          104
+        ],
+        "s": 2.0
+      },
+      "callouts": [
+        {
+          "r": [
+            329,
+            381,
+            104,
+            104
+          ],
+          "l": "Rings",
+          "pos": "r"
+        },
+        {
+          "r": [
+            322,
+            491,
+            455,
+            32
+          ],
+          "l": "Alert distances",
+          "pos": "r"
+        },
+        {
+          "r": [
+            318,
+            524,
+            459,
+            46
+          ],
+          "l": "Reference only",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-top-b chips: \"RED ≤ 13km\" \"YELLOW 13-20km\" \"ALL-CLEAR 30min\" (on screen only, the numbers are not narrated)",
+        "l-top-b: \"Zone reference only — not a live strike position. This device reports no distance or bearing; the rings show the configured alert thresholds, nothing more.\"",
+        "integration-and-devices#L10 (alert distances are display-only; the page itself calls them a reference)"
+      ]
+    },
+    {
+      "id": "l05",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/l-radii-map.png",
+      "narration": "New here: a map of the alert distances. Its legend reads: a red ring, a yellow ring and a dot for the sensor.",
+      "caption": "New: radii map. Map blurred.",
+      "zoom": {
+        "r": [
+          843,
+          75,
+          1042,
+          446
+        ],
+        "s": 1.75
+      },
+      "callouts": [
+        {
+          "r": [
+            843,
+            111,
+            1042,
+            384
+          ],
+          "l": "Radii map",
+          "pos": "inr"
+        },
+        {
+          "r": [
+            838,
+            498,
+            554,
+            30
+          ],
+          "l": "Legend",
+          "pos": "b"
+        }
+      ],
+      "evidence": [
+        "l-radii-map: \"Alarm radii\"",
+        "l-radii-map: \"Red ring: the Red radius. Yellow ring: the Yellow radius. The dot shows the sensor's current state.\" (the map is blurred on purpose, so the narration points at the legend text, never at the imagery)",
+        "changes#lt-radii-map (live_in_1_0_5 yes); refresh note: satellite map blurred in every frame"
+      ]
+    },
+    {
+      "id": "l06",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/l-hist-b.png",
+      "narration": "Below, a new alarm activity chart counts yellow and red alarms. In this window, both read zero.",
+      "caption": "Alarm activity: zero yellow, zero red in this window",
+      "zoom": {
+        "r": [
+          265,
+          261,
+          740,
+          380
+        ],
+        "s": 2.6
+      },
+      "callouts": [
+        {
+          "r": [
+            276,
+            312,
+            162,
+            38
+          ],
+          "l": "New chart",
+          "pos": "r"
+        },
+        {
+          "r": [
+            275,
+            518,
+            228,
+            46
+          ],
+          "l": "Zero, zero",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-hist-b: \"Alarm activity\" \"Yellow: 0 · 0s total\" \"Red: 0 · 0s total\" \"0 alarm(s) in this window.\"",
+        "changes#lt-alarm-history (live_in_1_0_5 yes: chart of yellow and red alarm intervals)"
+      ]
+    },
+    {
+      "id": "l07",
+      "kind": "shot",
+      "chapter": 2,
+      "img": "assets/l-hist-b.png",
+      "narration": "No alarms were raised in this window. Export C S V is greyed out. Times are Saudi time.",
+      "caption": "No alarms in this window. Export greyed out. Saudi time.",
+      "zoom": {
+        "r": [
+          514,
+          590,
+          1390,
+          172
+        ],
+        "s": 1.4
+      },
+      "callouts": [
+        {
+          "r": [
+            930,
+            684,
+            325,
+            60
+          ],
+          "l": "Nothing raised",
+          "pos": "b"
+        },
+        {
+          "r": [
+            1755,
+            596,
+            130,
+            36
+          ],
+          "l": "Greyed out",
+          "pos": "l"
+        },
+        {
+          "r": [
+            1086,
+            637,
+            158,
+            26
+          ],
+          "l": "Saudi time",
+          "pos": "a"
+        }
+      ],
+      "evidence": [
+        "l-hist-b: \"No alarms were raised in this window.\"",
+        "l-hist-b: Export CSV drawn greyed out (captures.json export_csv_disabled); no claim about when it becomes active",
+        "l-hist-b: \"All times in AST, UTC+3.\" (Saudi time); changes#shell-saudi-time (all pages show Saudi time; Lightning labels it AST)"
+      ]
+    },
+    {
+      "id": "l08",
+      "kind": "shot",
+      "chapter": 3,
+      "img": "assets/l-wallboard-b.png",
+      "narration": "For a site screen, a wallboard view: the same state, large, with the backup line beneath it.",
+      "caption": "Wallboard view for a site screen",
+      "zoom": {
+        "r": [
+          17,
+          17,
+          934,
+          800
+        ],
+        "s": 1.15
+      },
+      "callouts": [
+        {
+          "r": [
+            226,
+            76,
+            555,
+            134
+          ],
+          "l": "All Clear",
+          "pos": "r"
+        },
+        {
+          "r": [
+            17,
+            764,
+            830,
+            52
+          ],
+          "l": "Backup line",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-wallboard-b: \"All Clear\" \"Safe to work\" \"Normal operations.\" and \"WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.\" (what the page showed when captured)",
+        "changes#lt-wallboard-mobile (live yes): wallboard at /lightning/wallboard, no portal chrome; listed as an existing view, not as new (first tag v0.0.3 per verifier)"
+      ]
+    },
+    {
+      "id": "l09",
+      "kind": "shot",
+      "chapter": 3,
+      "img": "assets/l-mobile-phone-b.png",
+      "narration": "And a phone width view. Both open by address, a web address, not from the menu.",
+      "caption": "Phone width view. Opens by address, not the menu.",
+      "zoom": {
+        "r": [
+          858,
+          155,
+          314,
+          600
+        ],
+        "s": 1.55
+      },
+      "callouts": [
+        {
+          "r": [
+            858,
+            155,
+            314,
+            406
+          ],
+          "l": "Same state",
+          "pos": "r"
+        },
+        {
+          "r": [
+            858,
+            645,
+            314,
+            98
+          ],
+          "l": "Backup line",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-mobile-phone-b: \"All Clear\" \"Safe to work\" and the backup line at phone width (captured 16:55)",
+        "changes#lt-wallboard-mobile (live yes): phone view at /lightning/mobile; \"Neither is linked from the rail.\"",
+        "captures.json l-wallboard-b, l-mobile-phone-b: clicks_done navigated by URL; the phone tile is a 430 px composite, so the narration says phone width view; callout rects measured by eye on the frame because captures.json phone rects are offset by about 15 px"
+      ]
+    },
+    {
+      "id": "l10",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 1,
+      "narration": "Where does that state come from? A small input module reads the sensor. On the wireless mesh it shows up as a Modbus device. Modbus is an industrial wiring and data standard many sensors speak.",
+      "caption": "Input module reads the sensor, a Modbus device on the mesh",
+      "evidence": [
+        "integration-and-devices#L01 (live_today yes: a lightning node is a Modbus asset on the mesh, reached through an input module; a radio node on site reads the lightning warning unit and reports its state across the mesh); lead decision C: the sensor is read through a small input module and shows up on the mesh as a Modbus device",
+        "Modbus is explained once, here at first mention, in the approved wording: an industrial wiring and data standard many sensors speak; the lane badge reads WIRELESS MESH + MODBUS INPUT; no brand named for the module"
+      ]
+    },
+    {
+      "id": "l11",
+      "kind": "diagram",
+      "diagram": "paths",
+      "stage": 2,
+      "narration": "A gateway passes the readings to the cloud, then to this page, and anything unreadable is set aside.",
+      "caption": "Anything unreadable is set aside",
+      "evidence": [
+        "integration-and-devices#L02 (live_today yes: lightning messages go to their own queue; messages that cannot be parsed go to a separate queue. Caveat: queue and rule existence were not verified live, so narration and caption say only set aside, never never lost)",
+        "integration-and-devices#W10 and #L08 (messages with no registered handler or an unassigned device are not stored as status) are why the narration says the gateway passes the readings on, not that every message arrives; the WAKECAP PORTAL sink box that appears at this stage is the page narrated as 'this page'; Modbus was explained in l10, not repeated"
+      ]
+    },
+    {
+      "id": "l12",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/l-settings-b-all.png",
+      "narration": "In the menu you can open Settings, then Lightning. It needs its own permission, apart from viewing.",
+      "caption": "Settings, then Lightning: its own permission",
+      "zoom": {
+        "r": [
+          64,
+          200,
+          420,
+          110
+        ],
+        "s": 2.0
+      },
+      "callouts": [
+        {
+          "r": [
+            64,
+            250,
+            191,
+            44
+          ],
+          "l": "Settings",
+          "pos": "b",
+          "click": true
+        },
+        {
+          "r": [
+            276,
+            226,
+            199,
+            40
+          ],
+          "l": "Lightning",
+          "pos": "b",
+          "click": true
+        }
+      ],
+      "evidence": [
+        "l-settings-b-all: menu item \"Settings\" and Settings sub-nav \"Connected Products\" \"Weather Station\" \"Lightning\" (nothing was clicked in capture; the click callouts are demonstrations, hence 'you can open')",
+        "changes#settings-area, integration-and-devices#N03 and #X02 (each Settings entry sits behind its own grant, separate from the view permission; the grant name is not shown to the viewer)"
+      ]
+    },
+    {
+      "id": "l13",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/l-settings-b-all.png",
+      "narration": "These are the alert distances the tile shows as rings. Two buttons: Edit alerting radii and Set location. The location is entered by hand, marked Temporary.",
+      "caption": "Alert distances, two buttons, location marked Temporary",
+      "zoom": {
+        "r": [
+          504,
+          102,
+          1400,
+          250
+        ],
+        "s": 1.35
+      },
+      "callouts": [
+        {
+          "r": [
+            517,
+            227,
+            488,
+            61
+          ],
+          "l": "Alert distances",
+          "pos": "r"
+        },
+        {
+          "r": [
+            1770,
+            233,
+            121,
+            72
+          ],
+          "l": "Two buttons",
+          "pos": "b"
+        },
+        {
+          "r": [
+            513,
+            289,
+            496,
+            29
+          ],
+          "l": "Marked Temporary",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-settings-b-all: \"Alerting radii\" \"Red ≤ 13 km · Yellow 13-20 km · 30 min all-clear\" (numbers on screen only; the narration says the same distances as the tile's rings and never what an edit changes)",
+        "l-settings-b-all: \"Edit alerting radii\" \"Set location\" buttons named only, no claim that either works (integration-and-devices#L11 live_today unknown); \"Location:\" with the \"Temporary\" badge",
+        "integration-and-devices#L10 (alert distances are display-only, so no claim that they change the alarm), #L11 (location entered by hand, explicitly temporary); the Settings intro line and the 'Set manually...' note are blurred in the frame and never read aloud; the camera now frames the whole radii card"
+      ]
+    },
+    {
+      "id": "l14",
+      "kind": "shot",
+      "chapter": 4,
+      "img": "assets/l-settings-b-all.png",
+      "narration": "Below that, a twenty four hour state history. Green rows, with Data unavailable rows between. The page shows the gaps instead of hiding them.",
+      "caption": "24 hour state history keeps the gaps visible",
+      "zoom": {
+        "r": [
+          504,
+          430,
+          1240,
+          500
+        ],
+        "s": 1.55
+      },
+      "callouts": [
+        {
+          "r": [
+            1385,
+            509,
+            110,
+            24
+          ],
+          "l": "Data unavailable",
+          "pos": "r"
+        },
+        {
+          "r": [
+            1385,
+            578,
+            110,
+            24
+          ],
+          "l": "Another gap",
+          "pos": "r"
+        }
+      ],
+      "evidence": [
+        "l-settings-b-all: \"Full state history — last 24 hours\"",
+        "l-settings-b-all: \"Every state the device passed through, including data-unavailable gaps. All times in AST, UTC+3.\"",
+        "l-settings-b-all rows: GREEN / Data unavailable / stale_sweep (many short gaps even at All Clear; the narration never says the data is continuous)"
+      ]
+    },
+    {
+      "id": "l15",
+      "kind": "card",
+      "card": "list",
+      "eyebrow": "NEW ON LIGHTNING",
+      "h1": "What is <em>new</em>",
+      "items": [
+        {
+          "t": "Radii map",
+          "s": "Beside the state tile"
+        },
+        {
+          "t": "Alarm activity and history",
+          "s": "Chart, table, export button"
+        },
+        {
+          "t": "Lightning settings",
+          "s": "Radii, location, 24 hour history"
+        }
+      ],
+      "narration": "New on this page: a map of the alert distances, an alarm chart and history, and Lightning settings.",
+      "evidence": [
+        "changes#lt-radii-map, #lt-alarm-history, #lt-settings (live_in_1_0_5 yes; the brief names these three as the new items)",
+        "frames l-radii-map, l-hist-b, l-settings-b-all show each; the wallboard and phone view is left off this list because it is an existing view (changes#lt-wallboard-mobile)"
+      ]
+    },
+    {
+      "id": "l16",
+      "kind": "card",
+      "card": "title",
+      "eyebrow": "NEXT STEP",
+      "h1": "Read the <em>banner</em>",
+      "sub": "Open Lightning and read the line at the top. Cabinet lights and sounder first. If your project has Lightning, it is in the menu.",
+      "narration": "Back to the crew. Next step: if your project has Lightning, open it and read the banner at the top. Cabinet lights and sounder first.",
+      "evidence": [
+        "l-top-b: \"WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first.\"",
+        "integration-and-devices#X05, #X02 (necessary conditions only; the card and the narration say if your project has Lightning, never that it always appears); l-top-b menu item \"Lightning\""
+      ]
+    }
+  ]
+}

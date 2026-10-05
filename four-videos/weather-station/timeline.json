@@ -1,0 +1,92 @@
+[
+ {
+  "id": "w01",
+  "start": 0.0,
+  "kind": "card"
+ },
+ {
+  "id": "w02",
+  "start": 8.18,
+  "kind": "shot"
+ },
+ {
+  "id": "w03",
+  "start": 15.82,
+  "kind": "shot"
+ },
+ {
+  "id": "w04",
+  "start": 21.72,
+  "kind": "shot"
+ },
+ {
+  "id": "w05",
+  "start": 28.88,
+  "kind": "shot"
+ },
+ {
+  "id": "w06",
+  "start": 35.24,
+  "kind": "shot"
+ },
+ {
+  "id": "w07",
+  "start": 43.04,
+  "kind": "shot"
+ },
+ {
+  "id": "w08",
+  "start": 50.52,
+  "kind": "shot"
+ },
+ {
+  "id": "w09",
+  "start": 58.94,
+  "kind": "shot"
+ },
+ {
+  "id": "w10",
+  "start": 65.9,
+  "kind": "shot"
+ },
+ {
+  "id": "w11",
+  "start": 72.98,
+  "kind": "shot"
+ },
+ {
+  "id": "w12",
+  "start": 81.52,
+  "kind": "shot"
+ },
+ {
+  "id": "w13",
+  "start": 90.26,
+  "kind": "shot"
+ },
+ {
+  "id": "w14",
+  "start": 100.32,
+  "kind": "shot"
+ },
+ {
+  "id": "w15",
+  "start": 105.4,
+  "kind": "shot"
+ },
+ {
+  "id": "w16",
+  "start": 113.34,
+  "kind": "card"
+ },
+ {
+  "id": "w17",
+  "start": 121.72,
+  "kind": "diagram"
+ },
+ {
+  "id": "w18",
+  "start": 129.44,
+  "kind": "diagram"
+ }
+]

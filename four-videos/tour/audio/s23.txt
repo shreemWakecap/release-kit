@@ -1,0 +1,1 @@
+Two more tabs: the heat index calculation method, and the change history.

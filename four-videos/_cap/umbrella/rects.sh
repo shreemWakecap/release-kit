@@ -1,0 +1,1 @@
+rects(){ cap_js "(()=>{const f=window.__f;const m=$1;const y0=${2:-0};const o={};for(const k in m){const r=f.box([m[k]],{minW:1,minH:1,minY:0,maxH:600});if(r){r[1]-=y0;o[k]=r}}return JSON.stringify(o)})()"; }

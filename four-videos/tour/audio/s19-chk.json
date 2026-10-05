@@ -1,0 +1,310 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:02,460"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 2460
+			},
+			"text": " and one where Gas is on.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.828768,
+					"t_dtw": -1
+				},
+				{
+					"text": " and",
+					"timestamps": {
+						"from": "00:00:00,290",
+						"to": "00:00:00,390"
+					},
+					"offsets": {
+						"from": 290,
+						"to": 390
+					},
+					"id": 293,
+					"p": 0.843201,
+					"t_dtw": -1
+				},
+				{
+					"text": " one",
+					"timestamps": {
+						"from": "00:00:00,390",
+						"to": "00:00:00,780"
+					},
+					"offsets": {
+						"from": 390,
+						"to": 780
+					},
+					"id": 472,
+					"p": 0.982709,
+					"t_dtw": -1
+				},
+				{
+					"text": " where",
+					"timestamps": {
+						"from": "00:00:00,780",
+						"to": "00:00:01,430"
+					},
+					"offsets": {
+						"from": 780,
+						"to": 1430
+					},
+					"id": 689,
+					"p": 0.992661,
+					"t_dtw": -1
+				},
+				{
+					"text": " Gas",
+					"timestamps": {
+						"from": "00:00:01,580",
+						"to": "00:00:01,830"
+					},
+					"offsets": {
+						"from": 1580,
+						"to": 1830
+					},
+					"id": 24025,
+					"p": 0.512154,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:01,830",
+						"to": "00:00:02,060"
+					},
+					"offsets": {
+						"from": 1830,
+						"to": 2060
+					},
+					"id": 307,
+					"p": 0.995862,
+					"t_dtw": -1
+				},
+				{
+					"text": " on",
+					"timestamps": {
+						"from": "00:00:02,080",
+						"to": "00:00:02,150"
+					},
+					"offsets": {
+						"from": 2080,
+						"to": 2150
+					},
+					"id": 322,
+					"p": 0.963964,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:02,360",
+						"to": "00:00:02,460"
+					},
+					"offsets": {
+						"from": 2360,
+						"to": 2460
+					},
+					"id": 13,
+					"p": 0.870296,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_123]",
+					"timestamps": {
+						"from": "00:00:02,460",
+						"to": "00:00:02,460"
+					},
+					"offsets": {
+						"from": 2460,
+						"to": 2460
+					},
+					"id": 50488,
+					"p": 0.0640208,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:02,460",
+				"to": "00:00:05,340"
+			},
+			"offsets": {
+				"from": 2460,
+				"to": 5340
+			},
+			"text": " The menu shows Gas with its status.",
+			"tokens": [
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:02,750",
+						"to": "00:00:02,760"
+					},
+					"offsets": {
+						"from": 2750,
+						"to": 2760
+					},
+					"id": 440,
+					"p": 0.989557,
+					"t_dtw": -1
+				},
+				{
+					"text": " menu",
+					"timestamps": {
+						"from": "00:00:02,760",
+						"to": "00:00:03,160"
+					},
+					"offsets": {
+						"from": 2760,
+						"to": 3160
+					},
+					"id": 6510,
+					"p": 0.960217,
+					"t_dtw": -1
+				},
+				{
+					"text": " shows",
+					"timestamps": {
+						"from": "00:00:03,160",
+						"to": "00:00:03,680"
+					},
+					"offsets": {
+						"from": 3160,
+						"to": 3680
+					},
+					"id": 3110,
+					"p": 0.997708,
+					"t_dtw": -1
+				},
+				{
+					"text": " Gas",
+					"timestamps": {
+						"from": "00:00:03,680",
+						"to": "00:00:03,890"
+					},
+					"offsets": {
+						"from": 3680,
+						"to": 3890
+					},
+					"id": 24025,
+					"p": 0.920184,
+					"t_dtw": -1
+				},
+				{
+					"text": " with",
+					"timestamps": {
+						"from": "00:00:04,000",
+						"to": "00:00:04,390"
+					},
+					"offsets": {
+						"from": 4000,
+						"to": 4390
+					},
+					"id": 365,
+					"p": 0.884625,
+					"t_dtw": -1
+				},
+				{
+					"text": " its",
+					"timestamps": {
+						"from": "00:00:04,390",
+						"to": "00:00:04,580"
+					},
+					"offsets": {
+						"from": 4390,
+						"to": 4580
+					},
+					"id": 1080,
+					"p": 0.986288,
+					"t_dtw": -1
+				},
+				{
+					"text": " status",
+					"timestamps": {
+						"from": "00:00:05,110",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5110,
+						"to": 5340
+					},
+					"id": 6558,
+					"p": 0.956557,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:05,340",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5340,
+						"to": 5340
+					},
+					"id": 13,
+					"p": 0.782304,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_267]",
+					"timestamps": {
+						"from": "00:00:05,340",
+						"to": "00:00:05,340"
+					},
+					"offsets": {
+						"from": 5340,
+						"to": 5340
+					},
+					"id": 50632,
+					"p": 0.766569,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

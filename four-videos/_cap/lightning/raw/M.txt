@@ -1,0 +1,1 @@
+,drawbox=x=324:y=248:w=172:h=18:color=white:t=fill,drawbox=x=1565:y=225:w=245:h=27:color=white:t=fill

@@ -1,0 +1,11 @@
+Different roads in. One platform behind them. Weather, Lightning and Gas all reach the same portal.
+
+The platform holds readings and status from all three, a base for a future A I assistant. Some gas history is not stored yet.
+
+Today, building blocks exist for Weather Station only, not Lightning or Gas. No assistant runs on any site.
+
+An assistant could read weather readings and propose changes. It never approves. A person does.
+
+People stay in control. The weather safety answer comes from fixed rules; an assistant would only reword it.
+
+Your next step: open Connected Environment in the portal's left rail, if your project has it. Your team stays in charge.

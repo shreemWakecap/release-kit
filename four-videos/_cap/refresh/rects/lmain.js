@@ -1,0 +1,25 @@
+(()=>{const f=window.__f;const c=document.querySelector('canvas');const cr=c?f.rc(c):null;
+return JSON.stringify({
+banner:f.box(["WakeCap lightning alerts are a backup"],{minW:1000,maxH:80}),
+readings_as_of:f.box(["Readings as of"],{maxH:30}),
+tile:f.box(["All Clear","Zone reference only"],{minW:400,maxW:600,minH:300}),
+state_band:f.box(["All Clear","Safe to work"],{maxH:140,minW:300}),
+safe_to_work_chip:f.leaf("Safe to work"),
+zone_chips:f.box(["RED","13km","YELLOW","ALL-CLEAR"],{maxH:50}),
+zone_caption:f.box(["Zone reference only"],{maxH:60}),
+held_for_box:f.box(["HELD FOR","since"],{maxH:120,minW:200}),
+map_card:f.box(["Alarm radii","Red ring"],{minW:900}),
+map_heading:f.box(["Alarm radii"],{maxH:40,minW:100,minX:800}),
+map_canvas:cr,
+map_legend:f.box(["Red ring: the Red radius"],{maxH:30}),
+alarm_activity_title:f.leaf("Alarm activity"),
+alarm_activity_section:f.box(["Alarm activity","alarm(s) in this window"],{minH:150}),
+alarm_activity_totals:f.box(["Yellow: 0","Red: 0"],{maxH:30}),
+alarm_history_card:f.box(["Alarm history","No alarms were raised"],{minW:1000}),
+alarm_history_title:f.leaf("Alarm history"),
+export_csv_disabled:f.box(["Export CSV"],{maxW:200,maxH:60}),
+history_caption:f.box(["Every YELLOW, ORANGE or RED interval"],{maxH:30}),
+empty_state:f.box(["No alarms were raised in this window."],{maxH:100}),
+rail_lightning:f.box(["Lightning"],{maxW:220,maxH:60,minX:60,maxX:300}),
+header_clock:f.box(["Oct 4, 2026"],{maxH:40,minX:1500})
+})})()

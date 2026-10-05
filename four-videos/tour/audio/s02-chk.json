@@ -1,0 +1,450 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:03,660"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 3660
+			},
+			"text": " The red strip is the answer, danger, in words.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.77337,
+					"t_dtw": -1
+				},
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:00,240",
+						"to": "00:00:00,240"
+					},
+					"offsets": {
+						"from": 240,
+						"to": 240
+					},
+					"id": 440,
+					"p": 0.980865,
+					"t_dtw": -1
+				},
+				{
+					"text": " red",
+					"timestamps": {
+						"from": "00:00:00,300",
+						"to": "00:00:00,480"
+					},
+					"offsets": {
+						"from": 300,
+						"to": 480
+					},
+					"id": 2182,
+					"p": 0.997963,
+					"t_dtw": -1
+				},
+				{
+					"text": " strip",
+					"timestamps": {
+						"from": "00:00:00,480",
+						"to": "00:00:00,830"
+					},
+					"offsets": {
+						"from": 480,
+						"to": 830
+					},
+					"id": 12828,
+					"p": 0.994888,
+					"t_dtw": -1
+				},
+				{
+					"text": " is",
+					"timestamps": {
+						"from": "00:00:00,880",
+						"to": "00:00:01,030"
+					},
+					"offsets": {
+						"from": 880,
+						"to": 1030
+					},
+					"id": 307,
+					"p": 0.996385,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:01,030",
+						"to": "00:00:01,270"
+					},
+					"offsets": {
+						"from": 1030,
+						"to": 1270
+					},
+					"id": 264,
+					"p": 0.998369,
+					"t_dtw": -1
+				},
+				{
+					"text": " answer",
+					"timestamps": {
+						"from": "00:00:01,270",
+						"to": "00:00:01,730"
+					},
+					"offsets": {
+						"from": 1270,
+						"to": 1730
+					},
+					"id": 1867,
+					"p": 0.995765,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:01,790",
+						"to": "00:00:01,920"
+					},
+					"offsets": {
+						"from": 1790,
+						"to": 1920
+					},
+					"id": 11,
+					"p": 0.560377,
+					"t_dtw": -1
+				},
+				{
+					"text": " danger",
+					"timestamps": {
+						"from": "00:00:01,920",
+						"to": "00:00:02,500"
+					},
+					"offsets": {
+						"from": 1920,
+						"to": 2500
+					},
+					"id": 4330,
+					"p": 0.649907,
+					"t_dtw": -1
+				},
+				{
+					"text": ",",
+					"timestamps": {
+						"from": "00:00:02,500",
+						"to": "00:00:02,690"
+					},
+					"offsets": {
+						"from": 2500,
+						"to": 2690
+					},
+					"id": 11,
+					"p": 0.788094,
+					"t_dtw": -1
+				},
+				{
+					"text": " in",
+					"timestamps": {
+						"from": "00:00:02,690",
+						"to": "00:00:02,810"
+					},
+					"offsets": {
+						"from": 2690,
+						"to": 2810
+					},
+					"id": 294,
+					"p": 0.999203,
+					"t_dtw": -1
+				},
+				{
+					"text": " words",
+					"timestamps": {
+						"from": "00:00:03,140",
+						"to": "00:00:03,360"
+					},
+					"offsets": {
+						"from": 3140,
+						"to": 3360
+					},
+					"id": 2283,
+					"p": 0.999661,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:03,360",
+						"to": "00:00:03,510"
+					},
+					"offsets": {
+						"from": 3360,
+						"to": 3510
+					},
+					"id": 13,
+					"p": 0.998167,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_183]",
+					"timestamps": {
+						"from": "00:00:03,660",
+						"to": "00:00:03,660"
+					},
+					"offsets": {
+						"from": 3660,
+						"to": 3660
+					},
+					"id": 50548,
+					"p": 0.475882,
+					"t_dtw": -1
+				}
+			]
+		},
+		{
+			"timestamps": {
+				"from": "00:00:04,320",
+				"to": "00:00:07,880"
+			},
+			"offsets": {
+				"from": 4320,
+				"to": 7880
+			},
+			"text": " Click View Recommended Steps to open the actions behind it.",
+			"tokens": [
+				{
+					"text": " Click",
+					"timestamps": {
+						"from": "00:00:04,320",
+						"to": "00:00:04,320"
+					},
+					"offsets": {
+						"from": 4320,
+						"to": 4320
+					},
+					"id": 8230,
+					"p": 0.999905,
+					"t_dtw": -1
+				},
+				{
+					"text": " View",
+					"timestamps": {
+						"from": "00:00:04,600",
+						"to": "00:00:04,600"
+					},
+					"offsets": {
+						"from": 4600,
+						"to": 4600
+					},
+					"id": 13909,
+					"p": 0.798141,
+					"t_dtw": -1
+				},
+				{
+					"text": " Recomm",
+					"timestamps": {
+						"from": "00:00:04,620",
+						"to": "00:00:05,230"
+					},
+					"offsets": {
+						"from": 4620,
+						"to": 5230
+					},
+					"id": 49545,
+					"p": 0.992106,
+					"t_dtw": -1
+				},
+				{
+					"text": "ended",
+					"timestamps": {
+						"from": "00:00:05,230",
+						"to": "00:00:05,750"
+					},
+					"offsets": {
+						"from": 5230,
+						"to": 5750
+					},
+					"id": 3502,
+					"p": 0.999901,
+					"t_dtw": -1
+				},
+				{
+					"text": " Step",
+					"timestamps": {
+						"from": "00:00:05,750",
+						"to": "00:00:06,160"
+					},
+					"offsets": {
+						"from": 5750,
+						"to": 6160
+					},
+					"id": 5470,
+					"p": 0.998396,
+					"t_dtw": -1
+				},
+				{
+					"text": "s",
+					"timestamps": {
+						"from": "00:00:06,160",
+						"to": "00:00:06,260"
+					},
+					"offsets": {
+						"from": 6160,
+						"to": 6260
+					},
+					"id": 82,
+					"p": 1,
+					"t_dtw": -1
+				},
+				{
+					"text": " to",
+					"timestamps": {
+						"from": "00:00:06,410",
+						"to": "00:00:06,410"
+					},
+					"offsets": {
+						"from": 6410,
+						"to": 6410
+					},
+					"id": 281,
+					"p": 0.960527,
+					"t_dtw": -1
+				},
+				{
+					"text": " open",
+					"timestamps": {
+						"from": "00:00:06,640",
+						"to": "00:00:06,640"
+					},
+					"offsets": {
+						"from": 6640,
+						"to": 6640
+					},
+					"id": 1269,
+					"p": 0.999956,
+					"t_dtw": -1
+				},
+				{
+					"text": " the",
+					"timestamps": {
+						"from": "00:00:06,660",
+						"to": "00:00:06,810"
+					},
+					"offsets": {
+						"from": 6660,
+						"to": 6810
+					},
+					"id": 264,
+					"p": 0.999842,
+					"t_dtw": -1
+				},
+				{
+					"text": " actions",
+					"timestamps": {
+						"from": "00:00:06,810",
+						"to": "00:00:07,130"
+					},
+					"offsets": {
+						"from": 6810,
+						"to": 7130
+					},
+					"id": 5909,
+					"p": 0.993617,
+					"t_dtw": -1
+				},
+				{
+					"text": " behind",
+					"timestamps": {
+						"from": "00:00:07,460",
+						"to": "00:00:07,560"
+					},
+					"offsets": {
+						"from": 7460,
+						"to": 7560
+					},
+					"id": 2261,
+					"p": 0.99987,
+					"t_dtw": -1
+				},
+				{
+					"text": " it",
+					"timestamps": {
+						"from": "00:00:07,560",
+						"to": "00:00:07,670"
+					},
+					"offsets": {
+						"from": 7560,
+						"to": 7670
+					},
+					"id": 309,
+					"p": 0.999969,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:07,670",
+						"to": "00:00:07,830"
+					},
+					"offsets": {
+						"from": 7670,
+						"to": 7830
+					},
+					"id": 13,
+					"p": 0.99992,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_394]",
+					"timestamps": {
+						"from": "00:00:07,880",
+						"to": "00:00:07,880"
+					},
+					"offsets": {
+						"from": 7880,
+						"to": 7880
+					},
+					"id": 50759,
+					"p": 0.441429,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,213 @@
+{
+	"systeminfo": "WHISPER : COREML = 0 | OPENVINO = 0 | MTL : EMBED_LIBRARY = 1 | CPU : NEON = 1 | ARM_FMA = 1 | FP16_VA = 1 | MATMUL_INT8 = 1 | DOTPROD = 1 | SME = 1 | ACCELERATE = 1 | REPACK = 1 | ",
+	"model": {
+		"type": "large",
+		"multilingual": true,
+		"vocab": 51866,
+		"audio": {
+			"ctx": 1500,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"text": {
+			"ctx": 448,
+			"state": 1280,
+			"head": 20,
+			"layer": 32
+		},
+		"mels": 128,
+		"ftype": 1
+	},
+	"params": {
+		"model": "/Users/admin/.cache/hyperframes/whisper/models/ggml-large-v3.bin",
+		"language": "en",
+		"translate": false
+	},
+	"result": {
+		"language": "en"
+	},
+	"transcription": [
+		{
+			"timestamps": {
+				"from": "00:00:00,000",
+				"to": "00:00:03,120"
+			},
+			"offsets": {
+				"from": 0,
+				"to": 3120
+			},
+			"text": " The pencil next to a station renames it.",
+			"tokens": [
+				{
+					"text": "[_BEG_]",
+					"timestamps": {
+						"from": "00:00:00,000",
+						"to": "00:00:00,000"
+					},
+					"offsets": {
+						"from": 0,
+						"to": 0
+					},
+					"id": 50365,
+					"p": 0.765437,
+					"t_dtw": -1
+				},
+				{
+					"text": " The",
+					"timestamps": {
+						"from": "00:00:00,260",
+						"to": "00:00:00,260"
+					},
+					"offsets": {
+						"from": 260,
+						"to": 260
+					},
+					"id": 440,
+					"p": 0.865189,
+					"t_dtw": -1
+				},
+				{
+					"text": " pencil",
+					"timestamps": {
+						"from": "00:00:00,280",
+						"to": "00:00:00,720"
+					},
+					"offsets": {
+						"from": 280,
+						"to": 720
+					},
+					"id": 10985,
+					"p": 0.969962,
+					"t_dtw": -1
+				},
+				{
+					"text": " next",
+					"timestamps": {
+						"from": "00:00:00,820",
+						"to": "00:00:01,120"
+					},
+					"offsets": {
+						"from": 820,
+						"to": 1120
+					},
+					"id": 958,
+					"p": 0.998713,
+					"t_dtw": -1
+				},
+				{
+					"text": " to",
+					"timestamps": {
+						"from": "00:00:01,120",
+						"to": "00:00:01,270"
+					},
+					"offsets": {
+						"from": 1120,
+						"to": 1270
+					},
+					"id": 281,
+					"p": 0.998108,
+					"t_dtw": -1
+				},
+				{
+					"text": " a",
+					"timestamps": {
+						"from": "00:00:01,290",
+						"to": "00:00:01,360"
+					},
+					"offsets": {
+						"from": 1290,
+						"to": 1360
+					},
+					"id": 257,
+					"p": 0.996071,
+					"t_dtw": -1
+				},
+				{
+					"text": " station",
+					"timestamps": {
+						"from": "00:00:01,380",
+						"to": "00:00:01,990"
+					},
+					"offsets": {
+						"from": 1380,
+						"to": 1990
+					},
+					"id": 5214,
+					"p": 0.992116,
+					"t_dtw": -1
+				},
+				{
+					"text": " ren",
+					"timestamps": {
+						"from": "00:00:02,000",
+						"to": "00:00:02,370"
+					},
+					"offsets": {
+						"from": 2000,
+						"to": 2370
+					},
+					"id": 8124,
+					"p": 0.877762,
+					"t_dtw": -1
+				},
+				{
+					"text": "ames",
+					"timestamps": {
+						"from": "00:00:02,370",
+						"to": "00:00:02,840"
+					},
+					"offsets": {
+						"from": 2370,
+						"to": 2840
+					},
+					"id": 1632,
+					"p": 0.999809,
+					"t_dtw": -1
+				},
+				{
+					"text": " it",
+					"timestamps": {
+						"from": "00:00:03,120",
+						"to": "00:00:03,120"
+					},
+					"offsets": {
+						"from": 3120,
+						"to": 3120
+					},
+					"id": 309,
+					"p": 0.998891,
+					"t_dtw": -1
+				},
+				{
+					"text": ".",
+					"timestamps": {
+						"from": "00:00:03,120",
+						"to": "00:00:03,120"
+					},
+					"offsets": {
+						"from": 3120,
+						"to": 3120
+					},
+					"id": 13,
+					"p": 0.881701,
+					"t_dtw": -1
+				},
+				{
+					"text": "[_TT_156]",
+					"timestamps": {
+						"from": "00:00:03,120",
+						"to": "00:00:03,120"
+					},
+					"offsets": {
+						"from": 3120,
+						"to": 3120
+					},
+					"id": 50521,
+					"p": 0.207221,
+					"t_dtw": -1
+				}
+			]
+		}
+	]
+}

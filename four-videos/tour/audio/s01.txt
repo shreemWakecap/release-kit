@@ -1,0 +1,1 @@
+This is the Weather Station page for one project. First we explore it. Then we see how products are enabled, and how each one is configured.

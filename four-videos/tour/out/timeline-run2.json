@@ -1,0 +1,128 @@
+{
+ "starts": {
+  "s01": 0.902,
+  "s02": 11.703,
+  "s03": 21.225,
+  "s04": 26.906,
+  "s05": 33.148,
+  "s05b": 42.028,
+  "s06": 72.038,
+  "s06b": 82.321,
+  "s07": 86.363,
+  "s08": 98.004,
+  "s09": 111.685,
+  "s10": 117.336,
+  "s11": 127.156,
+  "s13": 133.522,
+  "s14": 146.483,
+  "s15": 153.524,
+  "s16": 159.685,
+  "s17": 167.647,
+  "s18": 180.999,
+  "s19": 191.699,
+  "s20": 202.363,
+  "s20b": 214.605,
+  "s21": 222.566,
+  "s22": 234.448,
+  "s23": 241.808,
+  "s24": 254.204,
+  "s25": 266.115,
+  "s26": 279.876,
+  "s27": 291.462,
+  "s28": 303.496
+ },
+ "ends": {
+  "s01": 11.701,
+  "s02": 21.225,
+  "s03": 26.906,
+  "s04": 33.147,
+  "s05": 42.028,
+  "s06": 82.32,
+  "s06b": 86.362,
+  "s07": 98.004,
+  "s08": 111.685,
+  "s09": 117.335,
+  "s10": 127.155,
+  "s11": 133.515,
+  "s13": 146.482,
+  "s14": 153.524,
+  "s15": 159.685,
+  "s16": 167.646,
+  "s17": 176.129,
+  "s18": 186.961,
+  "s19": 197.661,
+  "s20": 214.604,
+  "s20b": 222.566,
+  "s21": 234.446,
+  "s22": 241.808,
+  "s23": 249.986,
+  "s24": 261.886,
+  "s25": 279.876,
+  "s26": 287.197,
+  "s27": 298.344,
+  "s28": 313.736
+ },
+ "cuts": [
+  [
+   176.129,
+   180.999
+  ],
+  [
+   186.963,
+   191.699
+  ],
+  [
+   197.661,
+   202.363
+  ],
+  [
+   249.987,
+   254.204
+  ],
+  [
+   261.888,
+   266.115
+  ],
+  [
+   287.197,
+   291.462
+  ],
+  [
+   298.344,
+   303.496
+  ]
+ ],
+ "endT": 315.238,
+ "initialOrder": [
+  "Wind Speed",
+  "Air Humidity",
+  "Rainfall",
+  "Barometric Pressure",
+  "Wind Direction",
+  "Dust Particles",
+  "PM10",
+  "CO₂",
+  "TSP",
+  "H₂S",
+  "CO",
+  "Temperature"
+ ],
+ "restored": true,
+ "nonGet": [
+  "POST https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/PolicyImpact",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "POST https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/PolicyImpact",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout",
+  "PUT https://services.wakecap.com/weather-station/api/project/da2a9547-5b2f-49f3-bba3-e241aa9b5ddd/DashboardLayout"
+ ],
+ "video": "/Users/admin/wc/weather-station/release-kit/four-videos/tour/out/raw/a93164ace9d2c57bc0e8587bca622bc4.webm"
+}

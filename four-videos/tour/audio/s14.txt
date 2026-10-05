@@ -1,0 +1,1 @@
+You get the peak heat index and the peak wind speed, a daily table, and an Excel export.

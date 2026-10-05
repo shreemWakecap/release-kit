@@ -1,0 +1,11 @@
+Below, a new alarm activity chart counts yellow and red alarms. In this window, both read zero.
+
+No alarms were raised in this window. Export C S V is greyed out. Times are Saudi time.
+
+For a site screen, a wallboard view: the same state, large, with the backup line beneath it.
+
+And a phone width view. Both open by address, a web address, not from the menu.
+
+Where does that state come from? A small input module reads the sensor. On the wireless mesh it shows up as a Modbus device. Modbus is an industrial wiring and data standard many sensors speak.
+
+A gateway passes the readings to the cloud, then to this page, and anything unreadable is set aside.

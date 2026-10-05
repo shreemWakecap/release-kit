@@ -1,0 +1,188 @@
+[
+ {
+  "id": "s01",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Weather Station: explore, enable, configure",
+  "say": "This is the Weather Station page for one project. First we explore it. Then we see how products are enabled, and how each one is configured."
+ },
+ {
+  "id": "s02",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "The answer: Danger, with recommended steps",
+  "say": "The red strip is the answer: Danger, in words. Click View Recommended Steps to open the actions behind it."
+ },
+ {
+  "id": "s03",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Actions in priority order",
+  "say": "They come in priority order, and the first one is marked Do first."
+ },
+ {
+  "id": "s04",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Details: verdict, data confidence, last update",
+  "say": "Details opens the full verdict, with the data confidence and the time of the last update."
+ },
+ {
+  "id": "s05",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Featured cards: heat index, work, rest and water",
+  "say": "Below, the featured cards. The heat index card shows its band, and the work, rest and water cycle for the crew."
+ },
+ {
+  "id": "s05b",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Copy as image and Export (not clicked)",
+  "say": "Copy as image copies your selected cards as a picture, to paste and share. And Export, at the top right, exports the weather data."
+ },
+ {
+  "id": "s06",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "Stations: click one to see its panel",
+  "say": "On the right are the stations, each Online or Offline. Click a station to view it. A panel shows its identifier and the time of its last reading."
+ },
+ {
+  "id": "s06b",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "The pencil renames a station (not clicked)",
+  "say": "The pencil next to a station renames it."
+ },
+ {
+  "id": "s07",
+  "chapter": "1 · Explore the Weather Station page",
+  "caption": "An offline station: no readings, said plainly",
+  "say": "Click the offline station and the page says it plainly: no readings for the selected range, and the station appears to be offline. Click an online station to come back."
+ },
+ {
+  "id": "s08",
+  "chapter": "2 · Choose what to feature",
+  "caption": "Gear: Select parameters, one switch per reading",
+  "say": "The gear opens Select parameters. Every reading is a switch: temperature, wind, humidity, rainfall, pressure, dust, particles and gases. Switch one off, and it leaves the featured area."
+ },
+ {
+  "id": "s09",
+  "chapter": "2 · Choose what to feature",
+  "caption": "Remove a card from the featured area",
+  "say": "A card also has its own small button. Use it on barometric pressure, and the card leaves the list."
+ },
+ {
+  "id": "s10",
+  "chapter": "2 · Choose what to feature",
+  "caption": "Switch it on again: the card returns at the end",
+  "say": "Back in Select parameters, switch it on again, and the card returns, at the end of the list."
+ },
+ {
+  "id": "s11",
+  "chapter": "2 · Choose what to feature",
+  "caption": "Move a card up or down, or remove it",
+  "say": "Each card can also move up, move down, or leave the featured area."
+ },
+ {
+  "id": "s12",
+  "chapter": "2 · Choose what to feature",
+  "caption": "A reading above its limit turns red",
+  "say": "A reading above its limit turns red and says Above safe limit."
+ },
+ {
+  "id": "s13",
+  "chapter": "3 · Reports",
+  "caption": "Reports: pick a period",
+  "say": "Reports holds the Maximum Values Report. Pick a period: today, yesterday, this week, the last seven days, this month, the last thirty days, or a custom range."
+ },
+ {
+  "id": "s14",
+  "chapter": "3 · Reports",
+  "caption": "Peak heat index, peak wind, daily table, Excel export",
+  "say": "You get the peak heat index and the peak wind speed, a daily table, and an Excel export."
+ },
+ {
+  "id": "s15",
+  "chapter": "4 · Enable products",
+  "caption": "Settings, then Connected Products",
+  "say": "Products are enabled per project, in Settings, under Connected Products."
+ },
+ {
+  "id": "s16",
+  "chapter": "4 · Enable products",
+  "caption": "One switch per product",
+  "say": "Each product has a switch. In this project Weather Station is on. Gas and Lightning are off."
+ },
+ {
+  "id": "s17",
+  "chapter": "4 · Enable products",
+  "caption": "Switch on: the product joins the menu (not switched here)",
+  "say": "Switch a product on, and it joins this project's menu with its own pages. Nothing is switched in this recording."
+ },
+ {
+  "id": "s18",
+  "chapter": "4 · Enable products",
+  "caption": "A project with Lightning on: menu entry",
+  "say": "Here is a project where Lightning is on. The menu has a Lightning entry."
+ },
+ {
+  "id": "s19",
+  "chapter": "4 · Enable products",
+  "caption": "A project with Gas on: menu entry and status",
+  "say": "And one where Gas is on. The menu shows Gas, with its status."
+ },
+ {
+  "id": "s20",
+  "chapter": "5 · Configure Weather Station",
+  "caption": "Settings, Weather Station: the Site Safety Policy",
+  "say": "Settings, Weather Station holds the Site Safety Policy. The page says it plainly: changing anything here changes when work stops, for everyone on the project."
+ },
+ {
+  "id": "s20b",
+  "chapter": "5 · Configure Weather Station",
+  "caption": "Right now: current band and the cycle in force",
+  "say": "At the top, Right now shows the current band, and the work, rest and water cycle in force on site."
+ },
+ {
+  "id": "s21",
+  "chapter": "5 · Configure Weather Station",
+  "caption": "Limits: plus and minus, count switch, 30 day chart",
+  "say": "Each reading has a limit, set with plus and minus, and a switch to count it in the policy. For temperature and wind, a thirty day chart shows what the limit would have done."
+ },
+ {
+  "id": "s22",
+  "chapter": "5 · Configure Weather Station",
+  "caption": "Heat index bands: work, rest and water",
+  "say": "Below, the heat index bands. Each band has its own work, rest and water cycle."
+ },
+ {
+  "id": "s23",
+  "chapter": "5 · Configure Weather Station",
+  "caption": "Tabs: calculation method and change history",
+  "say": "Two more tabs: the heat index calculation method, and the change history."
+ },
+ {
+  "id": "s24",
+  "chapter": "6 · Configure Lightning and Gas",
+  "caption": "Lightning settings without a device",
+  "say": "Lightning has its own settings. In this project no lightning device is provisioned yet, and the page says so."
+ },
+ {
+  "id": "s25",
+  "chapter": "6 · Configure Lightning and Gas",
+  "caption": "Edit alerting radii: red, yellow, all-clear delay",
+  "say": "Where a device reports, the page shows its alert distances and its sensor location. Edit alerting radii opens a small form: the red distance, the yellow distance, and the all-clear delay."
+ },
+ {
+  "id": "s26",
+  "chapter": "6 · Configure Lightning and Gas",
+  "caption": "Set location: click the map or type coordinates",
+  "say": "Set location lets you click the map or type coordinates. The location is marked Temporary."
+ },
+ {
+  "id": "s27",
+  "chapter": "6 · Configure Lightning and Gas",
+  "caption": "Gas: no settings page, limits are read only",
+  "say": "Gas has no settings page. Its limits are shown, read only, on the Compliance page."
+ },
+ {
+  "id": "s28",
+  "chapter": "7 · The setup",
+  "caption": "Explore, feature, enable, configure",
+  "say": "That is the setup: explore the stations, choose what to feature, enable products per project, and configure each one in Settings."
+ }
+]

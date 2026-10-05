@@ -1,0 +1,2168 @@
+{
+ "production_build": "1.0.5",
+ "as_of": "2026-10-04",
+ "live_semantics": "live_in_1_0_5: yes = code is in the 1.0.5 tag and not dark by default; no = not in 1.0.5, or default-OFF flag; unknown = needs per-project entitlement/permission or an unqueried flag value. Nothing here was verified live [live]; every fact is [code] or [doc].",
+ "tag_note": "Tags are lightweight, so dates are commit dates, not deploy times. The first ConnectedEnvironmentApp production tag is v0.0.3 (2026-09-03) and it contains everything since the old v0.1.x line; the old WeatherStationApp line ended at v0.1.6-production (2026-08-24). first_tag_old_line shows which old-line tag first had a change.",
+ "baseline": "v0.1.0-production, a5870d9, 2026-08-09 (answer-first dashboard)",
+ "range_commits_v0.1.0_to_1.0.5": 235,
+ "tags": [
+  {
+   "tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "date": "2026-09-03",
+   "sha": "fea8f5a"
+  },
+  {
+   "tag": "v0.0.4-ConnectedEnvironmentApp-production",
+   "date": "2026-09-07",
+   "sha": "233abad"
+  },
+  {
+   "tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "date": "2026-09-13",
+   "sha": "0af8723"
+  },
+  {
+   "tag": "v0.0.6-ConnectedEnvironmentApp-production",
+   "date": "2026-09-13",
+   "sha": "15c5de6"
+  },
+  {
+   "tag": "v0.0.7-ConnectedEnvironmentApp-production",
+   "date": "2026-09-14",
+   "sha": "1e322b6"
+  },
+  {
+   "tag": "v0.0.8-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "b86576b"
+  },
+  {
+   "tag": "v0.0.9-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "be30cc8"
+  },
+  {
+   "tag": "v0.0.10-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "d04cc15"
+  },
+  {
+   "tag": "v0.0.11-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "ffe4f0b"
+  },
+  {
+   "tag": "v0.0.12-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "bd94577"
+  },
+  {
+   "tag": "v0.0.13-ConnectedEnvironmentApp-production",
+   "date": "2026-09-15",
+   "sha": "bd94577"
+  },
+  {
+   "tag": "v0.0.14-ConnectedEnvironmentApp-production",
+   "date": "2026-09-16",
+   "sha": "4e9db9a"
+  },
+  {
+   "tag": "v0.0.15-ConnectedEnvironmentApp-production",
+   "date": "2026-09-16",
+   "sha": "2d72101"
+  },
+  {
+   "tag": "v0.0.16-ConnectedEnvironmentApp-production",
+   "date": "2026-09-16",
+   "sha": "929a5fe"
+  },
+  {
+   "tag": "v0.0.17-ConnectedEnvironmentApp-production",
+   "date": "2026-09-16",
+   "sha": "a96d177"
+  },
+  {
+   "tag": "v0.0.18-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "b1bb503"
+  },
+  {
+   "tag": "v0.0.19-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "4a89749"
+  },
+  {
+   "tag": "v0.0.20-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "2ce0b42"
+  },
+  {
+   "tag": "v0.0.21-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "eeeaf50"
+  },
+  {
+   "tag": "v0.0.22-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "33d8f33"
+  },
+  {
+   "tag": "v0.0.23-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "d5083cf"
+  },
+  {
+   "tag": "v0.0.24-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "e7eede1"
+  },
+  {
+   "tag": "v0.0.25-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "84b3544"
+  },
+  {
+   "tag": "v0.0.26-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "01ddf77"
+  },
+  {
+   "tag": "v0.0.27-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "22403d1"
+  },
+  {
+   "tag": "v0.0.28-ConnectedEnvironmentApp-production",
+   "date": "2026-09-20",
+   "sha": "09f24eb"
+  },
+  {
+   "tag": "v0.0.29-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "1aa5529"
+  },
+  {
+   "tag": "v0.0.30-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "6706a7c"
+  },
+  {
+   "tag": "v0.0.31-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "fd235b7"
+  },
+  {
+   "tag": "v0.0.32-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "6088c76"
+  },
+  {
+   "tag": "v0.0.33-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "2c1fb04"
+  },
+  {
+   "tag": "v0.0.34-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "f8d3e14"
+  },
+  {
+   "tag": "v0.0.35-ConnectedEnvironmentApp-production",
+   "date": "2026-09-21",
+   "sha": "f8d3e14"
+  },
+  {
+   "tag": "v0.0.36-ConnectedEnvironmentApp-production",
+   "date": "2026-09-22",
+   "sha": "088487d"
+  },
+  {
+   "tag": "v0.0.37-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "32ca9e8"
+  },
+  {
+   "tag": "v0.0.38-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "8b980f3"
+  },
+  {
+   "tag": "v0.0.39-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "2b815c4"
+  },
+  {
+   "tag": "v0.0.40-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "4667c00"
+  },
+  {
+   "tag": "v0.0.41-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "4667c00"
+  },
+  {
+   "tag": "v0.0.42-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "9794639"
+  },
+  {
+   "tag": "v0.0.43-ConnectedEnvironmentApp-production",
+   "date": "2026-09-24",
+   "sha": "669b5b3"
+  },
+  {
+   "tag": "v0.0.44-ConnectedEnvironmentApp-production",
+   "date": "2026-09-27",
+   "sha": "8e6d4e5"
+  },
+  {
+   "tag": "v0.0.45-ConnectedEnvironmentApp-production",
+   "date": "2026-09-27",
+   "sha": "6347292"
+  },
+  {
+   "tag": "v0.0.46-ConnectedEnvironmentApp-production",
+   "date": "2026-09-27",
+   "sha": "e3da949"
+  },
+  {
+   "tag": "v0.0.47-ConnectedEnvironmentApp-production",
+   "date": "2026-09-28",
+   "sha": "08ea80b"
+  },
+  {
+   "tag": "v0.0.48-ConnectedEnvironmentApp-production",
+   "date": "2026-09-28",
+   "sha": "33b5192"
+  },
+  {
+   "tag": "v0.0.49-ConnectedEnvironmentApp-production",
+   "date": "2026-09-29",
+   "sha": "f9b806d"
+  },
+  {
+   "tag": "v0.0.50-ConnectedEnvironmentApp-production",
+   "date": "2026-09-29",
+   "sha": "4db3aeb"
+  },
+  {
+   "tag": "v0.0.51-ConnectedEnvironmentApp-production",
+   "date": "2026-09-30",
+   "sha": "af39f1f"
+  },
+  {
+   "tag": "v0.0.52-ConnectedEnvironmentApp-production",
+   "date": "2026-09-30",
+   "sha": "af39f1f"
+  },
+  {
+   "tag": "v0.0.53-ConnectedEnvironmentApp-production",
+   "date": "2026-09-30",
+   "sha": "6064744"
+  },
+  {
+   "tag": "v1.0.0-ConnectedEnvironmentApp-production",
+   "date": "2026-09-30",
+   "sha": "f2eb26a"
+  },
+  {
+   "tag": "v1.0.1-ConnectedEnvironmentApp-production",
+   "date": "2026-10-01",
+   "sha": "31a3f80"
+  },
+  {
+   "tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "date": "2026-10-04",
+   "sha": "f3e49a1"
+  },
+  {
+   "tag": "v1.0.3-ConnectedEnvironmentApp-production",
+   "date": "2026-10-04",
+   "sha": "8dfbae9"
+  },
+  {
+   "tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "date": "2026-10-04",
+   "sha": "7f5eef0"
+  },
+  {
+   "tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "date": "2026-10-04",
+   "sha": "95e1650"
+  }
+ ],
+ "items": [
+  {
+   "id": "shell-rail",
+   "product": "shell/settings/reports",
+   "title_plain": "One area per project with a side menu",
+   "plain_phrase": "One place per project for everything environmental on site, with a side menu to move between weather, gas, lightning, reports and settings.",
+   "user_sees": "Inside Connected Environment there is a vertical rail on the left: Weather Station first, then Gas, Lightning, a Trends row marked Planned, Reports and Settings. It replaced the horizontal tab strip. Product rows appear only for products the project has switched on.",
+   "ui_strings": [
+    "Weather Station",
+    "Gas",
+    "Lightning",
+    "Trends",
+    "Reports",
+    "Settings",
+    "Planned"
+   ],
+   "first_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2600",
+    "TAN-2601",
+    "TAN-2632",
+    "TAN-2627"
+   ],
+   "commits": [
+    {
+     "sha": "9328829",
+     "subject": "feat(web_ws): add a vertical side nav rail (Dashboard/Gas/Lightning/Trends/Reports/Settings) (TAN-2600) (#131)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "9889d47",
+     "subject": "feat(web_ws): retire the horizontal domain track now that the side nav carries it (TAN-2601) (#132)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "cc3a24b",
+     "subject": "fix(nav): rail's first row reads Weather Station, not Dashboard (TAN-2632) (#137)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "0af8723",
+     "subject": "fix(lightning): always show Lightning in the vertical rail (TAN-2627) (#136)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Product rows need the project entitlement; Gas also needs the read grant (weatherstation:view or project_builder:manage). Trends is a disabled placeholder (no route).",
+   "capture_note": "The portal shell prints \"Connected Environment\" above the in-app header; the in-app h1 is visually hidden."
+  },
+  {
+   "id": "shell-rail-collapse",
+   "product": "shell/settings/reports",
+   "title_plain": "Collapsible side menu",
+   "plain_phrase": "The side menu can be collapsed to icons and opened again.",
+   "user_sees": "A control collapses the rail to icons and expands it back. The choice is remembered in the browser.",
+   "ui_strings": [
+    "Collapse rail",
+    "Expand rail"
+   ],
+   "first_tag": "v0.0.9-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.9-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #145"
+   ],
+   "commits": [
+    {
+     "sha": "be30cc8",
+     "subject": "feat(connected-env): let the operator collapse the side rail to icons and expand it back (#145)",
+     "first_tag": "v0.0.9-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Remembered in localStorage key connectedEnv.sideNav.collapsed (internal)."
+  },
+  {
+   "id": "shell-entitlement",
+   "product": "shell/settings/reports",
+   "title_plain": "Only the products a project has switched on appear",
+   "plain_phrase": "Each project only sees the products it has switched on.",
+   "user_sees": "A product the project is not entitled to has no row in the rail and its URL answers Not Found. Settings is always offered to people who hold the products grant, so they can see why a row is missing.",
+   "ui_strings": [],
+   "first_tag": "v0.0.7-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.10-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #142",
+    "PR #143",
+    "PR #146"
+   ],
+   "commits": [
+    {
+     "sha": "1e322b6",
+     "subject": "feat(connected-env): gate the rail's product rows on entitlement and serve Settings as a real screen (#142)",
+     "first_tag": "v0.0.7-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "ab93368",
+     "subject": "fix(connected-env): gate product routes on entitlement and land on an entitled product (#143)",
+     "first_tag": "v0.0.8-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "d04cc15",
+     "subject": "fix(connected-env): stop the index redirect from landing on Settings before entitlement loads (#146)",
+     "first_tag": "v0.0.10-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Backed by the ProjectProduct entitlement read (weatherStationActive / gasDetectorActive / lightningSensorActive); a project with no row reads as all three off."
+  },
+  {
+   "id": "shell-header-clock",
+   "product": "shell/settings/reports",
+   "title_plain": "Header with a live clock",
+   "plain_phrase": "A header strip shows the current site date and time.",
+   "user_sees": "A header bar under the portal chrome carries a shield mark and a clock that ticks every 30 seconds, always in Saudi time. When Gas is open to the user it also carries the Gas state line (see Gas).",
+   "ui_strings": [],
+   "first_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2602",
+    "PR #204"
+   ],
+   "commits": [
+    {
+     "sha": "9c4ea20",
+     "subject": "feat(web_ws): add a visible header naming the shell, with a live clock (TAN-2602) (#133)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "f3e49a1",
+     "subject": "fix(ws): show every time value in Saudi time (Asia/Riyadh) (#204)",
+     "first_tag": "v1.0.2-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Clock format comes from the browser locale (dateStyle medium, timeStyle short) in Asia/Riyadh; no static string to match. data-testid connected-env-header-clock."
+  },
+  {
+   "id": "shell-saudi-time",
+   "product": "shell/settings/reports",
+   "title_plain": "Every time shows in Saudi time",
+   "plain_phrase": "All times on the pages are shown in Saudi time, whatever the browser clock says.",
+   "user_sees": "Station cards, sensor timeline, change history, the policy header, reports, the snapshot Captured stamp, Lightning and Gas all print Saudi time (Arabia Standard Time, UTC+3). Lightning and Gas label it AST. v1.0.3 extended it to the flag-gated charts, health timeline and observation drawer.",
+   "ui_strings": [
+    "AST",
+    "AST, UTC+3",
+    "Readings as of {{timestamp}} ({{zone}})"
+   ],
+   "first_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.3-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "SUPRT-1790",
+    "PR #204",
+    "PR #206"
+   ],
+   "commits": [
+    {
+     "sha": "f3e49a1",
+     "subject": "fix(ws): show every time value in Saudi time (Asia/Riyadh) (#204)",
+     "first_tag": "v1.0.2-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "8dfbae9",
+     "subject": "fix(time): the flag-gated charts, health timeline and observation drawer read Saudi time (#206)",
+     "first_tag": "v1.0.3-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "internal-notes.md says Saudi time was confirmed live with the browser set to Los Angeles time."
+  },
+  {
+   "id": "shell-theme",
+   "product": "shell/settings/reports",
+   "title_plain": "Orange brand accent",
+   "plain_phrase": "The portal micro-app uses the WakeCap orange accent.",
+   "user_sees": "Active rail row and accents are orange instead of blue.",
+   "ui_strings": [],
+   "first_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.6-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2626"
+   ],
+   "commits": [
+    {
+     "sha": "268c719",
+     "subject": "TAN-2626 Retheme brand accent from blue to orange",
+     "first_tag": "v0.0.6-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "8e55e33",
+     "subject": "TAN-2626: Retheme brand accent from blue to orange (#138)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "id": "reports-max-values",
+   "product": "shell/settings/reports",
+   "title_plain": "Maximum Values Report",
+   "plain_phrase": "A Reports page shows the maximum heat index and wind speed for a period, with a daily breakdown you can export to Excel.",
+   "user_sees": "Reports row in the rail opens the Maximum Values Report: period buttons, two tiles (maximum heat index and wind speed), a daily breakdown table, and an Export .xlsx button.",
+   "ui_strings": [
+    "Maximum Values Report",
+    "Today",
+    "Yesterday",
+    "This Week",
+    "Last 7 Days",
+    "This Month",
+    "Last 30 Days",
+    "Custom…",
+    "Maximum Heat Index",
+    "Maximum Wind Speed",
+    "Daily breakdown",
+    "Computed from raw readings, project-wide across every station",
+    "Date",
+    "Max Heat Index",
+    "Max Wind Speed",
+    "Export .xlsx",
+    "No readings for this period"
+   ],
+   "first_tag": "v0.0.50-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.50-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2810"
+   ],
+   "commits": [
+    {
+     "sha": "4db3aeb",
+     "subject": "TAN-2810: Weather Station Maximum Values Report — Reports nav item, route, and screen (#195)",
+     "first_tag": "v0.0.50-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Needs the weather-station entitlement (ReportsRouteGate). Data from GET Report/Summary on the backend.",
+   "capture_note": "Report downloaded / Failed to export report are toasts; internal-notes says download results were not exercised."
+  },
+  {
+   "id": "settings-area",
+   "product": "shell/settings/reports",
+   "title_plain": "Settings: Connected Products, Weather Station, Lightning",
+   "plain_phrase": "Settings has a section to switch products on or off for the project, plus weather and lightning settings.",
+   "user_sees": "The Settings row opens a left sub-nav with up to three entries: Connected Products (Active / Inactive per product), Weather Station (Site Safety Policy), Lightning (alerting radii, sensor location, full state history). Each entry needs its own grant, so a user may see fewer.",
+   "ui_strings": [
+    "Connected Products",
+    "Active",
+    "Inactive",
+    "Couldn't change the product — nothing was saved",
+    "Settings"
+   ],
+   "first_tag": "v0.0.7-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.34-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #142",
+    "PR #149",
+    "PR #170"
+   ],
+   "commits": [
+    {
+     "sha": "1e322b6",
+     "subject": "feat(connected-env): gate the rail's product rows on entitlement and serve Settings as a real screen (#142)",
+     "first_tag": "v0.0.7-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "ffe4f0b",
+     "subject": "feat(connected-env): gate the Connected Products settings tab behind weatherstation:settingsProducts (#149)",
+     "first_tag": "v0.0.11-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "f8d3e14",
+     "subject": "feat(settings): move the Site Safety Policy and Lightning radii into Settings (#170)",
+     "first_tag": "v0.0.34-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Connected Products: weatherstation:settingsProducts or project_builder:manage. Weather Station: manage-weather-settings. Lightning: manage-lightning-settings."
+  },
+  {
+   "id": "ws-verdict-cta",
+   "product": "weather-station",
+   "title_plain": "Verdict strip links straight to the steps",
+   "plain_phrase": "When the verdict is Danger, one button takes you to the recommended steps; readings sit in a compact grid and station health shows inline.",
+   "user_sees": "The danger verdict strip shows a View Recommended Steps button; the readings list is a compact two-column grid; Station health and the risk breakdown are open in the right rail instead of behind collapsed cards (recommended actions still collapse).",
+   "ui_strings": [
+    "View Recommended Steps",
+    "Station health",
+    "Why this verdict",
+    "Recommended actions",
+    "Data confidence",
+    "Last updated",
+    "Details"
+   ],
+   "first_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2603",
+    "TAN-2604",
+    "TAN-2605"
+   ],
+   "commits": [
+    {
+     "sha": "3cb234d",
+     "subject": "Weather Station dashboard: verdict-banner CTA, compact readings grid, inline rail panels (#130)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "Part of the answer-first dashboard: weather-station-answer-first-dashboard, absent = ON.",
+   "capture_note": "\"Why this verdict\" and the CTA only render when the backend sends risk conditions / recommended actions; internal-notes says \"Why this verdict\" was on no page on 4 Oct."
+  },
+  {
+   "id": "ws-station-rename",
+   "product": "weather-station",
+   "title_plain": "Name your stations",
+   "plain_phrase": "Stations can be given a name instead of showing a serial number.",
+   "user_sees": "Each station card has a Rename button; leave the name empty to go back to the station number.",
+   "ui_strings": [
+    "Station name",
+    "Save name",
+    "Leave empty to go back to the station number.",
+    "Station name updated",
+    "Failed to update the station name",
+    "Stations",
+    "Unnamed station"
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": "v0.1.1-production",
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2204"
+   ],
+   "commits": [
+    {
+     "sha": "d69321b",
+     "subject": "feat(weather-station): name a station instead of printing its provisioning id (TAN-2204) (#52)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Needs edit permission on weather settings. Rename string is an accessible name \"Rename {{name}}\".",
+   "capture_note": "internal-notes.md: button seen live, not used."
+  },
+  {
+   "id": "ws-gear-popup",
+   "product": "weather-station",
+   "title_plain": "Choose which readings to feature",
+   "plain_phrase": "A gear icon lets you pick which readings appear in the featured area.",
+   "user_sees": "The right-hand All parameters list is gone. A gear opens a small popup with one switch per reading. The Heat Index card is pinned.",
+   "ui_strings": [
+    "Dashboard settings",
+    "Select parameters",
+    "Choose which parameters appear in the featured area.",
+    "Pinned — always featured",
+    "Copy as image",
+    "Weather parameters"
+   ],
+   "first_tag": "v0.0.33-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.33-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "PR #169"
+   ],
+   "commits": [
+    {
+     "sha": "2c1fb04",
+     "subject": "feat(weather-station): replace the dashboard's parameter list with a gear settings popup (#169)",
+     "first_tag": "v0.0.33-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "Inside the answer-first dashboard (default ON).",
+   "capture_note": "internal-notes.md: gear seen, popup not opened."
+  },
+  {
+   "id": "ws-historical-removed",
+   "product": "weather-station",
+   "title_plain": "Historical tab removed; Trends marked Planned",
+   "plain_phrase": "The old Historical tab is gone. Trends shows in the menu as Planned.",
+   "user_sees": "The Live/Historical switch no longer exists. The rail row Trends is greyed and labelled Planned. The backend historical-data endpoint was also removed.",
+   "ui_strings": [
+    "Trends",
+    "Planned"
+   ],
+   "first_tag": "v0.0.15-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.15-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #151",
+    "BE f2d5edc"
+   ],
+   "commits": [
+    {
+     "sha": "2d72101",
+     "subject": "feat(weather-station): remove the Historical dashboard tab (#151)",
+     "first_tag": "v0.0.15-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "A video must not promise trends or history charts."
+  },
+  {
+   "id": "ws-policy-redesign",
+   "product": "weather-station",
+   "title_plain": "Site Safety Policy page redesigned",
+   "plain_phrase": "The Site Safety Policy shows what is in force right now, the stop-work limits, and the heat-index bands on one ribbon with work, rest and water settings for each band.",
+   "user_sees": "A Right now banner states the band and the in-force cycle; stop-work limits per sensor with the value in force; a ribbon of heat-index bands you can select; band cards with work, rest, water frequency and water amount; the heat index calculation method in force.",
+   "ui_strings": [
+    "Site Safety Policy",
+    "This page shows the limits and cycles that decide when work stops on this site. Changing anything here changes when work stops, for everyone on the project.",
+    "Right now",
+    "Stop-work limits",
+    "Heat index calculation method in force",
+    "Heat index bands, coolest to hottest",
+    "Counted in this policy",
+    "Not counted in this policy",
+    "Sensors counted in this policy",
+    "Work",
+    "Rest",
+    "Water frequency",
+    "Water amount"
+   ],
+   "first_tag": "v0.0.19-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.32-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2722",
+    "TAN-2724"
+   ],
+   "commits": [
+    {
+     "sha": "4a89749",
+     "subject": "feat(weather-station): give the Site Safety Policy screen the demo's design (TAN-2722) (#155)",
+     "first_tag": "v0.0.19-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "2ce0b42",
+     "subject": "feat(weather-station): edit and publish the whole safety policy in one place, like the demo (TAN-2722, TAN-2724) (#156)",
+     "first_tag": "v0.0.20-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "eeeaf50",
+     "subject": "feat(weather-station): draw the policy's 30-day chart and band strip from the first paint (TAN-2722) (#157)",
+     "first_tag": "v0.0.21-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "d5083cf",
+     "subject": "feat(weather-station): label the limit line, and name the bands and the current heat index on the ribbon (TAN-2722) (#159)",
+     "first_tag": "v0.0.23-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "e7eede1",
+     "subject": "feat(weather-station): the ribbon names every band whole, selects on click, shows its value; and the preview stops asking for episodes (TAN-",
+     "first_tag": "v0.0.24-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "09f24eb",
+     "subject": "fix(weather-station): give the band cards the demo's 80x34 field and its wording (TAN-2722) (#164)",
+     "first_tag": "v0.0.28-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "6088c76",
+     "subject": "fix(connected-env): stop the fluid type scale growing past the 2xl breakpoint (TAN-2722) (#168)",
+     "first_tag": "v0.0.32-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "Kill switch weather-station-safety-policy-screen, absent = ON; explicitly false removes the tab and there is then no way to edit the policy.",
+   "capture_note": "Older, plainer policy page first shipped in v0.1.1-production (Aug 18); this look is the Sep 20-21 rebuild."
+  },
+  {
+   "id": "ws-policy-preview",
+   "product": "weather-station",
+   "title_plain": "See what a limit would have done over 30 days",
+   "plain_phrase": "Before you change a limit you can see how many of the last 30 days it would have stopped work.",
+   "user_sees": "Temperature and Wind Speed limits show a 30-day chart with the limit line and a count of days that would have stopped work versus today.",
+   "ui_strings": [
+    "What this limit would have done",
+    "Work stops when a sensor reading reaches its limit. Temperature and Wind Speed show what the limit would have done over the last 30 days.",
+    "limit {{value}} {{unit}}",
+    "today",
+    "{{days}} days ago",
+    "Tightens",
+    "Loosens"
+   ],
+   "first_tag": "v0.0.18-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.21-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2716",
+    "TAN-2721",
+    "TAN-2723"
+   ],
+   "commits": [
+    {
+     "sha": "b1bb503",
+     "subject": "feat(weather-station): show the real effect of a policy change before it is published (TAN-2716) (#154)",
+     "first_tag": "v0.0.18-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "eeeaf50",
+     "subject": "feat(weather-station): draw the policy's 30-day chart and band strip from the first paint (TAN-2722) (#157)",
+     "first_tag": "v0.0.21-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Backend POST PolicyImpact computes it in the database."
+  },
+  {
+   "id": "ws-policy-publish",
+   "product": "weather-station",
+   "title_plain": "Stage, review, then publish in one step",
+   "plain_phrase": "Edits are staged, reviewed with their effect shown, and published together; a change that loosens the policy asks you to confirm.",
+   "user_sees": "A Staged policy changes bar says nothing applies until you publish; Review & publish lists each change with Tightens / Loosens / Label only and its effect in days; loosening needs a tick box; a conflict shows who published meanwhile.",
+   "ui_strings": [
+    "Staged policy changes",
+    "Nothing applies until you publish.",
+    "Review & publish",
+    "Publish changes",
+    "Keep editing",
+    "I understand this can allow work to continue in conditions that previously stopped it",
+    "Published. The limits below are now in force for everyone on this project.",
+    "Your changes were not published",
+    "Publish my changes over what's in force",
+    "Discard my changes"
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.47-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": "v0.1.1-production",
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2183",
+    "TAN-2184",
+    "TAN-2724"
+   ],
+   "commits": [
+    {
+     "sha": "feab74c",
+     "subject": "feat(config): stage every control, review the diff, then publish (TAN-2183)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "2ce0b42",
+     "subject": "feat(weather-station): edit and publish the whole safety policy in one place, like the demo (TAN-2722, TAN-2724) (#156)",
+     "first_tag": "v0.0.20-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "e4250b8",
+     "subject": "fix(config): ask before publishing over somebody else's change (TAN-2184)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "08ea80b",
+     "subject": "TAN-2184: finish optimistic concurrency — heat index bands + changeRequestId (#186)",
+     "first_tag": "v0.0.47-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "internal-notes.md: edit/publish path NOT exercised live. Never publish during capture."
+  },
+  {
+   "id": "ws-policy-in-settings",
+   "product": "weather-station",
+   "title_plain": "Policy and its history live under Settings",
+   "plain_phrase": "The Site Safety Policy moved into Settings under Weather Station, next to a Change history tab.",
+   "user_sees": "Settings > Weather Station holds tabs: Heat index calculation method, Change history; the policy sits in it. The old Site Safety Policy page row and URL are gone.",
+   "ui_strings": [
+    "Weather Station",
+    "Heat index calculation method",
+    "Change history",
+    "Policy sections"
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.34-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "PR #170",
+    "TAN-2186"
+   ],
+   "commits": [
+    {
+     "sha": "f8d3e14",
+     "subject": "feat(settings): move the Site Safety Policy and Lightning radii into Settings (#170)",
+     "first_tag": "v0.0.34-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "572726f",
+     "subject": "feat(policy): read the operator-facing change history (TAN-2186 stage 1)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "Change history tab: weather-station-change-history, absent = ON.",
+   "capture_note": "Change history was empty live on 4 Oct (internal-notes); empty text: \"No changes were recorded in the history we read for this project. Older changes may sit further back than this page reaches.\""
+  },
+  {
+   "id": "ws-agent-composition",
+   "product": "weather-station",
+   "title_plain": "Dashboard recommended by the safety service",
+   "plain_phrase": "Direction: a dashboard that rearranges itself around the current risk and draws the charts that explain it.",
+   "user_sees": "DEFAULT OFF. Adds Recommended for this situation cards (Accept / Dismiss), a Recommended badge on station health, and Charts for this situation (time-range charts, station-health timeline, suspect-reading markers). Nothing changes until the engineer accepts.",
+   "ui_strings": [
+    "Recommended for this situation",
+    "Charts for this situation",
+    "Recommended: show first",
+    "Recommended: Featured",
+    "Shown first because: {{reason}}",
+    "Sensor diagnostics",
+    "Last 30 minutes",
+    "Last 2 hours",
+    "Suspect reading — sensor may be frozen"
+   ],
+   "first_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "no",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2122",
+    "TAN-2123"
+   ],
+   "commits": [
+    {
+     "sha": "8567a98",
+     "subject": "TAN-2122 + TAN-2123: agent dashboard composition and dynamic charts behind weather-station-agent-dashboard-composition (default OFF) (#203)",
+     "first_tag": "v1.0.2-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "weather-station-agent-dashboard-composition, only an explicit true turns it on.",
+   "capture_note": "DIRECTION / not live today. Do not film unless the flag is verified on for a test project."
+  },
+  {
+   "id": "ws-observation-drawer",
+   "product": "weather-station",
+   "title_plain": "Observations drawer with approval",
+   "plain_phrase": "Direction: see what the safety service could report about a station, and send it only after a second person approves.",
+   "user_sees": "DEFAULT OFF. An Observations entry opens a drawer with a zero-write preview of what could be reported, a Request approval button, and a Waiting for approval list where a second person reviews and approves.",
+   "ui_strings": [
+    "Observations",
+    "What could be reported",
+    "Request approval",
+    "Waiting for approval",
+    "Review and approve",
+    "Approve and queue",
+    "Nothing here is sent on its own."
+   ],
+   "first_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.2-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "no",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2124"
+   ],
+   "commits": [
+    {
+     "sha": "0dc5827",
+     "subject": "TAN-2124: observation drawer — zero-write preview, request approval and approve, behind the composition flag (#205)",
+     "first_tag": "v1.0.2-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "Same flag as composition.",
+   "capture_note": "DIRECTION / not live today."
+  },
+  {
+   "id": "lt-screen",
+   "product": "lightning",
+   "title_plain": "Lightning screen: state, freshness, history",
+   "plain_phrase": "A Lightning screen per project shows the state of each device, how fresh the reading is, and what to do.",
+   "user_sees": "One tile per device with a state word and an action line; Readings as of line; the disclaimer. Three colours only: green, yellow, red; every not-known state reads Unknown.",
+   "ui_strings": [
+    "All Clear",
+    "Normal operations.",
+    "Caution — Yellow",
+    "Warning",
+    "Stop work now. Move all personnel to shelter.",
+    "Unknown",
+    "Fault",
+    "Safe to work",
+    "Readings as of {{timestamp}} ({{zone}})",
+    "Held for",
+    "WakeCap lightning alerts are a backup. Always follow the site's cabinet lights and sounder first."
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.48-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2312",
+    "TAN-2787",
+    "TAN-2327"
+   ],
+   "commits": [
+    {
+     "sha": "bf52a0f",
+     "subject": "feat(lightning): the Lightning tab — state tile, freshness and 24 h history (#84)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "5204f86",
+     "subject": "feat(lightning): read the live lightning-sensor API (TAN-2312) (#103)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "33b5192",
+     "subject": "TAN-2787: recolor the status indicator to green/yellow/red (#190)",
+     "first_tag": "v0.0.48-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "929a5fe",
+     "subject": "fix(lightning): ship approved TAN-2327 disclaimer wording (#152)",
+     "first_tag": "v0.0.16-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Lightning entitlement + weatherstation:view or project_builder:manage. Only All Clear was seen live on 4 Oct (internal-notes)."
+  },
+  {
+   "id": "lt-tile-redesign",
+   "product": "lightning",
+   "title_plain": "Status band and zone-radius rings on the tile",
+   "plain_phrase": "The tile now has a wide status band, a held-for timer and rings that show the alert radii.",
+   "user_sees": "Full-width status band with icon, big state word and context line; a Held for card with since time; a zone ring labelled RED, YELLOW and ALL-CLEAR. The ring is a legend of thresholds, not a live strike position.",
+   "ui_strings": [
+    "Held for",
+    "RED ≤",
+    "YELLOW",
+    "ALL-CLEAR",
+    "Zone-radius reference diagram",
+    "Zone reference only — not a live strike position. This device reports no distance or bearing; the rings show the configured alert thresholds, nothing more."
+   ],
+   "first_tag": "v0.0.49-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.49-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2804",
+    "TAN-2805"
+   ],
+   "commits": [
+    {
+     "sha": "a3e2bc0",
+     "subject": "TAN-2804: Lightning main tile — status band + zone-radius diagram (A+B hybrid) (#191)",
+     "first_tag": "v0.0.49-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "c29362c",
+     "subject": "TAN-2805: Lightning — extend the A+B hybrid to the wallboard/mobile glance tile (#192)",
+     "first_tag": "v0.0.49-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Do not say the screen shows where lightning struck."
+  },
+  {
+   "id": "lt-empty",
+   "product": "lightning",
+   "title_plain": "No-signal state that never reads as all clear",
+   "plain_phrase": "With no device reporting, the screen says so plainly and points to the on-site cabinet lights and sounder.",
+   "user_sees": "Live status heading, a Not reporting pill and a No lightning signal yet message.",
+   "ui_strings": [
+    "Live status",
+    "Not reporting",
+    "No lightning signal yet",
+    "No lightning device is reporting on this project. This is not an all-clear — the cabinet lights and sounder on site are the primary alerting system. This project's status and 24-hour history appear here once a device is provisioned and starts reporting."
+   ],
+   "first_tag": "v0.0.4-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2410"
+   ],
+   "commits": [
+    {
+     "sha": "ffbd9c9",
+     "subject": "feat(lightning): empty-state dashboard on zero-device projects, with loading guard (TAN-2410) (#118)",
+     "first_tag": "v0.0.4-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "3ba4616",
+     "subject": "feat(lightning): redesign no-signal dashboard with dashboard-shell layout (#123)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "id": "lt-wallboard-mobile",
+   "product": "lightning",
+   "title_plain": "Control-room wallboard and phone view",
+   "plain_phrase": "A wallboard for the control room and a one-column phone view show the same state as the main screen.",
+   "user_sees": "Chrome-free wallboard at /{project}/connected-env/lightning/wallboard readable from several metres; phone view at /lightning/mobile. Neither is linked from the rail.",
+   "ui_strings": [
+    "Stop work now — move all personnel to shelter"
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.49-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #85",
+    "TAN-2805"
+   ],
+   "commits": [
+    {
+     "sha": "fc0c87f",
+     "subject": "feat(lightning): the PCC wallboard and the phone view (#85)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "c29362c",
+     "subject": "TAN-2805: Lightning — extend the A+B hybrid to the wallboard/mobile glance tile (#192)",
+     "first_tag": "v0.0.49-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Stop-work line only in RED. internal-notes.md: not captured live. URLs only."
+  },
+  {
+   "id": "lt-red-banner",
+   "product": "lightning",
+   "title_plain": "Site-wide red banner and alarm flash",
+   "plain_phrase": "When lightning is red, a banner shows on every screen of the area and the screen frame flashes red.",
+   "user_sees": "Dismissible RED banner above every Connected Environment screen (returns on next entry to red); red tint/frame flash during RED. The test switch that forces RED is disabled in production builds.",
+   "ui_strings": [
+    "Open lightning status",
+    "Dismiss",
+    "Hide this warning until the lightning state changes. It returns on the next entry to Red.",
+    "SIMULATED"
+   ],
+   "first_tag": "v0.0.3-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.50-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2314",
+    "TAN-2834"
+   ],
+   "commits": [
+    {
+     "sha": "cc14505",
+     "subject": "feat(lightning): the site indicator, the site-wide RED banner and the routing reference (#86)",
+     "first_tag": "v0.0.3-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "9794639",
+     "subject": "feat(lightning): pulse a red frame around the screen during RED (#176)",
+     "first_tag": "v0.0.42-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "669b5b3",
+     "subject": "feat(lightning): clone the gas-detector alarm flash (red tint + frame, full on/off) (#177)",
+     "first_tag": "v0.0.43-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "9c6fd7d",
+     "subject": "TAN-2834: gate the lightning.simulate dev-tools flag out of production builds (#194)",
+     "first_tag": "v0.0.50-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Only visible during a real RED. Production cannot simulate it (NODE_ENV guard) so do not plan a RED capture."
+  },
+  {
+   "id": "lt-alarm-history",
+   "product": "lightning",
+   "title_plain": "Alarm history, activity chart and CSV export",
+   "plain_phrase": "Lightning shows an alarm history of yellow and red periods, a chart of alarm activity, and a CSV export.",
+   "user_sees": "Alarm activity chart sits under the tiles; Alarm history table lists yellow/orange/red intervals with start, end, duration, source; Export CSV button. Strike distance, bearing and count are never shown.",
+   "ui_strings": [
+    "Alarm history",
+    "Alarm activity",
+    "Export CSV",
+    "No alarms were raised in this window.",
+    "{{count}} alarm(s) in this window.",
+    "State",
+    "Start",
+    "End",
+    "Duration",
+    "Source",
+    "In progress"
+   ],
+   "first_tag": "v0.0.45-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.51-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "PR #181",
+    "TAN-2786",
+    "TAN-2839"
+   ],
+   "commits": [
+    {
+     "sha": "c13092f",
+     "subject": "Lightning: dedicated alarm history table + alarm activity chart (#181)",
+     "first_tag": "v0.0.45-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "d8392d1",
+     "subject": "TAN-2786: add CSV export to the alarm history table (#189)",
+     "first_tag": "v0.0.48-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "af39f1f",
+     "subject": "TAN-2839: move Lightning screen's Alarm activity chart below the tile grid (#196)",
+     "first_tag": "v0.0.51-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Empty live on 4 Oct; CSV button disabled when empty (internal-notes)."
+  },
+  {
+   "id": "lt-settings",
+   "product": "lightning",
+   "title_plain": "Lightning settings: radii, location, full history",
+   "plain_phrase": "Alerting radii, the sensor location and the full 24-hour state history are in Settings.",
+   "user_sees": "Settings > Lightning shows Alerting radii with Edit alerting radii, a Set location button (click map or type latitude/longitude), and the Full state history table with CSV. They moved off the main screen.",
+   "ui_strings": [
+    "Alerting radii",
+    "Edit alerting radii",
+    "Red radius (km)",
+    "Yellow radius (km)",
+    "All-clear delay (minutes)",
+    "Set location",
+    "Set sensor location",
+    "Location: not set",
+    "Temporary",
+    "Full state history — last 24 hours",
+    "Data unavailable",
+    "Export CSV"
+   ],
+   "first_tag": "v0.0.14-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2669",
+    "TAN-2785",
+    "TAN-2922"
+   ],
+   "commits": [
+    {
+     "sha": "4e9db9a",
+     "subject": "Lightning: settings icon to edit the alerting radii (#150)",
+     "first_tag": "v0.0.14-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "f8d3e14",
+     "subject": "feat(settings): move the Site Safety Policy and Lightning radii into Settings (#170)",
+     "first_tag": "v0.0.34-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "dc7414f",
+     "subject": "TAN-2785: move the full state-history table into Settings › Lightning (#188)",
+     "first_tag": "v0.0.48-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "d944b6f",
+     "subject": "TAN-2922: radii map beside the Lightning tiles, and an admin-set sensor location in Settings (temporary) (#208)",
+     "first_tag": "v1.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "weatherstation:manage-lightning-settings. State history is config-manager only by decision.",
+   "capture_note": "internal-notes.md: Settings > Lightning not among the six pages captured."
+  },
+  {
+   "id": "lt-radii-map",
+   "product": "lightning",
+   "title_plain": "Alarm radii map beside the tiles",
+   "plain_phrase": "A map beside the tile shows the red and yellow alarm rings around the sensor.",
+   "user_sees": "From wide screens a map sits beside the tile grid (below it on narrow) with red and yellow rings and a state dot; no location set shows a no-map message. Marked Temporary until the main maps support lightning sensors. 1.0.5 draws it with an open-source map; master switches to Esri ArcGIS (not in production).",
+   "ui_strings": [
+    "Alarm radii — {{name}}",
+    "Red ring: the Red radius. Yellow ring: the Yellow radius. The dot shows the sensor's current state.",
+    "No location is set for this sensor, so there is no map to draw. An administrator can set it in Settings › Lightning.",
+    "Temporary",
+    "Set manually until Management Maps supports lightning sensor locations."
+   ],
+   "first_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2921",
+    "TAN-2922",
+    "TAN-2924"
+   ],
+   "commits": [
+    {
+     "sha": "d944b6f",
+     "subject": "TAN-2922: radii map beside the Lightning tiles, and an admin-set sensor location in Settings (temporary) (#208)",
+     "first_tag": "v1.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Shows only if a location was set. Newest change (4 Oct); may be empty on live."
+  },
+  {
+   "id": "lt-removed",
+   "product": "lightning",
+   "title_plain": "Panels removed from the Lightning screen",
+   "plain_phrase": "Routing and alert-message panels were taken off the Lightning screen to keep it to the state and its history.",
+   "user_sees": "No alert routing panel, no on-screen alert-message notice, no Alerts sent panel and no observations-sent table. The notification engine was also removed from the backend.",
+   "ui_strings": [],
+   "first_tag": "v0.0.36-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.48-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-1901",
+    "TAN-2784",
+    "TAN-2707"
+   ],
+   "commits": [
+    {
+     "sha": "088487d",
+     "subject": "fix(lightning): remove the on-screen alert-message notice (#171)",
+     "first_tag": "v0.0.36-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "2b815c4",
+     "subject": "TAN-1901: remove Lightning alert routing panel (#174)",
+     "first_tag": "v0.0.39-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "51b74dd",
+     "subject": "TAN-2784: remove the \"Alerts sent to the alarming service\" panel (#187)",
+     "first_tag": "v0.0.48-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "46ba8d4",
+     "subject": "TAN-2707: show the observations sent to the alarming service on the Lightning screen (#178)",
+     "first_tag": "v0.0.44-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Do not mention email/SMS from the Lightning product."
+  },
+  {
+   "id": "gas-fixture",
+   "product": "gas",
+   "title_plain": "Gas screens first appear on sample data",
+   "plain_phrase": "First version of Gas: five screens built on sample data.",
+   "user_sees": "Gas tab switched on with Dashboard, Detectors, Alerts, Compliance and Zones backed by fixtures. Sample numbers, not site readings. v0.0.6 restyled the dashboard to a fleet overview with detector cards.",
+   "ui_strings": [],
+   "first_tag": "v0.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.6-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "no",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2436"
+   ],
+   "commits": [
+    {
+     "sha": "561c504",
+     "subject": "feat(gas): turn on the GAS tab with fixture-backed dashboard, devices, alerts, compliance and zones screens (TAN-2436) (#124)",
+     "first_tag": "v0.0.5-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "0a0f712",
+     "subject": "feat(gas): restyle the gas dashboard to the fleet-overview mockup with detector cards + fleet table (placeholders for unbacked panels) (#139",
+     "first_tag": "v0.0.6-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Replaced. Superseded by the glance dashboard in v0.0.53. Never use old fixture frames."
+  },
+  {
+   "id": "gas-live-glance",
+   "product": "gas",
+   "title_plain": "Gas reads live detector data; glance view and status line",
+   "plain_phrase": "Gas now reads real detector data, shows a site state word in the header and a dot in the side menu.",
+   "user_sees": "Header line \"Gas SAFE / CHECK / ALERT\" with the honest line (last reading, detectors reporting); side-nav dot and word Check or Alert, nothing when SAFE; Gas pages as sub-rows of the Gas rail item; failed refresh shows Cannot refresh and never SAFE; stale after 60 min; contact-lost banner.",
+   "ui_strings": [
+    "Gas {{state}}",
+    "Check",
+    "Alert",
+    "Gas pages",
+    "Last reading {{age}}",
+    "{{last}} · {{reporting}} of {{total}} detectors reporting",
+    "Contact lost",
+    "Cannot refresh",
+    "This is not an all-clear.",
+    "Dashboard",
+    "Detectors",
+    "Alerts",
+    "Compliance"
+   ],
+   "first_tag": "v0.0.53-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.53-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2854"
+   ],
+   "commits": [
+    {
+     "sha": "2c88329",
+     "subject": "TAN-2854: map live Gas devices and derive SAFE/CHECK/ALERT (#197)",
+     "first_tag": "v0.0.53-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "c6c31be",
+     "subject": "TAN-2854: Gas alerts, zones and thresholds read live behind connected-env-gas-live-data (3a) (#198)",
+     "first_tag": "v0.0.53-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "db30701",
+     "subject": "TAN-2854: Gas glance dashboard, header status line and side-nav state dot (3b) (#199)",
+     "first_tag": "v0.0.53-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "connected-env-gas (absent = ON). In v0.0.53 live reads were behind connected-env-gas-live-data (default off); flipped to real-by-default in v1.0.1.",
+   "visible_when": "connected-env-gas not false + read grant + gasDetectorActive entitlement."
+  },
+  {
+   "id": "gas-wall-phone",
+   "product": "gas",
+   "title_plain": "Gas wallboard and phone view",
+   "plain_phrase": "A control-room wallboard and a phone view for gas.",
+   "user_sees": "Chrome-free routes /{project}/connected-env/gas/wallboard and /gas/mobile behind the same gate. The state word still leads here (hero removal did not touch them).",
+   "ui_strings": [
+    "GAS OVER LIMIT · KEEP CLEAR · FOLLOW THE SITE GAS PROCEDURE",
+    "The gas readings could not be loaded. Nothing is confirmed safe."
+   ],
+   "first_tag": "v0.0.53-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v0.0.53-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2854"
+   ],
+   "commits": [
+    {
+     "sha": "6064744",
+     "subject": "TAN-2854: Gas wallboard and phone views, and a failed refresh never reads as SAFE (4) (#200)",
+     "first_tag": "v0.0.53-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Not linked from the rail."
+  },
+  {
+   "id": "gas-restyle",
+   "product": "gas",
+   "title_plain": "Detectors, Alerts and Compliance restyled",
+   "plain_phrase": "Detectors, Alerts and Compliance share one look, with band scales and clear Not available yet messages.",
+   "user_sees": "Detectors: filter All / Needs attention, per-detector latest readings with show-detail. Alerts table. Compliance shows limits in force; figures the service cannot supply say Not available yet rather than a number.",
+   "ui_strings": [
+    "Detector",
+    "State",
+    "Battery",
+    "Last reported",
+    "Show detail",
+    "Hide detail",
+    "Needs attention",
+    "Limits in force",
+    "Alarm thresholds",
+    "Compliance figures, exposure and exceedances are not available yet.",
+    "Not available yet"
+   ],
+   "first_tag": "v1.0.0-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.0-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2854"
+   ],
+   "commits": [
+    {
+     "sha": "f2eb26a",
+     "subject": "TAN-2854: restyle Gas Detectors, Alerts, Compliance and Zones (5) (#201)",
+     "first_tag": "v1.0.0-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "id": "gas-real-default",
+   "product": "gas",
+   "title_plain": "Real data is the default",
+   "plain_phrase": "Gas shows the vendor cloud data by default; sample data is only a demo switch.",
+   "user_sees": "From 1 Oct, absent flag = backend data; only an explicit true on the sample-data flag serves canned data. Old live-data key no longer read.",
+   "ui_strings": [],
+   "first_tag": "v1.0.1-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.1-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": true,
+   "internal_refs": [
+    "TAN-2854"
+   ],
+   "commits": [
+    {
+     "sha": "31a3f80",
+     "subject": "TAN-2854: Gas reads real data by default; sample data only behind connected-env-gas-sample-data (#202)",
+     "first_tag": "v1.0.1-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "flag_note": "connected-env-gas-sample-data: explicit true only. LD value not queried.",
+   "capture_note": "Check no sample dataset is showing: sample alerts say \"Saved in this session only\"."
+  },
+  {
+   "id": "gas-overview",
+   "product": "gas",
+   "title_plain": "Overview figures replace the big SAFE banner",
+   "plain_phrase": "The Gas dashboard opens with four plain numbers: detectors, online, live alarms and acknowledged.",
+   "user_sees": "Overview strip: Detectors, Online, Live alarms, Acknowledged. Then Gases (H2S, O2, LEL on band scales), a Today strip, and a right column What needs attention. No giant word and no zone ring on this dashboard.",
+   "ui_strings": [
+    "Overview",
+    "Detectors",
+    "Registered on this project",
+    "Online",
+    "None offline",
+    "Live alarms",
+    "None waiting for a person",
+    "Acknowledged",
+    "Open, being handled",
+    "Gases, worst current reading",
+    "Hydrogen sulphide",
+    "Oxygen",
+    "Combustible gas",
+    "What needs attention",
+    "Today",
+    "Detectors reporting",
+    "Closest to limit now",
+    "Not available yet"
+   ],
+   "first_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2914",
+    "TAN-2915"
+   ],
+   "commits": [
+    {
+     "sha": "7f5eef0",
+     "subject": "TAN-2914, TAN-2915, TAN-2916, TAN-2917: Gas dashboard — Overview figures, no SAFE hero, no CO/CO2, acknowledge and close alerts (#207)",
+     "first_tag": "v1.0.4-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "A figure the service does not send reads Not available yet, never zero."
+  },
+  {
+   "id": "gas-no-co",
+   "product": "gas",
+   "title_plain": "Carbon monoxide and carbon dioxide are not shown",
+   "plain_phrase": "Gas covers hydrogen sulphide, oxygen and combustible gas; no carbon monoxide or dioxide.",
+   "user_sees": "No tile, threshold row, exposure bar or chart series for CO or CO2. A reading of either that ever arrived would show as an unrecognised gas (CHECK).",
+   "ui_strings": [
+    "H₂S",
+    "O₂",
+    "LEL",
+    "Alarm thresholds"
+   ],
+   "first_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2916"
+   ],
+   "commits": [
+    {
+     "sha": "7f5eef0",
+     "subject": "TAN-2914, TAN-2915, TAN-2916, TAN-2917: Gas dashboard — Overview figures, no SAFE hero, no CO/CO2, acknowledge and close alerts (#207)",
+     "first_tag": "v1.0.4-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "Do not claim CO/CO2 detection."
+  },
+  {
+   "id": "gas-ack-close",
+   "product": "gas",
+   "title_plain": "Acknowledge and close gas alerts",
+   "plain_phrase": "People with edit access can acknowledge a gas alert, then close it; the counts move.",
+   "user_sees": "Alerts screen shows Acknowledge (while open) and Close (asks Close this alert? first). Recorded here with who and when; NOT sent to the vendor: an alert closed here stays open in the vendor app. Without edit access the controls are hidden and a line says why.",
+   "ui_strings": [
+    "Acknowledge",
+    "Close",
+    "Close this alert?",
+    "Close alert",
+    "Cancel",
+    "Saving…",
+    "Open",
+    "Acknowledged",
+    "Closed",
+    "You can read alerts here. Acknowledging or closing one needs edit access on this project.",
+    "Every alert raised on this project, newest first (up to the latest 500). Acknowledging or closing an alert is recorded here with who did it and when. It is not sent to Blackline: an alert closed here stays open in Blackline Live."
+   ],
+   "first_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.4-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2917",
+    "BE b36cdfa"
+   ],
+   "commits": [
+    {
+     "sha": "7f5eef0",
+     "subject": "TAN-2914, TAN-2915, TAN-2916, TAN-2917: Gas dashboard — Overview figures, no SAFE hero, no CO/CO2, acknowledge and close alerts (#207)",
+     "first_tag": "v1.0.4-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "visible_when": "Write grant project_builder:manage or weatherstation:edit; needs backend routes POST Alerts/{id}/acknowledge and /resolve deployed.",
+   "capture_note": "Closing cannot be undone. Do NOT click Close on a real alert while filming."
+  },
+  {
+   "id": "gas-zones-hidden",
+   "product": "gas",
+   "title_plain": "Zones tab hidden",
+   "plain_phrase": "The Zones page and zone tiles are no longer shown.",
+   "user_sees": "Gas navigation lists Dashboard, Detectors, Alerts, Compliance only. /gas/zones redirects to the dashboard. No zone column, Unassigned label or zone tiles anywhere.",
+   "ui_strings": [
+    "Dashboard",
+    "Detectors",
+    "Alerts",
+    "Compliance"
+   ],
+   "first_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2926"
+   ],
+   "commits": [
+    {
+     "sha": "95e1650",
+     "subject": "TAN-2926: hide the Zones tab and everything zone-related from the Gas UI (#209)",
+     "first_tag": "v1.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]",
+   "capture_note": "UI-only; backend zone endpoints still exist."
+  },
+  {
+   "id": "gas-detectors-page",
+   "product": "gas",
+   "title_plain": "Detectors page (live)",
+   "plain_phrase": "The Detectors page lists each registered detector with its latest readings against its limits.",
+   "user_sees": "Table with Detector, State, Last reported, Battery, readings and detail toggle. Battery shows a dash when unknown.",
+   "ui_strings": [
+    "Every gas detector registered on this project.",
+    "Filter detectors",
+    "All",
+    "Needs attention",
+    "Reporting",
+    "Offline",
+    "Never reported",
+    "Latest readings",
+    "Show detail for a row to see its readings and limits"
+   ],
+   "first_tag": "v1.0.0-ConnectedEnvironmentApp-production",
+   "complete_in_tag": "v1.0.5-ConnectedEnvironmentApp-production",
+   "first_tag_old_line": null,
+   "live_in_1_0_5": "yes",
+   "flag_gated": false,
+   "internal_refs": [
+    "TAN-2854",
+    "TAN-2926"
+   ],
+   "commits": [
+    {
+     "sha": "f2eb26a",
+     "subject": "TAN-2854: restyle Gas Detectors, Alerts, Compliance and Zones (5) (#201)",
+     "first_tag": "v1.0.0-ConnectedEnvironmentApp-production"
+    },
+    {
+     "sha": "95e1650",
+     "subject": "TAN-2926: hide the Zones tab and everything zone-related from the Gas UI (#209)",
+     "first_tag": "v1.0.5-ConnectedEnvironmentApp-production"
+    }
+   ],
+   "evidence": "[code]"
+  }
+ ],
+ "not_in_production": [
+  {
+   "sha": "e1faf00",
+   "subject": "TAN-2922: lightning map on Esri ArcGIS (replacing Leaflet/OSM), map beside the tile, note only in Settings (#210)",
+   "product": "lightning",
+   "note": "on master only; production serves 1.0.5; no tag after 1.0.5"
+  }
+ ],
+ "backend_enablers": [
+  {
+   "product": "gas",
+   "what_plain": "The backend connects to the gas detector vendor's cloud, pulls device and reading data on a fixed cycle (every 45 seconds; the detectors themselves upload about every 30 minutes), removes duplicates, and raises alerts when a reading passes its alarm point. It also accepts the vendor's push messages and keeps a record of each one.",
+   "refs": [
+    "BE 688b766",
+    "BE 34107cd",
+    "BE b46f4ff",
+    "BE 7a13cbb",
+    "TAN-2437",
+    "TAN-2439",
+    "TAN-2895"
+   ],
+   "evidence": "[code]",
+   "note": "Vendor cloud (\"black box\") path. Poll cadence and upload cadence are from commit 7a13cbb text. Push receiver was made deliberately unauthenticated in a3570a4 (internal note only)."
+  },
+  {
+   "product": "gas",
+   "what_plain": "New read endpoints serve the gas screens: detectors (with a stale flag and reading age), a summary with live and acknowledged alert counts, alerts, zones and alarm thresholds.",
+   "refs": [
+    "BE 2b5e7d8",
+    "BE b36cdfa",
+    "TAN-2449",
+    "TAN-2914"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "gas",
+   "what_plain": "People with edit access can acknowledge and close a gas alert, recorded with who and when. Nothing is written back to the vendor.",
+   "refs": [
+    "BE b36cdfa",
+    "TAN-2917"
+   ],
+   "evidence": "[code]",
+   "note": "Two POST routes. If this build is not deployed, the Alerts buttons fail with \"This could not be recorded\". Deploy state unverified."
+  },
+  {
+   "product": "lightning",
+   "what_plain": "A full lightning module: ingests sensor packets, tracks each device state, marks a device stale after missing heartbeats, serves state and history to the portal, and registers devices automatically from the node registry.",
+   "refs": [
+    "BE 3dc572d",
+    "BE 9119736",
+    "BE be4e87d",
+    "TAN-2410",
+    "TAN-2649",
+    "TAN-2320"
+   ],
+   "evidence": "[code]",
+   "note": "Staleness is 4 missed heartbeats on master since 22 Sep (was 3)."
+  },
+  {
+   "product": "lightning",
+   "what_plain": "Alerting radii are stored as structured numbers (red radius, yellow radius, all-clear delay) and an administrator can store a sensor location for the map.",
+   "refs": [
+    "BE 6e10229",
+    "BE 352195f",
+    "TAN-2921"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "lightning",
+   "what_plain": "Lightning state changes to red, fault or offline are raised as observations to the platform Observation Manager and stored with delivery status; the lightning email and SMS notification engine was removed in favour of that.",
+   "refs": [
+    "BE a88a668",
+    "BE 63b7886",
+    "BE 367bf43",
+    "TAN-2707",
+    "TAN-1901"
+   ],
+   "evidence": "[code]",
+   "note": "Delivery behaviour in production unverified: observation dispatch was disabled by hotfix 5869f6d (404 storm), then made unconditional in 0349c35 (30 Sep)."
+  },
+  {
+   "product": "weather-station",
+   "what_plain": "The whole safety policy publishes as one all-or-nothing action with a server-side check on changes that loosen it; a new \"policy impact\" calculation tells the screen how many of the last 30 days a limit would have stopped work.",
+   "refs": [
+    "BE 9675915",
+    "BE 248bed9",
+    "BE 693ae72",
+    "BE 2c4eed0",
+    "TAN-2724",
+    "TAN-2721",
+    "TAN-2723"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "weather-station",
+   "what_plain": "Every safety-configuration change is version-checked and audited with before and after values, an actor name that resolves to a person, a coverage check and a compliance export; a change-proposal route creates pending requests that a second person approves.",
+   "refs": [
+    "BE 3ca7201",
+    "BE 73a7d87",
+    "BE e31696b",
+    "BE aa1ca63",
+    "BE 21fbb58",
+    "TAN-2196",
+    "TAN-2455",
+    "TAN-2125"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "weather-station",
+   "what_plain": "Stations can have a display name; a Maximum Values report endpoint computes max heat index and wind speed per reading and per day; the old historical-data endpoint was removed.",
+   "refs": [
+    "BE 3097e35",
+    "BE 3490dd3",
+    "BE f2d5edc",
+    "TAN-2204",
+    "TAN-2810"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "shell",
+   "what_plain": "The backend records which products a project has switched on; the portal reads it to decide which products to show. A project with no record shows none.",
+   "refs": [
+    "BE e797731",
+    "BE 922a848",
+    "BE 23dac76"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "umbrella",
+   "what_plain": "The backend now speaks MCP (the protocol AI agents use) as a second door beside the REST API. 33 tools: readings, thresholds, station health, agent summary, audit history, dashboard layout and a card catalogue, plus tools that only propose changes. Proposals need a second person to approve; the agent cannot approve its own.",
+   "refs": [
+    "BE 45fb0cc",
+    "BE b342102",
+    "BE 41b20bf",
+    "BE 5000d50",
+    "TAN-2136",
+    "TAN-2023",
+    "TAN-2024",
+    "TAN-2124"
+   ],
+   "evidence": "[code]",
+   "direction": "DIRECTION / not live today: this is the plumbing that lets a future AI agent be fed everything about the site environment. No agent is switched on for customers; the FE composition features are default OFF.",
+   "note": "33 = entries in McpToolSurfaceTests ExpectedToolNames at origin/master (4 Oct). The tool list covers weather and observer/agent-observation tools; there is no gas or lightning MCP tool in that list."
+  },
+  {
+   "product": "umbrella",
+   "what_plain": "The safety summary now carries an advisory work decision (safe to work, controlled work, stop work, unknown) that cannot contradict the verdict, and a dashboard-composition contract (promoted cards, dynamic chart plan) that is additive.",
+   "refs": [
+    "BE 8cdc61c",
+    "BE 8a6491c",
+    "BE 623f631",
+    "TAN-2121",
+    "TAN-2122",
+    "TAN-2123"
+   ],
+   "evidence": "[code]"
+  },
+  {
+   "product": "umbrella",
+   "what_plain": "An \"observer\" control plane stores findings an agent drafts in its own tables, with human-only review.",
+   "refs": [
+    "BE 41b20bf",
+    "TAN-2024"
+   ],
+   "evidence": "[code]",
+   "direction": "DIRECTION / not live today."
+  },
+  {
+   "product": "umbrella",
+   "what_plain": "Devices reach the platform on several paths: Modbus devices on the wireless mesh (weather station, solar charge controller, lightning sensor) are told apart by a device tag and an unknown type is skipped without blocking others; the lightning sensor also has its own queue; gas detectors come through the vendor cloud, not Modbus.",
+   "refs": [
+    "SENSORS 8ee79d8 (NEM-662)",
+    "ZeroOpen doc line 78",
+    "BE 688b766"
+   ],
+   "evidence": "[code] [doc]",
+   "note": "Doc says the Modbus gas tag work (TAN-2465) was cancelled: Blackline is vendor cloud, no Modbus. sensors-service enum notes gas Modbus sensors \"being added next\" (not built)."
+  }
+ ],
+ "flags": [
+  {
+   "flag": "connected-env-gas",
+   "repo": "FE",
+   "default": "ON (absent or undefined = on; only explicit false withdraws Gas)",
+   "dark_in_production": "no (Gas is offered to entitled projects)",
+   "evidence": "[code] gasTabFlag.ts; [doc] internal-notes: Gas seen in the rail on one project",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "connected-env-gas-sample-data",
+   "repo": "FE",
+   "default": "OFF (only explicit true serves the canned dataset)",
+   "dark_in_production": "expected dark; not queried",
+   "evidence": "[code] useGasReads.ts, since v1.0.1",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "connected-env-gas-live-data",
+   "repo": "FE",
+   "default": "retired",
+   "dark_in_production": "n/a",
+   "evidence": "[code] 31a3f80: key no longer read; it gated live reads (default off) in v0.0.5 to v1.0.0",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "weather-station-agent-dashboard-composition",
+   "repo": "FE (+BE additive contract)",
+   "default": "OFF (only explicit true)",
+   "dark_in_production": "expected dark; internal-notes saw it off on 4 Oct at 1.0.3; not queried",
+   "evidence": "[code] useAgentDashboardComposition.ts; [doc] internal-notes",
+   "ld_value_queried": false,
+   "label": "DIRECTION / not live today"
+  },
+  {
+   "flag": "weather-station-answer-first-dashboard",
+   "repo": "FE",
+   "default": "ON (absent = on)",
+   "dark_in_production": "no",
+   "evidence": "[code] LiveDashboard.tsx, useStationDomainReads.ts",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "weather-station-safety-policy-screen",
+   "repo": "FE",
+   "default": "ON (kill switch; false removes the policy tab and leaves no way to edit it)",
+   "dark_in_production": "no",
+   "evidence": "[code] policyScreenFlag.ts",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "weather-station-change-history",
+   "repo": "FE",
+   "default": "ON",
+   "dark_in_production": "no",
+   "evidence": "[code] changeHistoryFlag.ts",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "lightning.simulate (localStorage dev switch, not LaunchDarkly)",
+   "repo": "FE",
+   "default": "disabled in production builds since v0.0.50",
+   "dark_in_production": "yes",
+   "evidence": "[code] lightningSimulation.ts, 9c6fd7d",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "project product entitlement (not a flag): weatherStationActive / gasDetectorActive / lightningSensorActive",
+   "repo": "BE+FE",
+   "default": "all false until switched on per project",
+   "dark_in_production": "per project",
+   "evidence": "[code] e797731, productEntitlement.ts",
+   "ld_value_queried": false
+  },
+  {
+   "flag": "permissions (not flags): weatherstation:settingsProducts, manage-weather-settings, manage-lightning-settings, weatherstation:view/edit, project_builder:manage",
+   "repo": "FE+BE",
+   "default": "per user",
+   "dark_in_production": "per user",
+   "evidence": "[code] Settings/constants/permissions.ts, Gas/constants/permissions.ts",
+   "ld_value_queried": false
+  }
+ ],
+ "gas_timeline": [
+  {
+   "when": "2026-09-08 (commit) / v0.0.5 on 2026-09-13",
+   "stage": "fixture-backed",
+   "what": "Gas tab switched on with Dashboard, Detectors, Alerts, Compliance and Zones on a canned dataset. HTTP adapter added behind connected-env-gas-live-data (default off).",
+   "shows_in_production": "sample numbers; CO and CO2 appear in sample data and charts",
+   "refs": [
+    "561c504",
+    "f7d2a2b",
+    "TAN-2436",
+    "TAN-2450"
+   ]
+  },
+  {
+   "when": "v0.0.6 on 2026-09-13",
+   "stage": "fleet-overview restyle",
+   "what": "Detector cards and fleet table with placeholders for unbacked panels.",
+   "shows_in_production": "still sample data",
+   "refs": [
+    "0a0f712"
+   ]
+  },
+  {
+   "when": "v0.0.53 on 2026-09-30",
+   "stage": "live-capable, glance dashboard",
+   "what": "Live device mapping, derived SAFE/CHECK/ALERT, alerts/zones/thresholds read live (behind live-data flag, default off), glance dashboard with a big state word and zone ring, header status line, side-nav dot, wallboard and phone views. Fleet cards retired.",
+   "shows_in_production": "live-data flag default off, so sample data still by default",
+   "refs": [
+    "2c88329",
+    "c6c31be",
+    "db30701",
+    "6064744",
+    "TAN-2854"
+   ]
+  },
+  {
+   "when": "v1.0.0 on 2026-09-30",
+   "stage": "restyle",
+   "what": "Detectors, Alerts, Compliance and Zones restyled; Not available yet for anything the backend cannot supply.",
+   "shows_in_production": "same data rule as v0.0.53",
+   "refs": [
+    "f2eb26a"
+   ]
+  },
+  {
+   "when": "v1.0.1 on 2026-10-01",
+   "stage": "live data by default",
+   "what": "Polarity flipped: backend data by default, sample only with the sample-data flag.",
+   "shows_in_production": "real detector data from the vendor cloud",
+   "refs": [
+    "31a3f80"
+   ]
+  },
+  {
+   "when": "v1.0.4 on 2026-10-04",
+   "stage": "Overview rework",
+   "what": "Big SAFE hero, zone ring, banner removed from the dashboard; Overview of four figures added; CO and CO2 removed everywhere; Acknowledge and Close on Alerts against the live backend.",
+   "shows_in_production": "dashboard: Overview, Gases (H2S, O2, LEL), Today, What needs attention. Header line and nav dot still say Gas SAFE/CHECK/ALERT. Wallboard and phone view unchanged.",
+   "refs": [
+    "7f5eef0",
+    "TAN-2914",
+    "TAN-2915",
+    "TAN-2916",
+    "TAN-2917"
+   ]
+  },
+  {
+   "when": "v1.0.5 on 2026-10-04",
+   "stage": "zones hidden",
+   "what": "Zones tab, zone tiles and every zone label removed in the UI; /gas/zones redirects to the dashboard. Backend zones untouched.",
+   "shows_in_production": "tabs Dashboard, Detectors, Alerts, Compliance",
+   "refs": [
+    "95e1650",
+    "TAN-2926"
+   ]
+  }
+ ],
+ "gas_production_build_shows": {
+  "summary": "Production 1.0.5 build, when Gas is offered (flag not false, read grant, gasDetectorActive): live detector data from the vendor cloud; Gas rail row with sub-rows Dashboard, Detectors, Alerts, Compliance; header line \"Gas SAFE|CHECK|ALERT\" with last reading and detectors reporting; Overview strip; no big SAFE word on the dashboard; no CO/CO2; Acknowledge/Close on Alerts for people with edit access; no Zones.",
+  "rules_the_screens_state": [
+   "No state while loading or after a failed read (never SAFE)",
+   "A reading older than 60 min is stale and means CHECK, never SAFE",
+   "No detector reporting for over 60 min means Contact lost (CHECK plus banner, \"This is not an all-clear.\")",
+   "Alarm is strictly over the alarm point; low oxygen is CHECK, \"the low-oxygen alarm is not raised yet\"",
+   "Figures the service cannot supply say Not available yet, never zero",
+   "Acknowledge and close are recorded in WakeCap only; not sent to the vendor app"
+  ],
+  "evidence": "[code] at tag v1.0.5. Not verified [live]."
+ },
+ "last_72_hours": {
+  "window": "v1.0.2 (2026-10-04 12:08 +03) to v1.0.5 (2026-10-04 13:51 +03) plus master after v1.0.5; v1.0.1 (2026-10-01) is just outside 72 h but carries the Gas real-data default.",
+  "fe": [
+   {
+    "tag": "v1.0.2",
+    "what": "Saudi time everywhere; agent dashboard composition + dynamic charts and observation drawer, both behind a default-OFF flag",
+    "item_ids": [
+     "shell-saudi-time",
+     "ws-agent-composition",
+     "ws-observation-drawer"
+    ]
+   },
+   {
+    "tag": "v1.0.3",
+    "what": "Saudi time extended to the flag-gated charts, health timeline and observation drawer",
+    "item_ids": [
+     "shell-saudi-time"
+    ]
+   },
+   {
+    "tag": "v1.0.4",
+    "what": "Gas dashboard Overview, SAFE hero removed, CO/CO2 removed, acknowledge and close alerts",
+    "item_ids": [
+     "gas-overview",
+     "gas-no-co",
+     "gas-ack-close"
+    ]
+   },
+   {
+    "tag": "v1.0.5",
+    "what": "Gas Zones hidden; Lightning radii map beside the tiles and an admin-set sensor location in Settings (temporary)",
+    "item_ids": [
+     "gas-zones-hidden",
+     "lt-radii-map",
+     "lt-settings"
+    ]
+   },
+   {
+    "tag": "master only (not in production)",
+    "what": "Lightning map moves to Esri ArcGIS, map placed inside the tile grid, temporary note kept only in Settings",
+    "item_ids": []
+   }
+  ],
+  "be_since_2026-10-01": [
+   "Gas alert acknowledge/close and live/acknowledged counts (b36cdfa, 4 Oct)",
+   "Gas poll skips already-stored readings (7a13cbb, 4 Oct)",
+   "Lightning sensor location stored and returned (352195f, 4 Oct)",
+   "Agent observation preview and approval-gated send (5000d50, 1 Oct)",
+   "Observer control plane (41b20bf, 1 Oct)",
+   "Dashboard composition contract and chart plan (8a6491c, 1 Oct)",
+   "DashboardLayout removed from the change-request surface (3da75ce, 1 Oct)",
+   "Agent summary hardening (623f631, 1 Oct)",
+   "Blackline call logging (f100afd) and default gas project id (1f7bbe2), 1 Oct; unmerged branches remove that default (066b9b0, 5cd5335)"
+  ],
+  "be_deploy_state": "UNVERIFIED. No BE release tag since stable-1.6.0-rc.1 (2026-07-20). origin/master head 352195f (4 Oct 13:15 +03)."
+ },
+ "open_questions": [
+  "What counts as \"our last videos\"? Assumed the 9 Aug baseline (v0.1.0-production, answer-first dashboard). If they were made later, policy items from Aug 17-24 (old v0.1.1 to v0.1.6) are not new.",
+  "LaunchDarkly was not queried (rule: no LaunchDarkly actions). Flag states are defaults from code; capture agents must confirm by what renders. In particular: does agent composition render anywhere (expected no)?",
+  "Which production projects have Gas entitlement (gasDetectorActive)? Gas should appear on at least one project per internal-notes (name omitted). A Gas video needs a project where it does, with detectors that have reported.",
+  "Is the backend with gas acknowledge/close and activeAlerts/acknowledgedAlerts (b36cdfa) deployed? If not, Overview shows Not available yet and the Acknowledge button errors. Check before filming; Close cannot be undone.",
+  "Is the Lightning location/map backend (352195f) deployed? Without it Settings can save no location and the map shows its no-location message.",
+  "Lightning stale threshold: FE helper lightningStaleness.ts still says 3 missed heartbeats, BE master says 4 (since 22 Sep); the helper has no consumer at 1.0.5 so no screen states it, but do not narrate a number of heartbeats.",
+  "Lightning screen has had no non-green live state so far (internal-notes). Alarm rows, RED banner, wallboard, phone view are code-only [code]; production build cannot simulate RED.",
+  "The 1.0.5 radii map uses an open-source map; master swaps to Esri (not in production). A capture taken after the next deploy will look different (map inside the tile grid, no Set manually sentence on the map card).",
+  "Lightning alert delivery to people: email/SMS removed from the lightning module; alerts go as observations to the platform Observation Manager, whose dispatch was hotfixed off then made unconditional. Not verified in production; the video should not claim who gets notified.",
+  "The Site Safety Policy edit/publish path and Change history were never exercised live; Change history empty on 4 Oct. Do not publish during capture.",
+  "Trends is a Planned placeholder only; Gas acknowledgements are not written back to the vendor (an earlier program doc planned write-back; not built).",
+  "Internal-only, not for videos: BE push receiver for gas is deliberately unauthenticated (a3570a4); FE commit messages and sensors-service commit text name customer sites; the 4 Oct request text carries an API key pasted in plain text (not used here). No committed secret found by pattern search of FE master; BE integration-test credentials were removed in 8402910. .env and appsettings files were not read.",
+  "Sensors-service has local history only on master-wakecap-2 branches; its last commit is 2026-10-01 (8ee79d8, node bulk sync). Nothing there changes what a user sees directly."
+ ]
+}

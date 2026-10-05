@@ -1,0 +1,11 @@
+Closing is recorded here. It is not sent to Blackline: an alert closed here stays open in Blackline Live. Blackline is the gas vendor.
+
+The page also names what is missing: no alert timeline, no assignee, no closed count.
+
+Compliance lists the limits. Exposure and exceedances say Not available yet, not an empty chart that reads as all clear.
+
+Detectors report to the vendor's cloud, a black box to us. WakeCap asks that cloud for readings on a timer.
+
+Each detector reports on its own schedule, so each reading shows its age. An offline detector reads Check, like the fifth.
+
+A quiet screen is not an answer, so Gas shows its gaps. If your project has it, open it and read the top line.
