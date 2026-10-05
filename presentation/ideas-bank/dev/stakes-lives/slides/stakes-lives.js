@@ -99,7 +99,7 @@ Deck.add({
     const lg = mk('linearGradient', { id: 'sl-trail', x1: 0, y1: 0, x2: 1, y2: 0 }, defs);
     mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': 0 }, lg); mk('stop', { offset: 1, 'stop-color': '#FFB366', 'stop-opacity': .5 }, lg);
     const hz = mk('radialGradient', { id: 'sl-haze', cx: .5, cy: .5, r: .5 }, defs);
-    mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': .5 }, hz); mk('stop', { offset: .6, 'stop-color': '#E9590C', 'stop-opacity': .2 }, hz); mk('stop', { offset: 1, 'stop-color': '#E9590C', 'stop-opacity': 0 }, hz);
+    mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': .7 }, hz); mk('stop', { offset: .6, 'stop-color': '#E9590C', 'stop-opacity': .32 }, hz); mk('stop', { offset: 1, 'stop-color': '#E9590C', 'stop-opacity': 0 }, hz);
     /* ghost frames: where the cards will land (they fade as each card arrives) */
     [[96, 500, 852, 290, 2], [972, 500, 852, 290, 3], [96, 822, 1728, 150, 4]].forEach(([x, y, w, h, out]) => {
       mk('rect', { x, y, width: w, height: h, rx: 28, fill: 'none', stroke: 'rgba(255,255,255,.14)', 'stroke-width': 2, 'stroke-dasharray': '10 9', 'data-step': 0, 'data-step-out': out });

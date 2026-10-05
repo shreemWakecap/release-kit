@@ -20,9 +20,9 @@ Deck.add({
     <svg class="ch-svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="A thermometer feeds a chain. Less work, lost money, more injuries, lives lost. Prevention pays back."></svg>
     <div class="ch-card glass sweepable ch-a" data-step="1">
       <div class="ch-lab">Less work</div>
-      <svg class="ch-chart" viewBox="0 0 430 152" width="430" height="152" aria-hidden="true"></svg>
+      <svg class="ch-chart" viewBox="0 0 430 140" width="430" height="140" aria-hidden="true"></svg>
       <div class="ch-key"><div class="ch-kn"><b class="ch-n" data-k="cap">100</b><span class="ch-pc">%</span></div><div class="ch-un">work left</div></div>
-      <div class="src">Global Health Action, 2009</div>
+      <div class="src">Global Health Action, 2009. Heavy work, WBGT.</div>
     </div>
     <div class="ch-card glass sweepable ch-b" data-step="2">
       <div class="ch-lab">Lost money</div>
@@ -58,7 +58,7 @@ Deck.add({
     .s-chain .ch-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
     .s-chain .ch-sub{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
     .s-chain .ch-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
-    .s-chain .ch-hot{position:absolute;left:86px;top:262px;width:168px;text-align:center;font:700 22px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--wc-orange-soft)}
+    .s-chain .ch-hot{position:absolute;left:96px;top:264px;width:148px;text-align:center;font:700 20px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--wc-orange-soft)}
     .s-chain .src{color:#9A9A94}
     .s-chain .ch-card{position:absolute;width:700px;height:236px}
     .s-chain .ch-a{left:340px;top:262px}.s-chain .ch-b{left:1124px;top:262px}
@@ -67,10 +67,10 @@ Deck.add({
     .s-chain .ch-lab{position:absolute;left:28px;top:18px;font:700 22px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--wc-orange-soft)}
     .s-chain .ch-chart{position:absolute;left:14px;top:44px;overflow:visible}
     .s-chain .ch-chart2{position:absolute;left:30px;top:44px;overflow:visible}
-    .s-chain .ch-key{position:absolute;left:462px;top:56px;width:210px}
+    .s-chain .ch-key{position:absolute;left:450px;top:58px;width:226px}
     .s-chain .ch-kn{display:flex;align-items:baseline;white-space:nowrap}
     .s-chain .ch-n{display:inline-block;font:900 64px/1 var(--font);letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#fff;text-shadow:0 0 28px rgba(255,131,0,.55),0 0 70px rgba(255,131,0,.25)}
-    .s-chain .ch-key .ch-n{font-size:96px}
+    .s-chain .ch-key .ch-n{font-size:100px}
     .s-chain .ch-pc{font:800 44px/1 var(--font);color:#D9D9D4;margin-left:4px}
     .s-chain .ch-un{margin-top:8px;font:500 30px/1.1 var(--font);color:#D9D9D4;white-space:nowrap}
     .s-chain .ch-n.ch-red{text-shadow:0 0 28px rgba(255,77,77,.55),0 0 70px rgba(255,77,77,.25)}
@@ -79,25 +79,25 @@ Deck.add({
     .s-chain .ch-ic{flex:none;overflow:visible}
     .s-chain .ch-big{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
     .s-chain .ch-u{font:600 30px/1 var(--font);color:#D9D9D4}
-    .s-chain .ch-pre{font:800 36px/1 var(--font);color:#D9D9D4;margin-right:-6px}
+    .s-chain .ch-pre{font:800 36px/1 var(--font);color:#D9D9D4;margin-right:-10px}
     .s-chain .ch-chip{position:absolute;right:26px;top:16px;padding:8px 16px;border-radius:999px;border:1.5px dashed rgba(255,179,102,.85);font:700 22px/1 var(--font);color:#FFB366;background:rgba(255,131,0,.08)}
     .s-chain .ch-pay{position:absolute;left:96px;top:788px;width:1728px;height:160px}
     .s-chain .ch-shield{position:absolute;left:36px;top:38px;overflow:visible}
-    .s-chain .ch-pt{position:absolute;left:140px;top:44px;font:800 38px/1.1 var(--font);letter-spacing:-.01em;color:#fff}
+    .s-chain .ch-pt{position:absolute;left:140px;top:30px;font:800 38px/1.1 var(--font);letter-spacing:-.01em;color:#fff}
     .s-chain .ch-pt span{display:block}
     .s-chain .ch-chip2{right:30px;top:18px}
-    .s-chain .ch-bars{position:absolute;left:440px;top:32px;width:760px}
+    .s-chain .ch-bars{position:absolute;left:420px;top:36px;width:760px}
     .s-chain .ch-br{position:absolute;left:0;height:40px;display:flex;align-items:center}
     .s-chain .ch-br.r1{top:0}.s-chain .ch-br.r2{top:56px}
-    .s-chain .ch-br .k{flex:none;width:130px;font:600 28px/1 var(--font);color:#D9D9D4}
-    .s-chain .ch-br .tr{position:relative;flex:none;width:620px;height:28px}
+    .s-chain .ch-br .k{flex:none;width:124px;font:600 28px/1 var(--font);color:#D9D9D4}
+    .s-chain .ch-br .tr{position:relative;flex:none;width:520px;height:28px}
     .s-chain .ch-br .f{position:absolute;left:0;top:0;height:28px;width:0;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,.28),rgba(255,255,255,.62))}
     .s-chain .ch-br .f.ok{background:linear-gradient(90deg,#E9590C,#FFB366);box-shadow:0 0 22px rgba(255,131,0,.55)}
     .s-chain .ch-br .v{position:absolute;top:-4px;left:0;font:800 32px/1 var(--font);color:#fff;white-space:nowrap;opacity:0}
-    .s-chain .ch-liv{position:absolute;left:1430px;top:36px;display:flex;align-items:center;gap:18px}
+    .s-chain .ch-liv{position:absolute;left:1300px;top:54px;display:flex;align-items:center;gap:18px}
     .s-chain .ch-liv .ch-n{font-size:84px}
     .s-chain .ch-liv .ch-u{font:600 26px/1.15 var(--font);white-space:nowrap}
-    .s-chain .ch-pay .src{position:absolute;right:30px;bottom:14px}
+    .s-chain .ch-pay .src{position:absolute;left:140px;bottom:14px}
     .s-chain .ch-foot{position:absolute;left:96px;top:962px;margin:0;font:500 24px/1 var(--font);color:#B9B9B4}
     body.calm .s-chain *{animation:none!important}`,
   init(ctx) {
@@ -142,17 +142,16 @@ Deck.add({
     ctx.aMarks = [27, 29.5, 31.5].map((t) => {
       const g = mk('g', {}, A);
       mk('line', { x1: ax(t), y1: 102, x2: ax(t), y2: 108, stroke: 'rgba(255,255,255,.4)', 'stroke-width': 2 }, g);
-      mk('text', { x: ax(t), y: 128, 'text-anchor': 'middle', fill: '#D9D9D4', style: 'font:600 20px var(--font)', text: String(t) }, g);
+      mk('text', { x: ax(t), y: 128, 'text-anchor': 'middle', fill: '#D9D9D4', style: 'font:600 20px var(--font)', text: t + ' °C' }, g);
       return { t, g, dot: mk('circle', { cx: ax(t), cy: ay(cap(t)), r: 7, fill: '#0B0B0C', stroke: '#FFB366', 'stroke-width': 3 }, g) };
     });
-    mk('text', { x: 224, y: 150, 'text-anchor': 'middle', fill: '#9A9A94', style: 'font:600 18px var(--font);letter-spacing:.08em', text: 'WBGT °C' }, A);
     ctx.aDot = mk('circle', { cx: ax(27), cy: ay(1), r: 11, fill: '#fff', filter: 'url(#fx-glow)' }, A);
     /* ---------- card C: injury risk bars (5 to 7 percent on 85 to 90 F days, 10 to 15 percent above 100 F) */
-    const C = ctx.q('.ch-chart2'), BASE = 112, K = 5;
+    const C = ctx.q('.ch-chart2'), BASE = 118, K = 6;
     mk('line', { x1: 20, y1: BASE, x2: 620, y2: BASE, stroke: 'rgba(255,255,255,.22)', 'stroke-width': 2 }, C);
     const bars = [[60, '60s °F', null], [265, '85–90 °F', [5, 7, '+5–7%']], [470, 'Over 100 °F', [10, 15, '+10–15%']]];
     ctx.cb = bars.map(([x, lab, v]) => {
-      mk('text', { x: x + 55, y: 140, 'text-anchor': 'middle', fill: '#D9D9D4', style: 'font:600 20px var(--font)', text: lab }, C);
+      mk('text', { x: x + 55, y: 146, 'text-anchor': 'middle', fill: '#D9D9D4', style: 'font:600 20px var(--font)', text: lab }, C);
       if (!v) { mk('rect', { x, y: BASE - 4, width: 110, height: 4, rx: 2, fill: 'rgba(255,255,255,.5)' }, C); mk('text', { x: x + 55, y: BASE - 14, 'text-anchor': 'middle', fill: '#9A9A94', style: 'font:600 20px var(--font)', text: 'Base' }, C); return null; }
       const ext = mk('rect', { x, y: BASE, width: 110, height: 0, rx: 8, fill: 'rgba(255,179,102,.38)', stroke: 'rgba(255,179,102,.8)', 'stroke-width': 1.5, 'stroke-dasharray': '6 5' }, C);
       const sol = mk('rect', { x, y: BASE, width: 110, height: 0, rx: 8, fill: 'url(#ch-bar)', filter: 'url(#fx-glow-u)' }, C);
@@ -176,7 +175,7 @@ Deck.add({
     const T = (d) => ({ v: 0, t: 0, d, hold: 0 });
     ctx.S = { heat: T(1.5), a: T(1.9), b1: T(1.2), b2: T(1.2), c: T(1.1), d1: T(1.1), d2: T(1.3), p1: T(1.3), p2: T(1.3) };
     ctx.setT = (k, t, snap, hold) => { const s = ctx.S[k]; s.t = t; s.hold = snap ? 0 : (hold || 0) / 1000; if (snap) s.v = t; };
-    const WC = 374, WR = 440;
+    const WC = 340, WR = 400;
     ctx.render = () => {
       const S = ctx.S, ez = E.outCubic;
       const h = E.inOutCubic(S.heat.v), top = BY - (BY - 322) * h;

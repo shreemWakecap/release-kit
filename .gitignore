@@ -11,3 +11,5 @@ presentation/live.json
 four-videos/tour/qa/
 four-videos/tour/out/raw*/
 *.log
+presentation/ideas-bank/dev/
+presentation/ideas-bank/qa/
