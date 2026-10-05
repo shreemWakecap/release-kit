@@ -32,7 +32,7 @@ Deck.add({
     const LY = [364, 516, 668, 820], QY = [404, 592, 780];
     return `
     <h2 class="h2 st-h" data-step="0">One system, <span class="o glow-text">four data streams.</span></h2>
-    <p class="lead st-lead" data-step="0" data-step-out="2" data-delay="200">Each one sits in its own service.</p>
+    <p class="lead st-lead">Each one sits in its own service.</p>
     <svg class="st-svg" viewBox="0 0 1920 1080" width="1920" height="1080"></svg>
     <div class="st-pan-h">${L.map((l, i) => `<div class="st-lane glass" data-k="${i}" style="top:${LY[i] - 52}px;--c:${l.c};--i:${i}"><span class="st-ic">${ico(l.k, 34)}</span><span class="st-tx"><b class="st-name">${l.n}</b><span class="st-sub">${l.s}</span></span></div>`).join('')}</div>
     ${Q.map((q, k) => `<div class="st-q glass sweepable" data-step="3" data-delay="${k * 1200}" data-k="${k}" style="top:${QY[k] - 75}px">
@@ -42,7 +42,8 @@ Deck.add({
   })(),
   css: `
     .s-streams .st-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
-    .s-streams .st-lead{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
+    .s-streams .st-lead{position:absolute;left:96px;top:196px;width:1500px;font-size:27px;transition:opacity .6s var(--ease)}
+    .s-streams.s2 .st-lead{opacity:0}
     .s-streams .st-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
     .s-streams .st-pan-h{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none;transform:translateX(506px);transition:transform 1.4s var(--ease)}
     .s-streams .pan{transform:translateX(506px);transition:transform 1.4s var(--ease)}
@@ -90,8 +91,8 @@ Deck.add({
     .s-streams .st-close{position:absolute;left:96px;top:912px;width:1728px;display:flex;align-items:center;justify-content:center;gap:30px}
     .s-streams .st-close b{font:800 46px/1.1 var(--font);letter-spacing:-.025em;color:#fff}
     .s-streams .st-chip{color:#C58BFF;border:2px dashed #C58BFF;background:rgba(197,139,255,.1);font:800 26px/1 var(--font);padding:13px 24px;box-shadow:0 0 24px rgba(197,139,255,.25)}
-    .s-streams.no-trans .st-pan-h,.s-streams.no-trans .pan,.s-streams.no-trans .st-name,.s-streams.no-trans .st-sub,.s-streams.no-trans .st-lane,.s-streams.no-trans .ln,.s-streams.no-trans .jch,.s-streams.no-trans .jn,.s-streams.no-trans .rv,.s-streams.no-trans .wall,.s-streams.no-trans .hub,.s-streams.no-trans .out,
-    body.calm .s-streams .st-pan-h,body.calm .s-streams .pan,body.calm .s-streams .st-name,body.calm .s-streams .st-sub,body.calm .s-streams .st-lane,body.calm .s-streams .ln,body.calm .s-streams .jch,body.calm .s-streams .jn,body.calm .s-streams .rv,body.calm .s-streams .wall,body.calm .s-streams .hub,body.calm .s-streams .out{transition:none!important}
+    .s-streams.no-trans .st-lead,.s-streams.no-trans .st-pan-h,.s-streams.no-trans .pan,.s-streams.no-trans .st-name,.s-streams.no-trans .st-sub,.s-streams.no-trans .st-lane,.s-streams.no-trans .ln,.s-streams.no-trans .jch,.s-streams.no-trans .jn,.s-streams.no-trans .rv,.s-streams.no-trans .wall,.s-streams.no-trans .hub,.s-streams.no-trans .out,
+    body.calm .s-streams .st-lead,body.calm .s-streams .st-pan-h,body.calm .s-streams .pan,body.calm .s-streams .st-name,body.calm .s-streams .st-sub,body.calm .s-streams .st-lane,body.calm .s-streams .ln,body.calm .s-streams .jch,body.calm .s-streams .jn,body.calm .s-streams .rv,body.calm .s-streams .wall,body.calm .s-streams .hub,body.calm .s-streams .out{transition:none!important}
     body.calm .s-streams .hub-r2{animation:none!important}`,
   init(ctx) {
     const svg = ctx.q('.st-svg'), mk = Fx.el;
