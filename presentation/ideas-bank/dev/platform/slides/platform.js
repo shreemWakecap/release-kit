@@ -16,16 +16,16 @@ const PL_IC = {
 };
 const PL_PP = '<svg class="pl-pp" viewBox="0 0 44 56" width="44" height="56" aria-hidden="true"><circle cx="22" cy="14" r="8"/><path d="M5 50C5 30 39 30 39 50Z"/></svg>';
 Deck.add({
-  id: 'platform', section: 'tech', title: 'Part of a bigger system', kicker: 'The paths · Around us', reality: ['code', 'vision'],
+  id: 'platform', section: 'tech', title: 'The system around Connected Environment', kicker: 'The paths · Around us', reality: ['code', 'vision'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4200, 5200, 5200, 5200, 6000], minutes: 1.2,
   notes: [
-    'Connected Environment is not alone. It sits inside a bigger system.',
-    'Step 1: data comes in. Sensors send weather and lightning. The gas maker sends gas.',
-    'Step 2: alerts go out. They land in the Observation Manager. Rules choose who gets told.',
-    'Step 3: zones and the helmet alarm run next to us. Nothing joins them to us yet.',
-    'Step 4: work permits and equipment are their own services. They could join too.',
-    'Nobody has built these links. A person would approve every action.',
-    'If asked: weather comes through the sensors service, lightning through a queue, and gas from the maker cloud. Gas alerts do not reach the Observation Manager yet. The Observation Manager takes nine sources, permits among them. Weather alerts carry no zone yet, so rules cannot aim at a zone. The safety service can ring helmets by zone, but no rule calls it. Permits and equipment have their own databases. Read from the code, deploy not verified.',
+    'Connected Environment sits inside a bigger system.',
+    'Step 1: data comes in from sensors and the gas maker.',
+    'Step 2: alerts go out, and rules choose who gets told.',
+    'Step 3: zones and the helmet alarm run beside us, not joined.',
+    'Step 4: work permits and equipment are separate services that could join.',
+    'Nobody has built these links, and a person would approve every action.',
+    'If asked: weather comes through the sensors service, lightning through a queue, and gas from the maker’s cloud. The device list is the node registry, and gas devices are not in it. Gas alerts do not reach the Observation Manager yet. The Observation Manager takes nine sources: connected worker, AVL, CCTV, manual, QR code, clinic violation, training center, digital work permit and weather station. Weather alerts carry no zone yet, so rules cannot aim at a zone. The safety service can ring helmets by zone, but no rule calls it. Permits and equipment have their own databases. Read from the code, deploy not verified.',
   ].join('\n'),
   html: `
     <h2 class="h2 pl-h" data-step="0">Part of a <span class="o glow-text">bigger system.</span></h2>
@@ -58,8 +58,8 @@ Deck.add({
     .s-platform .pl-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
     .s-platform .pl-w{position:absolute}
     .s-platform .pl-hd{position:absolute;top:252px;padding-bottom:14px;border-bottom:1.5px solid rgba(255,255,255,.14);font:800 20px/1 var(--font);letter-spacing:.2em;text-transform:uppercase;color:#8E8E89}
-    .s-platform .pl-halo{position:absolute;inset:0;border-radius:30px;border:2px solid var(--wc-orange);opacity:0;animation:plHalo 3.2s var(--ease) infinite}
-    @keyframes plHalo{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.16,1.2);opacity:0}}
+    .s-platform .pl-halo{position:absolute;inset:0;border-radius:30px;border:2px solid var(--wc-orange);opacity:0;animation:platHalo 3.2s var(--ease) infinite}
+    @keyframes platHalo{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.16,1.2);opacity:0}}
     .s-platform .pl-core{position:relative;width:100%;height:100%}
     .s-platform .pl-core-t{position:absolute;left:32px;top:28px;font:800 34px/1 var(--font);color:#fff}
     .s-platform .pl-chip{position:absolute;left:24px;right:24px;height:56px;display:flex;align-items:center;gap:16px;padding:0 22px;border-radius:16px;border:2px solid var(--c);background:rgba(0,0,0,.42);font:700 28px/1 var(--font);color:#fff}

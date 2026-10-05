@@ -12,11 +12,12 @@ Deck.add({
     'Step 3: a model puts lost work at 639 billion hours.',
     'Step 4: in the US, building sites hold 7 in 100 workers.',
     'But they see about 1 in 3 heat deaths.',
-    'If asked: workers and lives come from the ILO, report published April 2024, 2020 data. At least 2.41 billion workers in excessive heat, with 22.85 million injuries and 18,970 deaths a year. These are modelled estimates. Hours come from The Lancet Countdown 2025 report, 2024 data: 639 billion potential work hours lost, 98 percent above the 1990 to 1999 average. It is a modelled potential loss, not a count. Building sites come from the CPWR Data Bulletin, August 2025, 2023 data, USA: construction is 7 percent of the US workforce and 34.0 percent of heat deaths, which is 18 deaths. Say about 1 in 3. Lightning and gas have no verified outside numbers, so this slide leaves them out.',
+    'If asked: ILO, 2020 data, report published April 2024. At least 2.41 billion workers in excessive heat, and 18,970 deaths a year. These are modelled estimates. The Lancet Countdown 2025 report, 2024 data: 639 billion potential work hours lost. It is a modelled potential loss, not a count. CPWR Data Bulletin, August 2025, 2023 data, USA: construction is 7 percent of US workers and 34.0 percent of heat deaths, which is 18 deaths. Say about 1 in 3. Lightning and gas have no verified outside numbers, so this slide leaves them out.',
   ].join('\n'),
   html: `
     <h2 class="h2 sl-h" data-step="0">What a wrong decision <span class="o glow-text">costs</span></h2>
     <p class="lead sl-sub" data-step="0" data-delay="200">Heat, worldwide.</p>
+    <div class="sl-haze" aria-hidden="true"></div>
     <svg class="sl-svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="A crowd of workers heats up. Two cards show lives lost and work hours lost. A bar chart shows building sites in the US."></svg>
     <div class="sl-who" data-step="1">
       <div class="sl-pre">At least</div>
@@ -59,7 +60,7 @@ Deck.add({
     .s-stakes-lives .sl-n.sl-red{text-shadow:0 0 34px rgba(255,77,77,.55),0 0 90px rgba(255,77,77,.25)}
     .s-stakes-lives .sl-u{font:700 46px/1 var(--font);color:#D9D9D4}
     .s-stakes-lives .sl-lab{margin-top:10px;font:500 30px/1.15 var(--font);color:#D9D9D4;white-space:nowrap}
-    .s-stakes-lives .src{color:#9A9A94}
+    .s-stakes-lives .src{color:#9A9A94;font-size:18px}
     .s-stakes-lives .sl-who .src{margin-top:8px}
     .s-stakes-lives .sl-card{position:absolute;top:500px;width:852px;height:290px}
     .s-stakes-lives .sl-lives{left:96px}
@@ -84,9 +85,9 @@ Deck.add({
     .s-stakes-lives .sl-row .tr{position:relative;flex:none;width:1200px;height:26px;border-radius:13px;background:rgba(255,255,255,.09)}
     .s-stakes-lives .sl-row .f{position:absolute;left:0;top:0;height:26px;width:0;border-radius:13px;background:linear-gradient(90deg,#E9590C,#FFB366);box-shadow:0 0 22px rgba(255,131,0,.55)}
     .s-stakes-lives .sl-row .v{position:absolute;top:-4px;left:0;font:800 34px/1 var(--font);color:#fff;white-space:nowrap;opacity:0}
-    .s-stakes-lives .sl-haze{transform-box:fill-box;transform-origin:center}
+    .s-stakes-lives .sl-haze{position:absolute;left:528px;top:214px;width:1360px;height:260px;border-radius:50%;pointer-events:none;opacity:0;will-change:transform,opacity;background:radial-gradient(closest-side,rgba(255,131,0,.7),rgba(233,89,12,.32) 60%,rgba(233,89,12,0))}
     .s-stakes-lives.active .sl-haze{animation:slBreath 4.6s ease-in-out infinite}
-    @keyframes slBreath{50%{transform:scale(1.07,1.12)}}
+    @keyframes slBreath{50%{transform:scale(1.05,1.1)}}
     body.calm .s-stakes-lives *{animation:none!important}
     body.calm .s-stakes-lives .sl-ring{opacity:0}`,
   init(ctx) {
@@ -98,14 +99,8 @@ Deck.add({
     const defs = mk('defs');
     const lg = mk('linearGradient', { id: 'sl-trail', x1: 0, y1: 0, x2: 1, y2: 0 }, defs);
     mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': 0 }, lg); mk('stop', { offset: 1, 'stop-color': '#FFB366', 'stop-opacity': .5 }, lg);
-    const hz = mk('radialGradient', { id: 'sl-haze', cx: .5, cy: .5, r: .5 }, defs);
-    mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': .7 }, hz); mk('stop', { offset: .6, 'stop-color': '#E9590C', 'stop-opacity': .32 }, hz); mk('stop', { offset: 1, 'stop-color': '#E9590C', 'stop-opacity': 0 }, hz);
-    /* ghost frames: where the cards will land (they fade as each card arrives) */
-    [[96, 500, 852, 290, 2], [972, 500, 852, 290, 3], [96, 822, 1728, 150, 4]].forEach(([x, y, w, h, out]) => {
-      mk('rect', { x, y, width: w, height: h, rx: 28, fill: 'none', stroke: 'rgba(255,255,255,.14)', 'stroke-width': 2, 'stroke-dasharray': '10 9', 'data-step': 0, 'data-step-out': out });
-    });
-    /* heat glow behind the crowd */
-    ctx.glow = mk('ellipse', { class: 'sl-haze', cx: X0 + (COLS * PX) / 2, cy: Y0 + 52, rx: 680, ry: 130, fill: 'url(#sl-haze)', opacity: 0 });
+    /* heat glow behind the crowd (a plain layer, so its slow breathing never repaints the svg) */
+    ctx.glow = ctx.q('.sl-haze');
     /* the crowd: 3 rows x 36 workers, one group per column so a wave of heat can sweep across */
     const crowd = mk('g', {});
     ctx.cols = [];
@@ -157,7 +152,7 @@ Deck.add({
       ctx.cols.forEach((g, c) => { const k = clamp(lead - c, 0, 1); g.setAttribute('fill', mix(k)); if (k > .02) g.setAttribute('filter', 'url(#fx-glow)'); else g.removeAttribute('filter'); });
       ctx.band.setAttribute('transform', `translate(${(X0 + lead * PX - 6).toFixed(1)} 0)`);
       ctx.band.setAttribute('opacity', (clamp(p * 10, 0, 1) * clamp((1 - p) * 10, 0, 1)).toFixed(2));
-      ctx.glow.setAttribute('opacity', (clamp(p * 1.6, 0, 1) * .8).toFixed(2));
+      ctx.glow.style.opacity = (clamp(p * 1.6, 0, 1) * .85).toFixed(2);
       ctx.n.who.textContent = Fx.fmt(2.41 * ez(p), 2);
       ctx.n.lives.textContent = Fx.fmt(Math.round(18970 * ez(S.lives.v)), 0);
       ctx.n.hours.textContent = Fx.fmt(Math.round(639 * ez(S.hours.v)), 0);

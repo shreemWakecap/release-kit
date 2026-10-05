@@ -20,6 +20,7 @@ Deck.add({
     <div class="sr-count" data-step="0" data-delay="300"><b class="sr-n">0</b><span class="sr-of">of 13 checked</span></div>
     <div class="sr-hd" data-step="0" data-delay="250"><span style="left:22px">Number</span><span style="left:290px">What it is</span><span style="left:914px">Who and when</span><span style="left:1314px">Note</span><span style="left:1560px">Checked</span></div>
     <div class="sr-table"></div>
+    <div class="sr-fn" data-step="2"><b>WBGT</b> counts heat, humidity and sun together.</div>
     <div class="sr-beam"></div>
     <div class="sr-detail"><b></b><span></span></div>`,
   css: `
@@ -29,7 +30,7 @@ Deck.add({
     .s-sources .sr-lead .lb{opacity:0;transform:translateY(14px);color:#FFC24B}
     .s-sources .sr-lead.b .la{opacity:0;transform:translateY(-14px)}
     .s-sources .sr-lead.b .lb{opacity:1;transform:none}
-    .s-sources .sr-lead.hov span{opacity:0}
+    .s-sources .sr-lead.hov span{opacity:0!important}
     .s-sources .sr-count{position:absolute;right:96px;top:112px;display:flex;align-items:baseline;gap:16px;white-space:nowrap}
     .s-sources .sr-n{font:900 92px/1 var(--font);letter-spacing:-.03em;color:#fff;text-shadow:0 0 34px rgba(255,131,0,.6),0 0 90px rgba(255,131,0,.28);font-variant-numeric:tabular-nums;display:inline-block;min-width:96px;text-align:right}
     .s-sources .sr-n.tick{animation:srTick .45s var(--ease)}
@@ -38,12 +39,15 @@ Deck.add({
     .s-sources .sr-hd{position:absolute;left:96px;top:264px;width:1728px;height:26px}
     .s-sources .sr-hd span{position:absolute;top:0;font:700 19px/26px var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--mut2);white-space:nowrap}
     .s-sources .sr-table{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
-    .s-sources .sr{position:absolute;left:96px;width:1728px;height:48px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);pointer-events:auto;transition:background .3s,border-color .3s,box-shadow .5s}
+    .s-sources .sr,.s-sources .sr-g{position:absolute;left:96px;width:1728px;height:46px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,.055),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);pointer-events:auto;transition:background .3s,border-color .3s,box-shadow .5s}
+    .s-sources .sr-g{background:rgba(255,255,255,.012);border:1px dashed rgba(255,255,255,.1);pointer-events:none;transition:none}
     .s-sources .sr:not(.in){pointer-events:none}
+    .s-sources .sr-fn{position:absolute;left:96px;top:958px;font:500 19px/26px var(--font);color:var(--mut);white-space:nowrap}
+    .s-sources .sr-fn b{color:#fff;font-weight:700}
     .s-sources .sr:hover{background:linear-gradient(90deg,rgba(255,131,0,.2),rgba(255,131,0,.06));border-color:rgba(255,131,0,.55)}
-    .s-sources .sr-bar{position:absolute;left:-1px;top:8px;width:4px;height:30px;border-radius:2px;background:linear-gradient(180deg,#FFB366,#FF8300);box-shadow:0 0 14px rgba(255,131,0,.7)}
+    .s-sources .sr-bar{position:absolute;left:-1px;top:7px;width:4px;height:30px;border-radius:2px;background:linear-gradient(180deg,#FFB366,#FF8300);box-shadow:0 0 14px rgba(255,131,0,.7)}
     .s-sources .sr.tg .sr-bar{background:linear-gradient(180deg,#FFD479,#F5A524);box-shadow:0 0 14px rgba(245,165,36,.7)}
-    .s-sources .sr>b,.s-sources .sr>span,.s-sources .sr>a{position:absolute;top:0;height:46px;display:flex;align-items:center;white-space:nowrap}
+    .s-sources .sr>b,.s-sources .sr>span,.s-sources .sr>a{position:absolute;top:0;height:44px;display:flex;align-items:center;white-space:nowrap}
     .s-sources .sr-v{left:22px;width:262px;font:800 28px/1 var(--font);letter-spacing:-.01em;color:#fff}
     .s-sources .sr-l{left:290px;width:612px;font:500 24px/1 var(--font);color:#E3E3DF}
     .s-sources .sr-w{left:914px;width:390px;font:500 20px/1 var(--font);letter-spacing:.01em;color:var(--mut)}
@@ -60,7 +64,7 @@ Deck.add({
     @keyframes srPulse{50%{box-shadow:0 0 0 2px rgba(245,165,36,.9),0 0 46px rgba(245,165,36,.5);border-color:rgba(245,165,36,.9)}}
     .s-sources .sr-beam{position:absolute;left:96px;width:1728px;height:3px;top:296px;border-radius:2px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,#FFB366 18%,#fff 50%,#FFB366 82%,transparent);box-shadow:0 0 30px 8px rgba(255,131,0,.55)}
     .s-sources .sr-beam.go{animation:srBeam 1.7s cubic-bezier(.45,0,.3,1) both}
-    @keyframes srBeam{0%{opacity:0;transform:translateY(0)}8%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translateY(664px)}}
+    @keyframes srBeam{0%{opacity:0;transform:translateY(0)}8%{opacity:1}92%{opacity:1}100%{opacity:0;transform:translateY(648px)}}
     .s-sources .sr-detail{position:absolute;left:96px;top:192px;width:1370px;height:62px;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s;pointer-events:none;overflow:hidden}
     .s-sources .sr-detail b,.s-sources .sr-detail span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .s-sources .sr-detail b{font:700 23px/32px var(--font);color:#fff}
@@ -72,12 +76,12 @@ Deck.add({
     const mk = Fx.el;
     /* 13 rows: the fixed shortlist of verified claims. figure, publisher, year and link are copied from research/verified-numbers. */
     const ROWS = [
-      { id: 'S1-03', s: 1, v: '2.41 billion', l: 'workers in too much heat', w: 'ILO · 2020 data, 2024 report', pub: 'International Labour Organization (ILO)', yr: '2020 data, report published April 2024', t: 'Ensuring safety and health at work in a changing climate: Report at a glance', u: 'https://www.ilo.org/media/535301/download' },
+      { id: 'S1-03', s: 1, v: '2.41 billion', l: 'workers facing heat', w: 'ILO · 2020 data, 2024 report', pub: 'International Labour Organization (ILO)', yr: '2020 data, report published April 2024', t: 'Ensuring safety and health at work in a changing climate: Report at a glance', u: 'https://www.ilo.org/media/535301/download' },
       { id: 'S1-05', s: 1, v: '8 in 10', l: 'heat injuries outside heatwaves', w: 'ILO · 2020 data, 2024 report', pub: 'International Labour Organization (ILO)', yr: '2020 data, published July 2024', t: 'More workers than ever are losing the fight against heat stress', u: 'https://www.ilo.org/resource/news/more-workers-ever-are-losing-fight-against-heat-stress' },
-      { id: 'S1-09', s: 1, v: '10 to 15%', l: 'injury risk above 100 °F', w: 'IZA · 2021 paper, California', pub: 'IZA Institute of Labor Economics', yr: '2001 to 2018 data, paper 2021, California', t: 'Temperature, Workplace Safety, and Labor Market Inequality (IZA Discussion Paper 14560)', u: 'https://docs.iza.org/dp14560.pdf' },
-      { id: 'S1-18', s: 1, v: '34.0%', l: 'US heat deaths in building work', w: 'CPWR · 2023 data, 2025 bulletin', pub: 'CPWR, The Center for Construction Research and Training', yr: '2023 data, bulletin 2025', t: 'Data Bulletin: Heat Injuries and Illnesses among Construction Workers', u: 'https://stacks.cdc.gov/view/cdc/260013/cdc_260013_DS1.pdf' },
+      { id: 'S1-09', s: 1, v: '10 to 15%', l: 'injury risk over 100 °F', w: 'IZA · 2021 paper, California', pub: 'IZA Institute of Labor Economics', yr: '2001 to 2018 data, paper 2021, California', t: 'Temperature, Workplace Safety, and Labor Market Inequality (IZA Discussion Paper 14560)', u: 'https://docs.iza.org/dp14560.pdf' },
+      { id: 'S1-18', s: 1, v: '34.0%', l: 'US heat deaths in building', w: 'CPWR · 2023 data, 2025 bulletin', pub: 'CPWR, The Center for Construction Research and Training', yr: '2023 data, bulletin 2025', t: 'Data Bulletin: Heat Injuries and Illnesses among Construction Workers', u: 'https://stacks.cdc.gov/view/cdc/260013/cdc_260013_DS1.pdf' },
       { id: 'S1-07', s: 2, v: '29.5 °C WBGT', l: 'heavy work: half rest', w: 'Global Health Action · 2009', pub: 'Global Health Action (Taylor & Francis)', yr: '2009', t: 'Workplace heat stress, health and productivity: an increasing challenge for low and middle-income countries during climate change', u: 'https://doi.org/10.3402/gha.v2i0.2047' },
-      { id: 'S1-08', s: 2, v: '2 to 3%', l: 'less work per degree over 20 °C WBGT', w: 'WHO and WMO · 2025', pub: 'World Health Organization (WHO) and World Meteorological Organization (WMO)', yr: '2025', t: 'WHO, WMO issue new report and guidance to protect workers from increasing heat stress', u: 'https://www.who.int/news/item/22-08-2025-who-wmo-issue-new-report-and-guidance-to-protect-workers-from-increasing-heat-stress' },
+      { id: 'S1-08', s: 2, v: '2 to 3%', l: 'less work per degree over 20 °C', w: 'WHO and WMO · 2025', pub: 'World Health Organization (WHO) and World Meteorological Organization (WMO)', yr: '2025', t: 'WHO, WMO issue new report and guidance to protect workers from increasing heat stress', u: 'https://www.who.int/news/item/22-08-2025-who-wmo-issue-new-report-and-guidance-to-protect-workers-from-increasing-heat-stress' },
       { id: 'S1-06', s: 2, v: '639 billion', l: 'work hours lost, 2024', w: 'Lancet Countdown · 2024', tag: 'Model estimate', pub: 'The Lancet Countdown (manuscript hosted by LSE Research Online)', yr: '2024, modelled potential loss', t: 'The 2025 report of the Lancet Countdown on health and climate change: climate change action offers a lifeline', u: 'https://researchonline.lse.ac.uk/id/eprint/130009/1/FINAL_-_2025_Report_of_the_Lancet_Countdown.pdf' },
       { id: 'S1-01', s: 2, v: '2.2%', l: 'of work hours lost, 2030', w: 'ILO · 2019 report', tag: 'Forecast', pub: 'International Labour Organization (ILO)', yr: '2030 projection, published 2019', t: 'Increase in heat stress predicted to bring productivity loss equivalent to 80 million jobs', u: 'https://www.ilo.org/resource/news/increase-heat-stress-predicted-bring-productivity-loss-equivalent-80' },
       { id: 'S1-16', s: 3, v: 'US$7.8 billion', l: 'cost a year, US heat rule', w: 'OSHA · 2024 proposal', tag: 'Draft rule estimate', pub: 'US Occupational Safety and Health Administration (OSHA), Department of Labor', yr: '2024 proposal, 2023 dollars, data 2011 to 2022', t: 'Heat Injury and Illness Prevention in Outdoor and Indoor Work Settings (proposed rule)', u: 'https://www.govinfo.gov/content/pkg/FR-2024-08-30/pdf/2024-14824.pdf' },
@@ -86,11 +90,12 @@ Deck.add({
       { id: 'S4-02', s: 3, v: '3.94%', l: 'of world GDP lost', w: 'ILO · announced 2017', pub: 'International Labour Organization (ILO)', yr: 'announced 4 September 2017', t: 'ILO head calls for global coalition on safety and health at work', u: 'https://www.ilo.org/global/about-the-ilo/newsroom/news/WCMS_573118/lang--en/index.htm' },
       { id: 'S4-04', s: 3, v: '1 in 6', l: 'fatal accidents on building sites', w: 'ILO · 2017', pub: 'International Labour Organization (ILO)', yr: '2017', t: 'ILO and IIRSM social dialogue on occupational health and safety calls for improved safety in the construction industry', u: 'https://www.ilo.org/resource/news/ilo-and-iirsm-social-dialogue-occupational-health-and-safety-calls-improved' },
     ];
-    const TOP = 300, PITCH = 52, N = ROWS.length;
+    const TOP = 300, PITCH = 50, N = ROWS.length;
     ctx.q('.sr-of').textContent = 'of ' + N + ' checked';
     const table = ctx.q('.sr-table'), det = ctx.q('.sr-detail'), lead = ctx.q('.sr-lead');
     const CHECK = '<svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="rgba(255,131,0,.2)" stroke="#FF8300" stroke-width="2.2"/><path d="M8.5 15.5l4.4 4.4 8.6-9.8" fill="none" stroke="#FFD2A3" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>';
+    ROWS.forEach((r, i) => { const g = mk('div', { class: 'sr-g' }, table); g.style.top = (TOP + i * PITCH) + 'px'; });
     const idxInStep = {}; ctx.rows = []; ctx.stepRows = { 1: [], 2: [], 3: [] };
     ROWS.forEach((r, i) => {
       const j = idxInStep[r.s] = (idxInStep[r.s] || 0) + 1, delay = (j - 1) * 150;

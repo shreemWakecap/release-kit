@@ -7,11 +7,11 @@ Deck.add({
   reality: ['code', 'live'], steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4000, 5400, 5400, 5400, 6400], minutes: 1.3,
   notes: [
     'Gas has no mesh and no Modbus.',
-    'The maker keeps the readings in its cloud, and we ask for them every 45 seconds.',
+    'The maker keeps the readings, and we ask for them every 45 seconds.',
     'One call brings back the whole fleet.',
-    'If a reading goes over the High alarm, we open an alert.',
+    'A reading over the High alarm opens an alert.',
     'Four kinds of alert are critical: high gas, SOS, fall and tipped over.',
-    'A person confirms and closes an alert in WakeCap. Nothing goes back to the maker.',
+    'People confirm and close alerts in WakeCap, and the maker is never told.',
     'If asked: the maker is Blackline. WakeCap makes one GET device call per tick, and it returns every detector with its newest readings, online flag, battery and open alerts. Detectors upload about every 30 minutes, so a reading can be up to about 30 minutes old. Each reading is stored once, with the detector time. An alert opens when a new reading is strictly over its High alarm, for example above 10 ppm for H2S, and closes when a reading is at or under it. A low oxygen reading never opens an alert. The four critical types are high gas, SOS, fall and tipped over. The page button says Acknowledge. Closing happens only in WakeCap, so an alert closed here stays open in the maker cloud. New critical alerts are also handed to the Observation Manager; that is merged and on test only, and not yet seen working end to end. The screens are live on production.',
   ].join('\n'),
   html: `
@@ -22,6 +22,8 @@ Deck.add({
     .s-flow-gas .gs-title{position:absolute;left:96px;top:104px;width:1500px;font-size:62px}
     .s-flow-gas .gs-lead{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
     .s-flow-gas .fg-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+    .s-flow-gas .fg-row1{transform:translateY(140px);transition:transform 1.1s var(--ease)}
+    .s-flow-gas.a1 .fg-row1{transform:none}
     .s-flow-gas .fg-card{stroke:rgba(255,255,255,.16);stroke-width:2}
     .s-flow-gas .fg-card.hot{stroke:rgba(255,131,0,.6);filter:drop-shadow(0 0 16px rgba(255,131,0,.18))}
     .s-flow-gas .fg-tabbg{fill:#0B0B0C;stroke:rgba(255,255,255,.22);stroke-width:1.5}
@@ -95,7 +97,7 @@ Deck.add({
     .s-flow-gas .fg-open text{font:700 22px/1 var(--font);fill:#FFC9C9;text-anchor:middle}
     .s-flow-gas.nt [class*="fg-"],.s-flow-gas.no-trans [class*="fg-"]{transition:none!important}`,
   init(ctx) {
-    const svg = ctx.q('.fg-svg'), mk = (t, a, p) => Fx.el(t, a, p || svg);
+    const svg = ctx.q('.fg-svg'); let host = svg; const mk = (t, a, p) => Fx.el(t, a, p || host);
     const GRN = '#2BD576', ORG = '#FF8300', AMB = '#FFC24B', RED = '#FF4D4D', BLUE = '#4FB3FF';
     const grp = (cls, a, p) => mk('g', Object.assign({ class: cls }, a || {}), p);
     const rev = (cls, step, delay) => grp(cls, { 'data-step': step, 'data-fx': 'fade', 'data-delay': delay || 0 });
@@ -142,7 +144,8 @@ Deck.add({
       ' C' + [[-108, 44], [-112, -4], [-82, -10], [-86, -48], [-34, -62], [-16, -30], [0, -56], [56, -52], [62, -12], [96, -12], [106, 44], [74, 44]]
         .map(([x, y]) => (cx + x * s) + ' ' + (cy + y * s)).join(' ') + ' Z';
 
-    /* =========================================================== row 1: the loop */
+    /* =========================================================== row 1: the loop (starts low, glides up at step 2) */
+    host = grp('fg-row1');
     /* detectors */
     const D = rev('gs-det', 0, 250);
     card(D, 96, 290, 330, 258, 'Detectors');
@@ -188,11 +191,13 @@ Deck.add({
     mk('path', { class: 'fg-line', d: 'M1204 384 L996 384' }, LN);
     mk('polygon', { class: 'fg-ah', points: '980,384 994,376 994,392' }, LN);
     mk('text', { class: 'fg-lab', x: 1092, y: 358, text: 'One call' }, LN);
+    mk('text', { class: 'fg-lab', x: 1080, y: 512, text: 'Whole fleet' }, LN);
     const ansD = [0, 1, 2, 3, 4].map((i) => `M988 474 L1196 474 C1296 474 1306 ${357 + i * 38} 1372 ${357 + i * 38}`);
     ansD.forEach((d) => mk('path', { class: 'fg-line', d, 'stroke-width': 2 }, LN));
     const callPk = packet('M1204 384 L996 384', ORG, 7);
     const ansPk = ansD.map((d) => packet(d, GRN, 6));
 
+    host = svg;
     /* ---- poll loop: ring fills, one call goes out, the fleet comes back ---- */
     const PER = 5.2, REST = 2.7, ph = (t, a, b) => Math.max(0, Math.min(1, (t - a) / (b - a)));
     ctx.on = [false, false, false, false, false];
@@ -253,10 +258,10 @@ Deck.add({
       tip: (g) => { mk('rect', { class: 'ic', x: -26, y: 2, width: 46, height: 24, rx: 6 }, g); mk('path', { class: 'ic', d: 'M-14 14 H-8 M-26 -14 C-18 -28 4 -28 12 -16 M12 -16 L4 -16 M12 -16 L12 -8' }, g); },
     };
     ctx.chips = [['High gas', 'gas'], ['SOS', 'sos'], ['Fall', 'fall'], ['Tipped over', 'tip']].map(([name, ic], i) => {
-      const x = 706 + (i % 2) * 248, y = 652 + Math.floor(i / 2) * 148, g = grp('fg-chip', {}, B);
-      mk('rect', { x, y, width: 228, height: 126, rx: 22 }, g);
-      icons[ic](mk('g', { transform: `translate(${x + 50} ${y + 63})` }, g));
-      mk('text', { x: x + 92, y: y + 73, text: name }, g);
+      const x = 704 + (i % 2) * 266, y = 652 + Math.floor(i / 2) * 148, g = grp('fg-chip', {}, B);
+      mk('rect', { x, y, width: 246, height: 126, rx: 22 }, g);
+      icons[ic](mk('g', { transform: `translate(${x + 46} ${y + 63}) scale(.92)` }, g));
+      mk('text', { x: x + 86, y: y + 73, text: name }, g);
       return g;
     });
 

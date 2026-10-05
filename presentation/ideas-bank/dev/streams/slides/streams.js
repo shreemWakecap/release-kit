@@ -75,8 +75,8 @@ Deck.add({
     .s-streams .hub{opacity:0;transform:scale(.6);transform-box:fill-box;transform-origin:center;transition:opacity .8s var(--ease) .9s,transform 1s cubic-bezier(.2,1.2,.3,1) .9s}
     .s-streams.s2 .hub{opacity:1;transform:none}
     .s-streams .hub-t{font:900 30px/1 var(--font);letter-spacing:.3em;fill:#fff;filter:drop-shadow(0 0 14px rgba(197,139,255,.8))}
-    .s-streams.active .hub-r2{animation:stRot 28s linear infinite;transform-box:fill-box;transform-origin:center}
-    @keyframes stRot{to{transform:rotate(360deg)}}
+    .s-streams.active .hub-r2{animation:streamsRot 28s linear infinite;transform-box:fill-box;transform-origin:center}
+    @keyframes streamsRot{to{transform:rotate(360deg)}}
     .s-streams .out{opacity:0;transition:opacity .6s var(--ease)}
     .s-streams .out.on{opacity:1}
     /* questions */
@@ -100,7 +100,7 @@ Deck.add({
     const LY = [364, 516, 668, 820], X0 = 520, WALL = 800, JX = 1040, HUB = { x: 1122, y: 592, r: 82 }, QX = 1384, QY = [404, 592, 780];
     ctx.tm = [];
     ctx.later = (ms, fn) => { const id = ctx.after(ms, fn); ctx.tm.push(id); return id; };
-    const defs = mk('defs', {}, svg), rg = mk('radialGradient', { id: 'st-hubg', cx: .5, cy: .5, r: .5 }, defs);
+    const defs = mk('defs', {}, svg), rg = mk('radialGradient', { id: 'streams-hubg', cx: .5, cy: .5, r: .5 }, defs);
     mk('stop', { offset: 0, 'stop-color': '#E9D2FF', 'stop-opacity': .9 }, rg); mk('stop', { offset: .35, 'stop-color': '#C58BFF', 'stop-opacity': .5 }, rg); mk('stop', { offset: 1, 'stop-color': '#C58BFF', 'stop-opacity': 0 }, rg);
     ctx.laneEls = ctx.qa('.st-lane');
     const pan = mk('g', { class: 'pan' }, svg);
@@ -120,7 +120,7 @@ Deck.add({
     });
     /* the join */
     const hub = mk('g', { class: 'hub' }, pan);
-    mk('circle', { cx: HUB.x, cy: HUB.y, r: 200, fill: 'url(#st-hubg)', opacity: .55 }, hub);
+    mk('circle', { cx: HUB.x, cy: HUB.y, r: 200, fill: 'url(#streams-hubg)', opacity: .55 }, hub);
     mk('circle', { class: 'hub-r2', cx: HUB.x, cy: HUB.y, r: 106, fill: 'none', stroke: 'rgba(197,139,255,.65)', 'stroke-width': 2.4, 'stroke-dasharray': '4 12', 'stroke-linecap': 'round' }, hub);
     ctx.hubRing = mk('circle', { cx: HUB.x, cy: HUB.y, r: HUB.r, fill: 'rgba(18,12,28,.94)', stroke: '#C58BFF', 'stroke-width': 3.2, filter: 'url(#fx-glow-soft)' }, hub);
     mk('text', { class: 'hub-t', x: HUB.x + 5, y: HUB.y + 10, 'text-anchor': 'middle', text: 'JOIN' }, hub);

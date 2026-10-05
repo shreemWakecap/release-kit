@@ -11,12 +11,12 @@ Deck.add({
     'Step 3: hot days raise injury risk, and injuries can end lives.',
     'Step 4: prevention has a cost, but it can pay back.',
     'This is an illustration, not a WakeCap result.',
-    'If asked: step 1 is heavy work, about 400 watts, for an acclimatised worker in light clothing. Heat is measured as WBGT. At 27 degrees no rest is needed. At 29.5 degrees half of each hour is rest. At 31.5 degrees three quarters is rest, so 25 percent of the hour is work. At 36 degrees there is no work. Source: Global Health Action, 2009, Table 2. The line joins the published points. WHO and WMO say productivity drops 2 to 3 percent for every degree above 20 degrees WBGT, 2025. Step 2: The Lancet Countdown 2025 report, 2024 data: 639 billion potential work hours lost, 1.09 trillion US dollars, 0.99 percent of global GDP. It is a modelled potential loss. Step 3: IZA discussion paper 14560, California workers compensation claims, 2001 to 2018. Injury risk rises 5 to 7 percent on 85 to 90 degree Fahrenheit days and 10 to 15 percent above 100 degrees, against days in the 60s. About 20,000 extra injuries a year in California. ILO, 2020 data, modelled: 22.85 million injuries and 18,970 deaths a year. Step 4: US OSHA proposed rule, 2024, in 2023 dollars: cost 7.8 billion a year, benefit 9.179 billion a year, 531 deaths and 16,027 injuries prevented a year. The cost is net of assumed productivity savings. It is a projection in a proposal, not a final rule. Cal/OSHA 2023 proposal for indoor work in California: benefits 4.0 billion against about 1.0 billion cost over 10 years, 57 percent of the benefit from productivity.',
+    'If asked: step 1 is Global Health Action, 2009, Table 2. Heavy work, about 400 watts, heat measured as WBGT. 27 degrees needs no rest, 29.5 degrees half rest, 31.5 degrees three quarters rest, 36 degrees no work. The line joins the published points. WHO and WMO, 2025: productivity drops 2 to 3 percent for every degree above 20 degrees WBGT. Step 2 is The Lancet Countdown 2025 report, 2024 data: 639 billion potential hours and 1.09 trillion US dollars, a modelled loss. Step 3 is IZA paper 14560, California claims 2001 to 2018, against days in the 60s F. ILO, 2020 data: 22.85 million injuries and 18,970 deaths, modelled estimates. Step 4 is the US OSHA 2024 proposal, in 2023 dollars: cost 7.8 billion a year, benefit 9.179 billion a year, 531 deaths and 16,027 injuries prevented a year. The cost is net of assumed productivity savings. It is a projection, not a final rule. Cal/OSHA 2023, indoor work in California: 4.0 billion benefit against about 1.0 billion cost over 10 years.',
   ].join('\n'),
   html: `
     <h2 class="h2 ch-h" data-step="0">From heat to <span class="o glow-text">cost</span></h2>
-    <p class="lead ch-sub" data-step="0" data-delay="200">Each link has a published number.</p>
-    <div class="ch-hot" data-step="0" data-delay="300">Hot hours</div>
+    <div class="ch-hot" data-step="0" data-delay="300">Heat</div>
+    <div class="ch-haze" aria-hidden="true"></div>
     <svg class="ch-svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="A thermometer feeds a chain. Less work, lost money, more injuries, lives lost. Prevention pays back."></svg>
     <div class="ch-card glass sweepable ch-a" data-step="1">
       <div class="ch-lab">Less work</div>
@@ -28,7 +28,7 @@ Deck.add({
       <div class="ch-lab">Lost money</div>
       <span class="ch-chip">Modelled</span>
       <div class="ch-row r1"><svg class="ch-ic ic-clock" viewBox="-30 -30 60 60" width="52" height="52" aria-hidden="true"></svg><div class="ch-big"><b class="ch-n" data-k="hrs">0</b><span class="ch-u">billion hours</span></div></div>
-      <div class="ch-row r2"><svg class="ch-ic ic-coin" viewBox="-30 -30 60 60" width="52" height="52" aria-hidden="true"></svg><div class="ch-big"><span class="ch-pre">US$</span><b class="ch-n" data-k="usd">0</b><span class="ch-u">trillion lost</span></div></div>
+      <div class="ch-row r2"><svg class="ch-ic ic-coin" viewBox="-30 -30 60 60" width="52" height="52" aria-hidden="true"></svg><div class="ch-big"><span class="ch-pre">US$</span><b class="ch-n" data-k="usd">0</b><span class="ch-u">trillion</span></div></div>
       <div class="src">The Lancet Countdown, 2024</div>
     </div>
     <div class="ch-card glass sweepable ch-c" data-step="3">
@@ -37,7 +37,7 @@ Deck.add({
       <div class="src">IZA, 2021. California data, 2001 to 2018.</div>
     </div>
     <div class="ch-card glass sweepable ch-d" data-step="3" data-delay="1100">
-      <div class="ch-lab">Lives lost</div>
+      <div class="ch-lab">Injuries and deaths</div>
       <div class="ch-row r1"><svg class="ch-ic ic-plus" viewBox="-30 -30 60 60" width="52" height="52" aria-hidden="true"></svg><div class="ch-big"><b class="ch-n" data-k="inj">0</b><span class="ch-u">million injuries</span></div></div>
       <div class="ch-row r2"><svg class="ch-ic ic-person" viewBox="-30 -30 60 60" width="52" height="52" aria-hidden="true"></svg><div class="ch-big"><b class="ch-n ch-red" data-k="dth">0</b><span class="ch-u">deaths a year</span></div></div>
       <div class="src">ILO estimate, 2020 data</div>
@@ -47,8 +47,8 @@ Deck.add({
       <div class="ch-pt"><span>Prevention</span><span>pays back</span></div>
       <span class="ch-chip ch-chip2">Projection</span>
       <div class="ch-bars">
-        <div class="ch-br r1"><span class="k">Costs</span><span class="tr"><i class="f" data-k="cost"></i><b class="v" data-k="costv">US$7.8 billion</b></span></div>
-        <div class="ch-br r2"><span class="k">Returns</span><span class="tr"><i class="f ok" data-k="ret"></i><b class="v" data-k="retv">US$9.179 billion</b></span></div>
+        <div class="ch-br r1"><span class="k">Yearly cost</span><span class="tr"><i class="f" data-k="cost"></i><b class="v" data-k="costv">US$7.8 billion</b></span></div>
+        <div class="ch-br r2"><span class="k">Yearly benefit</span><span class="tr"><i class="f ok" data-k="ret"></i><b class="v" data-k="retv">US$9.179 billion</b></span></div>
       </div>
       <div class="ch-liv"><b class="ch-n" data-k="liv">0</b><span class="ch-u">deaths prevented<br>a year</span></div>
       <div class="src">US OSHA, 2024 proposal, not final</div>
@@ -56,10 +56,9 @@ Deck.add({
     <p class="ch-foot" data-step="0" data-delay="500">An illustration, not a WakeCap result.</p>`,
   css: `
     .s-chain .ch-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
-    .s-chain .ch-sub{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
     .s-chain .ch-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
     .s-chain .ch-hot{position:absolute;left:96px;top:264px;width:148px;text-align:center;font:700 20px/1 var(--font);letter-spacing:.12em;text-transform:uppercase;color:var(--wc-orange-soft)}
-    .s-chain .src{color:#9A9A94}
+    .s-chain .src{color:#9A9A94;font-size:18px}
     .s-chain .ch-card{position:absolute;width:700px;height:236px}
     .s-chain .ch-a{left:340px;top:262px}.s-chain .ch-b{left:1124px;top:262px}
     .s-chain .ch-c{left:340px;top:522px}.s-chain .ch-d{left:1124px;top:522px}
@@ -67,10 +66,10 @@ Deck.add({
     .s-chain .ch-lab{position:absolute;left:28px;top:18px;font:700 22px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--wc-orange-soft)}
     .s-chain .ch-chart{position:absolute;left:14px;top:44px;overflow:visible}
     .s-chain .ch-chart2{position:absolute;left:30px;top:44px;overflow:visible}
-    .s-chain .ch-key{position:absolute;left:450px;top:58px;width:226px}
+    .s-chain .ch-key{position:absolute;left:484px;top:58px;width:196px}
     .s-chain .ch-kn{display:flex;align-items:baseline;white-space:nowrap}
     .s-chain .ch-n{display:inline-block;font:900 64px/1 var(--font);letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:#fff;text-shadow:0 0 28px rgba(255,131,0,.55),0 0 70px rgba(255,131,0,.25)}
-    .s-chain .ch-key .ch-n{font-size:100px}
+    .s-chain .ch-key .ch-n{font-size:92px}
     .s-chain .ch-pc{font:800 44px/1 var(--font);color:#D9D9D4;margin-left:4px}
     .s-chain .ch-un{margin-top:8px;font:500 30px/1.1 var(--font);color:#D9D9D4;white-space:nowrap}
     .s-chain .ch-n.ch-red{text-shadow:0 0 28px rgba(255,77,77,.55),0 0 70px rgba(255,77,77,.25)}
@@ -86,19 +85,22 @@ Deck.add({
     .s-chain .ch-pt{position:absolute;left:140px;top:30px;font:800 38px/1.1 var(--font);letter-spacing:-.01em;color:#fff}
     .s-chain .ch-pt span{display:block}
     .s-chain .ch-chip2{right:30px;top:18px}
-    .s-chain .ch-bars{position:absolute;left:420px;top:36px;width:760px}
+    .s-chain .ch-bars{position:absolute;left:420px;top:36px;width:860px}
     .s-chain .ch-br{position:absolute;left:0;height:40px;display:flex;align-items:center}
     .s-chain .ch-br.r1{top:0}.s-chain .ch-br.r2{top:56px}
-    .s-chain .ch-br .k{flex:none;width:124px;font:600 28px/1 var(--font);color:#D9D9D4}
-    .s-chain .ch-br .tr{position:relative;flex:none;width:520px;height:28px}
+    .s-chain .ch-br .k{flex:none;width:196px;font:600 28px/1 var(--font);color:#D9D9D4}
+    .s-chain .ch-br .tr{position:relative;flex:none;width:470px;height:28px}
     .s-chain .ch-br .f{position:absolute;left:0;top:0;height:28px;width:0;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,.28),rgba(255,255,255,.62))}
     .s-chain .ch-br .f.ok{background:linear-gradient(90deg,#E9590C,#FFB366);box-shadow:0 0 22px rgba(255,131,0,.55)}
     .s-chain .ch-br .v{position:absolute;top:-4px;left:0;font:800 32px/1 var(--font);color:#fff;white-space:nowrap;opacity:0}
-    .s-chain .ch-liv{position:absolute;left:1300px;top:54px;display:flex;align-items:center;gap:18px}
+    .s-chain .ch-liv{position:absolute;left:1310px;top:54px;display:flex;align-items:center;gap:18px}
     .s-chain .ch-liv .ch-n{font-size:84px}
     .s-chain .ch-liv .ch-u{font:600 26px/1.15 var(--font);white-space:nowrap}
     .s-chain .ch-pay .src{position:absolute;left:140px;bottom:14px}
     .s-chain .ch-foot{position:absolute;left:96px;top:962px;margin:0;font:500 24px/1 var(--font);color:#B9B9B4}
+    .s-chain .ch-haze{position:absolute;left:-20px;top:220px;width:380px;height:600px;border-radius:50%;pointer-events:none;opacity:.2;will-change:transform,opacity;background:radial-gradient(closest-side,rgba(255,131,0,.55),rgba(233,89,12,.2) 60%,rgba(233,89,12,0))}
+    .s-chain.active .ch-haze{animation:chBreath 4.4s ease-in-out infinite}
+    @keyframes chBreath{50%{transform:scale(1.07,1.04)}}
     body.calm .s-chain *{animation:none!important}`,
   init(ctx) {
     const svg = ctx.q('.ch-svg'), mk = (t, a, p) => Fx.el(t, a, p || svg), clamp = Fx.clamp, E = Fx.ease;
@@ -108,16 +110,10 @@ Deck.add({
     const lg = (id, x1, y1, x2, y2, stops) => { const g = mk('linearGradient', { id, x1, y1, x2, y2 }, defs); stops.forEach(([o, c, a]) => mk('stop', { offset: o, 'stop-color': c, 'stop-opacity': a == null ? 1 : a }, g)); };
     lg('ch-merc', 0, 1, 0, 0, [[0, '#E9590C'], [1, '#FFC48A']]);
     lg('ch-bar', 0, 1, 0, 0, [[0, '#E9590C'], [1, '#FFB366']]);
-    const hz = mk('radialGradient', { id: 'ch-haze', cx: .5, cy: .5, r: .5 }, defs);
-    mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': .55 }, hz); mk('stop', { offset: .6, 'stop-color': '#E9590C', 'stop-opacity': .2 }, hz); mk('stop', { offset: 1, 'stop-color': '#E9590C', 'stop-opacity': 0 }, hz);
-    /* ---------- ghost frames: where each card will land (they fade as the card arrives) */
-    [[340, 262, 700, 236, 1], [1124, 262, 700, 236, 2], [340, 522, 700, 236, 3], [1124, 522, 700, 236, 3], [96, 788, 1728, 160, 4]].forEach(([x, y, w, h, out]) => {
-      mk('rect', { x, y, width: w, height: h, rx: 28, fill: 'none', stroke: 'rgba(255,255,255,.14)', 'stroke-width': 2, 'stroke-dasharray': '10 9', 'data-step': 0, 'data-step-out': out });
-    });
     /* ---------- the thermometer */
     const TX = 170, TW = 44, BY = 724;
     const th = mk('g', { 'data-step': 0 });
-    ctx.haze = mk('ellipse', { class: 'ch-hz', cx: TX, cy: 520, rx: 190, ry: 300, fill: 'url(#ch-haze)', opacity: .2 }, th);
+    ctx.haze = ctx.q('.ch-haze');
     mk('rect', { x: TX - TW / 2, y: 300, width: TW, height: 420, rx: 22, fill: 'rgba(255,255,255,.04)', stroke: 'rgba(255,255,255,.38)', 'stroke-width': 2.5 }, th);
     for (let y = 340; y <= 680; y += 40) mk('line', { x1: TX - TW / 2 - 22, y1: y, x2: TX - TW / 2 - 8, y2: y, stroke: 'rgba(255,255,255,.28)', 'stroke-width': 2.5, 'stroke-linecap': 'round' }, th);
     ctx.merc = mk('rect', { x: TX - 12, y: BY, width: 24, height: 0, rx: 12, fill: 'url(#ch-merc)', filter: 'url(#fx-glow-soft)' }, th);
@@ -126,6 +122,8 @@ Deck.add({
     /* ---------- roads: heat to each lane, and across each lane */
     const road = (d, step, delay) => {
       const g = mk('g', { 'data-step': step, 'data-delay': delay || 0 }), p = mk('path', { d, fill: 'none', stroke: 'rgba(255,255,255,.22)', 'stroke-width': 2.4, 'stroke-dasharray': '2 9', 'stroke-linecap': 'round' }, g);
+      const m = d.match(/L(\d+) (\d+)$/), ex = +m[1], ey = +m[2];
+      mk('polygon', { points: `${ex + 4},${ey} ${ex - 9},${ey - 8} ${ex - 9},${ey + 8}`, fill: '#FF8300', filter: 'url(#fx-glow-u)' }, g);
       const f = ctx.flow(p, { color: '#FF8300', count: 3, speed: 170, r: 6, tail: 6, tailGap: 12 }); f.stop().show(false); return f;
     };
     ctx.fl = [road('M204 380 L336 380', 1), road('M1044 380 L1120 380', 2), road('M204 640 L336 640', 3), road('M1044 640 L1120 640', 3, 1100)];
@@ -175,12 +173,12 @@ Deck.add({
     const T = (d) => ({ v: 0, t: 0, d, hold: 0 });
     ctx.S = { heat: T(1.5), a: T(1.9), b1: T(1.2), b2: T(1.2), c: T(1.1), d1: T(1.1), d2: T(1.3), p1: T(1.3), p2: T(1.3) };
     ctx.setT = (k, t, snap, hold) => { const s = ctx.S[k]; s.t = t; s.hold = snap ? 0 : (hold || 0) / 1000; if (snap) s.v = t; };
-    const WC = 340, WR = 400;
+    const WC = 322, WR = 380;
     ctx.render = () => {
       const S = ctx.S, ez = E.outCubic;
       const h = E.inOutCubic(S.heat.v), top = BY - (BY - 322) * h;
       ctx.merc.setAttribute('y', top.toFixed(1)); ctx.merc.setAttribute('height', (BY + 6 - top).toFixed(1));
-      ctx.haze.setAttribute('opacity', (.2 + .75 * h).toFixed(2));
+      ctx.haze.style.opacity = (.2 + .75 * h).toFixed(2);
       /* A: the dot slides down the published curve while the work left counts down */
       const a = E.inOutSine(S.a.v), t = 27 + 4.5 * a, x = ax(t);
       ctx.aClip.setAttribute('width', (x - 20 + (a >= 1 ? 40 : 0)).toFixed(1));

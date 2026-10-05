@@ -20,6 +20,8 @@ Deck.add({
   css: `
     .s-flow-lightning .lt-title{position:absolute;left:96px;top:104px;width:1500px;font-size:62px}
     .s-flow-lightning .flt-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+    .s-flow-lightning .flt-row1{transform:translateY(150px);transition:transform 1.1s var(--ease)}
+    .s-flow-lightning.on2 .flt-row1{transform:none}
     .s-flow-lightning .flt-card{stroke:rgba(255,255,255,.16);stroke-width:2;transition:stroke .5s}
     .s-flow-lightning .flt-card.hot{stroke:rgba(255,131,0,.62);filter:drop-shadow(0 0 16px rgba(255,131,0,.2))}
     .s-flow-lightning.bad .flt-card.tl{stroke:rgba(255,77,77,.75)}
@@ -65,8 +67,8 @@ Deck.add({
     .s-flow-lightning .flt-comet{fill:none;stroke:#FF8300;stroke-width:6;stroke-linecap:round;stroke-dasharray:84 260;transform-box:fill-box;transform-origin:center;animation:fltSpin 5s linear infinite;filter:url(#fx-glow);transition:stroke .5s}
     @keyframes fltSpin{to{transform:rotate(360deg)}}
     body.calm .s-flow-lightning .flt-comet{animation:none}
-    .s-flow-lightning.bad .flt-comet{stroke:#FF4D4D}
-    .s-flow-lightning.bad .flt-ring{stroke:rgba(255,77,77,.55)}
+    .s-flow-lightning.stl .flt-comet{stroke:#FF4D4D}
+    .s-flow-lightning.stl .flt-ring{stroke:rgba(255,77,77,.6)}
     /* the page tile */
     .s-flow-lightning .flt-tl{fill:#2BD576;stroke:#A6F7C9;stroke-width:3;filter:url(#fx-glow);transition:fill .5s,stroke .5s}
     .s-flow-lightning.bad .flt-tl{fill:#FF4D4D;stroke:#FFB3B3}
@@ -101,13 +103,15 @@ Deck.add({
     .s-flow-lightning.on3 .flt-lp{opacity:1;transform:none;transition-delay:calc(var(--i) * 150ms + 250ms)}
     .s-flow-lightning .flt-ln{font:700 24px/1 var(--font);fill:#E6E6E2;text-anchor:middle}
     .s-flow-lightning .flt-mk{fill:none;stroke:#06200F;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+    .s-flow-lightning .flt-mg{opacity:0;transition:opacity .3s}
+    .s-flow-lightning.on3 .flt-mg{opacity:1;transition-delay:calc(var(--i) * 150ms + 800ms)}
     .s-flow-lightning .flt-mq{font:900 44px/1 var(--font);fill:#FF8F8F;text-anchor:middle}
     .s-flow-lightning .flt-lm.pulse{animation:fltGlow 1.4s var(--ease) 2}
     @keyframes fltGlow{50%{filter:drop-shadow(0 0 22px #2BD576) drop-shadow(0 0 40px #2BD576)}}
     body.calm .s-flow-lightning .flt-lm.pulse{animation:none}
     .s-flow-lightning.nt [class*="flt-"],.s-flow-lightning.no-trans [class*="flt-"]{transition:none!important}`,
   init(ctx) {
-    const svg = ctx.q('.flt-svg'), mk = (t, a, p) => Fx.el(t, a, p || svg);
+    const svg = ctx.q('.flt-svg'); let host = svg; const mk = (t, a, p) => Fx.el(t, a, p || host);
     const BLUE = '#4FB3FF', GRN = '#2BD576', YEL = '#FFC24B', RED = '#FF4D4D';
     const grp = (cls, a, p) => mk('g', Object.assign({ class: cls }, a || {}), p);
     const rev = (cls, step, delay) => grp(cls, { 'data-step': step, 'data-fx': 'fade', 'data-delay': delay || 0 });
@@ -157,6 +161,7 @@ Deck.add({
       };
     };
 
+    host = grp('flt-row1');                                      /* Row 1 starts low and glides up at step 2 */
     /* ---- the warning unit: it decides (step 0) ---- */
     const U = rev('lt-unit', 0, 250);
     card(U, 96, 250, 330, 400, 'Warning unit', 'hot');
@@ -166,8 +171,9 @@ Deck.add({
     [['r', 386], ['y', 442], ['g', 498]].forEach(([c, y]) => mk('circle', { class: 'flt-lamp ' + c, cx: 261, cy: y, r: 20 }, U));
     pill(U, 261, 604, 140, 38, 'Decides');
 
-    /* ---- the two queues (step 1) ---- */
-    const Q = grp('flt-mid');
+    /* ---- the middle of the path fades in with the page, then wakes up at step 1 ---- */
+    const M = rev('lt-mid', 0, 600);
+    const Q = grp('flt-mid', {}, M);
     card(Q, 730, 250, 430, 400, 'Two queues');
     [[341, 392, 'Readings', ''], [559, 610, 'Unreadable', ' q']].forEach(([py, sy, name, cls]) => {
       mk('text', { class: 'flt-pl', x: 770, y: py - 31, text: name }, Q);
@@ -180,19 +186,19 @@ Deck.add({
     /* ---- roads and the packets that walk them ---- */
     const D_MAIN = 'M426 450 L624 450 C676 450 690 341 770 341 L1120 341 C1196 341 1180 450 1246 450 L1520 450';
     const D_SIDE = 'M624 450 C676 450 690 559 770 559 L1120 559 C1196 559 1180 450 1246 450';
-    const rMain = mk('path', { class: 'flt-road', d: D_MAIN }), rSide = mk('path', { class: 'flt-road', d: D_SIDE });
+    const rMain = mk('path', { class: 'flt-road', d: D_MAIN }, M), rSide = mk('path', { class: 'flt-road', d: D_SIDE }, M);
     ctx.fm = ctx.flow(rMain, { color: BLUE, count: 5, speed: 240, r: 6, tail: 7, tailGap: 13 }); ctx.fm.stop().show(false);
     ctx.fs = ctx.flow(rSide, { color: '#C9C9C4', count: 1, speed: 150, r: 5, tail: 5, tailGap: 11 }); ctx.fs.stop().show(false);
-    mk('polygon', { class: 'flt-ah', points: '516,450 500,441 500,459' });
-    mk('polygon', { class: 'flt-ah', points: '1520,450 1504,441 1504,459' });
-    const cut = grp('flt-cut');
+    mk('polygon', { class: 'flt-ah', points: '516,450 500,441 500,459' }, M);
+    mk('polygon', { class: 'flt-ah', points: '1520,450 1504,441 1504,459' }, M);
+    const cut = grp('flt-cut', {}, M);
     mk('circle', { class: 'rg', cx: 471, cy: 450, r: 17 }, cut);
     mk('circle', { cx: 471, cy: 450, r: 17, fill: '#0B0B0C', stroke: YEL, 'stroke-width': 3 }, cut);
     mk('path', { d: 'M464 443 L478 457 M478 443 L464 457', stroke: YEL, 'stroke-width': 3, 'stroke-linecap': 'round', fill: 'none' }, cut);
     const drops = [packet('M970 341 L970 392', YEL, 6), packet('M970 559 L970 610', YEL, 6)];
 
     /* ---- the gateway (drawn after the roads so packets pass behind it) ---- */
-    const G = grp('flt-mid');
+    const G = grp('flt-mid', {}, M);
     mk('circle', { cx: 570, cy: 450, r: 54, fill: '#0C0C0E', stroke: BLUE, 'stroke-width': 2.4 }, G);
     mk('line', { x1: 570, y1: 480, x2: 570, y2: 440, stroke: BLUE, 'stroke-width': 3.2, 'stroke-linecap': 'round' }, G);
     mk('circle', { cx: 570, cy: 432, r: 5.5, fill: BLUE }, G);
@@ -204,7 +210,7 @@ Deck.add({
     mk('text', { class: 'flt-nm', x: 570, y: 548, text: 'Gateway' }, G);
 
     /* ---- WakeCap: a sweep every 5 s ---- */
-    const W = grp('flt-mid');
+    const W = grp('flt-mid', {}, M);
     card(W, 1236, 330, 218, 240, 'WakeCap', '', true);
     const DX = 1345, DY = 444;
     for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; mk('line', { class: 'flt-tick', x1: DX + 41 * Math.sin(a), y1: DY - 41 * Math.cos(a), x2: DX + 47 * Math.sin(a), y2: DY - 47 * Math.cos(a) }, W); }
@@ -225,6 +231,7 @@ Deck.add({
     const swp = mk('rect', { x: 1380, y: 250, width: 150, height: 400, fill: 'url(#flt-swg)' }, mk('g', { 'clip-path': 'url(#flt-tclip)' }, T));
     ctx.tg = TG;
 
+    host = svg;
     /* ---- step 2: the heartbeat strip ---- */
     const S = rev('lt-strip', 2, 150);
     card(S, 96, 704, 974, 252, 'Heartbeat');
@@ -250,16 +257,16 @@ Deck.add({
       const lm = mk('g', { class: 'flt-lm' }, g);
       if (kind === 'q') mk('circle', { cx, cy, r: 34, fill: 'rgba(255,77,77,.1)', stroke: RED, 'stroke-width': 3, 'stroke-dasharray': '6 6' }, lm);
       else mk('circle', { cx, cy, r: 34, fill: col, stroke: kind === 'ok' ? '#A6F7C9' : 'none', 'stroke-width': 3 }, lm);
-      const mkg = mk('g', { class: 'flt-mk', style: '--i:' + i, transform: `translate(${cx} ${cy})` }, g);
-      mkg.setAttribute('class', '');
-      if (kind === 'ok') mk('path', { class: 'flt-mk', d: 'M-15 2 L-4 14 L16 -12' }, mkg);
-      if (kind === 'no') mk('path', { class: 'flt-mk', d: 'M-12 -12 L12 12 M12 -12 L-12 12' }, mkg);
-      if (kind === 'q') mk('text', { class: 'flt-mq', x: 0, y: 15, text: '?' }, mkg);
+      const mkg = mk('g', { class: 'flt-mg', style: '--i:' + i }, g), mki = mk('g', { transform: `translate(${cx} ${cy})` }, mkg);
+      if (kind === 'ok') mk('path', { class: 'flt-mk', d: 'M-15 2 L-4 14 L16 -12' }, mki);
+      if (kind === 'no') mk('path', { class: 'flt-mk', d: 'M-12 -12 L12 12 M12 -12 L-12 12' }, mki);
+      if (kind === 'q') mk('text', { class: 'flt-mq', x: 0, y: 15, text: '?' }, mki);
       mk('text', { class: 'flt-ln', x: cx, y: 930, text: name }, g);
       return { g, lm };
     });
 
     /* ---- state helpers ---- */
+    ctx.setStale = (b) => ctx.root.classList.toggle('stl', b);
     ctx.setBad = (b) => {
       ctx.root.classList.toggle('bad', b);
       word.textContent = b ? 'Unknown' : 'All clear';
@@ -295,7 +302,7 @@ Deck.add({
       ctx.setDrop(k >= 1);
       ctx.slots.forEach((g) => g.classList.remove('beat'));
       ctx.setMiss(k >= 2 ? 4 : 0);
-      ctx.setBad(k >= 2);
+      ctx.setStale(k >= 2); ctx.setBad(k >= 2);
       ctx.lamps.forEach((l) => l.lm.classList.remove('pulse'));
     };
     /* animate step k (the state of step k-1 is already in place) */
@@ -310,8 +317,9 @@ Deck.add({
         R.classList.add('on2');
         ctx.fm.stop().show(false); ctx.fs.stop().show(false);
         for (let i = 0; i < 4; i++) later(600 + i * 130, () => { const g = ctx.slots[i]; g.classList.remove('beat'); void g.getBoundingClientRect(); g.classList.add('beat'); });
-        for (let n = 1; n <= 4; n++) later(1250 + (n - 1) * 400, () => { ctx.setMiss(n); if (n === 4 && !ctx.calm) Fx.burstEl(ctx.slots[7], { n: 18, color: '#FF6B5E', speed: 260 }); });
-        later(2750, () => ctx.flip());
+        for (let n = 1; n <= 4; n++) later(1200 + (n - 1) * 380, () => { ctx.setMiss(n); if (n === 4 && !ctx.calm) Fx.burstEl(ctx.slots[7], { n: 18, color: '#FF6B5E', speed: 260 }); });
+        later(2480, () => ctx.setStale(true));
+        later(2760, () => ctx.flip());
       } else if (k === 3) {
         R.classList.add('on3');
         later(1500, () => { const l = ctx.lamps[0].lm; l.classList.remove('pulse'); void l.getBoundingClientRect(); l.classList.add('pulse'); if (!ctx.calm) Fx.burstEl(l, { n: 30, color: GRN, speed: 330 }); });

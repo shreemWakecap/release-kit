@@ -9,10 +9,10 @@ Deck.add({
   notes: [
     'A plan is a list of tasks for the day.',
     'Step 1: the forecast shows cool hours and hot hours.',
-    'Step 2: heavy work moves into the cool hours. Indoor work can stay.',
+    'Step 2: heavy work moves to cool hours, and indoor work stays.',
     'Step 3: where it is warmer, the Safety Policy adds rest breaks.',
-    'Step 4: a person checks the plan and approves it. Nothing runs without that.',
-    'This is a vision. Nobody has built it.',
+    'Step 4: a person checks the plan and approves it.',
+    'This is a vision, and nobody has built it.',
     'If asked: the Safety Policy already gives work, rest and water for each heat band. In the standard set the cool band has no limit. Extreme Caution is 50 minutes of work and 10 of rest. Danger is 30 and 10. A project can set its own bands. No forecast code and no planner exist today. The assistant in the Observation Manager already works by proposal: it proposes, a person confirms, then it runs. The tasks in this picture are examples.',
   ].join('\n'),
   html: `
@@ -100,7 +100,8 @@ Deck.add({
     .s-plan .wpn-av path{fill:none;stroke:rgba(255,255,255,.92);stroke-width:4.5;stroke-linecap:round}
     .s-plan .wpn-ok{position:relative;flex:1;height:88px;border-radius:44px;display:flex;align-items:center;justify-content:center;font:800 38px/1 var(--font);color:#FFB366;border:2px solid rgba(255,131,0,.8);background:rgba(255,131,0,.08);box-shadow:0 0 40px rgba(255,131,0,.28);transition:background .5s,color .5s,box-shadow .5s,border-color .5s,transform .14s}
     .s-plan .wpn-ok.press{transform:scale(.95)}
-    .s-plan.done .wpn-ok{background:linear-gradient(95deg,#FF8300,#FFB366);color:#1A0C00;border-color:#FFD2A3;box-shadow:0 0 70px rgba(255,131,0,.7);animation:wpnStamp .55s var(--ease)}
+    .s-plan.done .wpn-ok{background:linear-gradient(95deg,#FF8300,#FFB366);color:#1A0C00;border-color:#FFD2A3;box-shadow:0 0 70px rgba(255,131,0,.7)}
+    .s-plan.stamp .wpn-ok{animation:wpnStamp .55s var(--ease)}
     @keyframes wpnStamp{0%{transform:scale(1.28)}45%{transform:scale(.95)}72%{transform:scale(1.04)}100%{transform:scale(1)}}
     .s-plan .wpn-ck{flex:none;width:0;height:40px;opacity:0;margin-right:0;transition:width .4s var(--ease),margin .4s var(--ease),opacity .3s}
     .s-plan.done .wpn-ck{width:40px;margin-right:14px;opacity:1}
@@ -110,10 +111,10 @@ Deck.add({
     .s-plan.curin .wpn-cur{opacity:1;transform:translate(1740px,930px)}
     .s-plan.curin.tap .wpn-cur{transform:translate(1740px,930px) scale(.84);transition:transform .14s}
     .s-plan.curin.gone .wpn-cur{opacity:0;transition:opacity .6s}
-    .s-plan.wpn-snap *,.s-plan.no-trans *{transition:none!important}
+    .s-plan.wpn-snap *,.s-plan.wpn-snap *::before,.s-plan.wpn-snap *::after,.s-plan.no-trans *,.s-plan.no-trans *::before,.s-plan.no-trans *::after{transition:none!important}
     .s-plan.wpn-snap .wpn-ok,.s-plan.no-trans .wpn-ok,body.print .s-plan .wpn-ok,body.calm .s-plan .wpn-ok{animation:none!important}
     body.print .s-plan .wpn-blk{animation:none!important}
-    body.calm .s-plan *{transition:none!important;animation:none!important}`,
+    body.calm .s-plan *,body.calm .s-plan *::before,body.calm .s-plan *::after{transition:none!important;animation:none!important}`,
   init(ctx) {
     ctx.gen = 0; ctx.pill = ctx.q('.wpn-ok');
   },
@@ -122,13 +123,13 @@ Deck.add({
     const at = (ms, fn) => ctx.after(ms, () => { if (gen === ctx.gen) fn(); });
     if (!fwd) R.classList.add('wpn-snap');
     [1, 2, 3, 4].forEach((k) => R.classList.toggle('on' + k, i >= k));
-    ['curin', 'tap', 'gone', 'done', 'scan'].forEach((c) => R.classList.remove(c)); ctx.pill.classList.remove('press');
+    ['curin', 'tap', 'gone', 'done', 'scan', 'stamp'].forEach((c) => R.classList.remove(c)); ctx.pill.classList.remove('press');
     if (i >= 4) {
       if (!fwd) ['curin', 'gone', 'done'].forEach((c) => R.classList.add(c));
       else {
         at(900, () => R.classList.add('curin'));
         at(2200, () => { R.classList.add('tap'); ctx.pill.classList.add('press'); });
-        at(2350, () => { R.classList.remove('tap'); ctx.pill.classList.remove('press'); R.classList.add('done'); Fx.burstEl(ctx.pill, { n: 34, speed: 440 }); Fx.sweep(ctx.pill); });
+        at(2350, () => { R.classList.remove('tap'); ctx.pill.classList.remove('press'); R.classList.add('done', 'stamp'); Fx.burstEl(ctx.pill, { n: 34, speed: 440 }); Fx.sweep(ctx.pill); });
         at(3300, () => R.classList.add('gone'));
       }
     } else if (i === 1 && fwd) { void R.offsetWidth; R.classList.add('scan'); }
@@ -138,6 +139,6 @@ Deck.add({
   },
   static(ctx) {
     const R = ctx.root; ctx.gen++; R.classList.add('wpn-snap');
-    ['on1', 'on2', 'on3', 'on4', 'curin', 'gone', 'done'].forEach((c) => R.classList.add(c)); R.classList.remove('scan', 'tap'); ctx.pill.classList.remove('press');
+    ['on1', 'on2', 'on3', 'on4', 'curin', 'gone', 'done'].forEach((c) => R.classList.add(c)); R.classList.remove('scan', 'tap', 'stamp'); ctx.pill.classList.remove('press');
   },
 });

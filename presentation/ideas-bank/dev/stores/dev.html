@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:43:55", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "17:50:26", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -902,19 +902,21 @@ Deck.plan([
 /* stores.js */
 try{
 /* Slide: what is stored where. Three stores today (sensor data, our own data, alert data), each with a real size, and nothing that joins them.
-   Facts (research C5): 1.5 million weather readings (internal cost doc, 10 Aug 2026, exactly 1,496,265; first reading May 2025);
-   31 tables, up from 10 in 70 days (counted in the code, 26 Jul to 4 Oct 2026); 9 kinds of event in the Observation Manager database (code);
-   no foreign key across the databases (C5 section 1 and 7). */
+   Facts (research C5): 1.5 million weather readings (internal cost doc, 10 Aug 2026, exactly 1,496,265; first reading May 2025; C5 3.1, 5.1, 14);
+   31 tables, up from 10 in 70 days (counted in the code, 26 Jul to 4 Oct 2026; C5 1, 4, 12);
+   9 event sources in the Observation Manager (code; C6 section 7 H1: nine sources, weather, SOS and permits among them; C5 2.4: one main table with a Source column);
+   no foreign key across the databases (C5 section 1 and 7). The notification rules live in a fourth store (C6 H2), so the slide says events only. */
 Deck.add({
-  id: 'stores', section: 'bank', title: 'What is stored where', kicker: 'The data bank · Stored today', reality: ['code'],
+  id: 'stores', section: 'bank', title: 'What is stored where', kicker: 'The data bank · Stored today', reality: ['code'], short: true,
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4000, 5000, 5000, 5000, 6200], minutes: 1.2,
   notes: [
     'Our data lives in three separate stores.',
-    'Step 1: sensor data. Weather readings land here. We have about 1.5 million so far.',
-    'Step 2: our own data. It grew from 10 tables to 31 in 70 days.',
-    'Step 3: alert data. The Observation Manager keeps every alert it receives.',
-    'Step 4: nothing links the three. Each one stands alone.',
-    'If asked: the sensor store is a time series table owned by the sensors service. It held 1,496,265 weather readings on 10 Aug 2026, kept since May 2025. Our own database has 31 tables for all three products, and had 10 on 26 Jul 2026. The Observation Manager database files nine kinds of event. Who gets told is kept in the notification database next to it. Our backend reads the sensor store read only, and posts alerts one way to the Observation Manager. No foreign key joins any two stores, so one question cannot cross all three.',
+    'Step 1: sensor data holds about 1.5 million weather readings.',
+    'Step 2: our tables grew from 10 to 31 in 70 days.',
+    'Step 3: alert data comes from nine sources.',
+    'Step 4: nothing links the three, so each one stands alone.',
+    'A single question cannot cross all three.',
+    'If asked: the sensor store is a time series table owned by the sensors service. It held 1,496,265 weather readings on 10 Aug 2026, kept since May 2025. Our own database holds all three products, and had 10 tables on 26 Jul 2026 and 31 on 4 Oct 2026. The Observation Manager database has one main table of events from nine sources: weather, lightning, SOS, permits and more. Who gets told sits in the notification database next to it. Our backend reads the sensor store read only, and posts alerts one way to the Observation Manager. The Observation Manager reads people and zones from the app database, but none of these three stores links to another. Row counts and sizes come from an internal cost doc of 10 Aug 2026.',
   ].join('\n'),
   html: `
     <h2 class="h2 st-h" data-step="0">Three stores. <span class="o glow-text">Not joined.</span></h2>
@@ -930,13 +932,13 @@ Deck.add({
     <div class="st-tag" style="left:96px" data-step="1" data-delay="1100"><span>since May 2025</span></div>
     <div class="st-num" style="left:720px" data-step="2"><b>10</b></div>
     <div class="st-unit" style="left:720px" data-step="2" data-delay="250">tables</div>
-    <div class="st-tag" style="left:720px" data-step="2" data-delay="1500"><span>up from 10 in 70 days</span></div>
+    <div class="st-tag" style="left:720px" data-step="2" data-delay="1500"><span>from 10 in 70 days</span></div>
     <div class="st-num" style="left:1344px" data-step="3"><b>0</b></div>
-    <div class="st-unit" style="left:1344px" data-step="3" data-delay="250">kinds of event</div>
-    <div class="st-tag" style="left:1344px" data-step="3" data-delay="1500"><span>from many sources</span></div>
+    <div class="st-unit" style="left:1344px" data-step="3" data-delay="250">event sources</div>
+    <div class="st-tag" style="left:1344px" data-step="3" data-delay="1500"><span>weather, SOS, permits</span></div>
     <div class="st-close" data-step="4" data-delay="500"><span class="o glow-text">No links</span> between them.</div>
     <div class="src st-src st-src-l" data-step="0" data-delay="900">1.5 million: internal doc, Aug 2026.</div>
-    <div class="src st-src st-src-r" data-step="0" data-delay="900">Tables and kinds: counted in code, Oct 2026.</div>`,
+    <div class="src st-src st-src-r" data-step="0" data-delay="900">Tables and sources: counted in code, Oct 2026.</div>`,
   css: `
     .s-stores .st-h{position:absolute;left:96px;top:104px;width:1500px;font-size:62px}
     .s-stores .st-cw{position:absolute;top:240px;width:480px;height:620px}
@@ -945,8 +947,8 @@ Deck.add({
     .s-stores .st-t{position:absolute;top:266px;width:480px;text-align:center;font:800 40px/1.1 var(--font);color:#fff}
     .s-stores .st-num{position:absolute;top:640px;width:480px;display:flex;justify-content:center;align-items:baseline;gap:14px;white-space:nowrap}
     .s-stores .st-num b{display:inline-block;font:900 108px/1 var(--font);letter-spacing:-.04em;color:#fff;text-shadow:0 0 34px rgba(255,131,0,.6),0 0 90px rgba(255,131,0,.28)}
-    .s-stores .st-num b.tick{animation:stTick .45s var(--ease)}
-    @keyframes stTick{0%{transform:scale(1.14)}100%{transform:none}}
+    .s-stores .st-num b.tick{animation:stoTick .45s var(--ease)}
+    @keyframes stoTick{0%{transform:scale(1.14)}100%{transform:none}}
     .s-stores .st-num i{font:600 38px/1 var(--font);font-style:normal;color:#D9D9D4}
     .s-stores .st-unit{position:absolute;top:756px;width:480px;text-align:center;font:500 30px/1.2 var(--font);color:#D9D9D4}
     .s-stores .st-tag{position:absolute;top:800px;width:480px;text-align:center}
@@ -976,21 +978,21 @@ Deck.add({
     const svg = ctx.q('.st-svg'), mk = (t, a, p) => Fx.el(t, a, p || svg);
     const CX = [336, 960, 1584], CY0 = 366, W = 300, H = 200, RY = 38, BOT = CY0 + H, MID = 466;
     const defs = mk('defs');
-    const lg = mk('linearGradient', { id: 'st-liq', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+    const lg = mk('linearGradient', { id: 'sto-liq', x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
     mk('stop', { offset: 0, 'stop-color': '#FFB366', 'stop-opacity': .95 }, lg); mk('stop', { offset: 1, 'stop-color': '#E9590C', 'stop-opacity': .92 }, lg);
     ctx.cyl = CX.map((cx, k) => {
       const body = `M${cx - W / 2} ${CY0} V${BOT} A${W / 2} ${RY} 0 0 0 ${cx + W / 2} ${BOT} V${CY0} Z`;
-      const cp = mk('clipPath', { id: 'st-clip' + k }, defs); mk('path', { d: body }, cp); mk('ellipse', { cx, cy: CY0, rx: W / 2, ry: RY }, cp);
+      const cp = mk('clipPath', { id: 'sto-clip' + k }, defs); mk('path', { d: body }, cp); mk('ellipse', { cx, cy: CY0, rx: W / 2, ry: RY }, cp);
       const g = mk('g', {});
       mk('path', { class: 'cy-f', d: body }, g);
-      const inner = mk('g', { 'clip-path': `url(#st-clip${k})` }, g);
+      const inner = mk('g', { 'clip-path': `url(#sto-clip${k})` }, g);
       const b = mk('path', { class: 'cy-b', d: `M${cx - W / 2} ${CY0} V${BOT} A${W / 2} ${RY} 0 0 0 ${cx + W / 2} ${BOT} V${CY0}` }, g);
       const t = mk('ellipse', { class: 'cy-t', cx, cy: CY0, rx: W / 2, ry: RY }, g);
       return { cx, g, b, t, inner };
     });
     /* store 1: liquid with rising bubbles */
     const c0 = ctx.cyl[0];
-    ctx.liqRect = mk('rect', { x: c0.cx - W / 2 - 2, y: BOT, width: W + 4, height: H + RY + 4, fill: 'url(#st-liq)' }, c0.inner);
+    ctx.liqRect = mk('rect', { x: c0.cx - W / 2 - 2, y: BOT, width: W + 4, height: H + RY + 4, fill: 'url(#sto-liq)' }, c0.inner);
     ctx.bub = Array.from({ length: 16 }, () => ({ el: mk('circle', { r: 2 + Math.random() * 2.6, fill: '#FFE2C2', opacity: 0 }, c0.inner), x: c0.cx - W / 2 + 26 + Math.random() * (W - 52), y: BOT + RY * Math.random(), v: 28 + Math.random() * 44, ph: Math.random() * 6 }));
     ctx.liqTop = mk('ellipse', { cx: c0.cx, cy: BOT, rx: W / 2, ry: RY, fill: '#FFD9B0', 'fill-opacity': .88, stroke: '#FFF0DC', 'stroke-width': 2 }, c0.inner);
     ctx.lv = 0; ctx.lvT = 0; ctx.t = 0; ctx.tok = 0;
@@ -1001,6 +1003,8 @@ Deck.add({
       ctx.liqRect.style.display = ctx.liqTop.style.display = show ? '' : 'none';
       ctx.bub.forEach((b) => { b.el.setAttribute('cx', (b.x + Math.sin(ctx.t * 1.6 + b.ph) * 5).toFixed(1)); b.el.setAttribute('cy', b.y.toFixed(1)); b.el.setAttribute('opacity', show && b.y > sy + 8 ? .55 : 0); });
     };
+    /* spread the bubbles through the liquid (still frame for print and calm mode) */
+    ctx.scatter = () => { const sy = BOT - ctx.lv * H; ctx.bub.forEach((b, k) => { b.y = sy + 14 + ((k * 37) % 100) / 100 * Math.max(10, BOT - sy - 22); }); };
     /* store 2: 31 table squares, 10 old (grey) and 21 new (orange) */
     const c1 = ctx.cyl[1], PX = 31, PY = 36, X0 = c1.cx - (8 * PX - 9) / 2, Y0 = CY0 + RY + 12;
     ctx.sq = [];
@@ -1009,7 +1013,7 @@ Deck.add({
       mk('rect', { class: 'slot', x, y, width: 22, height: 28, rx: 5 }, c1.inner);
       ctx.sq.push(mk('rect', { class: 'sq ' + (n < 10 ? 'old' : 'new'), x, y, width: 22, height: 28, rx: 5 }, c1.inner));
     }
-    /* store 3: nine dots, nine kinds of event */
+    /* store 3: nine dots, nine event sources */
     const c2 = ctx.cyl[2];
     ctx.dt = [];
     for (let n = 0; n < 9; n++) {
@@ -1056,7 +1060,7 @@ Deck.add({
         });
       });
       if (!S(2)) setNum(ctx.num[1], '10'); else if (quick) setNum(ctx.num[1], '31');
-      /* store 3: nine dots, nine kinds */
+      /* store 3: nine dots, nine sources */
       ctx.dt.forEach((d, n) => {
         if (!S(3)) { d.classList.remove('on'); return; }
         if (quick) { d.classList.add('on'); return; }
@@ -1081,6 +1085,7 @@ Deck.add({
   },
   enter(ctx) {
     ctx.raf((dt) => {
+      if (ctx.calm) { ctx.lv = ctx.lvT; ctx.scatter(); ctx.drawLiq(); return; }
       ctx.t += dt;
       const d = ctx.lvT - ctx.lv; if (Math.abs(d) > .0006) ctx.lv += d * Math.min(1, dt * 2.2);
       const sy = 366 + 200 - ctx.lv * 200;
@@ -1089,7 +1094,7 @@ Deck.add({
     });
   },
   step(ctx, i, dir, instant) { ctx.render(i, instant || dir < 0 || ctx.calm, dir); },
-  static(ctx) { ctx.render(4, true, 1); ctx.lv = ctx.lvT = .82; ctx.drawLiq(); ctx.gaps.forEach((G) => G.f.show(true).freeze()); },
+  static(ctx) { ctx.render(4, true, 1); ctx.lv = ctx.lvT = .82; ctx.scatter(); ctx.drawLiq(); ctx.gaps.forEach((G) => G.f.show(true).freeze()); },
 });
 
 }catch(e){console.error('slide module failed: stores.js',e);(window.__modErr=window.__modErr||[]).push('stores.js: '+e.message)}

@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:41:06", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "17:53:37", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -912,13 +912,13 @@ Deck.add({
   id: 'calc', section: 'numbers', title: 'Your site, published rates', kicker: 'The numbers · Your site', reality: ['stat'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4000, 5000, 5000, 5000, 6000], minutes: 1.5,
   notes: [
-    'This is a calculator. It uses published rates, not our own results.',
-    'Step 1: we set up a site. One thousand workers, eight hours a day, forty hot days, heat at thirty degrees.',
-    'Hours lost come first. Each degree over twenty costs two to three percent of output. That rate is from the WHO and WMO.',
-    'Step 2: hours become money. The Lancet Countdown puts about one dollar seventy on an hour. Tap riyals or dollars.',
-    'Step 3: hot days also raise injury risk. A California study found five to fifteen percent more risk.',
-    'Step 4: now drag the sliders yourself. Every rate shows its source. This is an example, not a WakeCap result.',
-    'If asked: the rate is 2 to 3 percent for each degree above 20 °C WBGT (WHO and WMO, 2025). An hour is worth about US$1.71: US$1.09 trillion for 639 billion hours, a model (Lancet Countdown 2025, 2024 data). Riyals use the fixed rate of 3.75. Injury risk is 5 to 7 percent higher on 85 to 90 °F days and 10 to 15 percent higher above 100 °F (IZA 2021, California). For construction alone the same sum gives about US$2.70 an hour. Pay at your site will differ from this world average.',
+    'A calculator that runs on published rates.',
+    'Step 1: each degree over twenty costs two to three percent.',
+    'Step 2: lost hours become money, in riyals or dollars.',
+    'Step 3: hot days raise injury risk by five to fifteen percent.',
+    'Step 4: drag the sliders and watch every number move.',
+    'This is an example, not a WakeCap result.',
+    'If asked: heat here is WBGT, a reading that counts humidity and sun. The rate is 2 to 3 percent for each degree above 20 °C (WHO and WMO, 2025). An hour is worth about US$1.71: US$1.09 trillion for 639 billion hours, a model (Lancet Countdown 2025 report, 2024 data). Riyals use the fixed rate of 3.75. Injury risk is 5 to 7 percent higher on 85 to 90 °F days and 10 to 15 percent higher above 100 °F, against days in the 60s (IZA 2021, California). For construction alone the same sum gives about US$2.70 an hour. Pay at your site will differ from this world average.',
   ].join('\n'),
   html: `
     <h2 class="h2 cc-h" data-step="0">Your site. <span class="o glow-text">Published rates.</span></h2>
@@ -945,7 +945,7 @@ Deck.add({
         <div class="cc-cw" data-interactive><button class="cc-cur on" data-c="SAR">SAR</button><button class="cc-cur" data-c="USD">US$</button></div>
         <div class="cc-rate">US$1.71 per hour</div>
         <div class="cc-num"><em class="cc-pre">SAR</em><b class="a">0</b><i>to</i><b class="b">0</b><span class="u"></span></div>
-        <div class="src s1">Lancet Countdown, 2025. A model, world average.</div>
+        <div class="src s1">Lancet Countdown, 2024 data. A model, world average.</div>
         <div class="src s2"><span>US$1.09 trillion for 639 billion hours.</span> <span>SAR 3.75 = US$1.</span></div>
       </div>
     </div>
@@ -954,7 +954,7 @@ Deck.add({
       <div class="cc-body">
         <div class="cc-rate">5 to 15% higher</div>
         <div class="cc-num"><b class="a">0</b><span class="u">worker-days at risk</span></div>
-        <div class="src"><span>IZA, 2021, California.</span> <span>5 to 7% at 85 to 90 °F,</span> <span>10 to 15% over 100 °F.</span></div>
+        <div class="src"><span>IZA, 2021, California.</span> <span>5 to 7% at 85 to 90 °F,</span> <span>10 to 15% over 100 °F,</span> <span>against 60s °F.</span></div>
       </div>
     </div>`,
   css: `
@@ -979,7 +979,7 @@ Deck.add({
     .s-calc .cc-c1{top:290px;height:250px}
     .s-calc .cc-c2{top:556px;height:216px}
     .s-calc .cc-c3{top:790px;height:184px}
-    .s-calc .cc-card{transition:border-color .7s var(--ease),background .7s var(--ease),box-shadow .7s var(--ease)}
+    .s-calc .cc-card{transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease),border-color .7s var(--ease),background .7s var(--ease),box-shadow .7s var(--ease)}
     .s-calc .cc-card:not(.live){border:1.5px dashed rgba(255,255,255,.28);background:rgba(255,255,255,.02);box-shadow:none}
     .s-calc .cc-body{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
     .s-calc .cc-card.live .cc-body{opacity:1;transform:none}
