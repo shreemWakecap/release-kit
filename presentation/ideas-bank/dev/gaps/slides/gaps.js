@@ -11,13 +11,12 @@ Deck.add({
     'Step 2: saved answers start 20 September 2026, at the earliest.',
     'Step 3: gas history is saved, but screens say not yet.',
     'Step 4: weather alerts name no zone.',
-    'If asked: the backend has no forecast, trend or prediction code. The only formula is the standard heat index. A reading that stays inside its limit leaves no saved answer: only the start and the end of a danger period are stored, and that began on 20 Sep 2026 in the code. We have not proven that it runs in production. Older weather observations also sit in the Observation Manager, with repeats, but our own database kept none before that date. Gas readings are stored, and a history route exists since 13 Sep 2026, but no gas screen calls it. The Peak today tile on the live gas dashboard said Not available yet on 4 Oct 2026. The weather alert we send carries no zone, space or place, so a recipient rule that lists zones still matches every weather alert.',
+    'If asked: the backend has no forecast, trend or prediction code. The only regression in it is the standard heat index formula, and the anomaly checks are rule based. A reading that stays inside its limit leaves no saved answer: only the start and the end of a danger period are stored, and that began on 20 Sep 2026 in the code. We have not proven that it runs in production. Older weather observations also sit in the Observation Manager, with repeats, but our own database kept none before that date. Gas readings are stored, and a history route exists since 13 Sep 2026, but no gas screen calls it. The Peak today tile on the live gas dashboard said Not available yet on 4 Oct 2026. The weather alert we send carries no zone, space or place, so a recipient rule that lists zones still matches every weather alert.',
   ].join('\n'),
   html: (() => {
     const labels = [['No forecast', 'Weather, Lightning, Gas'], ['Short history', 'Weather answers'], ['Saved, not shown', 'Gas history'], ['No zone', 'Weather alerts']];
     return `
     <h2 class="h2 gp-h" data-step="0">What prediction would <span class="o glow-text">still need.</span></h2>
-    <p class="lead gp-lead" data-step="0" data-delay="200">Four gaps, read from the code.</p>
     ${labels.map(([t, u], k) => `<div class="gp-card glass sweepable" data-g="${k + 1}" style="left:${96 + k * 440}px">
       <span class="gp-ghost">${k + 1}</span>
       <svg class="gp-pic" viewBox="0 0 352 330" width="352" height="330"></svg>
@@ -27,8 +26,7 @@ Deck.add({
   })(),
   css: `
     .s-gaps .gp-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
-    .s-gaps .gp-lead{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
-    .s-gaps .gp-card{position:absolute;top:292px;width:408px;height:512px;padding:0;opacity:.46;transition:opacity .7s var(--ease),border-color .7s,box-shadow .7s}
+    .s-gaps .gp-card{position:absolute;top:262px;width:408px;height:512px;padding:0;opacity:.46;transition:opacity .7s var(--ease),border-color .7s,box-shadow .7s}
     .s-gaps .gp-card.on{opacity:1;border-color:rgba(255,131,0,.6);box-shadow:0 0 0 1px rgba(255,131,0,.25),0 0 70px rgba(255,131,0,.26),0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.2)}
     .s-gaps .gp-ghost{position:absolute;left:0;top:70px;width:100%;text-align:center;font:900 230px/1 var(--mono);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.17);transition:opacity .5s var(--ease)}
     .s-gaps .gp-card.on .gp-ghost{opacity:0}
@@ -36,7 +34,7 @@ Deck.add({
     .s-gaps .gp-card.on .gp-pic{opacity:1}
     .s-gaps .gp-t{position:absolute;left:28px;right:20px;top:384px;font:800 38px/1.12 var(--font);letter-spacing:-.015em;color:#fff}
     .s-gaps .gp-s{position:absolute;left:28px;right:20px;top:434px;font:500 27px/1.25 var(--font);color:var(--mut)}
-    .s-gaps .gp-close{position:absolute;left:96px;top:862px;width:1728px;margin:0;text-align:center;font:800 62px/1.1 var(--font);letter-spacing:-.03em;color:#fff}
+    .s-gaps .gp-close{position:absolute;left:96px;top:832px;width:1728px;margin:0;text-align:center;font:800 62px/1.1 var(--font);letter-spacing:-.03em;color:#fff}
     /* picture text */
     .s-gaps .pt{font:600 22px/1 var(--font);fill:#D9D9D4}
     .s-gaps .pm{font:500 22px/1 var(--font);fill:#A9A9A4}
@@ -124,7 +122,6 @@ Deck.add({
       const ck = mk('g', { class: 'pp', style: '--t:.75s' }, s);
       mk('circle', { cx: 190, cy: 50, r: 20, fill: G, filter: 'url(#fx-glow-soft)' }, ck);
       mk('path', { d: 'M181 50 l6 6 l12 -13', fill: 'none', stroke: '#0B0B0C', 'stroke-width': 4.2, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, ck);
-      mk('text', { class: 'pt fi', style: '--t:.85s;font-weight:800;font-size:27px;fill:#7EE6A8', x: 220, y: 59, text: 'Saved' }, s);
       ctx.gasPath = mk('path', { d: 'M96 164 L96 210', fill: 'none', stroke: 'rgba(43,213,118,.4)', 'stroke-width': 2.4, 'stroke-dasharray': '3 8', 'stroke-linecap': 'round' }, s);
       mk('rect', { class: 'gc', style: '--t:1.15s;--d:.5s', x: 48, y: 216, width: 96, height: 9, rx: 4.5, fill: '#FFC24B', filter: 'url(#fx-glow)' }, s);
       const tile = mk('g', { class: 'fi', style: '--t:1.3s' }, s);
@@ -172,5 +169,9 @@ Deck.add({
       ctx.later(at, () => { if (ctx.step >= i) Fx.burstEl(hit(), { n: 22, color: col, speed: 300 }); });
     }
   },
-  static(ctx) { ctx.tm.forEach(clearTimeout); ctx.cards.forEach((c) => { c.classList.remove('play'); c.classList.add('on'); }); ctx.pv.textContent = 'Not available yet'; ctx.gasF.show(true).freeze(); },
+  static(ctx) {
+    ctx.tm.forEach(clearTimeout); if (ctx.pv._typ) ctx.pv._typ.stop = true;
+    ctx.cards.forEach((c) => { c.classList.remove('play'); c.classList.add('on'); });
+    ctx.pv.textContent = 'Not available yet'; ctx.gasF.show(true).freeze();
+  },
 });

@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:54:38", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "18:42:18", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -902,30 +902,30 @@ Deck.plan([
 /* stakes-lives.js */
 try{
 /* Slide: what a wrong decision costs. One idea: heat alone costs lives and hours, worldwide. Published numbers, each with its publisher and year.
-   Step 0 a crowd of workers, dim. 1 the crowd heats up and 2.41 billion counts. 2 lives lost: 18,970. 3 work hours lost: 639 billion (a modelled loss).
-   4 building sites in the US: 7% of workers, about 1 in 3 heat deaths.
+   Step 0 a crowd of workers, dim. 1 the crowd heats up and 2.41 billion counts. 2 lives lost: 18,970. 3 potential work hours lost: 639 billion (a modelled loss).
+   4 building work (construction) in the US: 7% of workers, about 1 in 3 worker heat deaths.
    Numbers: S1-03 (ILO, 2020 data), S1-06 (The Lancet Countdown, 2024, modelled), S1-18 (CPWR, 2023 data). Lightning and gas have no verified outside numbers, so none are shown. */
 Deck.add({
   id: 'stakes-lives', section: 'why', title: 'What a wrong decision costs', kicker: 'The stakes · Lives and hours', reality: ['stat'], short: true,
   steps: 4, ambient: { orb: 1.1, beam: .7, dust: 1 }, dur: [4000, 5200, 5200, 5200, 6500], minutes: 1,
   notes: [
     'Heat is our example of what a wrong decision costs.',
-    'Step 1: billions of workers are in too much heat each year.',
+    'Step 1: over two billion workers face too much heat each year.',
     'Step 2: the estimate is 18,970 lives lost a year.',
     'Step 3: a model puts lost work at 639 billion hours.',
-    'Step 4: in the US, building sites hold 7 in 100 workers.',
-    'But they see about 1 in 3 heat deaths.',
-    'If asked: ILO, 2020 data, report published April 2024. At least 2.41 billion workers in excessive heat, and 18,970 deaths a year. These are modelled estimates. The Lancet Countdown 2025 report, 2024 data: 639 billion potential work hours lost. It is a modelled potential loss, not a count. CPWR Data Bulletin, August 2025, 2023 data, USA: construction is 7 percent of US workers and 34.0 percent of heat deaths, which is 18 deaths. Say about 1 in 3. Lightning and gas have no verified outside numbers, so this slide leaves them out.',
+    'Step 4: in the US, 7 in 100 workers are in construction.',
+    'But construction sees about 1 in 3 worker heat deaths.',
+    'If asked: ILO, 2020 data, report published April 2024. At least 2.41 billion workers are exposed to excessive heat each year, with 22.85 million injuries and 18,970 deaths a year. These are modelled estimates. The Lancet Countdown 2025 report, 2024 data: 639 billion potential work hours lost, 98 percent above the 1990 to 1999 average. It is a modelled potential loss, not a count. CPWR Data Bulletin, August 2025, 2023 data, USA: construction is 7 percent of US workers and 34.0 percent of worker heat deaths, which is 18 deaths. CPWR states the 7 percent without a source on the page. Against the 55 worker heat deaths in all industries, 18 is 32.7 percent, so say about 1 in 3. Lightning and gas have no verified outside numbers, so this slide leaves them out.',
   ].join('\n'),
   html: `
     <h2 class="h2 sl-h" data-step="0">What a wrong decision <span class="o glow-text">costs</span></h2>
     <p class="lead sl-sub" data-step="0" data-delay="200">Heat, worldwide.</p>
     <div class="sl-haze" aria-hidden="true"></div>
-    <svg class="sl-svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="A crowd of workers heats up. Two cards show lives lost and work hours lost. A bar chart shows building sites in the US."></svg>
+    <svg class="sl-svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="A crowd of workers heats up. Two cards show lives lost and work hours lost. A bar chart shows building work in the US."></svg>
     <div class="sl-who" data-step="1">
       <div class="sl-pre">At least</div>
       <div class="sl-big"><b class="sl-n" data-k="who">0</b><span class="sl-u">billion</span></div>
-      <div class="sl-lab">workers in too much heat</div>
+      <div class="sl-lab">workers in too much heat each year</div>
       <div class="src">ILO estimate, 2020 data</div>
     </div>
     <div class="sl-card glass sweepable sl-lives" data-step="2">
@@ -940,16 +940,16 @@ Deck.add({
       <svg class="sl-ico" viewBox="-60 -60 120 120" width="150" height="150" aria-hidden="true"></svg>
       <div class="sl-cb">
         <div class="sl-big"><b class="sl-n" data-k="hours">0</b><span class="sl-u">billion</span></div>
-        <div class="sl-lab">work hours lost</div>
+        <div class="sl-lab">potential work hours lost</div>
       </div>
       <span class="sl-chip">Modelled</span>
       <div class="src">The Lancet Countdown, 2024</div>
     </div>
     <div class="sl-strip" data-step="4">
-      <div class="sl-sl">Building sites, US</div>
+      <div class="sl-sl">Building work, US</div>
       <div class="src">CPWR, 2023 data</div>
       <div class="sl-row r1"><span class="k">Share of workers</span><span class="tr"><i class="f" data-k="w"></i><b class="v" data-k="wv">7%</b></span></div>
-      <div class="sl-row r2"><span class="k">Share of heat deaths</span><span class="tr"><i class="f" data-k="d"></i><b class="v" data-k="dv">About 1 in 3</b></span></div>
+      <div class="sl-row r2"><span class="k">Share of worker heat deaths</span><span class="tr"><i class="f" data-k="d"></i><b class="v" data-k="dv">About 1 in 3</b></span></div>
     </div>`,
   css: `
     .s-stakes-lives .sl-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
@@ -984,7 +984,7 @@ Deck.add({
     .s-stakes-lives .sl-row{position:absolute;left:0;width:1700px;height:36px;display:flex;align-items:center}
     .s-stakes-lives .sl-row.r1{top:58px}
     .s-stakes-lives .sl-row.r2{top:104px}
-    .s-stakes-lives .sl-row .k{flex:none;width:340px;font:600 28px/1 var(--font);color:#D9D9D4}
+    .s-stakes-lives .sl-row .k{flex:none;width:400px;font:600 28px/1 var(--font);color:#D9D9D4;white-space:nowrap}
     .s-stakes-lives .sl-row .tr{position:relative;flex:none;width:1200px;height:26px;border-radius:13px;background:rgba(255,255,255,.09)}
     .s-stakes-lives .sl-row .f{position:absolute;left:0;top:0;height:26px;width:0;border-radius:13px;background:linear-gradient(90deg,#E9590C,#FFB366);box-shadow:0 0 22px rgba(255,131,0,.55)}
     .s-stakes-lives .sl-row .v{position:absolute;top:-4px;left:0;font:800 34px/1 var(--font);color:#fff;white-space:nowrap;opacity:0}
@@ -1004,7 +1004,7 @@ Deck.add({
     mk('stop', { offset: 0, 'stop-color': '#FF8300', 'stop-opacity': 0 }, lg); mk('stop', { offset: 1, 'stop-color': '#FFB366', 'stop-opacity': .5 }, lg);
     /* heat glow behind the crowd (a plain layer, so its slow breathing never repaints the svg) */
     ctx.glow = ctx.q('.sl-haze');
-    /* the crowd: 3 rows x 36 workers, one group per column so a wave of heat can sweep across */
+    /* the crowd: 3 rows x 40 workers, one group per column so a wave of heat can sweep across */
     const crowd = mk('g', {});
     ctx.cols = [];
     for (let c = 0; c < COLS; c++) {

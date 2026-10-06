@@ -58,7 +58,7 @@ Deck.add({
     mk('line', { class: 'ar', x1: BX + BW / 2, y1: 810, x2: BX + BW / 2, y2: 842, stroke: '#FFB366' }, pg); mk('polygon', { points: `${BX + BW / 2},848 ${BX + BW / 2 - 7},836 ${BX + BW / 2 + 7},836`, fill: '#FFB366' }, pg);
     const om = grp(4); node(om, PX, 850, PW, 84, 'Observation Manager', 'danger, RED, critical gas', '#C58BFF');
     arrow(om, BX + BW + 4, PX - 4, 892, '#C58BFF', false); mk('text', { class: 'tag', x: BX + BW + 8, y: 876, text: 'OUTBOX', fill: '#C58BFF' }, om);
-    mk('text', { class: 'tag', x: PX + PW - 118, y: 922, text: 'GAS: TEST', fill: '#FFC24B' }, om);
+    mk('text', { class: 'tag', x: PX + PW - 118, y: 956, text: 'GAS: TEST', fill: '#FFC24B' }, om);
     [['w', 'asks every 60 s'], ['l', 'asks every 30 s'], ['g', 'asks every 60 s']].forEach(([k, sb], i) => {
       const g = grp(i + 1); arrow(g, BX + BW + 4, PX - 4, Y[k], COL[k], false); node(g, PX, Y[k] - NH / 2, PW, NH, 'Portal page', sb, COL[k]);
       mk('text', { class: 'tag', x: PX + PW - 62, y: Y[k] - NH / 2 + 28, text: 'LIVE', fill: '#2BD576' }, g);

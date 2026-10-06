@@ -1,17 +1,18 @@
 /* Slide: the build in numbers. One idea: what was built, counted from the code.
    Three layers (Screens, Server, Data), eight odometers that roll up one layer per step, a spine of light packets that links the layers,
    and on the last step the short command behind each number types in. Facts: research C1 (sections 3.7, 3.10, 5) and C5 (sections 2.1, 12).
-   Every number was re-counted on master (front end 83b4d8d, backend 352195f) before it went on the slide. */
+   Every number was re-counted on the main branch (front end of 5 Oct 2026, backend of 4 Oct 2026) before it went on the slide, and each command on the slide was run in its folder (checked again on 5 Oct 2026 on a copy of master). The Products command counts the three product folders in features, because the front end has no single product list. */
 Deck.add({
   id: 'build', section: 'convert', title: 'The build in numbers', kicker: 'The conversion · The build in numbers', reality: ['code'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: .9 }, dur: [3600, 5000, 5000, 5000, 6500], minutes: 1,
   notes: [
-    'Here is what was built. Every number is counted from the code.',
-    'Step 1: the screens. Three products and six feature folders.',
-    'Step 2: the server. 28 request groups hold 67 requests. Seven background services run by themselves. 33 tools are for AI.',
-    'Step 3: the data. 43 database changes built 31 tables.',
-    'Step 4: each number has a short command. Anyone with the code can run it.',
-    'If asked: request groups are controllers and requests are endpoints. Tools for AI are MCP tools, and database changes are migrations. Counted on the main branch on 4 and 5 Oct 2026. That is code in master, not a deploy check. The 67 requests are 45 read, 11 create, 10 update and 1 delete. The 7 background services are 2 for Weather, 4 for Lightning and 1 for Gas. Of the 33 AI tools, 26 only read, 4 propose changes and 3 are observer writes, and all are for Weather. The 3 products are Weather Station, Lightning and Gas. The 6 feature folders are Weather Station, Lightning, Gas, Reports, Settings and config. The commands on the slide are short forms of the research commands and give the same count when run in the right folder.',
+    'Here is what was built, counted from the code.',
+    'Step 1: three products and six feature folders.',
+    'Step 2: the server has 28 request groups and 67 requests.',
+    'It also has 7 background services and 33 tools for AI.',
+    'Step 3: after 43 database changes, there are 31 tables.',
+    'Step 4: each number has a short command anyone can run.',
+    'If asked: request groups are controllers and requests are endpoints. There are 30 controller files, and 2 are base classes, so 28 are real. Tools for AI are MCP tools, and database changes are migrations. Counted on the main branch: the backend on 4 Oct 2026 and the front end on 5 Oct 2026. That is code in master, not a deploy check. The 67 requests are 45 read, 11 create, 10 update and 1 delete; a looser search finds 11 updates because one code comment mentions an update. The 7 background services are 2 for Weather, 4 for Lightning and 1 for Gas. Of the 33 AI tools, 26 only read, 4 propose changes and 3 are observer writes, and all are for Weather. All 31 tables sit in one database for the three products, and it had 10 tables on 26 Jul 2026. The 3 products are Weather Station, Lightning and Gas. The 6 feature folders are Weather Station, Lightning, Gas, Reports, Settings and config. Where each command runs: the two front end commands in the src/app folder; the two request commands in the Web API project; the services command in the Core project; the tools command in Mcp/Tools inside Web API; the two data commands in Infrastructure/Migrations. Run in those folders, the commands print the same counts. The products command counts the three product folders inside features.',
   ].join('\n'),
   html: `
     <h2 class="h2 bd-h" data-step="0">The build in <span class="o glow-text">numbers</span></h2>
@@ -44,7 +45,9 @@ Deck.add({
     @keyframes odPop{0%{transform:scale(1.14)}100%{transform:none}}
     .s-build .od-w{position:relative;display:block;width:70px;height:124px;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
     .s-build .od-w span{position:absolute;left:0;top:0;width:100%;height:124px;text-align:center;font:900 116px/124px var(--font);font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:#fff;filter:blur(var(--bl,0px))}
+    .s-build .od-w span::before{content:attr(data-d)}
     .s-build .od-w.lz{opacity:.22}
+    .s-build .od .nn{position:absolute;left:0;top:0;opacity:0;pointer-events:none;font:900 16px/1 var(--font)}
     .s-build .bd-lab{max-width:168px;font:800 26px/1.14 var(--font);color:#fff;letter-spacing:-.005em}
     .s-build .bd-tally{position:absolute;left:24px;right:24px;top:150px;height:12px;display:flex;gap:2px}
     .s-build .bd-tally i{flex:1;display:block;border-radius:2px;background:rgba(255,255,255,.12);transition:background .25s,box-shadow .25s}
@@ -78,7 +81,7 @@ Deck.add({
     /* what the slide counts. cmd = short form of the command in the research sheet (checked on master: same count) */
     const LAYERS = [
       { name: 'Screens', cards: [
-        { n: 3, label: 'Products', c1: 'ls Products | wc -l', wide: 1, art: 'products' },
+        { n: 3, label: 'Products', c1: 'ls features | grep -cE "Wea|Lig|Gas"', wide: 1, art: 'products' },
         { n: 6, label: 'Feature folders', c1: 'ls features | wc -l', wide: 1, art: 'folders' } ] },
       { name: 'Server', cards: [
         { n: 28, label: 'Request groups', c1: 'grep -rl "^ *\\[Http" . |', c2: 'wc -l' },
@@ -111,7 +114,7 @@ Deck.add({
     const mkOdo = (host, n) => {
       const nd = String(n).length, reels = [];
       for (let p = nd - 1; p >= 0; p--) {
-        const win = mk('span', { class: 'od-w' }, host), a = mk('span', { text: '0' }, win), b = mk('span', { text: '0' }, win);
+        const win = mk('span', { class: 'od-w', 'aria-hidden': 'true' }, host), a = mk('span', { 'data-d': '0' }, win), b = mk('span', { 'data-d': '0' }, win);
         reels.push({ p, win, a, b, da: -1, db: -1 });
       }
       return reels;
@@ -122,7 +125,7 @@ Deck.add({
         const q = Math.pow(10, r.p), base = Math.floor(v / q + 1e-9), rem = v - base * q;
         const f = r.p === 0 ? v - Math.floor(v) : Math.max(0, rem - (q - 1));
         const d0 = base % 10, d1 = (d0 + 1) % 10;
-        if (r.da !== d0) { r.a.textContent = d0; r.da = d0; } if (r.db !== d1) { r.b.textContent = d1; r.db = d1; }
+        if (r.da !== d0) { r.a.dataset.d = d0; r.da = d0; } if (r.db !== d1) { r.b.dataset.d = d1; r.db = d1; }
         r.a.style.transform = `translateY(${(-f * H).toFixed(1)}px)`; r.b.style.transform = `translateY(${((1 - f) * H).toFixed(1)}px)`;
         r.win.classList.toggle('lz', r.p > 0 && v < q);
       });
@@ -136,6 +139,7 @@ Deck.add({
         const el = mk('div', { class: 'bd-card sweepable' }, wall); el.style.left = x + 'px'; el.style.top = rowY(k) + 'px'; el.style.width = w + 'px'; x += w + XG;
         const top = mk('div', { class: 'bd-top' }, el), od = mk('div', { class: 'od' }, top); mk('div', { class: 'bd-lab', text: d.label }, top);
         const c = { d, n: d.n, el, od, reels: mkOdo(od, d.n), v: 0, lit: 0, on: false, items: [], t0: 0, dur: 1300, last: 0 };
+        mk('span', { class: 'nn', text: String(d.n) }, od);
         /* the small picture that fills up as the number rolls */
         if (!d.art) {
           const tl = mk('div', { class: 'bd-tally' }, el);
@@ -169,11 +173,11 @@ Deck.add({
       if (fx) { c.el.classList.remove('done'); void c.el.offsetWidth; c.el.classList.add('done'); c.od.classList.remove('pop'); void c.od.offsetWidth; c.od.classList.add('pop'); Fx.burstEl(c.od, { n: 16, color: '#FF8300', speed: 280 }); }
     };
     ctx.setFinal = (c) => { c.on = true; c.el.classList.add('on'); finish(c, false); };
-    ctx.setZero = (c) => { c.on = false; c.el.classList.remove('on', 'done'); ctx.rolls = ctx.rolls.filter((r) => r !== c); place(c, 0); light(c, 0); c.reels.forEach((r) => r.win.style.removeProperty('--bl')); };
+    ctx.setZero = (c) => { clearTimeout(c.sw); c.on = false; c.el.classList.remove('on', 'done'); ctx.rolls = ctx.rolls.filter((r) => r !== c); place(c, 0); light(c, 0); c.reels.forEach((r) => r.win.style.removeProperty('--bl')); };
     ctx.startRoll = (c, delay) => {
       c.on = true; c.el.classList.add('on'); c.t0 = performance.now() + delay; c.dur = c.n > 30 ? 1500 : 1250; c.last = 0; c.fin = false;
       if (ctx.rolls.indexOf(c) < 0) ctx.rolls.push(c);
-      ctx.after(delay, () => Fx.sweep(c.el));
+      clearTimeout(c.sw); c.sw = ctx.after(delay, () => Fx.sweep(c.el));
     };
     ctx.tick = (dt) => {
       const now = performance.now();
@@ -185,13 +189,15 @@ Deck.add({
         if (p >= 1) finish(c, true);
       });
     };
+    ctx.tt = [];
     ctx.typeAll = (on, fast) => {
+      ctx.tt.forEach(clearTimeout); ctx.tt.length = 0;
       ctx.cards.forEach((c, j) => {
         if (c.tx._typ) c.tx._typ.stop = true;
         if (!on) { c.tx.textContent = ''; c.cm.classList.add('empty'); return; }
         if (fast) { c.tx.textContent = c.cmdText; c.cm.classList.remove('empty'); return; }
         c.tx.textContent = '';
-        ctx.after(120 + j * 300, () => { c.cm.classList.remove('empty'); Fx.type(c.tx, c.cmdText, 62); });
+        ctx.tt.push(ctx.after(120 + j * 300, () => { c.cm.classList.remove('empty'); Fx.type(c.tx, c.cmdText, 62); }));
       });
     };
     ctx.apply = (i, instant) => {
@@ -209,7 +215,7 @@ Deck.add({
       ctx.fl.forEach((f, k) => { const on = i >= k + 2; f.show(on); if (on) f.start(); else f.stop(); });
       const cmdOn = i >= 4;
       if (cmdOn !== ctx.cmdOn || fast) { ctx.typeAll(cmdOn, fast); }
-      if (cmdOn && !ctx.cmdOn && !fast) ctx.cards.forEach((c, j) => ctx.after(j * 120, () => Fx.sweep(c.el)));
+      if (cmdOn && !ctx.cmdOn && !fast) ctx.cards.forEach((c, j) => ctx.tt.push(ctx.after(j * 120, () => Fx.sweep(c.el))));
       ctx.cmdOn = cmdOn;
       ctx.q('.bd-lead').classList.toggle('b', cmdOn);
       if (fast) { void ctx.root.offsetWidth; requestAnimationFrame(() => requestAnimationFrame(() => ctx.root.classList.remove('no-trans'))); }
@@ -218,6 +224,7 @@ Deck.add({
   },
   enter(ctx) {
     ctx.root.classList.add('no-trans');
+    ctx.tt.forEach(clearTimeout); ctx.tt.length = 0;
     ctx.cards.forEach((c) => { c.tx.textContent = ''; c.cm.classList.add('empty'); ctx.setZero(c); });
     ctx.cmdOn = false; ctx.layers.forEach((L) => { L.label.classList.remove('on'); L.node.classList.remove('on'); });
     ctx.q('.bd-lead').classList.remove('b');

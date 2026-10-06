@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:50:26", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "18:28:57", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -903,7 +903,7 @@ Deck.plan([
 try{
 /* Slide: the system around Connected Environment. What it talks to today (in the code) and what it could join (vision).
    Facts (research C6): sensors-service feeds weather, a queue feeds lightning, the maker's cloud feeds gas, node-service is the device list (C5 section 7 lists every call the backend makes);
-   alerts go out to the Observation Manager (nine sources, section 7 H1), notification rules choose who is told (H2); gas does not reach the Observation Manager (C5 3.8, C6 section 9 R1);
+   alerts go out to the Observation Manager (nine sources, section 7 H1), notification rules choose who is told (H2); gas does not reach the Observation Manager (C5 3.8, C6 section 9 R1), so the Gas chip has no line out and says "stays here";
    zones and positions (H3), the safety service that rings helmets by zone with no caller (H5), the Digital Work Permit service and the equipments service are separate (sections 5, 6); the links are vision (section 8). */
 const PL_SV = (inner) => `<svg class="pl-ic" viewBox="0 0 64 64" aria-hidden="true">${inner}</svg>`;
 const PL_IC = {
@@ -922,13 +922,13 @@ Deck.add({
   id: 'platform', section: 'tech', title: 'The system around Connected Environment', kicker: 'The paths · Around us', reality: ['code', 'vision'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4200, 5200, 5200, 5200, 6000], minutes: 1.2,
   notes: [
-    'Connected Environment sits inside a bigger system.',
-    'Step 1: data comes in from sensors and the gas maker.',
+    'Step 1: our system takes data from sensors and the gas maker.',
     'Step 2: alerts go out, and rules choose who gets told.',
+    'Gas does not go out yet.',
     'Step 3: zones and the helmet alarm run beside us, not joined.',
     'Step 4: work permits and equipment are separate services that could join.',
     'Nobody has built these links, and a person would approve every action.',
-    'If asked: weather comes through the sensors service, lightning through a queue, and gas from the maker’s cloud. The device list is the node registry, and gas devices are not in it. Gas alerts do not reach the Observation Manager yet. The Observation Manager takes nine sources: connected worker, AVL, CCTV, manual, QR code, clinic violation, training center, digital work permit and weather station. Weather alerts carry no zone yet, so rules cannot aim at a zone. The safety service can ring helmets by zone, but no rule calls it. Permits and equipment have their own databases. Read from the code, deploy not verified.',
+    'If asked: weather comes through the sensors service, lightning through a queue, and gas from the maker’s cloud. The device list is the node registry, and gas devices are not in it. Weather sends the start and end of each danger period, and lightning sends only red, fault and offline. Both go to the Observation Manager in the code, but delivery has not been seen live. Gas alerts do not reach it yet: the sending code is in master, but the Observation Manager code we read has no gas types and would drop them. The Observation Manager takes nine sources: connected worker, AVL, CCTV, manual, QR code, clinic violation, training center, digital work permit and weather station. Weather alerts carry no zone yet, so rules cannot aim at a zone. The safety service can ring helmets by zone, but no rule calls it. Permits and equipment have their own databases. Read from the code, deploy not verified.',
   ].join('\n'),
   html: `
     <h2 class="h2 pl-h" data-step="0">Part of a <span class="o glow-text">bigger system.</span></h2>
@@ -941,7 +941,7 @@ Deck.add({
         <div class="pl-core-t">Our system</div>
         <div class="pl-chip" style="top:96px;--c:#FF8300"><i></i>Weather</div>
         <div class="pl-chip" style="top:168px;--c:#4FB3FF"><i></i>Lightning</div>
-        <div class="pl-chip" style="top:240px;--c:#2BD576"><i></i>Gas</div>
+        <div class="pl-chip" style="top:240px;--c:#2BD576"><i></i>Gas<span class="pl-nx" data-step="2" data-delay="1100">stays here</span></div>
       </div>
     </div>
     <div class="pl-w" style="left:96px;top:421px;width:344px;height:88px" data-step="1" data-delay="0"><div class="pl-n" style="--c:#FF8300">${PL_IC.tower}<b>Sensors</b></div></div>
@@ -950,7 +950,7 @@ Deck.add({
     <div class="pl-w" style="left:1160px;top:316px;width:664px;height:120px" data-step="2" data-delay="300"><div class="pl-n pl-om sweepable" style="--c:#FFB366">${PL_IC.inbox}<b>Observation Manager</b><span class="pl-cnt"><u>0</u><em>sources</em></span></div></div>
     <div class="pl-w" style="left:1160px;top:526px;width:664px;height:104px" data-step="2" data-delay="900"><div class="pl-n" style="--c:#FFB366">${PL_IC.bell}<b>Who gets told</b><span class="pl-pps">${PL_PP}${PL_PP}${PL_PP}</span></div></div>
     <div class="pl-vh" data-step="3"><span>Could join</span><span class="rb rb-vision sm">Vision</span></div>
-    <div class="pl-vc" data-step="4" data-delay="900">Nobody has built these. A person approves.</div>
+    <div class="pl-vc" data-step="4" data-delay="900">Nobody has built these links. A person approves.</div>
     <div class="pl-w" style="left:96px;top:736px;width:396px;height:160px" data-step="3" data-delay="500"><div class="pl-n vis">${PL_IC.pin}<b>Zones</b></div></div>
     <div class="pl-w" style="left:540px;top:736px;width:396px;height:160px" data-step="3" data-delay="900"><div class="pl-n vis">${PL_IC.helmet}<b>Helmet alarm</b></div></div>
     <div class="pl-w" style="left:984px;top:736px;width:396px;height:160px" data-step="4" data-delay="300"><div class="pl-n vis">${PL_IC.permit}<b>Work permits</b></div></div>
@@ -967,6 +967,7 @@ Deck.add({
     .s-platform .pl-core-t{position:absolute;left:32px;top:28px;font:800 34px/1 var(--font);color:#fff}
     .s-platform .pl-chip{position:absolute;left:24px;right:24px;height:56px;display:flex;align-items:center;gap:16px;padding:0 22px;border-radius:16px;border:2px solid var(--c);background:rgba(0,0,0,.42);font:700 28px/1 var(--font);color:#fff}
     .s-platform .pl-chip i{flex:none;width:14px;height:14px;border-radius:50%;background:var(--c);box-shadow:0 0 14px var(--c)}
+    .s-platform .pl-nx{margin-left:auto;padding:7px 14px;border-radius:999px;border:1.5px dashed rgba(255,255,255,.4);font:700 20px/1 var(--font);color:#C9C9C3;white-space:nowrap}
     .s-platform .pl-n{position:relative;width:100%;height:100%;display:flex;align-items:center;gap:22px;padding:0 28px;border-radius:22px;border:2px solid var(--c);background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.02)),#0F0F11;box-shadow:0 0 34px color-mix(in srgb,var(--c) 22%,transparent);transition:box-shadow .35s var(--ease),transform .35s var(--ease)}
     .s-platform .pl-n:hover{box-shadow:0 0 58px color-mix(in srgb,var(--c) 48%,transparent);transform:translateY(-3px)}
     .s-platform .pl-n b{font:800 33px/1.1 var(--font);color:#fff;white-space:nowrap}
@@ -1007,7 +1008,7 @@ Deck.add({
     line(2, 'M1040 496 C1090 496 1090 376 1150 376', C.l, { tip: [1160, 376, 'r'], delay: 100, flow: { count: 3 } });
     line(2, 'M1492 436 V516', C.a, { tip: [1492, 526, 'd'], delay: 700, flow: { count: 1, tail: 4, tailGap: 11, speed: 110 } });
     /* could join: dashed lines from our system down to four neighbours */
-    const bus = (x2) => { const s = x2 < 820 ? -1 : 1; return `M820 630 V676 Q820 692 ${820 + s * 16} 692 H${x2 - s * 16} Q${x2} 692 ${x2} 708 V726`; };
+    const bus = (x2) => { const s = x2 < 820 ? -1 : 1; return `M820 630 V692 H${x2 - s * 16} Q${x2} 692 ${x2} 708 V726`; };
     [[294, 3, 400], [738, 3, 800], [1182, 4, 200], [1626, 4, 600]].forEach(([x2, at, dl]) => line(at, bus(x2), C.v, { dash: true, tip: [x2, 736, 'd'], delay: dl, flow: { count: 2, speed: 130, r: 5, tail: 5, tailGap: 11 } }));
     ctx.cnt = ctx.q('.pl-cnt u'); ctx.pps = ctx.qa('.pl-pp'); ctx.om = ctx.q('.pl-om'); ctx.vis = ctx.qa('.pl-n.vis');
     const setNum = (el, v) => { if (el._cnt) el._cnt.stop = true; el.textContent = v; };

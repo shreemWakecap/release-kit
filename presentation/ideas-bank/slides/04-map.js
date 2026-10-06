@@ -5,7 +5,7 @@ Deck.add({
   notes: 'The whole story on one page. Five parts. Each dot is one slide.\nTo jump to a slide, click its dot.',
   html: `
     <h2 class="h2 mp-h" data-step="0"></h2>
-    <p class="lead mp-lead" data-step="0" data-delay="200">Bright dot: a built slide. Dim dot: an idea.</p>
+    <p class="lead mp-lead" data-step="0" data-delay="200">Each dot is one slide. Click one to jump.</p>
     <svg class="mp-top" viewBox="0 0 1920 120" width="1920" height="120"></svg>
     <div class="mp-acts"></div>`,
   css: `
@@ -34,7 +34,7 @@ Deck.add({
     const data = Deck.planData(), W = 208, GAP = 9;
     const ACTS = [['why', 'The stakes', '#FF8300'], ['convert', 'The conversion', '#FFB366'], ['tech', 'The paths', '#4FB3FF'], ['bank', 'The data bank', '#2BD576'], ['future', 'What it can do', '#C58BFF'], ['numbers', 'The numbers', '#E6E6E2'], ['next', 'What next', '#FFC24B'], ['appendix', 'Extras', '#8E8E89']];
     const stCol = { live: '#2BD576', code: '#4FB3FF', test: '#FFC24B', plan: '#B9B9B4', vision: '#C58BFF', stat: '#FFFFFF', none: '#F2F2EE' };
-    ctx.q('.mp-h').innerHTML = `${data.length} slides. <span class="o glow-text">Ideas bank.</span>`;
+    ctx.q('.mp-h').innerHTML = `${data.length} slides. <span class="o glow-text">All of them.</span>`;
     const root = ctx.q('.mp-acts');
     ctx.acts = ACTS.map(([key, name, color], ai) => {
       const st = data.filter((d) => d.section === key);

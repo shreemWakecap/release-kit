@@ -4,7 +4,7 @@
    2 the unit goes quiet: four missed heartbeats, a sweep every 5 s marks it stale, the page says Unknown. 3 only green is safe. */
 Deck.add({
   id: 'flow-lightning', section: 'tech', title: 'Lightning: silence is never clear', kicker: 'Data paths · Lightning',
-  reality: ['code', 'live'], steps: 3, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4500, 5600, 6400, 6400], minutes: 1.2,
+  reality: ['code', 'live'], steps: 3, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4500, 5600, 7200, 6400], minutes: 1.2,
   notes: [
     'The warning unit decides, and WakeCap is the backup.',
     'Messages wait in two queues, each with a safety net.',
@@ -12,7 +12,7 @@ Deck.add({
     'After four, the page says Unknown, never all clear.',
     'Only green is safe.',
     'Every other state, and silence, is not safe.',
-    'If asked: the unit has five contact lines (red, orange, yellow, green, fault) and picks its own state. The page tells people the cabinet lights and sounder come first. A radio node on the mesh reads the unit, a gateway passes it on, and two AWS IoT rules copy each message into two SQS queues: one for readings, one for frames it could not read. Each queue has a dead-letter queue that catches a message after 5 failed receives. Messages are kept 14 days. A sweep runs every 5 seconds. A unit is stale when its last message is older than 4 heartbeats. The default heartbeat is 60 seconds, so 240 seconds. It was 3 heartbeats until 22 Sep 2026. Offline, stale and a page that stopped refreshing all read Unknown. RED, FAULT and OFFLINE also go to the Observation Manager. This is from the code. The page and the silence rule are seen working in production. A red state was never seen live.',
+    'If asked: the unit has five contact lines (red, orange, yellow, green, fault) and picks its own state. The page tells people the cabinet lights and sounder come first. An input module reads the contact lines, a radio node on the mesh reads that module over Modbus, and a gateway passes it on. Two AWS IoT rules each copy messages into their own SQS queue: one for readings, one for frames it could not read. Each queue has a dead-letter queue, our safety net, that catches a message after 5 failed receives. Messages are kept 14 days. A sweep runs every 5 seconds. The code calls the quiet state stale: a unit is stale when its last message is older than 4 heartbeats, so the slide says Too old. The default heartbeat is 60 seconds, so 240 seconds. It was 3 heartbeats until Sep 2026. Offline, stale and a page that stopped refreshing all read Unknown. RED, FAULT and OFFLINE also go to the Observation Manager. This is from the code. In production we saw the green page and the sweep rows. We never saw the Unknown tile or a red state live. The page asks WakeCap every 30 seconds. The queue drop and the heartbeat dots on the slide are drawings, not real data.',
   ].join('\n'),
   html: `
     <h2 class="h2 lt-title" data-step="0">Lightning: silence is <span class="o glow-text">never clear.</span></h2>
@@ -50,6 +50,8 @@ Deck.add({
     .s-flow-lightning.on1 .flt-spare{opacity:1}
     .s-flow-lightning .flt-spare rect{fill:rgba(255,194,75,.05);stroke:rgba(255,194,75,.7);stroke-width:2;stroke-dasharray:7 6;transition:fill .4s,stroke .4s}
     .s-flow-lightning .flt-spare.hit rect{fill:rgba(255,194,75,.24);stroke:#FFC24B;stroke-dasharray:none}
+    .s-flow-lightning .flt-spare .flt-cell{opacity:0;fill:#FFC24B;stroke:none;transition:opacity .3s}
+    .s-flow-lightning .flt-spare.hit .flt-cell{opacity:1}
     .s-flow-lightning .flt-road{fill:none;stroke:rgba(255,255,255,.13);stroke-width:3.5;stroke-linecap:round;transition:stroke .6s}
     .s-flow-lightning.on1 .flt-road{stroke:rgba(79,179,255,.5)}
     .s-flow-lightning.on2 .flt-road{stroke:rgba(255,255,255,.13)}
@@ -109,7 +111,9 @@ Deck.add({
     .s-flow-lightning .flt-lm.pulse{animation:fltGlow 1.4s var(--ease) 2}
     @keyframes fltGlow{50%{filter:drop-shadow(0 0 22px #2BD576) drop-shadow(0 0 40px #2BD576)}}
     body.calm .s-flow-lightning .flt-lm.pulse{animation:none}
-    .s-flow-lightning.nt [class*="flt-"],.s-flow-lightning.no-trans [class*="flt-"]{transition:none!important}`,
+    .s-flow-lightning.nt [class*="flt-"],.s-flow-lightning.no-trans [class*="flt-"],
+    .s-flow-lightning.nt .sc,.s-flow-lightning.nt .sn,.s-flow-lightning.nt .flt-spare rect,
+    .s-flow-lightning.no-trans .sc,.s-flow-lightning.no-trans .sn,.s-flow-lightning.no-trans .flt-spare rect{transition:none!important}`,
   init(ctx) {
     const svg = ctx.q('.flt-svg'); let host = svg; const mk = (t, a, p) => Fx.el(t, a, p || host);
     const BLUE = '#4FB3FF', GRN = '#2BD576', YEL = '#FFC24B', RED = '#FF4D4D';
@@ -180,6 +184,7 @@ Deck.add({
       mk('rect', { class: 'flt-pipe' + cls, x: 760, y: py - 23, width: 370, height: 46, rx: 23 }, Q);
       const s = grp('flt-spare', {}, Q); if (!cls) ctx.spare = s;
       mk('rect', { x: 800, y: sy - 16, width: 290, height: 32, rx: 16 }, s);
+      mk('rect', { class: 'flt-cell', x: 818, y: sy - 8, width: 28, height: 16, rx: 5 }, s);
       mk('text', { class: 'flt-sm', x: 945, y: sy + 7, text: 'Safety net' }, s);
     });
 
@@ -226,7 +231,7 @@ Deck.add({
     mk('circle', { class: 'flt-tl', cx: 1672, cy: 400, r: 68 }, TG);
     const ok = mk('path', { d: 'M1644 402 L1664 424 L1702 378', fill: 'none', stroke: '#06200F', 'stroke-width': 12, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, TG);
     const qm = mk('text', { class: 'flt-q', x: 1672, y: 430, text: '?' }, TG); qm.style.display = 'none';
-    const word = mk('text', { class: 'flt-big', x: 1672, y: 522, text: 'All clear' }, T);
+    const word = mk('text', { class: 'flt-big', x: 1672, y: 522, text: 'All Clear' }, T);
     pill(T, 1672, 604, 140, 38, 'Backup', 'b');
     const swp = mk('rect', { x: 1380, y: 250, width: 150, height: 400, fill: 'url(#flt-swg)' }, mk('g', { 'clip-path': 'url(#flt-tclip)' }, T));
     ctx.tg = TG;
@@ -246,7 +251,7 @@ Deck.add({
     const brk = mk('g', { class: 'flt-brk' }, S);
     mk('path', { d: 'M486 868 V878 H820 V868' }, brk); mk('text', { x: 653, y: 914, text: 'missed' }, brk);
     const stale = mk('g', { class: 'flt-stale' }, S);
-    mk('rect', { x: 860, y: 784, width: 170, height: 56, rx: 28 }, stale); mk('text', { x: 945, y: 823, text: 'Stale' }, stale);
+    mk('rect', { x: 860, y: 784, width: 170, height: 56, rx: 28 }, stale); mk('text', { x: 945, y: 823, text: 'Too old' }, stale);
 
     /* ---- step 3: only green is safe ---- */
     const L = rev('lt-lamps', 3, 0);
@@ -269,7 +274,7 @@ Deck.add({
     ctx.setStale = (b) => ctx.root.classList.toggle('stl', b);
     ctx.setBad = (b) => {
       ctx.root.classList.toggle('bad', b);
-      word.textContent = b ? 'Unknown' : 'All clear';
+      word.textContent = b ? 'Unknown' : 'All Clear';
       ok.style.display = b ? 'none' : ''; qm.style.display = b ? '' : 'none';
     };
     ctx.setMiss = (n) => {
@@ -299,7 +304,7 @@ Deck.add({
       const run = k === 1;
       [ctx.fm, ctx.fs].forEach((f) => { f.show(run); if (run) f.start(); else f.stop(); });
       drops.forEach((d) => d(0));
-      ctx.setDrop(k >= 1);
+      ctx.setDrop(k === 1);                                  /* the caught message is shown at step 1 only; later steps start clean */
       ctx.slots.forEach((g) => g.classList.remove('beat'));
       ctx.setMiss(k >= 2 ? 4 : 0);
       ctx.setStale(k >= 2); ctx.setBad(k >= 2);
@@ -314,12 +319,12 @@ Deck.add({
         ctx.fm.show(true).start(); later(500, () => ctx.fs.show(true).start());
         later(1500, () => ctx.drop(0)); later(1950, () => ctx.drop(1));
       } else if (k === 2) {
-        R.classList.add('on2');
+        R.classList.add('on2'); ctx.setDrop(false);
         ctx.fm.stop().show(false); ctx.fs.stop().show(false);
         for (let i = 0; i < 4; i++) later(600 + i * 130, () => { const g = ctx.slots[i]; g.classList.remove('beat'); void g.getBoundingClientRect(); g.classList.add('beat'); });
-        for (let n = 1; n <= 4; n++) later(1200 + (n - 1) * 380, () => { ctx.setMiss(n); if (n === 4 && !ctx.calm) Fx.burstEl(ctx.slots[7], { n: 18, color: '#FF6B5E', speed: 260 }); });
-        later(2480, () => ctx.setStale(true));
-        later(2760, () => ctx.flip());
+        for (let n = 1; n <= 4; n++) later(1150 + (n - 1) * 330, () => { ctx.setMiss(n); if (n === 4 && !ctx.calm) Fx.burstEl(ctx.slots[7], { n: 18, color: '#FF6B5E', speed: 260 }); });
+        later(2280, () => ctx.setStale(true));
+        later(2480, () => ctx.flip());
       } else if (k === 3) {
         R.classList.add('on3');
         later(1500, () => { const l = ctx.lamps[0].lm; l.classList.remove('pulse'); void l.getBoundingClientRect(); l.classList.add('pulse'); if (!ctx.calm) Fx.burstEl(l, { n: 30, color: GRN, speed: 330 }); });

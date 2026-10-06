@@ -15,10 +15,10 @@ Deck.add({
     'This is the chain from a hot hour to lives and money.',
     'Every link is a published rate, not our result.',
     'Step 1: two to three percent less work per degree over twenty.',
-    'Step 2: hot days raise injury risk by five to fifteen percent.',
-    'Step 3: prevention returns more than it costs in two proposed rules.',
-    'Step 4: we know the rates, not your site’s own result.',
-    'If asked: WHO and WMO 2025 gives 2 to 3 percent per degree above 20 °C WBGT. The Lancet Countdown 2025 report (2024 data) gives 639 billion hours and US$1.09 trillion, a model, so about US$1.71 an hour. IZA 2021 (California) gives +5 to 7 percent at 85 to 90 °F and +10 to 15 percent above 100 °F, against days in the 60s. ILO’s 2024 report (2020 data) estimates 22.85 million injuries and 18,970 deaths a year from heat, so about 1,200 injuries for each death. OSHA’s 2024 proposal: US$7.8 billion a year in cost, US$9.179 billion a year in benefits, 531 deaths and 16,027 injuries prevented. It is a projection, not final, and it depends on how deaths and injuries are counted. Cal/OSHA’s 2023 proposal covers indoor work in California: about US$4.0 billion in benefits against about US$1.0 billion in cost over 10 years, and 57 percent of the benefit is output. The research found no Saudi count of heat injuries or deaths.',
+    'Step 2: more injuries on hot days, and some end in death.',
+    'Step 3: two proposed rules project benefits above costs.',
+    'Step 4: we have the published rates, not your site’s result.',
+    'If asked: WHO and WMO 2025 gives 2 to 3 percent per degree above 20 °C WBGT. The Lancet Countdown 2025 report (2024 data) gives 639 billion hours and US$1.09 trillion, a model, so about US$1.71 an hour, our own division. IZA 2021 (California) gives +5 to 7 percent at 85 to 90 °F (29 to 32 °C) and +10 to 15 percent above 100 °F (38 °C), against days in the 60s °F, so 5 to 15 percent is the span of those two bands. ILO’s 2024 report (2020 data) estimates 22.85 million injuries and 18,970 deaths a year from heat, worldwide, so about 1,200 injuries for each death. That ratio is our own division of two yearly totals, not a measured chain. OSHA’s 2024 proposal: US$7.8 billion a year in cost, US$9.179 billion a year in benefits, 531 deaths and 16,027 injuries prevented a year. The 1.18 is our own division. The cost is net of assumed savings, most of the benefit is the value put on lives saved, and it all depends on how deaths and injuries are counted. It is a projection in a proposed rule. Cal/OSHA’s 2023 proposal covers indoor work in California: about US$4.0 billion in benefits against about US$1.0 billion in cost over 10 years, and 57 percent of the benefit is output. The 4.0 is our own division. The two differ because OSHA’s benefit is mostly lives saved and Cal/OSHA’s is mostly output. California adopted its rule in 2024, and these figures come from the 2023 proposal. The research found no Saudi count of heat injuries or deaths.',
   ].join('\n'),
   html: `
     <h2 class="h2 rl-h" data-step="0">The relations, <span class="o glow-text">with numbers</span></h2>
@@ -38,26 +38,28 @@ Deck.add({
     <div class="rl-dn" style="left:1170px;top:366px;width:380px" data-step="1" data-delay="1250"><div class="rl-cap">per lost hour</div><div class="src">Lancet Countdown, 2024 data. A model.</div><div class="src">US$1.09 trillion for 639 billion hours.</div></div>
 
     <div class="rl-up" style="left:490px;top:472px;width:410px" data-step="2" data-delay="250"><b class="rl-fig"><span class="n" data-to="5">5</span> to <span class="n" data-to="15">15</span>%</b></div>
-    <div class="rl-dn" style="left:490px;top:556px;width:410px" data-step="2" data-delay="450"><div class="rl-cap">more injury risk</div><div class="src">IZA, 2021, California.</div><div class="src">85 °F and up, against 60s °F.</div></div>
+    <div class="rl-dn" style="left:445px;top:556px;width:500px" data-step="2" data-delay="450"><div class="rl-cap">more injury risk</div><div class="src">IZA, 2021, California, against 60s °F.</div><div class="src"><span>5 to 7% at 85 to 90 °F,</span> <span>10 to 15% over 100 °F.</span></div></div>
     <div class="rl-up" style="left:1170px;top:472px;width:380px" data-step="2" data-delay="1050"><b class="rl-fig">1 death</b></div>
-    <div class="rl-dn" style="left:1170px;top:556px;width:380px" data-step="2" data-delay="1250"><div class="rl-cap">per <span class="n" data-to="1200">1,200</span> injuries</div><div class="src">ILO estimate, 2020 data (report 2024).</div><div class="src">22.85 million injuries, 18,970 deaths.</div></div>
+    <div class="rl-dn" style="left:1170px;top:556px;width:380px" data-step="2" data-delay="1250"><div class="rl-cap">per about <span class="n" data-to="1200">1,200</span> injuries</div><div class="src">ILO estimate, 2020 data (report 2024).</div><div class="src">22.85 million injuries, 18,970 deaths.</div></div>
 
-    <div class="rl-ret glass sweepable" data-step="3">
+    <div class="rl-ret glass sweepable" data-step="0" data-delay="800">
       <div class="rl-rh">Returns on prevention</div>
-      <div class="rl-ch" style="left:554px">Spend</div><div class="rl-ch" style="left:867px">Get back</div>
+      <div class="rl-body">
+      <div class="rl-ch" style="left:554px">Cost</div><div class="rl-ch" style="left:867px">Benefit</div>
       <svg class="rl-coins" viewBox="0 0 1728 224" width="1728" height="224"></svg>
-      <div class="rl-rn" style="top:56px"><b>OSHA proposal, 2024</b><span class="src">US$9.179 billion for US$7.8 billion a year.</span></div>
+      <div class="rl-rn" style="top:56px"><b>US OSHA proposal, 2024</b><span class="src">US$9.179 billion for US$7.8 billion, a year.</span></div>
       <div class="rl-v rl-vs" style="top:76px">US$1</div>
       <div class="rl-v rl-vg" style="top:68px">US$<span class="n" data-to="1.18" data-dec="2">1.18</span></div>
       <div class="rl-tag" style="top:74px">Projection</div>
-      <div class="rl-rn" style="top:132px"><b>Cal/OSHA Board proposal, 2023</b><span class="src">US$4.0 billion for about US$1.0 billion, 10 years.</span></div>
+      <div class="rl-rn" style="top:132px"><b>Cal/OSHA Standards Board, 2023</b><span class="src">US$4.0 billion for about US$1.0 billion, 10 years.</span></div>
       <div class="rl-v rl-vs" style="top:152px">US$1</div>
       <div class="rl-v rl-vg" style="top:144px">US$<span class="n" data-to="4" data-dec="1">4.0</span></div>
       <div class="rl-tag" style="top:150px">Projection</div><div class="rl-tag rl-tag2" style="top:150px">Indoors only</div>
+      </div>
     </div>
 
-    <div class="rl-knrow"><div class="rl-kn rl-known" data-step="4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 8.8"/></svg><b>Known:</b><span>the published rates</span></div>
-    <div class="rl-kn rl-unk" data-step="4" data-delay="300"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-dasharray="3 3"/><path d="M9.2 9.2a2.9 2.9 0 1 1 4.6 2.3c-1 .7-1.8 1.2-1.8 2.6M12 17.4v.2"/></svg><b>Not known:</b><span>your site’s own result</span></div></div></div>`,
+    <div class="rl-knrow"><div class="rl-kn rl-known" data-step="4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 8.8"/></svg><b>Known:</b><span>published rates</span></div>
+    <div class="rl-kn rl-unk" data-step="4" data-delay="300"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke-dasharray="3 3"/><path d="M9.2 9.2a2.9 2.9 0 1 1 4.6 2.3c-1 .7-1.8 1.2-1.8 2.6M12 17.4v.2"/></svg><b>Not known:</b><span>your site’s result</span></div></div>`,
   css: `
     .s-relations .rl-h{position:absolute;left:96px;top:104px;width:1700px;font-size:62px}
     .s-relations .rl-lead{position:absolute;left:96px;top:196px;width:1500px;font-size:27px}
@@ -72,11 +74,9 @@ Deck.add({
     .s-relations .la{--c:#FF8300;--g:rgba(255,131,0,.38)}.s-relations .lb{--c:#F1E4D4;--g:rgba(241,228,212,.24)}
     .s-relations .rl-node.live.la,.s-relations .rl-node.live.lb{border-color:var(--c);box-shadow:0 0 38px var(--g)}
     .s-relations .rl-start{left:96px;top:393px;width:240px;--c:#FF8300;border-color:#FF8300;box-shadow:0 0 48px rgba(255,131,0,.5)}
-    .s-relations .rl-start svg{stroke:#FFB366;animation:rlSun 30s linear infinite}
-    @keyframes rlSun{to{transform:rotate(360deg)}}
-    body.calm .s-relations .rl-start svg{animation:none}
-    .s-relations .rl-halo{position:absolute;inset:-2px;border-radius:22px;box-shadow:0 0 0 0 rgba(255,131,0,.5);animation:rlHalo 2.6s ease-out infinite;pointer-events:none}
-    @keyframes rlHalo{0%{box-shadow:0 0 0 0 rgba(255,131,0,.5)}100%{box-shadow:0 0 0 26px rgba(255,131,0,0)}}
+    .s-relations .rl-start svg{stroke:#FFB366}
+    .s-relations .rl-halo{position:absolute;inset:-2px;border-radius:22px;border:2px solid rgba(255,131,0,.65);opacity:0;animation:rlHalo 2.6s ease-out infinite;pointer-events:none}
+    @keyframes rlHalo{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.12,1.28);opacity:0}}
     body.calm .s-relations .rl-halo{animation:none}
     .s-relations .rl-a2{left:900px;top:298px}.s-relations .rl-a4{left:1560px;top:298px}
     .s-relations .rl-b2{left:900px;top:488px}.s-relations .rl-b4{left:1560px;top:488px}
@@ -86,12 +86,17 @@ Deck.add({
     .s-relations .rl-cap{font:600 25px/1.15 var(--font);color:#E6E6E2}
     .s-relations .rl-dn .src{margin-top:4px;font-size:19px;line-height:1.2;color:#A3A39E}
     .s-relations .rl-dn .rl-cap+.src{margin-top:8px}
-    .s-relations .rl-ret{position:absolute;left:96px;top:668px;width:1728px;height:224px}
-    .s-relations .rl-rh{position:absolute;left:34px;top:20px;font:800 22px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--wc-orange-soft)}
+    .s-relations .rl-ret{position:absolute;left:96px;top:668px;width:1728px;height:224px;transition:opacity .75s var(--ease),transform .75s var(--ease),filter .75s var(--ease),border-color .7s var(--ease),background .7s var(--ease),box-shadow .7s var(--ease)}
+    .s-relations .rl-ret:not(.live){border:1.5px dashed rgba(255,255,255,.26);background:rgba(255,255,255,.02);box-shadow:none}
+    .s-relations .rl-body{position:absolute;inset:0;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .s-relations .rl-ret.live .rl-body{opacity:1;transform:none}
+    .s-relations.no-trans .rl-body,.s-relations.no-trans .rl-ret,body.calm .s-relations .rl-body,body.calm .s-relations .rl-ret{transition:none!important}
+    .s-relations .rl-rh{position:absolute;left:34px;top:20px;font:800 22px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--wc-orange-soft);transition:color .7s var(--ease)}
+    .s-relations .rl-ret:not(.live) .rl-rh{color:rgba(255,179,102,.5)}
     .s-relations .rl-ch{position:absolute;top:22px;font:800 20px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:#A3A39E}
     .s-relations .rl-coins{position:absolute;left:0;top:0;overflow:visible}
     .s-relations .rl-coin{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .55s cubic-bezier(.2,.9,.3,1.3) calc(var(--i) * 110ms + 350ms)}
-    .s-relations .rl-ret.in .rl-coin{transform:scale(1)}
+    .s-relations .rl-ret.live .rl-coin{transform:scale(1)}
     .s-relations.no-trans .rl-coin,body.calm .s-relations .rl-coin{transition:none!important}
     .s-relations .rl-rn{position:absolute;left:34px;width:510px}
     .s-relations .rl-rn b{display:block;font:800 27px/1.1 var(--font);color:#fff}
@@ -119,7 +124,7 @@ Deck.add({
       b1: ['b', 'M336 445 C 412 445, 412 540, 492 540 L 900 540'], b2: ['b', 'M1160 540 L 1560 540'],
     };
     ctx.ln = {}; ctx.fl = {};
-    Object.keys(ROAD).forEach((k) => { const [l, d] = ROAD[k]; mk('path', { class: 'rl-sk', d }); });
+    Object.keys(ROAD).forEach((k) => mk('path', { class: 'rl-sk', d: ROAD[k][1] }));
     Object.keys(ROAD).forEach((k) => {
       const [l, d] = ROAD[k];
       ctx.ln[k] = mk('path', { class: 'rl-ln', d, stroke: COL[l], filter: 'url(#fx-glow-u)' });
@@ -146,7 +151,7 @@ Deck.add({
       mk('circle', { cx, cy, r: 23, fill: col === '#fff' ? 'rgba(255,255,255,.12)' : 'rgba(255,131,0,.22)', stroke: col, 'stroke-width': 3.2, filter: col === '#fff' ? '' : 'url(#fx-glow-soft)' }, g);
       mk('circle', { cx, cy, r: 14, fill: 'none', stroke: col, 'stroke-width': 1.6, opacity: .55 }, g);
     };
-    [[96 + 0, 0, 1.18], [172, 1, 4]].forEach(([_, row, back], r) => {
+    [1.18, 4].forEach((back, r) => {
       const cy = r === 0 ? 94 : 170;
       coin(590, cy, '#fff', 1, '');
       const x0 = 890, whole = Math.floor(back), part = back - whole;
@@ -161,7 +166,7 @@ Deck.add({
       root.querySelectorAll('.n').forEach((el) => {
         const to = +el.dataset.to, dec = +el.dataset.dec || 0;
         if (el._cnt) el._cnt.stop = true;
-        if (animate && !ctx.calm) Fx.counter(el, to, { from: 0, dur: 1000, dec, delay });
+        if (animate && !ctx.calm) Fx.counter(el, to, { from: 0, dur: 900, dec, delay });
         else el.textContent = Fx.fmt(to, dec);
       });
     };
@@ -174,14 +179,14 @@ Deck.add({
         lines.forEach((l) => { l.style.transition = 'none'; l.style.strokeDasharray = ''; l.style.strokeDashoffset = ''; l.style.opacity = 0; });
         nodes.forEach((n) => n.classList.remove('live')); [f1, f2].forEach((f) => { f.stop().show(false); }); return;
       }
-      const run = (l, ms, delay, vis) => { l.style.transition = 'none'; l.style.opacity = 1; Fx.draw(l, ms, delay); };
+      const run = (l, ms) => { l.style.transition = 'none'; l.style.opacity = 1; Fx.draw(l, ms, 0); };
       if (animate) {
-        run(l1, 800, 0); f1.show(true).start();
+        run(l1, 800); f1.show(true).start();
         ctx.after(800, () => { if (live()) nodeA.classList.add('live'); });
-        ctx.after(700, () => { if (live()) { run(l2, 800, 0); f2.show(true).start(); } });
+        ctx.after(700, () => { if (live()) { run(l2, 800); f2.show(true).start(); } });
         ctx.after(1600, () => { if (live()) nodeB.classList.add('live'); });
         const grp = ctx.qa(`[data-step="${k === 'a' ? 1 : 2}"]`);
-        grp.forEach((el) => ctx.nums(el, true, 400 + (+el.dataset.delay || 0)));
+        grp.forEach((el) => ctx.nums(el, true, 150 + (+el.dataset.delay || 0)));
       } else {
         lines.forEach((l) => { l.style.transition = 'none'; l.style.strokeDasharray = ''; l.style.strokeDashoffset = ''; l.style.opacity = 1; });
         nodes.forEach((n) => n.classList.add('live')); [f1, f2].forEach((f) => { f.show(true).start(); });
@@ -192,7 +197,7 @@ Deck.add({
   step(ctx, i, dir, instant) {
     const go = !instant && dir > 0 && !ctx.calm;
     ['a', 'b'].forEach((k, n) => { const s = n + 1; ctx.setLane(k, i >= s, go && i === s); });
-    const ret = ctx.q('.rl-ret');
+    const ret = ctx.q('.rl-ret'); ret.classList.toggle('live', i >= 3);
     if (go && i === 3) { ctx.nums(ret, true, 500); ctx.after(450, () => Fx.sweep(ret)); ctx.after(1500, () => Fx.burstEl(ctx.qa('.rl-vg')[1], { n: 22, color: '#FF8300', speed: 300 })); } else ctx.nums(ret, false);
     if (go && i === 4) ctx.after(250, () => Fx.sweep(ctx.q('.rl-known')));
   },

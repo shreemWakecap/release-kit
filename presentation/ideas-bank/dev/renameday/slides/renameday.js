@@ -2,43 +2,39 @@
    On 27 Aug 2026 the backend followed with 345 files. One dot is one file. Each panel is a tree: six old branches full of dots
    empty into one new folder (backend: two, Shared and Weather Station), and the counter earns its number as the dots land.
    Facts: research C1 (2.2 ledger rows for 24 Aug and 27 Aug, 4.2 parts C and D, 5.1 commit sizes: front end 260 files, backend 345 files,
-   2.7: the backend move added only 253 lines net, so it was a move, not a rewrite).
+   2.7: the backend move added only 253 lines net in production code, so it was a move, not a rewrite).
    The dots are a picture: how many files sat in which old folder, and how the backend files split between Shared and
-   Weather Station, are not in the research, so the layout is drawn, not measured (the slide says so). */
+   Weather Station, are not in the research, so the folders are a sketch (the slide says so). */
 Deck.add({
   id: 'renameday', section: 'convert', title: 'Rename day: one name, 260 files', kicker: 'The conversion · Rename day', reality: ['code'],
   steps: 3, ambient: { orb: 1, beam: .6, dust: 1 }, dur: [3600, 6000, 6000, 6500], minutes: 1,
   notes: [
     'This is the day the app got its new name.',
-    'On 24 Aug, the app was renamed Connected Environment.',
+    'On 24 Aug 2026, the app was renamed Connected Environment.',
     'The same day, 260 files moved into one product folder.',
     'Three days later, on 27 Aug, the backend followed.',
-    'It moved 345 files into a new, tidy layout.',
+    'It changed 345 files and gave the backend a tidy new layout.',
     'It was a move, not a rewrite.',
-    'If asked: the front end commit changed 260 files: 220 moves, 6 deleted, 8 added and 26 edited. A smaller commit the same day renamed the app itself, 18 files. On 26 Aug a third commit finished the rename in the shared layer, styles and analytics, 181 files. Old links still work: a redirect sends the old Weather Station address to the new one. The backend commit added only 253 lines net, from 28,691 to 28,944. The backend names inside the code were not renamed. Only its folders moved. Each dot stands for one file, but how many sat in each old folder, and the split between Shared and Weather Station, is drawn as a picture.',
+    'If asked: the front end commit changed 260 files: 220 moves, 6 deleted, 8 added and 26 edited. A smaller commit the same day renamed the app itself, 18 files. On 26 Aug a later commit finished the rename in the shared layer, styles and analytics, 181 files. The folder keeps the name Weather Station, because Weather Station is now one product inside Connected Environment. The code has a redirect that sends the old Weather Station address to the new one. In production code, the backend commit added only 253 lines net, from 28,691 to 28,944. The backend code still uses the old Weather Station name, and renaming it is still a plan. Each dot stands for one file, but how many sat in each old folder, and the split between Shared and Weather Station, is drawn as a picture.',
   ].join('\n'),
   html: `
     <h2 class="h2 rd-h" data-step="0">Rename <span class="o glow-text">day</span></h2>
-    <p class="lead rd-lead" data-step="0" data-delay="200">One new name. One new home.</p>
-    <div class="label rd-eb rd-eb-fe" data-step="0" data-delay="300">Front end</div>
-    <div class="label rd-eb rd-eb-be" data-step="0" data-delay="400">Backend</div>
-    <div class="rd-pan rd-fe glass flat sweepable" data-step="0" data-delay="300" title="Front end commit, 24 Aug 2026: 260 files (220 moved, 6 deleted, 8 added, 26 edited)">
+    <p class="lead rd-lead" data-step="0" data-delay="200">One new name. A tidy new home.</p>
+    <div class="rd-pan rd-fe glass flat sweepable" data-step="0" data-delay="300">
       <svg class="rd-svg" viewBox="0 0 830 620" width="830" height="620"></svg>
       <div class="rd-bar"><i class="rd-dots"><b></b><b></b><b></b></i><span class="rd-name"><span class="rd-t">Weather Station</span><u class="rd-caret"></u></span><span class="rd-chip">24 Aug</span></div>
       <div class="rd-cnt"><b class="rd-n">0</b><span>files</span></div>
     </div>
-    <div class="rd-pan rd-be glass flat sweepable" data-step="0" data-delay="450" title="Backend commit, 27 Aug 2026: 345 files moved under Shared or Products/WeatherStation">
+    <div class="rd-pan rd-be glass flat sweepable" data-step="0" data-delay="450">
       <svg class="rd-svg" viewBox="0 0 830 620" width="830" height="620"></svg>
       <div class="rd-bar"><i class="rd-dots"><b></b><b></b><b></b></i><span class="rd-name"><span class="rd-t">Backend</span></span><span class="rd-chip">27 Aug</span></div>
       <div class="rd-cnt"><b class="rd-n">0</b><span>files</span></div>
       <div class="rd-close" data-step="3" data-delay="2300">A move, <span class="o">not a rewrite.</span></div>
     </div>
-    <div class="src rd-src" data-step="1">One dot is one file. The layout is a picture.</div>`,
+    <div class="src rd-src" data-step="1"><span>One dot is one file.</span> <span>The folders are a sketch.</span></div>`,
   css: `
     .s-renameday .rd-h{position:absolute;left:96px;top:104px;width:900px;font-size:62px}
     .s-renameday .rd-lead{position:absolute;left:96px;top:196px;width:1200px;font-size:27px}
-    .s-renameday .rd-eb{position:absolute;top:262px;color:var(--wc-orange-soft)}
-    .s-renameday .rd-eb-fe{left:104px}.s-renameday .rd-eb-be{left:1002px}
     .s-renameday .rd-pan{position:absolute;top:292px;width:830px;height:620px;border-radius:26px}
     .s-renameday .rd-fe{left:96px}.s-renameday .rd-be{left:994px}
     .s-renameday .rd-svg{position:absolute;left:0;top:0;overflow:visible}
@@ -197,7 +193,7 @@ Deck.add({
   },
   enter(ctx) { ctx.snap(0); ctx.raf(() => { const n = performance.now(); ctx.fe.tick(n); ctx.be.tick(n); }); },
   step(ctx, i, dir, instant) {
-    if (i === 0 || instant || dir < 0 || ctx.calm) { ctx.snap(i); return; }
+    if (i === 0 || instant || dir < 0 || ctx.calm || i > ctx.stage + 1) { ctx.snap(i); return; }   /* a jump that skips a step paints it at once */
     if (i === 1) ctx.rename();
     if (i === 2) ctx.move(ctx.fe, 2, null);
     if (i === 3) ctx.move(ctx.be, 3, ctx.chipBE);

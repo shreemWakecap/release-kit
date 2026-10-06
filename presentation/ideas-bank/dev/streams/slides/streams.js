@@ -1,18 +1,18 @@
 /* Slide: one system, four data streams. Vision: nobody has built the join.
-   Step 0 four streams run side by side, each in its own service. 1 what each stream adds. 2 the rivers bend into one JOIN.
+   Step 0 four streams run side by side, in separate services. 1 what each stream adds. 2 the rivers bend into one JOIN.
    3 three questions only a join can answer; each one lights the two streams it needs. 4 closing line and "a person approves".
    Facts: research C5 B9 and section 8.2 (no worker, permit or machine in our bank; the keys exist elsewhere), C6 sections 5, 6 and 8 (permit service, equipments service, seams S5 S7 S8).
-   Nothing here is a number and nothing is dated. */
+   No number and no date on the slide. The notes use only "six permit types" (C5 2.4, C6 5.1). */
 Deck.add({
   id: 'streams', section: 'future', title: 'One system, four data streams', kicker: 'What it can do · Four streams', reality: ['vision'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4000, 5000, 5600, 7200, 5000], minutes: 1,
   notes: [
-    'Four streams of data matter on a site. Each sits in its own service.',
+    'Four streams of data matter on a site. Today they sit in separate services.',
     'Step 1: each stream adds its own piece.',
-    'Step 2: a join links them.',
-    'Step 3: now we can ask questions no single stream can answer.',
+    'Step 2: picture one join that links them.',
+    'Step 3: a join could answer questions like these.',
     'Step 4: nobody has built this, and a person approves.',
-    'If asked: Environment is Weather, Lightning and Gas in Connected Environment. Worker positions and zones sit in the location and app services, and heat bracelets in worker gear. The Digital Work Permit service already sends six permit types to the Observation Manager; its production state is not proven. Machines sit in the equipments service with GPS and alert rules, from platform documents of July 2026. On a permit, equipment is only free text today. None of these streams is joined to our weather, lightning or gas data yet. The keys to join them exist: project, time, zone and device.',
+    'If asked: Environment is Weather, Lightning and Gas in Connected Environment. Worker positions and zones sit in the location and app services, and heat bracelets in worker gear. The Observation Manager already accepts six permit types from the Digital Work Permit service; its production state is not proven. Machines sit in the equipments service with GPS and alert rules, from older internal documents. On a permit record in the app service, equipment is only free text. None of these streams is joined to our weather, lightning or gas data today. The keys to join them exist in the other services: project, time, zone and device. Our own readings carry no zone yet.',
   ].join('\n'),
   html: (() => {
     const ICON = {
@@ -28,11 +28,11 @@ Deck.add({
       { k: 'permit', n: 'Permits', s: 'Work, place, time', c: '#2BD576' },
       { k: 'equip', n: 'Equipment', s: 'Machines and GPS', c: '#F1E4D4' },
     ];
-    const Q = [{ t: 'Who is in the heat?', a: 0, b: 1 }, { t: 'Should a permit hold?', a: 2, b: 0 }, { t: 'Should the crane stop?', a: 3, b: 0 }];
+    const Q = [{ t: 'Who works in the heat?', a: 0, b: 1 }, { t: 'Should a permit pause?', a: 2, b: 0 }, { t: 'Should the crane stop?', a: 3, b: 0 }];
     const LY = [364, 516, 668, 820], QY = [404, 592, 780];
     return `
     <h2 class="h2 st-h" data-step="0">One system, <span class="o glow-text">four data streams.</span></h2>
-    <p class="lead st-lead">Each one sits in its own service.</p>
+    <p class="lead st-lead">Today they sit in separate services.</p>
     <svg class="st-svg" viewBox="0 0 1920 1080" width="1920" height="1080"></svg>
     <div class="st-pan-h">${L.map((l, i) => `<div class="st-lane glass" data-k="${i}" style="top:${LY[i] - 52}px;--c:${l.c};--i:${i}"><span class="st-ic">${ico(l.k, 34)}</span><span class="st-tx"><b class="st-name">${l.n}</b><span class="st-sub">${l.s}</span></span></div>`).join('')}</div>
     ${Q.map((q, k) => `<div class="st-q glass sweepable" data-step="3" data-delay="${k * 1200}" data-k="${k}" style="top:${QY[k] - 75}px">

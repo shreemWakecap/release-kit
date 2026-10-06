@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:51:20", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "18:21:44", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -905,28 +905,28 @@ try{
    Step 0 the day as planned: three tasks sit in the hot hours. 1 the forecast colours the day (cool, warm, hot); heavy tasks glow red.
    2 heavy tasks glide into the cool hours (dashed = suggested). 3 rest breaks light up where it is warm (from the Safety Policy).
    4 a person presses Approve and the plan turns solid.
-   Facts: the bands give work, rest and water; the cool band has no limit (research C2 5.3). The assistant in the Observation Manager already works by proposal and confirm (C6 H9). */
+   Facts: the bands give work, rest and water; the Normal band has no limit (research C2 5.3). The Observation Manager code has two assistants (exports, templates) that work by proposal and confirm (C6 H9). */
 Deck.add({
   id: 'plan', section: 'future', title: 'Plan: suggested work plans', kicker: 'What it can do · Work plans', reality: ['vision'],
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [3600, 4400, 4400, 3400, 5600], minutes: 1,
   notes: [
     'A plan is a list of tasks for the day.',
-    'Step 1: the forecast shows cool hours and hot hours.',
+    'Step 1: a forecast would show cool hours and hot hours.',
     'Step 2: heavy work moves to cool hours, and indoor work stays.',
     'Step 3: where it is warmer, the Safety Policy adds rest breaks.',
     'Step 4: a person checks the plan and approves it.',
     'This is a vision, and nobody has built it.',
-    'If asked: the Safety Policy already gives work, rest and water for each heat band. In the standard set the cool band has no limit. Extreme Caution is 50 minutes of work and 10 of rest. Danger is 30 and 10. A project can set its own bands. No forecast code and no planner exist today. The assistant in the Observation Manager already works by proposal: it proposes, a person confirms, then it runs. The tasks in this picture are examples.',
+    'If asked: the Safety Policy already gives work, rest and water for each heat band. In the standard set the Normal band has no work or rest limit. Extreme Caution is 50 minutes of work and 10 of rest. Danger is 30 and 10. A project can set its own bands. We found no forecast code and no plan suggester in our code. The Observation Manager code has two assistants, for exports and templates. Each one proposes, a person confirms, then it runs. The tasks in this picture are examples.',
   ].join('\n'),
   html: `
     <h2 class="h2 wpn-h" data-step="0">Heavy work in <span class="o glow-text">cool hours.</span></h2>
     <p class="lead wpn-lead" data-step="0" data-delay="200">The system suggests. A person approves.</p>
     <div class="wpn-cols" data-step="0" data-delay="300">
-      <div class="wpn-col" style="left:430px;width:376px;--c:#22C55E;--d:.2s"><b>Cool</b></div>
-      <div class="wpn-col" style="left:806px;width:182px;--c:#F5A524;--d:.55s"></div>
-      <div class="wpn-col hot" style="left:988px;width:362px;--c:#FF4D4D;--d:.9s"><b>Hot</b></div>
-      <div class="wpn-col" style="left:1350px;width:167px;--c:#F5A524;--d:1.2s"></div>
-      <div class="wpn-col" style="left:1517px;width:307px;--c:#22C55E;--d:1.45s"><b>Cool</b></div>
+      <div class="wpn-col" style="left:430px;width:376px;--c:#22C55E;--d:.1s"><b>Cool</b></div>
+      <div class="wpn-col" style="left:806px;width:182px;--c:#F5A524;--d:.4s"></div>
+      <div class="wpn-col hot" style="left:988px;width:362px;--c:#FF4D4D;--d:.62s"><b>Hot</b></div>
+      <div class="wpn-col" style="left:1350px;width:167px;--c:#F5A524;--d:1s"></div>
+      <div class="wpn-col" style="left:1517px;width:307px;--c:#22C55E;--d:1.18s"><b>Cool</b></div>
       <i class="wpn-scan"></i>
     </div>
     <div class="wpn-axis" data-step="0" data-delay="400"></div>

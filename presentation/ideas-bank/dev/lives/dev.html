@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:51:20", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "18:21:45", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -903,8 +903,8 @@ Deck.plan([
 try{
 /* Slide: Save lives: the closed loop. One idea: Sense, Predict, Decide, Notify, Act is one loop, most of it exists, and a person stays in charge.
    Vision: the whole loop is not built. Pieces that exist wear their own badge: Sense and Decide are live, Notify is in code, Predict is vision. No numbers on purpose.
-   Step 0 five dim stations on a ring. 1 Sense lights. 2 a line and packets run to Predict. 3 Decide. 4 Notify (Observation Manager, recipient rules). 5 Act, the ring closes, a person sits at the centre.
-   Facts: C2 (verdict on the live Weather page), C3 and C4 (Lightning and Gas pages live), C6 H1, H2 (Observation Manager, recipient rules), C6 H5 and S6 (helmet alarm exists, no rule calls it), C6 11 (no forecast code). */
+   Step 0 five dim stations on a ring. 1 Sense lights. 2 a line and packets run to Predict. 3 Decide. 4 Notify (Observation Manager, recipient rules). 5 Act, the ring closes, the person at the centre lights up with a line to every station.
+   Facts: C2 (verdict on the live Weather page), C3 and C4 (Lightning and Gas pages live; Lightning RED, FAULT and OFFLINE go to the Observation Manager), C6 H1 and H2 (Observation Manager, recipient rules), C6 H5 and seam 6 (helmet alarm exists, no rule calls it), C6 section 11 (no forecast code). */
 Deck.add({
   id: 'lives', section: 'future', title: 'Save lives: the closed loop', kicker: 'What it can do · Save lives', reality: ['vision', 'live', 'code'],
   steps: 5, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [3600, 3000, 3800, 3800, 3800, 6000], minutes: 1,
@@ -912,13 +912,13 @@ Deck.add({
     'Step 1: sensors read the weather, lightning and gas.',
     'Step 2: a forecast would give people more time to act.',
     'Nobody has built that part.',
-    'Step 3: the Safety Policy turns the readings into one answer.',
-    'Step 4: the Observation Manager and its rules tell the right people.',
+    'Step 3: the Safety Policy turns weather readings into one answer.',
+    'Step 4: in code, the Observation Manager and its rules tell people.',
     'Step 5: a person acts and stays in charge.',
-    'If asked: the Weather, Lightning and Gas pages are live on production. The Safety Policy gives the answer on the Weather page. Weather and Lightning alerts leave through the Observation Manager in the code, but nobody has seen one arrive in production yet. Recipient rules pick people by source, zone and company. Weather alerts carry no zone today, and SMS goes out only for worker events. Gas alerts are not proven to arrive. For Lightning the site warning unit comes first and we are the backup. The safety service can already ring helmets in a zone, but no rule calls it. A rule could, only with a person approving. No forecast code exists today.',
+    'If asked: the Weather, Lightning and Gas pages are live on production. The Safety Policy gives the answer on the Weather page. In the code, Weather and Lightning alerts go to the Observation Manager. We have not seen one arrive in production. Recipient rules pick people by source, zone and company. Weather alerts carry no zone today, and SMS goes out only for worker events. Gas alerts are not proven to arrive. For Lightning the site warning unit comes first and we are the backup. The safety service can already ring helmets in a zone. We found no rule that calls it. A rule could, only with a person approving. We found no forecast code.',
   ].join('\n'),
   html: `
-    <h2 class="h2 lfl-h" data-step="0">A loop that <span class="o glow-text">saves lives.</span></h2>
+    <h2 class="h2 lfl-h" data-step="0">A loop to <span class="o glow-text">save lives.</span></h2>
     <svg class="lfl-svg" viewBox="0 0 1920 1080" width="1920" height="1080"></svg>
     <div class="lfl-core" data-step="0" data-delay="700">
       <svg class="lfl-halo" viewBox="-200 -200 400 400" width="400" height="400" aria-hidden="true"><defs><radialGradient id="lfl-hg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="rgba(255,170,80,.5)"/><stop offset=".55" stop-color="rgba(255,131,0,.16)"/><stop offset="1" stop-color="rgba(255,131,0,0)"/></radialGradient></defs><circle r="200" fill="url(#lfl-hg)"/></svg>

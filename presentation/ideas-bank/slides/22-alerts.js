@@ -156,7 +156,7 @@ Deck.add({
       '<b>One door.</b> A dispatcher posts each row to the Observation Manager. Nobody has yet seen one arrive in production.',
       '<b>One record per alert.</b> Repeats are dropped, the rest are grouped.',
       '<b>Rules pick the people</b> by source, zone and company. Web and Mobile only.',
-      '<b>Four gaps.</b> Read from the code. Not dates, not promises.',
+      '<b>Four gaps.</b> Read from the code.',
     ];
   },
   step(ctx, i, dir, instant) {

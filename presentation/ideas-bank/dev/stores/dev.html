@@ -259,7 +259,7 @@ body.hide-live #live,body.hide-live #lv-panel{display:none!important}
 </div></div></div>
 <div id="black" class="overlay"></div>
 <div id="laser"></div><div id="jump"></div>
-<script>window.__BUILD={"version": 99999999, "time": "17:50:26", "slides": 1};</script>
+<script>window.__BUILD={"version": 99999999, "time": "18:28:59", "slides": 1};</script>
 <script>/* Connected Environment story: presentation engine (no dependencies, works from file://).
    Slides register with Deck.add({...}). See story/README-slides.md for the module contract. */
 (function () {
@@ -901,22 +901,23 @@ Deck.plan([
 <script>
 /* stores.js */
 try{
-/* Slide: what is stored where. Three stores today (sensor data, our own data, alert data), each with a real size, and nothing that joins them.
+/* Slide: what is stored where. Three stores today (sensor data, our own data, alert data), each with a real count, and no database link between them.
    Facts (research C5): 1.5 million weather readings (internal cost doc, 10 Aug 2026, exactly 1,496,265; first reading May 2025; C5 3.1, 5.1, 14);
    31 tables, up from 10 in 70 days (counted in the code, 26 Jul to 4 Oct 2026; C5 1, 4, 12);
-   9 event sources in the Observation Manager (code; C6 section 7 H1: nine sources, weather, SOS and permits among them; C5 2.4: one main table with a Source column);
-   no foreign key across the databases (C5 section 1 and 7). The notification rules live in a fourth store (C6 H2), so the slide says events only. */
+   9 event sources in the Observation Manager (code; C6 section 7 H1: nine sources, weather, connected worker and digital work permit among them; SOS is a type under connected worker and lightning a type under weather; C5 2.4: one main table);
+   no foreign key across the databases (C5 section 1 and 7). The close line says "database links", not "links", because our backend does read the sensor store and post alerts to the Observation Manager.
+   The notification rules live in a separate store (C6 H2), so the slide says events only. */
 Deck.add({
   id: 'stores', section: 'bank', title: 'What is stored where', kicker: 'The data bank · Stored today', reality: ['code'], short: true,
   steps: 4, ambient: { orb: 1, beam: .5, dust: 1 }, dur: [4000, 5000, 5000, 5000, 6200], minutes: 1.2,
   notes: [
-    'Our data lives in three separate stores.',
-    'Step 1: sensor data holds about 1.5 million weather readings.',
+    'Three stores hold the data for this story.',
+    'Step 1: by August, sensor data held about 1.5 million weather readings.',
     'Step 2: our tables grew from 10 to 31 in 70 days.',
-    'Step 3: alert data comes from nine sources.',
-    'Step 4: nothing links the three, so each one stands alone.',
-    'A single question cannot cross all three.',
-    'If asked: the sensor store is a time series table owned by the sensors service. It held 1,496,265 weather readings on 10 Aug 2026, kept since May 2025. Our own database holds all three products, and had 10 tables on 26 Jul 2026 and 31 on 4 Oct 2026. The Observation Manager database has one main table of events from nine sources: weather, lightning, SOS, permits and more. Who gets told sits in the notification database next to it. Our backend reads the sensor store read only, and posts alerts one way to the Observation Manager. The Observation Manager reads people and zones from the app database, but none of these three stores links to another. Row counts and sizes come from an internal cost doc of 10 Aug 2026.',
+    'Step 3: alert data sits in the Observation Manager, from nine sources.',
+    'Step 4: no database links join the three.',
+    'Each store has its own owner.',
+    'If asked: the sensor store is the database of the sensors service. The weather readings sit in one time series table there, next to worker safety data. That table held 1,496,265 readings on 10 Aug 2026, and the first reading came on 1 May 2025. Our own database holds all three products. It had 10 tables on 26 Jul 2026 and 31 on 4 Oct 2026. The Observation Manager database has one main table of events from nine sources, such as weather, workers and permits. Lightning is filed under weather, and SOS under workers. Who gets told sits in the notification service database, a separate store. Our backend reads the sensor store read only and posts alerts one way to the Observation Manager, but no database links them. The Observation Manager reads people and zones from the app database, which is not one of these three. Other stores exist too: the device list, worker locations, people, permits and equipment. The reading count comes from an internal cost doc of 10 Aug 2026. The table and source counts come from the code.',
   ].join('\n'),
   html: `
     <h2 class="h2 st-h" data-step="0">Three stores. <span class="o glow-text">Not joined.</span></h2>
@@ -935,14 +936,15 @@ Deck.add({
     <div class="st-tag" style="left:720px" data-step="2" data-delay="1500"><span>from 10 in 70 days</span></div>
     <div class="st-num" style="left:1344px" data-step="3"><b>0</b></div>
     <div class="st-unit" style="left:1344px" data-step="3" data-delay="250">event sources</div>
-    <div class="st-tag" style="left:1344px" data-step="3" data-delay="1500"><span>weather, SOS, permits</span></div>
-    <div class="st-close" data-step="4" data-delay="500"><span class="o glow-text">No links</span> between them.</div>
+    <div class="st-tag" style="left:1344px" data-step="3" data-delay="1500"><span>weather, workers, permits</span></div>
+    <div class="st-close" data-step="4" data-delay="500"><span class="o glow-text">No database links</span> between them.</div>
     <div class="src st-src st-src-l" data-step="0" data-delay="900">1.5 million: internal doc, Aug 2026.</div>
     <div class="src st-src st-src-r" data-step="0" data-delay="900">Tables and sources: counted in code, Oct 2026.</div>`,
   css: `
     .s-stores .st-h{position:absolute;left:96px;top:104px;width:1500px;font-size:62px}
     .s-stores .st-cw{position:absolute;top:240px;width:480px;height:620px}
     .s-stores .st-card{width:100%;height:100%;transition:border-color .6s var(--ease),box-shadow .6s var(--ease)}
+    .s-stores .st-card:hover{border-color:rgba(255,179,102,.55)}
     .s-stores .st-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
     .s-stores .st-t{position:absolute;top:266px;width:480px;text-align:center;font:800 40px/1.1 var(--font);color:#fff}
     .s-stores .st-num{position:absolute;top:640px;width:480px;display:flex;justify-content:center;align-items:baseline;gap:14px;white-space:nowrap}

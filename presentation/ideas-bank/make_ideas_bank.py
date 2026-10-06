@@ -55,11 +55,12 @@ BANK = [
 # easy-words and "no dates" fixes applied to the COPIES of older slides (the archived originals stay as they were)
 TEXT_FIXES = {
   "badges": [("and we give no dates.", "."), ("A direction, with no dates.", "A direction.")],
-  "alerts": [(" We give no dates.", "")],
+  "alerts": [(" We give no dates.", ""), (" Read from the code. Not dates, not promises.", " Read from the code.")],
   "keys": [(", and there are no dates.", ".")],
   "flow-detailed": [("['Platform', BX, BW]", "['Our system', BX, BW]"), ("the vendor: a black", "the maker: a black"), ("polls every 60 s", "asks every 60 s"), ("polls every 30 s", "asks every 30 s"),
-                    ("Three ponds, not one pool: next slide.", "Three stores, not one pool."), ("The vendor cloud holds the readings", "The maker’s cloud holds the readings")],
-  "status": [("Gas acks back to vendor", "Gas acks back to the maker")],
+                    ("Three ponds, not one pool: next slide.", "Three stores, not one pool."), ("The vendor cloud holds the readings", "The maker’s cloud holds the readings"), ("y: 922, text: 'GAS: TEST'", "y: 956, text: 'GAS: TEST'")],
+  "status": [("Gas acks back to vendor", "Gas acks back to the maker"), ("'Arabic weather screens', ", ""), ("ten items with a document behind them", "nine items with a document behind them"),
+             (", Arabic screens, a stage environment", ", a stage environment"), ("a running assistant. No dates.\\nLast step", "a running assistant.\\nLast step")],
 }
 orig = open(os.path.join(HERE, "original-plan-35.js"), encoding="utf-8").read()
 olines = {}
